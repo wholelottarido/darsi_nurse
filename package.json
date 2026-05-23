@@ -6,13 +6,23 @@
     "dev": "next dev -p 3019",
     "build": "next build",
     "start": "next start -p 3019",
-    "lint": "eslint"
+    "lint": "eslint",
+    "pm2:start": "pm2 start ecosystem.config.js --name darsi-nurse",
+    "pm2:stop": "pm2 stop darsi-nurse",
+    "pm2:restart": "pm2 restart darsi-nurse",
+    "pm2:delete": "pm2 delete darsi-nurse",
+    "pm2:logs": "pm2 logs darsi-nurse",
+    "pm2:status": "pm2 status"
   },
   "dependencies": {
     "@ai-sdk/react": "^3.0.156",
     "@voltagent/core": "^2.7.0",
+    "@voltagent/libsql": "^2.1.2",
+    "@voltagent/logger": "^2.0.2",
     "ai": "^6.0.154",
+    "better-sqlite3": "^12.8.0",
     "next": "16.2.3",
+    "ollama-ai-provider-v2": "^3.5.0",
     "pg": "^8.20.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -26,6 +36,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "pm2": "^6.0.14",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

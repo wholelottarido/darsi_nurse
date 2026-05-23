@@ -1,0 +1,9 @@
+  id   | kode  |                        nama                        | level | parent_id | parent_kode | surveilance | islast | aktif | dg_kode | resume_ri | resume_rj | resume_cd | tahun | kodeina 
+-------+-------+----------------------------------------------------+-------+-----------+-------------+-------------+--------+-------+---------+-----------+-----------+-----------+-------+---------
+ 22760 | A00   | Cholera                                            |     1 |         0 |             |           1 |      0 |     0 | 001     |         0 |         0 |         0 |  2008 | A00
+ 22761 | A00.0 | Cholera due to Vibrio cholerae 01, biovar cholerae |     2 |     22760 | A00         |           1 |      1 |     0 | 001     |         0 |         0 |         0 |  2008 | A00.0
+ 22762 | A00.1 | Cholera due to Vibrio cholerae 01, biovar eltor    |     2 |     22760 | A00         |           1 |      1 |     0 | 001     |         0 |         0 |         0 |  2008 | A00.1
+ 22763 | A00.9 | Cholera, unspecified                               |     2 |     22760 | A00         |           1 |      1 |     0 | 001     |         0 |         0 |         0 |  2008 | A00.9
+ 22764 | A01   | Typhoid and paratyphoid fevers                     |     1 |         0 |             |           1 |      0 |     0 | 002     |         0 |         0 |         0 |  2008 | A01
+(5 rows)
+

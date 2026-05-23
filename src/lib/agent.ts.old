@@ -1,0 +1,267 @@
+import { Agent } from '@voltagent/core';
+import { createOllama } from 'ollama-ai-provider-v2';
+import { agentTools } from './agent-tools';
+import { saveConversation, getConversationHistory } from './conversations';
+
+// ============ OLLAMA MODEL ============
+
+const ollamaInstance = createOllama({
+  baseURL: process.env.OLLAMA_HOST || 'http://localhost:11434/api',
+});
+
+const model = ollamaInstance('llama3.2');
+
+// ============ AGENT INITIALIZATION ============
+
+let agentInstance: Agent | null = null;
+
+async function initializeAgent() {
+  if (agentInstance) {
+    return agentInstance;
+  }
+
+  try {
+    console.log('🚀 Initializing DARSI Triage Agent...');
+    console.log('📍 Ollama endpoint:', process.env.OLLAMA_HOST || 'http://localhost:11434/api');
+
+    agentInstance = new Agent({
+      name: 'DARSI Triage Agent',
+      instructions: `You are DARSI Triage Agent - a clinical triage assistant.
+
+CRITICAL INSTRUCTIONS FOR PATIENT DATA:
+- When user asks about a patient, IMMEDIATELY call getPatientHealthSummary with the patient ID
+- Report ONLY the data returned from the tool - never add medical interpretations or diagnoses
+- Be concise and factual
+- Always check allergies before suggesting medications
+
+TOOLS YOU MUST USE:
+- getPatientHealthSummary(patientId) - Fetch patient data from database
+- searchPatient(query) - Search for patients
+- monitorPatientStatus(patientId) - Get patient status
+- updatePatientCondition(patientId, field, value) - Update patient info
+- getPatientAllergies(patientId) - Get allergies
+- getPatientMedicalHistory(patientId) - Get medical history
+
+Language: Indonesian`,
+      model,
+      tools: agentTools, // Pass createTool() results directly, NO re-wrapping
+      maxSteps: 10,
+    });
+
+    console.log('✅ Agent initialized with', agentTools.length, 'tools');
+    console.log('📚 Available tools:', agentTools.map(t => t.name).join(', '));
+    return agentInstance;
+  } catch (error) {
+    console.error('❌ Failed to initialize agent:', error);
+    throw error;
+  }
+}
+
+// ============ CHAT HANDLER ============
+
+export async function chat(
+  userMessage: string,
+  patientId?: string,
+  limit: number = 10
+) {
+  try {
+    const agent = await initializeAgent();
+
+    console.log('💬 Processing message:', {
+      patient: patientId,
+      messageLength: userMessage.length,
+    });
+
+    // Get conversation history
+    const conversationHistory = patientId
+      ? await getConversationHistory(patientId, limit)
+      : [];
+
+    console.log('📋 Conversation history:', {
+      patientId,
+      length: conversationHistory.length,
+    });
+
+    // Build messages for agent
+    const messages: any[] = [
+      ...conversationHistory.map((msg) => ({
+        role: msg.role === 'agent' ? 'assistant' : (msg.role as 'user' | 'assistant'),
+        content: msg.message,
+      })),
+    ];
+
+    // Add current user message with patient context
+    const userContent = patientId
+      ? `[Patient ID: ${patientId}]\n${userMessage}`
+      : userMessage;
+
+    messages.push({
+      role: 'user',
+      content: userContent,
+    });
+
+    console.log('💬 Calling agent.generateText with', messages.length, 'messages');
+
+    // Call agent - tools will be invoked automatically by VoltAgent
+    let result: any;
+    try {
+      result = await agent.generateText(messages, {
+        temperature: 0.3,
+        maxOutputTokens: 1500,
+        maxSteps: 10,
+      });
+      console.log('✅ generateText call succeeded');
+- Alergi: [alergi]
+- Riwayat Penyakit: [riwayat_penyakit]"
+
+Language: Indonesian
+IMPORTANT: Temperature 0.0 = Be completely literal, no interpretation`;
+
+    // Format messages for generateText - include DYNAMIC system message
+    const messages: any[] = [
+      {
+        role: 'system',
+        content: systemPrompt,
+      },
+      ...conversationHistory.map((msg) => ({
+        role: msg.role === 'agent' ? 'assistant' : (msg.role as 'user' | 'assistant'),
+        content: msg.message,
+      })),
+    ];
+
+    // Add current user message
+    messages.push({
+      role: 'user',
+      content: patientId 
+        ? `[SYSTEM: Gunakan tool getPatientHealthSummary dengan patientId: ${patientId}]\n${userMessage}`
+        : userMessage,
+    });
+
+    console.log('💬 Calling agent.generateText with', messages.length, 'messages');
+    console.log('📝 First 3 messages:', messages.slice(0, 3).map((m, i) => ({ idx: i, role: m.role, len: m.content?.length })));
+
+    // Call agent with generateText method
+    let result: any;
+    try {
+      result = await agent.generateText(messages, {
+        temperature: 0.0, // ZERO - be completely deterministic and literal
+        maxOutputTokens: 1500,
+        maxSteps: 10, // Allow multiple tool calls
+        topP: 0.1, // Keep nucleus very small for factuality
+      });
+      console.log('✅ generateText call succeeded, result type:', typeof result);
+      
+      // Log tools yang dipanggil
+      if (result.toolResults && result.toolResults.length > 0) {
+        console.log('🔧 Tools executed:', result.toolResults.map((t: any) => ({
+          name: t.toolName,
+          input: t.input ? JSON.stringify(t.input).substring(0, 100) : 'N/A',
+        })));
+      } else {
+        console.log('⚠️ WARNING: No tools were executed for patient:', patientId);
+        console.log('   Expected tool call: getPatientHealthSummary("' + patientId + '")');
+      }
+    } catch (generateError) {
+      console.error('❌ generateText call failed:', generateError);
+      throw generateError;
+    }
+
+    // IMPORTANT: result.text is a Promise<string>, must await it!
+    let responseText = '';
+    try {
+      responseText = await result.text;
+      console.log('✨ Awaited result.text successfully, length:', responseText.length);
+    } catch (textError) {
+      console.error('❌ Failed to await result.text:', textError);
+      console.log('📦 Result object keys:', Object.keys(result));
+      console.log('📦 Result.text type:', typeof result.text);
+      throw textError;
+    }
+
+    console.log('✅ Agent response received:', {
+      textLength: responseText.length,
+      first100: responseText.substring(0, 100),
+      toolsUsed: Array.isArray(result.toolResults) ? result.toolResults.length : 0,
+      toolDetails: Array.isArray(result.toolResults) ? result.toolResults.map((t: any) => ({
+        name: t.toolName,
+        success: !t.error,
+        hasOutput: !!t.output,
+        output: t.output ? JSON.stringify(t.output).substring(0, 200) : 'N/A',
+      })) : [],
+    });
+
+    // Log full tool execution for debugging
+    if (result.toolResults && result.toolResults.length > 0) {
+      console.log('\n📋 TOOL EXECUTION DETAILS:');
+      result.toolResults.forEach((tr: any, idx: number) => {
+        console.log(`\n  [${idx + 1}] Tool: ${tr.toolName}`);
+        console.log(`      Error: ${tr.error || 'None'}`);
+        console.log(`      Output: ${JSON.stringify(tr.output).substring(0, 300)}`);
+      });
+    }
+
+    // Save to database
+    if (patientId && responseText) {
+      await Promise.all([
+        saveConversation(patientId, 'user', userMessage),
+        saveConversation(patientId, 'agent', responseText),
+      ]);
+      console.log('💾 Saved to conversation history');
+    }
+
+    // Extract tool names if any were used
+    const toolsUsed = Array.isArray(result?.toolResults) 
+      ? result.toolResults.map((t: any) => t.toolName || t.name) 
+      : [];
+
+    console.log('🎉 Chat completed successfully');
+    return {
+      success: true,
+      message: responseText,
+      toolsUsed,
+      timestamp: new Date().toISOString(),
+    };
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const fullError = error instanceof Error ? error.stack : JSON.stringify(error);
+    console.error('❌ Chat error:', errorMessage);
+    console.error('📋 Full error details:', fullError);
+    
+    // Log para sa debugging
+    if (error instanceof Error) {
+      console.error('Error name:', error.name);
+      console.error('Error cause:', (error as any).cause);
+    }
+    
+    return {
+      success: false,
+      message: 'Maaf, terjadi kesalahan. Silakan coba lagi.',
+      error: errorMessage,
+      debug: process.env.NODE_ENV === 'development' ? fullError : undefined,
+    };
+  }
+}
+
+// ============ STATUS CHECK ============
+
+export async function checkStatus() {
+  try {
+    const agent = await initializeAgent();
+    return {
+      status: 'ready',
+      agentName: agent.name,
+      model: 'llama3.2',
+      toolsCount: agentTools.length,
+    };
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    return {
+      status: 'error',
+      error: errorMessage,
+    };
+  }
+}
+
+export async function getAgentInstance() {
+  return initializeAgent();
+}

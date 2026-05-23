@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "patientName": "Ahmad",
+    "question": "Pasien datang mengeluh demam tinggi dan sakit kepala. Tolong cek datanya dan beri diagnosis.",
+    "expectedAnswer": [
+      "Berdasarkan data, pasien bernama Ahmad memiliki alergi Parasetamol",
+      "dan riwayat Asma. Gejala demam dan sakit kepala mengarah ke",
+      "Demam Tifoid atau infeksi lainnya (Triase: MODERATE/HIGH).",
+      "Hindari memberikan Parasetamol karena adanya riwayat alergi yang bersangkutan."
+    ],
+    "generatedAnswer": [
+      "📋 HASIL DIAGNOSA & REKOMENDASI  ",
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "",
+      "🔍 DIAGNOSA (dari ICD-10):",
+      "A01.1 - Demam paratifoid - MODERATE",
+      "A01.2 - Demam Paratifoid Tipe B - MODERATE",
+      "A01.3 - Demam Paratifoid Tipe C - MODERATE",
+      "A01.4 - Demam paratifoid, tidak spesifik - MODERATE",
+      "A01.0 - Demam tifoid - MODERATE",
+      "",
+      "👤 DATA PASIEN (dari database):",
+      "- Usia: 21",
+      "- BB: 70.00",
+      "- Alergi: Parasetamol",
+      "- Riwayat: Asma",
+      "",
+      "💊 REKOMENDASI:",
+      "[1] Triage: MODERATE",
+      "[2] Tindakan: Periksa demam, sakit kepala secara teratur dan memberikan",
+      "    parasetamol jika perlu. Asma dapat memperburuk gejala.",
+      "[3] Periksa: Gejala demam dan sakit kepala secara teratur.",
+      "[4] Hindari: Menghindari aktivitas fisik yang berat dan mengurangi stres."
+    ],
+    "toolsUsed": [
+      "searchDiagnosaWithTriage",
+      "getPatientHealthSummary"
+    ],
+    "metrics": {
+      "f1Score": 0.47,
+      "accuracy": 0.59,
+      "perplexity": 33.74
+    }
+  },
+  {
+    "id": 2,
+    "patientName": "mikel",
+    "question": "Pasien mengeluh gatal-gatal, ruam merah, dan sesak napas setelah makan seafood malam ini.",
+    "expectedAnswer": [
+      "Data pasien Mikel menunjukkan adanya alergi Udang.",
+      "Gejala gatal, ruam merah dan sesak napas mengindikasikan",
+      "Syok Anafilaksis atau Alergi (Triase: URGENT).",
+      "Segera tangani masalah pernapasan mengingat pasien juga memiliki riwayat Asma."
+    ],
+    "generatedAnswer": [
+      "📋 HASIL DIAGNOSA & REKOMENDASI  ",
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "",
+      "🔍 DIAGNOSIS (dari ICD-10):",
+      "[No diagnosis found]",
+      "",
+      "👤 DATA PASIEN (dari database):",
+      "- Usia: 22",
+      "- BB: 60.00",
+      "- Alergi: Udang",
+      "- Riwayat: Asma",
+      "",
+      "💊 REKOMENDASI:",
+      "[1] Triage: UNKNOWN",
+      "[2] Tindakan: Konsultasikan dengan dokter tentang gejala yang dialami",
+      "[3] Periksa: Gejala gejala yang dialami dan riwayat penyakit",
+      "[4] Hindari: Makan seafood dan kontak dengan udang"
+    ],
+    "toolsUsed": [
+      "searchDiagnosaWithTriage",
+      "getPatientHealthSummary"
+    ],
+    "metrics": {
+      "f1Score": 0.32,
+      "accuracy": 0.32,
+      "perplexity": 23.04
+    }
+  },
+  {
+    "id": 3,
+    "patientName": "Test Simpan",
+    "question": "Pasien batuk ringan dan pilek, tidak ada keluhan sesak atau nyeri hebat.",
+    "expectedAnswer": [
+      "Pasien atas nama Test Simpan memiliki keluhan batuk ringan",
+      "dan pilek (ISPA/Selesma). Triase level LOW.",
+      "Tidak ada riwayat alergi atau penyakit khusus yang perlu",
+      "diperhatikan berat dalam database."
+    ],
+    "generatedAnswer": [
+      "📋 HASIL DIAGNOSA & REKOMENDASI  ",
+      "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "🔍 DIAGNOSIS (dari ICD-10):",
+      "A37.0 - Rejan batuk karena Bordetella pertussis - MODERATE",
+      "A37.1 - Rejan batuk karena Bordetella parapertussis - MODERATE",
+      "A37.8 - Batuk rejan karena spesies Bordetella lainnya - MODERATE",
+      "A37.9 - Batuk rejan , tidak spesifik - MODERATE",
+      "",
+      "👤 DATA PASIEN (dari database):",
+      "- Usia: 25",
+      "- BB: 70.00",
+      "- Alergi: -",
+      "- Riwayat: -",
+      "",
+      "💊 REKOMENDASI:",
+      "[1] Triage: MODERATE",
+      "[2] Tindakan: Ambil obat batuk dan pilek, hindari kontak dengan orang lain",
+      "    yang sakit",
+      "[3] Periksa: Tekan lidah, periksa suhu tubuh",
+      "[4] Hindari: -"
+    ],
+    "toolsUsed": [
+      "getPatientHealthSummary",
+      "searchDiagnosaWithTriage"
+    ],
+    "metrics": {
+      "f1Score": 0.26,
+      "accuracy": 0.32,
+      "perplexity": 34.02
+    }
+  }
+]

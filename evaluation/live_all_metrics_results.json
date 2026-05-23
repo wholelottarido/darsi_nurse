@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "question": "Pasien mengeluh demam dan sakit kepala selama 3 hari. Apa diagnosa ICD dan triasenya?",
+    "expectedAnswer": "Berdasarkan gejala demam dan sakit kepala, diagnosa mengarah ke Demam Tifoid (A01.0). Level triase adalah MODERATE. Disarankan untuk memantau suhu tubuh secara berkala.",
+    "generatedAnswer": "📋 HASIL DIAGNOSA & REKOMENDASI  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🔍 DIAGNOSA (dari ICD-10):\nA01.0 - Demam tifoid - MODERATE\n\n👤 DATA PASIEN (dari database):\n- Usia: \n- BB: \n- Alergi: \n- Riwayat: \n\n💊 REKOMENDASI:\n[1] Triage: MODERATE\n[2] Tindakan: Pemeriksaan darah dan urin untuk memastikan tidak adanya penyakit menular yang dapat menyebabkan demam dan sakit kepala.\n[3] Periksa: Tendangan, kulit, organ internal.\n[4] Hindari: Makanan dan minuman yang dapat memperburuk kondisi penyakit, misalnya makanan pedas dan minuman yang mengandung caffeine.",
+    "toolsUsed": [
+      "searchDiagnosaWithTriage"
+    ],
+    "metrics": {
+      "f1Score": 0.34,
+      "accuracy": 0.43,
+      "perplexity": 32.58
+    }
+  },
+  {
+    "id": 2,
+    "question": "Ada pasien rujukan muntah dan diare tanpa henti, tidak ada riwayat alergi.",
+    "expectedAnswer": "Diagnosa untuk gejala muntah dan diare parah adalah Kolera (A00.9). Level triase URGENT karena risiko dehidrasi berat. Segera berikan cairan oralit atau infus rehidrasi.",
+    "generatedAnswer": "📋 HASIL DIAGNOSA & REKOMENDASI  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🔍 DIAGNOSIS (dari ICD-10):\nA09 - Diare dan gastroenteritis oleh penyebab penyakit menular\n\n👤 DATA PASIEN (dari database):\n- Usia: (tidak ada data)\n- BB: (tidak ada data)\n- Alergi: (tidak ada data)\n- Riwayat: (tidak ada data)\n\n💊 REKOMENDASI:\n[1] Triage: MODERATE\n[2] Tindakan: Periksa gejala pasien secara lanjutan dan pertimbangkan untuk penggunaan antibiotik jika gejala tidak membaik.\n[3] Periksa: Gejala pasien seperti muntah dan diare tanpa henti.\n[4] Hindari: (tidak ada kontraindikasi yang signifikan)",
+    "toolsUsed": [
+      "searchDiagnosaWithTriage"
+    ],
+    "metrics": {
+      "f1Score": 0.23,
+      "accuracy": 0.25,
+      "perplexity": 34.66
+    }
+  },
+  {
+    "id": 3,
+    "question": "Pasien memiliki berat badan 80kg dan riwayat asma, sekarang batuk parah. Mohon rekomendasinya.",
+    "expectedAnswer": "Pasien asma mengeluh batuk parah. Saran diagnosa ISPA atau Bronkitis. Level triase HIGH. Hindari alergen pemicu asma dan pantau saturasi oksigen pada pasien.",
+    "generatedAnswer": "Kombinasi hasil:\n\n {\"name\": \"searchDiagnosaWithTriage\", \"parameters\": {\"symptoms\":\"batuk parah\"}} \n {\"name\": \"getPatientHealthSummary\", \"parameters\": {\"patientId\": \"3a7dcb22-5549-45af-9a73-9a7f6c4c6573\"}} \n\n HASIL DIAGNOSA & REKOMENDASI  \n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n 🔍 DIAGNOSA (dari ICD-10):\n [A37.0 - Rejan batuk karena Bordetella pertussis - MODERATE]\n [A37.1 - Rejan batuk karena Bordetella parapertussis - MODERATE]\n [A37.8 - Batuk rejan karena spesies Bordetella lainnya - MODERATE]\n [A37.9 - Batuk rejan , tidak spesifik - MODERATE]\n\n 👤 DATA PASIEN (dari database):\n - Usia: 35\n - BB: 80kg\n - Alergi: Asma\n - Riwayat: Asma\n\n 💊 REKOMENDASI:\n [1] Triage: MODERATE\n [2] Tindakan: Pemberian obat antijepat dan penggunaan masker untuk mencegah penyebaran penyakit\n [3] Periksa: Suhu tubuh, tekanan darah, dan fungsi paru-paru\n [4] Hindari: Menghindari kontak dengan orang lain yang sakit dan menjaga jarak yang aman",
+    "toolsUsed": [
+      "searchDiagnosaWithTriage"
+    ],
+    "metrics": {
+      "f1Score": 0.23,
+      "accuracy": 0.39,
+      "perplexity": 52.71
+    }
+  },
+  {
+    "id": 4,
+    "question": "Tolong cek data pasien ID RM-2026, dia memanggil-manggil karena nyeri dada mendadak.",
+    "expectedAnswer": "Gejala nyeri dada mendadak mengarah ke Angina atau Myocarditis. Level triase URGENT. Lakukan EKG segera, periksa tanda vital, dan persiapkan resusitasi medis.",
+    "generatedAnswer": "insert or update on table \"conversations\" violates foreign key constraint \"conversations_patient_id_fkey\"",
+    "toolsUsed": [],
+    "metrics": {
+      "f1Score": 0,
+      "accuracy": 0,
+      "perplexity": 17.65
+    }
+  },
+  {
+    "id": 5,
+    "question": "Pasien datang dengan luka lecet di lutut akibat jatuh dari sepeda, tidak ada pendarahan banyak.",
+    "expectedAnswer": "Untuk pasien luka lecet ringan tanpa perdarahan berlebih, diagnosa Trauma Permukaan. Level triase LOW. Tindakan pembersihan luka memakai antiseptik lalu dibalut perban.",
+    "generatedAnswer": "Maaf, ada kesalahan saat memanggil tool. Silakan coba lagi dengan memasukkan ID pasien secara langsung tanpa pengejaan. Contohnya:\n\n{\"name\": \"getPatientHealthSummary\", \"parameters\": {\"query\": \"X12345\"}}",
+    "toolsUsed": [
+      "searchDiagnosaWithTriage"
+    ],
+    "metrics": {
+      "f1Score": 0.09,
+      "accuracy": 0.09,
+      "perplexity": 15.98
+    }
+  }
+]

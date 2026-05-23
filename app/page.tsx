@@ -15,7 +15,7 @@ export default async function DashboardPage() {
         
         {/* Greeting */}
         <div>
-          <h2 className="text-3xl font-extrabold text-[#064E3B] mb-2 tracking-tight">Selamat datang, Dr Joko Mulyo!</h2>
+          <h2 className="text-3xl font-extrabold text-[#064E3B] mb-2 tracking-tight">Selamat datang, Perawat!</h2>
           <p className="text-slate-500 text-sm font-medium">Berikut adalah ringkasan aktivitas klinik Anda hari ini.</p>
         </div>
 

@@ -8,7 +8,7 @@ import { updatePatientMedis } from '../../src/lib/update-patient';
 export async function GET() {
   try {
     const data = await getAllPatients();
-    return NextResponse.json(data);
+    return NextResponse.json({ patients: data });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

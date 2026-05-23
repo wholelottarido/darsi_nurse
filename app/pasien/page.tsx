@@ -43,7 +43,8 @@ export default function PasienPage() {
     try {
       const res = await fetch("/api");
       const data = await res.json();
-      setPatients(Array.isArray(data) ? data : []);
+      // API returns { patients: [...] }, so extract the array
+      setPatients(data.patients && Array.isArray(data.patients) ? data.patients : []);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching patients:", error);

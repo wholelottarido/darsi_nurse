@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "question": "Pasien mengeluh demam dan sakit kepala selama 3 hari. Apa diagnosa ICD dan triasenya?",
+    "expectedAnswer": "Berdasarkan gejala demam dan sakit kepala, diagnosa mengarah ke Demam Tifoid (A01.0). Level triase adalah MODERATE. Disarankan untuk memantau suhu tubuh secara berkala.",
+    "generatedAnswer": "Diagnosa untuk pasien dengan demam dan sakit kepala adalah Demam Tifoid dengan kode A01.0. Triage level MODERATE. Pasien perlu dipantau suhunya dan diberi obat pereda nyeri.",
+    "accuracy": 0.52
+  },
+  {
+    "id": 2,
+    "question": "Ada pasien rujukan muntah dan diare tanpa henti, tidak ada riwayat alergi.",
+    "expectedAnswer": "Diagnosa untuk gejala muntah dan diare parah adalah Kolera (A00.9). Level triase URGENT karena risiko dehidrasi berat. Segera berikan cairan oralit atau infus rehidrasi.",
+    "generatedAnswer": "Gejala muntah dan diare menunjukkan pasien mengalami Kolera (A00.9). Pasien berada di level triase URGENT. Tindakan segera yang diperlukan adalah rehidrasi melalui infus atau oralit.",
+    "accuracy": 0.63
+  },
+  {
+    "id": 3,
+    "question": "Pasien memiliki berat badan 80kg dan riwayat asma, sekarang batuk parah. Mohon rekomendasinya.",
+    "expectedAnswer": "Pasien asma mengeluh batuk parah. Saran diagnosa ISPA atau Bronkitis. Level triase HIGH. Hindari alergen pemicu asma dan pantau saturasi oksigen pada pasien.",
+    "generatedAnswer": "Pasien batuk parah dengan riwayat asma memiliki triase HIGH. Kemungkinan diagnosa ISPA. Pantau saturasi oksigen dan hindari alergen pemicu. Karena berat badan 80kg perhatikan dosis.",
+    "accuracy": 0.74
+  },
+  {
+    "id": 4,
+    "question": "Tolong cek data pasien ID RM-2026, dia memanggil-manggil karena nyeri dada mendadak.",
+    "expectedAnswer": "Gejala nyeri dada mendadak mengarah ke Angina atau Myocarditis. Level triase URGENT. Lakukan EKG segera, periksa tanda vital, dan persiapkan resusitasi medis.",
+    "generatedAnswer": "Pasien mengeluh nyeri dada mendadak. Kondisi URGENT yang bisa berarti Myocarditis atau masalah jantung. Siapkan EKG segera dan periksa tanda vital pasien dengan saksama.",
+    "accuracy": 0.55
+  },
+  {
+    "id": 5,
+    "question": "Pasien datang dengan luka lecet di lutut akibat jatuh dari sepeda, tidak ada pendarahan banyak.",
+    "expectedAnswer": "Untuk pasien luka lecet ringan tanpa perdarahan berlebih, diagnosa Trauma Permukaan. Level triase LOW. Tindakan pembersihan luka memakai antiseptik lalu dibalut perban.",
+    "generatedAnswer": "Pasien jatuh dari sepeda dengan luka lecet. Triase level LOW karena pendarahan sedikit. Tindakan direkomendasikan adalah pembersihan luka memakai antiseptik kemudian dibalut saja.",
+    "accuracy": 0.55
+  }
+]

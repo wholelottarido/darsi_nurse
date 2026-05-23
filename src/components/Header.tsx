@@ -8,8 +8,8 @@ export default function Header() {
 
       <div className="flex items-center gap-4">
         <div className="text-right">
-          <p className="text-sm font-bold text-slate-800 tracking-tight">DR JOKO MULYO</p>
-          <p className="text-[0.65rem] font-bold text-slate-400 tracking-widest">DOKTER DPJP</p>
+          <p className="text-sm font-bold text-slate-800 tracking-tight">Perawat</p>
+          <p className="text-[0.65rem] font-bold text-slate-400 tracking-widest">Perawat RSI</p>
         </div>
         <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border border-slate-300">
           {/* Avatar Placeholder */}

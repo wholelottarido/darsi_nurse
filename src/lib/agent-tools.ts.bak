@@ -1,0 +1,419 @@
+import { z } from 'zod';
+import { createTool } from '@voltagent/core';
+import { Client } from 'pg';
+
+// ============ TYPE DEFINITIONS ============
+
+interface Patient {
+  id: string;
+  nama: string;
+  usia: number;
+  tanggal_lahir: string;
+  jenis_kelamin: string;
+  created_at: string;
+}
+
+interface PatientMedis {
+  id_pasien: string;
+  nomor_rekam_medis: string;
+  berat_badan: number;
+  tinggi_badan: number;
+  gol_darah: string;
+  alergi: string;
+  riwayat_penyakit: string;
+  diperbarui_pada: string;
+}
+
+// ============ DATABASE CONNECTION ============
+
+function getDbClient() {
+  return new Client({
+    connectionString: process.env.DATABASE_URL,
+  });
+}
+
+// ============ TOOL DEFINITIONS WITH createTool() ============
+
+const searchPatientTool = createTool({
+  name: 'searchPatient',
+  description: 'Search for a patient by name or medical record number',
+  parameters: z.object({
+    query: z.string().describe('Patient name or NRM (nomor rekam medis) to search for'),
+  }),
+  execute: async (input: { query: string }) => {
+    const client = getDbClient();
+    try {
+      await client.connect();
+      const result = await client.query(
+        `SELECT p.id, p.nama, p.usia, p.tanggal_lahir, p.jenis_kelamin, m.nomor_rekam_medis
+         FROM pasien p
+         LEFT JOIN medis_pasien m ON p.id = m.id_pasien
+         WHERE p.nama ILIKE $1 OR m.nomor_rekam_medis ILIKE $1
+         LIMIT 10`,
+        [`%${input.query}%`]
+      );
+      return {
+        success: true,
+        patients: result.rows,
+        count: result.rows.length,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to search patients',
+      };
+    } finally {
+      await client.end();
+    }
+  },
+});
+
+const getPatientHealthSummaryTool = createTool({
+  name: 'getPatientHealthSummary',
+  description: 'Get complete health profile and medical data for a specific patient',
+  parameters: z.object({
+    patientId: z.string().uuid().describe('Patient ID (UUID)'),
+  }),
+  execute: async (input: { patientId: string }) => {
+    const client = getDbClient();
+    try {
+      await client.connect();
+
+      // Get patient basic info
+      const patientResult = await client.query(
+        `SELECT id, nama, usia, tanggal_lahir, jenis_kelamin, created_at FROM pasien WHERE id = $1`,
+        [input.patientId]
+      );
+
+      if (patientResult.rows.length === 0) {
+        return { success: false, error: 'Patient not found' };
+      }
+
+      const patient = patientResult.rows[0];
+
+      // Get medical data
+      const medisResult = await client.query(
+        `SELECT id_pasien, nomor_rekam_medis, berat_badan, tinggi_badan, 
+                gol_darah, alergi, riwayat_penyakit, diperbarui_pada 
+         FROM medis_pasien WHERE id_pasien = $1`,
+        [input.patientId]
+      );
+
+      const medis = medisResult.rows[0] || {};
+
+      // Calculate BMI
+      let bmi = null;
+      if (medis.berat_badan && medis.tinggi_badan) {
+        const heightM = medis.tinggi_badan / 100;
+        bmi = (medis.berat_badan / (heightM * heightM)).toFixed(1);
+      }
+
+      const response = {
+        success: true,
+        patient: {
+          ...patient,
+          ...medis,
+          bmi,
+        },
+      };
+
+      console.log('🔧 getPatientHealthSummary tool result:', {
+        patientId: input.patientId,
+        patientName: patient.nama,
+        medicalData: {
+          berat_badan: medis.berat_badan,
+          tinggi_badan: medis.tinggi_badan,
+          bmi,
+          gol_darah: medis.gol_darah,
+          alergi: medis.alergi,
+          riwayat_penyakit: medis.riwayat_penyakit,
+        },
+      });
+
+      return response;
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to get patient health summary',
+        };
+      } finally {
+        await client.end();
+      }
+    },
+  },
+
+  {
+    name: 'monitorPatientStatus',
+    description: 'Get real-time patient status including vital signs and conditions',
+    inputSchema: z.object({
+      patientId: z.string().uuid().describe('Patient ID'),
+    }),
+    execute: async (input: { patientId: string }) => {
+      const client = getDbClient();
+      try {
+        await client.connect();
+
+        const result = await client.query(
+          `SELECT p.nama, p.usia, m.berat_badan, m.tinggi_badan, 
+                  m.gol_darah, m.alergi, m.riwayat_penyakit,
+                  EXTRACT(YEAR FROM AGE(p.tanggal_lahir)) as age,
+                  m.diperbarui_pada
+           FROM pasien p
+           LEFT JOIN medis_pasien m ON p.id = m.id_pasien
+           WHERE p.id = $1`,
+          [input.patientId]
+        );
+
+        if (result.rows.length === 0) {
+          return { success: false, error: 'Patient not found' };
+        }
+
+        return {
+          success: true,
+          status: result.rows[0],
+          lastUpdated: result.rows[0].diperbarui_pada,
+        };
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to monitor patient status',
+        };
+      } finally {
+        await client.end();
+      }
+    },
+  },
+
+  {
+    name: 'updatePatientCondition',
+    description: 'Update patient medical conditions (weight, height, blood type, allergies, history)',
+    inputSchema: z.object({
+      patientId: z.string().uuid().describe('Patient ID'),
+      field: z.enum(['berat_badan', 'tinggi_badan', 'gol_darah', 'alergi', 'riwayat_penyakit'])
+        .describe('Field to update'),
+      value: z.string().or(z.number()).describe('New value for the field'),
+    }),
+    execute: async (input: { patientId: string; field: string; value: any }) => {
+      const client = getDbClient();
+      try {
+        await client.connect();
+
+        // Verify patient exists
+        const checkResult = await client.query(
+          'SELECT id FROM medis_pasien WHERE id_pasien = $1',
+          [input.patientId]
+        );
+
+        if (checkResult.rows.length === 0) {
+          return { success: false, error: 'Patient medical record not found' };
+        }
+
+        // Update the field
+        const query = `UPDATE medis_pasien 
+                       SET ${input.field} = $1, diperbarui_pada = NOW()
+                       WHERE id_pasien = $2
+                       RETURNING *`;
+
+        const result = await client.query(query, [input.value, input.patientId]);
+
+        return {
+          success: true,
+          message: `${input.field} updated successfully`,
+          updated: result.rows[0],
+        };
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to update patient condition',
+        };
+      } finally {
+        await client.end();
+      }
+    },
+  },
+
+  {
+    name: 'getPatientAlergies',
+    description: 'Get detailed allergy information for a patient',
+    inputSchema: z.object({
+      patientId: z.string().uuid().describe('Patient ID'),
+    }),
+    execute: async (input: { patientId: string }) => {
+      const client = getDbClient();
+      try {
+        await client.connect();
+
+        const result = await client.query(
+          `SELECT p.nama, m.alergi FROM pasien p
+           LEFT JOIN medis_pasien m ON p.id = m.id_pasien
+           WHERE p.id = $1`,
+          [input.patientId]
+        );
+
+        if (result.rows.length === 0) {
+          return { success: false, error: 'Patient not found' };
+        }
+
+        return {
+          success: true,
+          allergies: result.rows[0].alergi || 'No allergies recorded',
+          patientName: result.rows[0].nama,
+        };
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to get allergies',
+        };
+      } finally {
+        await client.end();
+      }
+    },
+  },
+
+  {
+    name: 'getPatientMedicalHistory',
+    description: 'Get patient medical history and previous conditions',
+    inputSchema: z.object({
+      patientId: z.string().uuid().describe('Patient ID'),
+    }),
+    execute: async (input: { patientId: string }) => {
+      const client = getDbClient();
+      try {
+        await client.connect();
+
+        const result = await client.query(
+          `SELECT p.nama, p.tanggal_lahir, m.riwayat_penyakit, m.gol_darah
+           FROM pasien p
+           LEFT JOIN medis_pasien m ON p.id = m.id_pasien
+           WHERE p.id = $1`,
+          [input.patientId]
+        );
+
+        if (result.rows.length === 0) {
+          return { success: false, error: 'Patient not found' };
+        }
+
+        return {
+          success: true,
+          history: result.rows[0].riwayat_penyakit || 'No medical history recorded',
+          bloodType: result.rows[0].gol_darah,
+          patientName: result.rows[0].nama,
+        };
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to get medical history',
+        };
+      } finally {
+        await client.end();
+      }
+    },
+  },
+
+  {
+    name: 'getAllPatients',
+    description: 'Get list of all patients (for monitoring dashboard)',
+    inputSchema: z.object({
+      limit: z.number().default(20).describe('Maximum number of patients to return'),
+      offset: z.number().default(0).describe('Offset for pagination'),
+    }),
+    execute: async (input: { limit: number; offset: number }) => {
+      const client = getDbClient();
+      try {
+        await client.connect();
+
+        const result = await client.query(
+          `SELECT p.id, p.nama, p.usia, p.jenis_kelamin, 
+                  m.nomor_rekam_medis, m.berat_badan, m.tinggi_badan, m.gol_darah
+           FROM pasien p
+           LEFT JOIN medis_pasien m ON p.id = m.id_pasien
+           ORDER BY p.created_at DESC
+           LIMIT $1 OFFSET $2`,
+          [input.limit, input.offset]
+        );
+
+        const countResult = await client.query('SELECT COUNT(*) FROM pasien');
+        const totalCount = parseInt(countResult.rows[0].count, 10);
+
+        return {
+          success: true,
+          patients: result.rows,
+          total: totalCount,
+          limit: input.limit,
+          offset: input.offset,
+        };
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to get patients',
+        };
+      } finally {
+        await client.end();
+      }
+    },
+  },
+
+  {
+    name: 'generateClinicalRecommendation',
+    description: 'Generate clinical recommendations based on patient data (diagnostic advisory)',
+    inputSchema: z.object({
+      patientId: z.string().uuid().describe('Patient ID'),
+      concern: z.string().describe('Clinical concern or symptom to address'),
+    }),
+    execute: async (input: { patientId: string; concern: string }) => {
+      const client = getDbClient();
+      try {
+        await client.connect();
+
+        // Get patient data for context
+        const result = await client.query(
+          `SELECT p.nama, p.usia, m.berat_badan, m.tinggi_badan, 
+                  m.gol_darah, m.alergi, m.riwayat_penyakit
+           FROM pasien p
+           LEFT JOIN medis_pasien m ON p.id = m.id_pasien
+           WHERE p.id = $1`,
+          [input.patientId]
+        );
+
+        if (result.rows.length === 0) {
+          return { success: false, error: 'Patient not found' };
+        }
+
+        const patient = result.rows[0];
+
+        // Build clinical context (this is just a template - actual recommendations come from LLM)
+        return {
+          success: true,
+          recommendation: {
+            patientName: patient.nama,
+            concern: input.concern,
+            patientData: {
+              age: patient.usia,
+              weight: patient.berat_badan,
+              height: patient.tinggi_badan,
+              bloodType: patient.gol_darah,
+              allergies: patient.alergi,
+              medicalHistory: patient.riwayat_penyakit,
+            },
+            note: 'Full clinical recommendations will be generated by the LLM based on patient data and clinical guidelines',
+          },
+        };
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to generate recommendation',
+        };
+      } finally {
+        await client.end();
+      }
+    },
+  },
+];
+
+export async function executeAgentTool(toolName: string, input: any) {
+  const tool = agentTools.find((t) => t.name === toolName);
+  if (!tool) {
+    throw new Error(`Tool not found: ${toolName}`);
+  }
+  return tool.execute(input);
+}
