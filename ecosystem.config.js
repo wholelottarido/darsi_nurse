@@ -2,14 +2,14 @@ module.exports = {
   apps: [
     {
       name: 'darsi-nurse',
-      script: './node_modules/.bin/next',
-      args: 'start -p 3019',
+      script: 'npm',
+      args: 'run dev -- -p 6767 -H 0.0.0.0',
       cwd: '/home/ridho/volt/darsi-nurse',
       instances: 1,
       exec_mode: 'fork',
       watch: false,
       env: {
-        NODE_ENV: 'production'
+        NODE_ENV: 'development'
       },
       error_file: './logs/err.log',
       out_file: './logs/out.log',

@@ -207,6 +207,45 @@ export async function chat(
   }
 }
 
+export async function generateClinicalNotesFromSoap(prompt: string) {
+  try {
+    const agent = await initializeAgent();
+
+    const messages: Array<{ role: 'user' | 'assistant' | 'system'; content: string }> = [
+      {
+        role: 'user',
+        content: prompt,
+      },
+    ];
+
+    const result = await agent.generateText(messages, {
+      maxOutputTokens: 1200,
+      maxSteps: 8,
+      temperature: 0.2,
+    });
+
+    const responseText = await result.text;
+
+    const toolsUsed = Array.isArray(result?.toolResults)
+      ? result.toolResults.map((t: any) => t.toolName)
+      : [];
+
+    return {
+      success: true,
+      text: responseText,
+      toolsUsed,
+    };
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('❌ Clinical notes generation error:', errorMessage);
+
+    return {
+      success: false,
+      error: errorMessage,
+    };
+  }
+}
+
 // ============ STATUS CHECK ============
 
 export async function checkStatus() {

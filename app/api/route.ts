@@ -1,13 +1,21 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { getAllPatients } from '../../src/lib/get-patient';
+import { getHospitalPatientsByPerawatUsername } from '../../src/lib/get-hospital-patients';
 import { createPatient } from '../../src/lib/post-patient';
 import { deletePatient } from '../../src/lib/delete-patient';
 import { updatePatientMedis } from '../../src/lib/update-patient';
+import { getCurrentPerawat } from '@/lib/nurse-auth';
 
 export async function GET() {
   try {
-    const data = await getAllPatients();
+    const perawat = await getCurrentPerawat();
+
+    if (!perawat) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Read-only: fetch only patients assigned to current logged-in nurse
+    const data = await getHospitalPatientsByPerawatUsername(perawat.username, 50);
     return NextResponse.json({ patients: data });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -28,7 +36,7 @@ export async function POST(request: Request) {
     const id = await createPatient(body);
     console.log('✅ Data berhasil disimpan dengan ID:', id);
     
-    revalidatePath('/');
+    revalidatePath('/dashboard');
     return NextResponse.json({ message: 'Data Pasien Berhasil Disimpan!', id }, { status: 201 });
   } catch (error: any) {
     console.error('❌ Error saat menyimpan data:', error.message);
@@ -49,7 +57,7 @@ export async function DELETE(request: Request) {
     console.log('🗑️ DELETE /api - Menghapus pasien:', patientId);
     await deletePatient(patientId);
     
-    revalidatePath('/');
+    revalidatePath('/dashboard');
     revalidatePath('/pasien');
     return NextResponse.json({ message: 'Pasien berhasil dihapus!' }, { status: 200 });
   } catch (error: any) {
@@ -71,7 +79,7 @@ export async function PUT(request: Request) {
     console.log('✏️ PUT /api - Update data medis pasien:', patientId);
     const result = await updatePatientMedis(patientId, body);
     
-    revalidatePath('/');
+    revalidatePath('/dashboard');
     revalidatePath('/pasien');
     return NextResponse.json({ message: 'Data medis pasien berhasil diperbarui!', data: result }, { status: 200 });
   } catch (error: any) {

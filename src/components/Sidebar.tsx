@@ -1,62 +1,195 @@
 "use client";
 
+import type { ComponentType } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  ChevronDown,
+  CircleCheck,
+  ClipboardList,
+  HeartPulse,
+  LayoutDashboard,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Users,
+  Zap,
+} from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
+
+type NavItem = {
+  href: string;
+  icon: ComponentType<{ className?: string }>;
+  label: string;
+  match?: string[];
+};
+
+type NavSection = {
+  label: string;
+  items: NavItem[];
+};
+
+const navSections: NavSection[] = [
+  {
+    label: "OPERASIONAL",
+    items: [
+      {
+        href: "/dashboard",
+        icon: LayoutDashboard,
+        label: "Overview",
+      },
+      {
+        href: "/pasien",
+        icon: Users,
+        label: "Manajemen Pasien",
+        match: ["/pasien", "/tambah-pasien"],
+      },
+    ],
+  },
+  {
+    label: "KLINIS",
+    items: [
+      {
+        href: "/triage-igd",
+        icon: Zap,
+        label: "Triage IGD",
+      },
+      {
+        href: "#",
+        icon: ClipboardList,
+        label: "Catatan Pasien",
+      },
+      {
+        href: "#",
+        icon: CircleCheck,
+        label: "Klaim & Resume",
+      },
+    ],
+  },
+];
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState(false);
 
-  const isActive = (path: string) => {
-    // Exact match or prefix match for dynamic routes
-    if (path === '/') {
-      return pathname === path;
-    }
-    return pathname === path || pathname.startsWith(path + '/');
+  const isActive = (item: NavItem) => {
+    const paths = item.match ?? [item.href];
+    return paths.some((path) => pathname === path || pathname.startsWith(path + "/"));
+  };
+
+  const renderNavItem = (item: NavItem) => {
+    const Icon = item.icon;
+    const active = isActive(item);
+
+    return (
+      <Link
+        key={item.label}
+        href={item.href}
+        title={collapsed ? item.label : undefined}
+        className={cn(
+          "flex min-h-11 items-center gap-3 rounded-2xl border text-sm font-bold transition-all",
+          collapsed ? "justify-center px-0" : "px-3",
+          active
+            ? "border-[#b7f7d4] bg-gradient-to-r from-[#047857] via-[#059669] to-[#10b981] text-white shadow-[0_12px_30px_-18px_rgba(16,185,129,0.55)]"
+            : "border-transparent text-slate-600 hover:border-slate-200 hover:bg-slate-50 hover:text-slate-900"
+        )}
+      >
+        <Icon className="size-5 shrink-0" />
+        {collapsed ? <span className="sr-only">{item.label}</span> : item.label}
+      </Link>
+    );
   };
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col flex-shrink-0">
-      <div className="h-20 flex items-center px-6 border-b border-slate-100">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#059669] flex items-center justify-center text-white">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+    <aside
+      className={cn(
+        "flex h-screen flex-shrink-0 bg-gradient-to-b from-slate-50 to-white p-4 transition-[width] duration-300",
+        collapsed ? "w-24" : "w-72"
+      )}
+    >
+      <div className="flex h-full w-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_16px_40px_-28px_rgba(15,23,42,0.45)]">
+        <div
+          className={cn(
+            "flex items-center border-b border-slate-100 bg-gradient-to-r from-[#f8fffb] to-white px-4",
+            collapsed ? "h-24 flex-col justify-center gap-2" : "h-20 justify-between gap-3"
+          )}
+        >
+          <div className={cn("flex items-center", collapsed ? "justify-center" : "gap-3")}>
+            <div className="flex size-10 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/80">
+              <Image
+                src="/logo.png"
+                alt="DARSI Nurse"
+                width={40}
+                height={40}
+                className="h-full w-full object-contain p-1"
+                priority
+              />
+            </div>
+            {!collapsed && (
+              <div>
+                <h1 className="font-extrabold leading-tight tracking-wider text-[#064E3B]">
+                  DARSI
+                </h1>
+                <p className="text-[0.6rem] font-medium uppercase tracking-widest text-slate-400">
+                  Digital Assistant for Nurse
+                </p>
+              </div>
+            )}
           </div>
-          <div>
-            <h1 className="font-bold text-[#059669] leading-tight tracking-wider">DARSI</h1>
-            <p className="text-[0.6rem] text-slate-400 font-medium tracking-widest uppercase">Digital Assistant for Nurse</p>
-          </div>
+
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon-sm"
+            aria-label={collapsed ? "Perluas sidebar" : "Ciutkan sidebar"}
+            title={collapsed ? "Perluas sidebar" : "Ciutkan sidebar"}
+            onClick={() => setCollapsed((value) => !value)}
+            className="rounded-2xl text-slate-500 transition hover:bg-slate-100 hover:text-slate-800"
+          >
+            {collapsed ? (
+              <PanelLeftOpen className="size-4" />
+            ) : (
+              <PanelLeftClose className="size-4" />
+            )}
+          </Button>
         </div>
-      </div>
 
-      <div className="flex-1 py-6 overflow-y-auto w-full">
-        <div className="px-6 mb-4">
-          <p className="text-xs font-bold text-slate-400 tracking-widest mb-4">MENU UTAMA</p>
-          <div className="space-y-1">
-            <p className="text-xs font-bold text-slate-400 tracking-widest mb-2 mt-6">OPERASIONAL</p>
-            <Link href="/" className={`flex items-center gap-3 px-4 py-2.5 rounded-r-full -ml-6 pl-10 mr-4 font-medium text-sm transition-colors ${isActive('/') ? 'bg-[#059669] text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-              Overview
-            </Link>
-            <Link href="/pasien" className={`flex items-center gap-3 px-4 py-2.5 rounded-r-full -ml-6 pl-10 mr-4 font-medium text-sm transition-colors ${isActive('/pasien') ? 'bg-[#059669] text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-              Manajemen Pasien
-            </Link>
-          </div>
+        <div className="flex-1 overflow-y-auto px-4 py-6">
+          {!collapsed && (
+            <p className="mb-4 text-xs font-bold tracking-[0.24em] text-slate-400">
+              MENU UTAMA
+            </p>
+          )}
 
-          <div className="space-y-1 mt-8">
-            <p className="text-xs font-bold text-slate-400 tracking-widest mb-2">KLINIS</p>
-            <Link href="/triage-igd" className={`flex items-center gap-3 px-4 py-2.5 rounded-r-full -ml-6 pl-10 mr-4 font-medium text-sm transition-colors ${isActive('/triage-igd') ? 'bg-[#059669] text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`}>
-              <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-              Triage IGD
-            </Link>
-            <Link href="#" className="flex items-center gap-3 text-slate-600 hover:bg-slate-50 px-4 py-2.5 rounded-r-full -ml-6 pl-10 mr-4 font-medium text-sm transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-              Catatan Pasien
-            </Link>
-            <Link href="#" className="flex items-center gap-3 text-slate-600 hover:bg-slate-50 px-4 py-2.5 rounded-r-full -ml-6 pl-10 mr-4 font-medium text-sm transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              Klaim & Resume
-            </Link>
+          <div className="space-y-7">
+            {navSections.map((section, index) =>
+              collapsed ? (
+                <div
+                  key={section.label}
+                  className={cn("space-y-2", index > 0 && "border-t border-slate-100 pt-5")}
+                >
+                  {section.items.map(renderNavItem)}
+                </div>
+              ) : (
+                <Collapsible key={section.label} defaultOpen className="space-y-2 rounded-2xl bg-slate-50/40 p-3">
+                  <CollapsibleTrigger className="group flex w-full items-center justify-between rounded-xl px-1 text-xs font-bold tracking-[0.24em] text-slate-400 transition-colors hover:text-[#059669]">
+                    <span>{section.label}</span>
+                    <ChevronDown className="size-3.5 transition-transform group-data-[state=open]:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="space-y-2">
+                    {section.items.map(renderNavItem)}
+                  </CollapsibleContent>
+                </Collapsible>
+              )
+            )}
           </div>
         </div>
       </div>

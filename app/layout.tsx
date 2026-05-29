@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,9 +18,6 @@ export const metadata: Metadata = {
   description: "Digital Assistant for RSI",
 };
 
-import Sidebar from "../src/components/Sidebar";
-import Header from "../src/components/Header";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,17 +27,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#F8FAFC]">
-        <div className="flex h-screen overflow-hidden">
-          <Sidebar />
-          <div className="flex-1 flex flex-col h-screen overflow-hidden">
-            <Header />
-            <main className="flex-1 overflow-auto">
-              {children}
-            </main>
-          </div>
-        </div>
+      <body className="min-h-full bg-background text-foreground" suppressHydrationWarning>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

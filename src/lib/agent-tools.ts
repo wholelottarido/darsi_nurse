@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { createTool } from '@voltagent/core';
 import { Client } from 'pg';
+import { hospitalQuery } from '@/lib/hospital-db';
 
 // ============ DATABASE CONNECTION ============
 
@@ -50,23 +51,18 @@ export async function searchIcdDiagnosa(symptoms: string, limit: number = 5) {
   
   console.log(`✨ Extracted symptoms: [${extractedSymptoms.join(', ')}], searching with: "${searchSymptom}"`);
   
-  const client = getDbClient();
-  
   try {
-    await client.connect();
-    console.log('✅ Database connected for ICD search');
-
     // Search ICD codes matching symptoms
     const searchQuery = `%${searchSymptom}%`;
     console.log('🔍 Searching ICD with pattern:', searchQuery);
     
-    const result = await client.query(
-      `SELECT code, name_en, name_id FROM icds 
-       WHERE name_id ILIKE $1 OR name_en ILIKE $1 OR code ILIKE $1
-       ORDER BY 
-         CASE 
-           WHEN name_id ILIKE $1 THEN 1
-           WHEN name_en ILIKE $1 THEN 2
+    const result = await hospitalQuery(
+      `SELECT kode, nama FROM darsi_icd
+       WHERE nama ILIKE $1 OR kode ILIKE $1
+       ORDER BY
+         CASE
+           WHEN nama ILIKE $1 THEN 1
+           WHEN kode ILIKE $1 THEN 2
            ELSE 3
          END
        LIMIT $2`,
@@ -106,10 +102,10 @@ export async function searchIcdDiagnosa(symptoms: string, limit: number = 5) {
 
     // Format results with triage level
     const recommendations = result.rows.map((row) => ({
-      code: row.code,
-      nameId: row.name_id,
-      nameEn: row.name_en,
-      triageLevel: assignTriageLevel(row.name_id, row.name_en, row.code),
+      code: row.kode,
+      nameId: row.nama,
+      nameEn: '-',
+      triageLevel: assignTriageLevel(row.nama, '-', row.kode),
     }));
 
     // Sort by triage level
@@ -139,8 +135,6 @@ export async function searchIcdDiagnosa(symptoms: string, limit: number = 5) {
       success: false,
       error: error instanceof Error ? error.message : 'Failed to search diagnosa',
     };
-  } finally {
-    await client.end();
   }
 }
 

@@ -2,6 +2,9 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 export default function TambahPasien() {
   const router = useRouter();
@@ -57,7 +60,7 @@ export default function TambahPasien() {
         setMessage("✅ Data pasien berhasil disimpan!");
         setTimeout(() => {
           router.refresh();
-          router.push("/");
+          router.push("/dashboard");
         }, 1500);
       } else {
         const errorData = await res.json().catch(() => ({ error: "Gagal menyimpan data" }));
@@ -84,9 +87,9 @@ export default function TambahPasien() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
         {/* DATA PRIBADI */}
         <div className="col-span-2 text-sm font-semibold text-[#059669] mt-2">Data Pribadi</div>
-        <input ref={namaRef} placeholder="Nama Lengkap" className="p-3 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" required />
-        <input ref={usiaRef} type="number" placeholder="Usia" className="p-3 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" required />
-        <input ref={tanggalLahirRef} type="date" className="p-3 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" required />
+        <Input ref={namaRef} placeholder="Nama Lengkap" required />
+        <Input ref={usiaRef} type="number" placeholder="Usia" required />
+        <Input ref={tanggalLahirRef} type="date" required />
         <select ref={jenisKelaminRef} className="p-3 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669] bg-white" required>
           <option value="">Pilih Jenis Kelamin</option>
           <option value="Laki-laki">Laki-laki</option>
@@ -94,11 +97,12 @@ export default function TambahPasien() {
         </select>
 
         {/* DATA MEDIS */}
-        <div className="col-span-2 text-sm font-semibold text-[#059669] mt-4 border-t pt-4">Data Rekam Medis</div>
-        <input ref={nrmRef} placeholder="No. Rekam Medis (Contoh: RM-001)" className="p-3 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" required />
+        <Separator className="col-span-2 my-2" />
+        <div className="col-span-2 text-sm font-semibold text-[#059669] mt-2">Data Rekam Medis</div>
+        <Input ref={nrmRef} placeholder="No. Rekam Medis (Contoh: RM-001)" required />
         <div className="flex gap-2">
-          <input ref={beratBadanRef} type="number" step="0.1" placeholder="BB (kg)" className="p-3 border rounded-xl w-full focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" />
-          <input ref={tinggiBadanRef} type="number" step="0.1" placeholder="TB (cm)" className="p-3 border rounded-xl w-full focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" />
+          <Input ref={beratBadanRef} type="number" step="0.1" placeholder="BB (kg)" />
+          <Input ref={tinggiBadanRef} type="number" step="0.1" placeholder="TB (cm)" />
         </div>
         <select ref={golDarahRef} className="p-3 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669] bg-white">
           <option value="">Gol. Darah</option>
@@ -107,23 +111,24 @@ export default function TambahPasien() {
           <option value="AB">AB</option>
           <option value="O">O</option>
         </select>
-        <input ref={alergiRef} placeholder="Alergi (jika ada)" className="p-3 border rounded-xl focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" />
+        <Input ref={alergiRef} placeholder="Alergi (jika ada)" />
         <textarea ref={riwayatPenyakitRef} placeholder="Riwayat Penyakit" className="p-3 border rounded-xl col-span-2 focus:outline-none focus:ring-1 focus:ring-[#059669] focus:border-[#059669]" rows={3}></textarea>
 
-        <button 
+        <Button
           onClick={handleSubmitClick}
           disabled={loading}
-          className="col-span-2 bg-[#059669] hover:bg-[#047857] text-white font-bold py-3 rounded-xl mt-4 transition disabled:opacity-50 shadow-lg shadow-[#059669]/20"
+          className="col-span-2 mt-4 shadow-lg shadow-[#059669]/20"
         >
           {loading ? "Menyimpan..." : "Simpan Data Pasien"}
-        </button>
-        <button 
+        </Button>
+        <Button
           type="button" 
-          onClick={() => router.push('/')}
-          className="col-span-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-3 rounded-xl transition"
+          onClick={() => router.push('/dashboard')}
+          variant="secondary"
+          className="col-span-2"
         >
           Batal Formulir
-        </button>
+        </Button>
       </div>
     </div>
   );
