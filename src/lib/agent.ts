@@ -297,7 +297,8 @@ Language: Indonesian`,
 
 export async function chat(
   userMessage: string,
-  patientId?: string
+  patientId?: string,
+  preferredTriageVisitId?: number | null
 ) {
   try {
     const normalizedPatientId = patientId ? Number(patientId) : undefined;
@@ -316,7 +317,7 @@ export async function chat(
     });
 
     const visitContext = normalizedPatientId
-      ? await resolveVisitContext(normalizedPatientId)
+      ? await resolveVisitContext(normalizedPatientId, preferredTriageVisitId ?? null)
       : null;
 
     if (normalizedPatientId && (isObjectiveUpdateRequest(userMessage) || isSubjectiveUpdateRequest(userMessage))) {
@@ -326,6 +327,7 @@ export async function chat(
         : extractSubjectiveText(userMessage);
       const updated = await createClinicalNoteFromChatUpdate({
         patientId: normalizedPatientId,
+        triageVisitId: visitContext?.triageVisitId ?? null,
         updateKind,
         updateText,
       });

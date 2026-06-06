@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 import { generateClinicalNotesFromSoap } from "@/lib/agent";
 import { createClinicalNote, getLatestClinicalNote } from "@/lib/clinical-notes";
 import { hospitalQuery } from "@/lib/hospital-db";
+import { buildMedicationRecommendation } from "@/lib/medication-recommendations";
 import { getCurrentPerawat } from "@/lib/nurse-auth";
 import { regenerateSoapAssessmentPlan } from "@/lib/soap-followup";
+import { resolveVisitContext } from "@/lib/visit-context";
 
 type ExternalDiagnosis = {
   icd_code?: string | null;
@@ -37,6 +39,18 @@ type ExamSnapshot = {
   diagnoses?: Array<{ icd_code?: string; icd_name?: string }>;
 };
 
+type ChatNoteContext = {
+  id: number;
+  patient_condition?: string | null;
+  summary?: string | null;
+  assessment?: string | null;
+  plan?: string | null;
+  medication_recommendation?: string | null;
+  triage_level?: string | null;
+  evidence_refs?: Record<string, unknown> | null;
+  created_at?: string | null;
+};
+
 type PatientRow = {
   id: number;
   no_rm?: string | null;
@@ -55,7 +69,7 @@ function formatValue(value?: string | number | null) {
   return String(value);
 }
 
-function buildPrompt(patient: PatientRow, exam: ExternalExamination) {
+function buildPrompt(patient: PatientRow, exam: ExternalExamination, latestChatNote: ChatNoteContext | null) {
   const patientName = patient.full_name || "Pasien";
   const patientMrn = patient.no_rm || "-";
   const subjective = exam.soap_subjective || "-";
@@ -69,8 +83,13 @@ function buildPrompt(patient: PatientRow, exam: ExternalExamination) {
     : "-";
   const primaryComplaint = inferPrimaryComplaint(subjective, objective, diagnosesText);
   const complaintAnchors = buildComplaintAnchors(primaryComplaint);
+  const latestPatientCondition = latestChatNote?.patient_condition || "-";
+  const latestChatSummary = latestChatNote?.summary || "-";
+  const latestChatAssessment = latestChatNote?.assessment || "-";
+  const latestChatPlan = latestChatNote?.plan || "-";
+  const latestChatTriage = latestChatNote?.triage_level || "-";
 
-  return `Anda adalah perawat triase. Buat clinical summary yang merangkum kondisi pasien berdasarkan data SOAP dari tabel external_examinations.\n\n` +
+  return `Anda adalah perawat triase. Buat clinical summary yang merangkum kondisi pasien berdasarkan data SOAP dari tabel external_examinations dan update triage chat terbaru pada kunjungan aktif.\n\n` +
     `DATA PASIEN:\n` +
     `Nama: ${patientName}\n` +
     `NRM: ${patientMrn}\n` +
@@ -85,7 +104,14 @@ function buildPrompt(patient: PatientRow, exam: ExternalExamination) {
     `SOAP PLAN:\n${plan}\n\n` +
     `EXAMINATION NOTES:\n${examinationNotes}\n\n` +
     `DIAGNOSA ICD:\n${diagnosesText}\n\n` +
+    `UPDATE TRIASE CHAT TERBARU (kunjungan aktif):\n` +
+    `KONDISI PASIEN TERBARU:\n${latestPatientCondition}\n\n` +
+    `RINGKASAN TERBARU:\n${latestChatSummary}\n\n` +
+    `ASSESSMENT TERBARU:\n${latestChatAssessment}\n\n` +
+    `PLAN TERBARU:\n${latestChatPlan}\n\n` +
+    `TRIAGE TERBARU:\n${latestChatTriage}\n\n` +
     `Aturan:\n` +
+    `- PRIORITASKAN kondisi terbaru dari triage chat bila tersedia, lalu gabungkan dengan SOAP awal dokter.\n` +
     `- SUMMARY harus benar-benar merangkum kondisi pasien saat ini, bukan menyalin SOAP mentah.\n` +
     `- SUMMARY fokus pada keluhan utama, temuan penting, dan kesimpulan klinis singkat.\n` +
     `- ASSESSMENT harus menjelaskan interpretasi klinis dari subjective, objective, dan diagnosis ICD.\n` +
@@ -97,8 +123,10 @@ function buildPrompt(patient: PatientRow, exam: ExternalExamination) {
     `- Jangan mencantumkan patient ID.\n` +
     `- Jangan mengarang data baru; gunakan '-' jika tidak ada informasi.\n\n` +
     `- Jika ada data yang saling mendukung, gabungkan menjadi satu ringkasan kondisi pasien.\n` +
+    `- Jika triage chat terbaru berisi kondisi pasien yang lebih baru dari SOAP awal, gunakan itu sebagai keadaan terkini pasien.\n` +
     `- Hindari kalimat generik seperti "pasien dalam kondisi baik" kecuali memang didukung oleh temuan.\n\n` +
     `Output HARUS dengan format berikut (persis labelnya):\n` +
+    `PATIENT_CONDITION:\nkondisi pasien terbaru\n` +
     `SUMMARY:\nringkasan kondisi pasien\n` +
     `ASSESSMENT:\ninterpretasi klinis\n` +
     `PLAN:\nrencana tindakan\n` +
@@ -196,10 +224,29 @@ function hasMeaningfulValue(value?: string | null) {
   return Boolean(normalized && normalized !== "-");
 }
 
+function parseEvidenceRefs(value: unknown) {
+  if (!value) return null;
+  if (typeof value === 'object' && !Array.isArray(value)) {
+    return value as Record<string, unknown>;
+  }
+  if (typeof value === 'string') {
+    try {
+      const parsed = JSON.parse(value);
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        return parsed as Record<string, unknown>;
+      }
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const patientId = Number(body.patientId);
+    const triageVisitId = body.triageVisitId !== undefined && body.triageVisitId !== null ? Number(body.triageVisitId) : null;
 
     if (!Number.isFinite(patientId)) {
       return NextResponse.json({ error: "patientId must be a number" }, { status: 400 });
@@ -235,20 +282,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Patient not found" }, { status: 404 });
     }
 
-    const registrationResult = await hospitalQuery(
-      `SELECT r.id
-       FROM registrations r
-       WHERE r.patient_id = $1 AND r.nurse_id = $2
-       ORDER BY COALESCE(r.updated_at, r.created_at) DESC
-       LIMIT 1`,
-      [patientId, nurseId]
-    );
+    const visitContext = await resolveVisitContext(patientId, triageVisitId);
+    const registrationId = visitContext.registrationId;
 
-    if (registrationResult.rows.length === 0) {
+    if (!registrationId) {
       return NextResponse.json({ note: null, reason: "no_registration" });
     }
-
-    const registrationId = registrationResult.rows[0].id as number;
     const examResult = await hospitalQuery(
       `SELECT
         id,
@@ -278,6 +317,25 @@ export async function POST(request: Request) {
 
     let exam = examResult.rows[0] as ExternalExamination;
 
+    const latestChatNoteResult = await hospitalQuery(
+      `SELECT id, patient_condition, summary, assessment, plan, medication_recommendation, triage_level, evidence_refs, created_at
+       FROM clinical_notes
+       WHERE patient_id = $1
+         AND source = 'chat'
+         AND evidence_refs->>'nurse_id' = $2
+         AND triage_visit_id = $3
+       ORDER BY created_at DESC, id DESC
+       LIMIT 1`,
+      [patientId, String(nurseId), visitContext.triageVisitId ?? 0]
+    );
+
+    const latestChatNote = latestChatNoteResult.rows[0]
+      ? ({
+          ...latestChatNoteResult.rows[0],
+          evidence_refs: parseEvidenceRefs(latestChatNoteResult.rows[0].evidence_refs),
+        } as ChatNoteContext)
+      : null;
+
     if (
       hasMeaningfulValue(exam.soap_subjective) &&
       hasMeaningfulValue(exam.soap_objective) &&
@@ -293,7 +351,7 @@ export async function POST(request: Request) {
     }
 
     const currentSnapshot = buildExamSnapshot(exam);
-    const latestNote = await getLatestClinicalNote(patientId, nurseId, registrationId);
+    const latestNote = await getLatestClinicalNote(patientId, nurseId, registrationId, visitContext.triageVisitId ?? null);
     const noteEvidenceRefs = latestNote?.evidence_refs && typeof latestNote.evidence_refs === "object"
       ? (latestNote.evidence_refs as {
           external_examination_id?: number | null;
@@ -303,6 +361,10 @@ export async function POST(request: Request) {
     const latestExamId = noteEvidenceRefs?.external_examination_id ?? null;
     const latestSnapshot = noteEvidenceRefs?.external_examination_snapshot ?? null;
 
+    const latestChatAt = latestChatNote?.created_at ? new Date(latestChatNote.created_at).getTime() : 0;
+    const latestExternalNoteAt = latestNote?.created_at ? new Date(latestNote.created_at).getTime() : 0;
+    const hasNewerChatContext = latestChatAt > latestExternalNoteAt;
+
     if (
       latestNote &&
       latestNote.source === "external_examinations" &&
@@ -310,12 +372,13 @@ export async function POST(request: Request) {
       hasMeaningfulValue(latestNote.summary) &&
       hasMeaningfulValue(latestNote.assessment) &&
       hasMeaningfulValue(latestNote.plan) &&
-      snapshotsMatch(latestSnapshot, currentSnapshot)
+      snapshotsMatch(latestSnapshot, currentSnapshot) &&
+      !hasNewerChatContext
     ) {
       return NextResponse.json({ note: latestNote });
     }
 
-    const prompt = buildPrompt(patientResult.rows[0] as PatientRow, exam);
+    const prompt = buildPrompt(patientResult.rows[0] as PatientRow, exam, latestChatNote);
     const generation = await generateClinicalNotesFromSoap(prompt);
 
     if (!generation.success || !generation.text) {
@@ -323,6 +386,7 @@ export async function POST(request: Request) {
     }
 
     const normalized = generation.text.replace(/\r/g, "");
+    const patientCondition = extractSection(normalized, ["PATIENT_CONDITION", "PATIENT CONDITION", "KONDISI_PASIEN", "KONDISI PASIEN"]) || latestChatNote?.patient_condition || '-';
     const summary = extractSection(normalized, ["SUMMARY", "RINGKASAN"]) || normalized.trim();
     let assessment = extractSection(normalized, ["ASSESSMENT", "PENILAIAN"]);
     let plan = extractSection(normalized, ["PLAN", "RENCANA"]);
@@ -367,23 +431,40 @@ export async function POST(request: Request) {
 
     const normalizedDiagnoses = normalizeDiagnoses(updatedExam.diagnoses ?? exam.diagnoses);
     const updatedSnapshot = buildExamSnapshot(updatedExam);
+    const finalMedication = medication && medication.trim() !== '-'
+      ? medication
+      : buildMedicationRecommendation({
+          icd: normalizedDiagnoses,
+          patientCondition,
+          summary: finalSummary,
+          assessment: finalAssessment,
+          plan: plan || '-',
+        });
 
     const note = await createClinicalNote({
       patientId,
       doctorId: updatedExam.doctor_id ?? null,
+      triageVisitId: visitContext.triageVisitId ?? null,
       source: "external_examinations",
       status: "draft",
+      patientCondition: patientCondition || latestChatNote?.patient_condition || null,
       summary: finalSummary,
       assessment: finalAssessment,
       plan: plan || "-",
-      medicationRecommendation: medication || "-",
+      medicationRecommendation: finalMedication,
       triageLevel: triage || null,
       evidenceRefs: {
         external_examination_id: updatedExam.id,
         registration_id: registrationId,
+        triage_visit_id: visitContext.triageVisitId ?? null,
         nurse_id: nurseId,
         generated_by: "agent",
         external_examination_snapshot: updatedSnapshot,
+        latest_chat_note_id: latestChatNote?.id ?? null,
+        latest_chat_note_summary: latestChatNote?.summary ?? null,
+        latest_chat_note_assessment: latestChatNote?.assessment ?? null,
+        latest_chat_note_plan: latestChatNote?.plan ?? null,
+        latest_chat_note_triage: latestChatNote?.triage_level ?? null,
         icd: normalizedDiagnoses,
       },
     });

@@ -76,9 +76,11 @@ type ClinicalNote = {
 };
 
 type VisitOption = {
-  registrationId: number;
+  triageVisitId: number;
+  registrationId?: number | null;
   createdAt?: string | null;
   updatedAt?: string | null;
+  source?: 'bootstrap' | 'manual';
   isActive?: boolean;
 };
 
@@ -132,12 +134,13 @@ export default function PatientChatPage() {
   const [clinicalNote, setClinicalNote] = useState<ClinicalNote | null>(null);
   const [clinicalNoteHistory, setClinicalNoteHistory] = useState<ClinicalNote[]>([]);
   const [visitOptions, setVisitOptions] = useState<VisitOption[]>([]);
-  const [visitRegistrationId, setVisitRegistrationId] = useState<number | null>(null);
+  const [activeVisitRegistrationId, setActiveVisitRegistrationId] = useState<number | null>(null);
   const [selectedVisitRegistrationId, setSelectedVisitRegistrationId] = useState<number | null>(null);
   const [notesInitialized, setNotesInitialized] = useState(false);
   const [notesLoading, setNotesLoading] = useState(false);
   const [notesGenerating, setNotesGenerating] = useState(false);
   const [notesRefreshing, setNotesRefreshing] = useState(false);
+  const [creatingVisit, setCreatingVisit] = useState(false);
   const [showObjectiveForm, setShowObjectiveForm] = useState(false);
   const [objectiveSaving, setObjectiveSaving] = useState(false);
   const [objectiveForm, setObjectiveForm] = useState<ObjectiveFormState>(EMPTY_OBJECTIVE_FORM);
@@ -145,14 +148,15 @@ export default function PatientChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const initialNoteCreatedRef = useRef(false);
   const soapNoteGeneratedRef = useRef(false);
-  const displayedVisitRegistrationId = selectedVisitRegistrationId ?? visitRegistrationId;
+  const derivedActiveVisitRegistrationId = visitOptions.find((visit) => visit.isActive)?.triageVisitId ?? activeVisitRegistrationId;
+  const displayedVisitRegistrationId = selectedVisitRegistrationId ?? derivedActiveVisitRegistrationId;
   const visitLabel = displayedVisitRegistrationId ? `Kunjungan #${displayedVisitRegistrationId}` : 'Kunjungan aktif';
   const isViewingHistoricalVisit = Boolean(
     displayedVisitRegistrationId &&
-    visitRegistrationId &&
-    displayedVisitRegistrationId !== visitRegistrationId
+    derivedActiveVisitRegistrationId &&
+    displayedVisitRegistrationId !== derivedActiveVisitRegistrationId
   );
-  const isActiveVisitSelected = !displayedVisitRegistrationId || !visitRegistrationId || displayedVisitRegistrationId === visitRegistrationId;
+  const isActiveVisitSelected = !displayedVisitRegistrationId || !derivedActiveVisitRegistrationId || displayedVisitRegistrationId === derivedActiveVisitRegistrationId;
 
   // Load patient data and messages
   useEffect(() => {
@@ -161,7 +165,7 @@ export default function PatientChatPage() {
     setClinicalNote(null);
     setClinicalNoteHistory([]);
     setVisitOptions([]);
-    setVisitRegistrationId(null);
+    setActiveVisitRegistrationId(null);
     setSelectedVisitRegistrationId(null);
     setNotesInitialized(false);
     initialNoteCreatedRef.current = false;
@@ -230,14 +234,14 @@ export default function PatientChatPage() {
     }
   }
 
-  async function fetchMessages(registrationId?: number | null) {
+  async function fetchMessages(registrationId?: number | null): Promise<{ registrationId: number | null; activeRegistrationId: number | null } | null> {
     try {
       const params = new URLSearchParams({
         patientId: encodeURIComponent(patientId),
         limit: '50',
       });
       if (registrationId) {
-        params.set('registrationId', String(registrationId));
+        params.set('triageVisitId', String(registrationId));
       }
 
       const response = await fetch(`/api/chat?${params.toString()}`);
@@ -253,17 +257,22 @@ export default function PatientChatPage() {
             timestamp: item.created_at || item.timestamp || new Date().toISOString(),
           }))
         : [];
-      const resolvedRegistrationId = typeof data.registrationId === 'number' ? data.registrationId : null;
-      setVisitRegistrationId(resolvedRegistrationId);
-      setSelectedVisitRegistrationId((current) => current ?? resolvedRegistrationId);
-      setVisitOptions(Array.isArray(data.visits) ? data.visits : []);
+      const resolvedRegistrationId = typeof data.triageVisitId === 'number' ? data.triageVisitId : null;
+      const activeRegistrationId = typeof data.activeTriageVisitId === 'number' ? data.activeTriageVisitId : null;
+      const nextVisits = Array.isArray(data.visits) ? data.visits : [];
+      const activeFromVisits = nextVisits.find((visit: { triageVisitId: number; isActive?: boolean }) => visit.isActive)?.triageVisitId ?? null;
+      setActiveVisitRegistrationId(activeFromVisits ?? activeRegistrationId);
+      setSelectedVisitRegistrationId((current) => registrationId !== undefined ? resolvedRegistrationId : (current ?? resolvedRegistrationId));
+      setVisitOptions(nextVisits);
       setMessages(nextMessages);
+      return { registrationId: resolvedRegistrationId, activeRegistrationId: activeFromVisits ?? activeRegistrationId };
     } catch (err) {
       console.error('Error fetching messages:', err);
-      setVisitRegistrationId(null);
+      setActiveVisitRegistrationId(null);
       setSelectedVisitRegistrationId(null);
       setVisitOptions([]);
       setMessages([]);
+      return null;
     }
   }
 
@@ -299,11 +308,20 @@ export default function PatientChatPage() {
         patientId: encodeURIComponent(patientId),
       });
       if (registrationId) {
-        params.set('registrationId', String(registrationId));
+        params.set('triageVisitId', String(registrationId));
       }
       const response = await fetch(`/api/clinical-notes?${params.toString()}`);
       if (!response.ok) {
-        throw new Error('Failed to fetch clinical notes');
+        let errorMessage = 'Failed to fetch clinical notes';
+        try {
+          const errorBody = await response.json();
+          if (errorBody?.error) {
+            errorMessage = errorBody.error;
+          }
+        } catch {
+          // ignore
+        }
+        throw new Error(errorMessage);
       }
       const data = await response.json();
       setClinicalNote(data.note ?? null);
@@ -322,17 +340,63 @@ export default function PatientChatPage() {
         limit: '20',
       });
       if (registrationId) {
-        params.set('registrationId', String(registrationId));
+        params.set('triageVisitId', String(registrationId));
       }
       const response = await fetch(`/api/clinical-notes?${params.toString()}`);
       if (!response.ok) {
-        throw new Error('Failed to fetch clinical note history');
+        let errorMessage = 'Failed to fetch clinical note history';
+        try {
+          const errorBody = await response.json();
+          if (errorBody?.error) {
+            errorMessage = errorBody.error;
+          }
+        } catch {
+          // ignore
+        }
+        throw new Error(errorMessage);
       }
       const data = await response.json();
       setClinicalNoteHistory(Array.isArray(data.notes) ? data.notes : []);
     } catch (err) {
       console.error('Error fetching clinical note history:', err);
       setClinicalNoteHistory([]);
+    }
+  }
+
+
+  async function handleCreateVisit() {
+    if (!patientId) return;
+
+    try {
+      setCreatingVisit(true);
+      const response = await fetch('/api/triage-visits', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patientId: Number(patientId) }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create triage visit');
+      }
+
+      const data = await response.json();
+      const nextVisitId = typeof data?.visit?.triageVisitId === 'number' ? data.visit.triageVisitId : null;
+      if (Array.isArray(data?.visits)) {
+        setVisitOptions(data.visits);
+      }
+      if (nextVisitId) {
+        setActiveVisitRegistrationId(nextVisitId);
+        setSelectedVisitRegistrationId(nextVisitId);
+        setMessages([]);
+        await fetchMessages(nextVisitId);
+        await fetchClinicalNote(nextVisitId);
+        await fetchClinicalNoteHistory(nextVisitId);
+        setActiveTab('chat');
+      }
+    } catch (err) {
+      console.error('Error creating triage visit:', err);
+    } finally {
+      setCreatingVisit(false);
     }
   }
 
@@ -529,6 +593,7 @@ export default function PatientChatPage() {
             plan: payload.plan,
             medicationRecommendation: payload.medicationRecommendation,
             triageLevel: payload.triageLevel,
+            triageVisitId: displayedVisitRegistrationId,
             evidenceRefs: payload.evidenceRefs,
           }),
         });
@@ -560,7 +625,7 @@ export default function PatientChatPage() {
       const response = await fetch("/api/clinical-notes/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ patientId: Number(patientId) }),
+        body: JSON.stringify({ patientId: Number(patientId), triageVisitId: displayedVisitRegistrationId }),
       });
 
       if (!response.ok) {
@@ -670,17 +735,17 @@ export default function PatientChatPage() {
     const ordered = [...visitOptions].sort((a, b) => {
       const aTime = new Date(a.createdAt || a.updatedAt || 0).getTime();
       const bTime = new Date(b.createdAt || b.updatedAt || 0).getTime();
-      return aTime - bTime || a.registrationId - b.registrationId;
+      return aTime - bTime || a.triageVisitId - b.triageVisitId;
     });
 
-    const index = ordered.findIndex((visit) => visit.registrationId === registrationId);
+    const index = ordered.findIndex((visit) => visit.triageVisitId === registrationId);
     return index >= 0 ? index + 1 : null;
   };
 
   const getVisitOptionLabel = (visit: VisitOption) => {
-    const order = getVisitOrderNumber(visit.registrationId);
+    const order = getVisitOrderNumber(visit.triageVisitId);
     const timestamp = formatVisitDateTime(visit.updatedAt || visit.createdAt);
-    const parts = [`Kunjungan ${order ?? visit.registrationId}`];
+    const parts = [`Kunjungan ${order ?? visit.triageVisitId}`];
     if (visit.isActive) parts.push('Aktif');
     if (timestamp) parts.push(timestamp);
     return parts.join(' - ');
@@ -688,7 +753,7 @@ export default function PatientChatPage() {
 
   const clinicalChatHistory = clinicalNoteHistory.filter((note) => note.source === 'chat');
   const selectedVisitOption = displayedVisitRegistrationId
-    ? visitOptions.find((visit) => visit.registrationId === displayedVisitRegistrationId) ?? null
+    ? visitOptions.find((visit) => visit.triageVisitId === displayedVisitRegistrationId) ?? null
     : null;
   const selectedVisitOrder = displayedVisitRegistrationId ? getVisitOrderNumber(displayedVisitRegistrationId) : null;
   const selectedVisitTimestamp = selectedVisitOption ? formatVisitDateTime(selectedVisitOption.updatedAt || selectedVisitOption.createdAt) : null;
@@ -972,6 +1037,7 @@ export default function PatientChatPage() {
         body: JSON.stringify({
           message: messageToSend, // Use saved message
           patientId,
+          triageVisitId: displayedVisitRegistrationId,
         }),
       });
 
@@ -988,9 +1054,11 @@ export default function PatientChatPage() {
       };
 
       setMessages((prev) => [...prev, agentMessage]);
-      await fetchMessages();
-      await fetchClinicalNote(visitRegistrationId);
-      await fetchClinicalNoteHistory(visitRegistrationId);
+      const refresh = await fetchMessages();
+      const targetRegistrationId = refresh?.activeRegistrationId ?? activeVisitRegistrationId ?? null;
+      setSelectedVisitRegistrationId(targetRegistrationId);
+      await fetchClinicalNote(targetRegistrationId);
+      await fetchClinicalNoteHistory(targetRegistrationId);
 
       if (Array.isArray(data.toolsUsed) && data.toolsUsed.includes('clinical_notes_chat_update')) {
         setActiveTab('notes');
@@ -1095,27 +1163,37 @@ export default function PatientChatPage() {
           {/* Tabs */}
           <div className="border-b border-slate-200 bg-gradient-to-r from-[#f8fffb] to-white px-4 sm:px-5">
             <div className="flex flex-wrap items-center justify-between gap-3 pt-3">
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-2">
                 <label htmlFor="visit-selector" className="text-[0.7rem] font-semibold uppercase tracking-widest text-slate-500">
                   Pilih Kunjungan
                 </label>
-                <select
-                  id="visit-selector"
-                  value={displayedVisitRegistrationId ?? ''}
-                  onChange={async (e) => {
-                    const nextValue = e.target.value ? Number(e.target.value) : null;
-                    setSelectedVisitRegistrationId(nextValue);
-                    await fetchMessages(nextValue);
-                  }}
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 shadow-sm outline-none focus:border-emerald-400"
-                >
-                  {visitOptions.length === 0 && <option value="">Kunjungan aktif</option>}
-                  {visitOptions.map((visit) => (
-                    <option key={visit.registrationId} value={visit.registrationId}>
-                      {getVisitOptionLabel(visit)}
-                    </option>
-                  ))}
-                </select>
+                <div className="flex flex-wrap items-center gap-2">
+                  <select
+                    id="visit-selector"
+                    value={displayedVisitRegistrationId ?? ''}
+                    onChange={async (e) => {
+                      const nextValue = e.target.value ? Number(e.target.value) : null;
+                      setSelectedVisitRegistrationId(nextValue);
+                      await fetchMessages(nextValue);
+                    }}
+                    className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 shadow-sm outline-none focus:border-emerald-400"
+                  >
+                    {visitOptions.length === 0 && <option value="">Kunjungan aktif</option>}
+                    {visitOptions.map((visit) => (
+                      <option key={visit.triageVisitId} value={visit.triageVisitId}>
+                        {getVisitOptionLabel(visit)}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={handleCreateVisit}
+                    disabled={creatingVisit}
+                    className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700 transition hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {creatingVisit ? 'Membuat...' : 'Tambah Kunjungan'}
+                  </button>
+                </div>
               </div>
               <span className="rounded-full bg-emerald-50 px-3 py-1 text-[0.7rem] font-semibold text-emerald-700">
                 {selectedVisitOrder ? `Kunjungan ${selectedVisitOrder}` : visitLabel}

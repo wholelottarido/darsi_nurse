@@ -2,9 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { ChevronDown } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Separator } from '@/components/ui/separator';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
 
 interface Patient {
   id: string;
@@ -18,10 +23,30 @@ interface Patient {
   berat_badan?: number;
   tinggi_badan?: number;
   gol_darah?: string;
+  registration_id?: number | null;
+  registration_status?: string | null;
+  registration_date?: string | null;
+  registration_doctor_id?: number | null;
+  doctor_full_name?: string | null;
+  doctor_specialization?: string | null;
+  doctor_username?: string | null;
+  examination_status?: string | null;
+  soap_subjective?: string | null;
+  soap_objective?: string | null;
+  soap_assessment?: string | null;
+  soap_plan?: string | null;
+  examination_notes?: string | null;
+  clinical_note_source?: string | null;
+  patient_condition?: string | null;
+  clinical_note_summary?: string | null;
+  clinical_note_assessment?: string | null;
+  clinical_note_plan?: string | null;
+  medication_recommendation?: string | null;
+  triage_level?: string | null;
+  clinical_note_created_at?: string | null;
 }
 
 export default function TriageIGDPage() {
-  const router = useRouter();
   const [patients, setPatients] = useState<Patient[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -78,6 +103,43 @@ export default function TriageIGDPage() {
     return '-';
   };
 
+  const getDoctorLabel = (patient: Patient) => {
+    if (patient.doctor_full_name?.trim()) return patient.doctor_full_name.trim();
+    if (patient.doctor_username?.trim()) return patient.doctor_username.trim();
+    if (patient.registration_doctor_id) return `Dokter #${patient.registration_doctor_id}`;
+    return 'Belum ditetapkan';
+  };
+
+  const getSummaryPreview = (patient: Patient) =>
+    patient.patient_condition || patient.clinical_note_summary || patient.examination_notes || patient.soap_subjective || '-';
+
+  const getLatestTriageLevel = (patient: Patient) => {
+    const level = (patient.triage_level || '').trim().toUpperCase();
+    return level || 'BELUM DINILAI';
+  };
+
+  const getTriageLevelClass = (level: string) => {
+    const normalized = level.toLowerCase();
+    if (normalized.includes('urgent')) return 'bg-rose-100 text-rose-700 border-rose-200';
+    if (normalized.includes('high')) return 'bg-orange-100 text-orange-700 border-orange-200';
+    if (normalized.includes('moderate')) return 'bg-sky-100 text-sky-700 border-sky-200';
+    if (normalized.includes('low')) return 'bg-emerald-100 text-emerald-700 border-emerald-200';
+    return 'bg-slate-100 text-slate-600 border-slate-200';
+  };
+
+  const formatDateTime = (value?: string | null) => {
+    if (!value) return '-';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return '-';
+    return date.toLocaleString('id-ID', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
+
   const filteredPatients = patients.filter((patient) => {
     const name = getPatientName(patient).toLowerCase();
     const mrn = getPatientMrn(patient).toLowerCase();
@@ -125,113 +187,182 @@ export default function TriageIGDPage() {
 
       <Separator />
 
-        {/* Error Message */}
-        {error && (
-          <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-600">
-            <p>Error: {error}</p>
-            <button
-              onClick={fetchPatients}
-              className="mt-2 font-medium text-red-600 underline hover:text-red-700"
-            >
-              Try Again
-            </button>
-          </div>
-        )}
+      {error && (
+        <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-600">
+          <p>Error: {error}</p>
+          <button
+            onClick={fetchPatients}
+            className="mt-2 font-medium text-red-600 underline hover:text-red-700"
+          >
+            Try Again
+          </button>
+        </div>
+      )}
 
-        {/* Loading State */}
-        {loading && (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[...Array(4)].map((_, i) => (
+      {loading && (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="h-72 animate-pulse rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)]"
+            />
+          ))}
+        </div>
+      )}
+
+      {!loading && filteredPatients.length > 0 && (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredPatients.map((patient) => {
+            const triageLevel = getLatestTriageLevel(patient);
+
+            return (
               <div
-                key={i}
-                className="h-52 animate-pulse rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)]"
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Patient Cards */}
-        {!loading && filteredPatients.length > 0 && (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredPatients.map((patient) => (
-              <Link
                 key={patient.id}
-                href={`/triage-igd/${patient.id}`}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)] transition-all hover:border-[#059669]/30 hover:shadow-md"
               >
-                <div className="group cursor-pointer rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)] transition-all hover:-translate-y-0.5 hover:border-[#059669]/30 hover:shadow-md">
-                  <div className="mb-4 flex items-start justify-between">
-                    <div>
-                      <div className="mb-3 flex items-center gap-3">
-                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">
-                          {getInitials(getPatientName(patient))}
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold text-slate-900 group-hover:text-[#059669]">
-                        {getPatientName(patient)}
-                          </h3>
-                          {getPatientMrn(patient) && (
-                            <p className="mt-1 text-sm text-slate-500">NRM: {getPatientMrn(patient)}</p>
-                          )}
-                        </div>
+                <div className="mb-4 flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">
+                        {getInitials(getPatientName(patient))}
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="truncate text-lg font-semibold text-slate-900">
+                          {getPatientName(patient)}
+                        </h3>
+                        {getPatientMrn(patient) && (
+                          <p className="mt-1 text-sm text-slate-500">NRM: {getPatientMrn(patient)}</p>
+                        )}
                       </div>
                     </div>
+                    <p className="text-sm text-slate-600">
+                      Dokter: <span className="font-medium text-slate-900">{getDoctorLabel(patient)}</span>
+                    </p>
+                    {patient.doctor_specialization && (
+                      <p className="mt-1 text-xs text-slate-500">{patient.doctor_specialization}</p>
+                    )}
+                  </div>
+                  <div className="flex flex-col items-end gap-2">
                     <span className="rounded-full bg-gradient-to-r from-[#047857] via-[#059669] to-[#10b981] px-3 py-1 text-xs font-medium text-white shadow-sm">
                       {getGenderLabel(patient)}
                     </span>
-                  </div>
-
-                  <div className="space-y-2 border-t border-slate-100 pt-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-slate-600">Usia</span>
-                      <span className="font-medium text-slate-900">{getPatientAge(patient)}</span>
-                    </div>
-                    {patient.berat_badan && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-slate-600">BB</span>
-                        <span className="font-medium text-slate-900">{patient.berat_badan} kg</span>
-                      </div>
-                    )}
-                    {patient.tinggi_badan && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-slate-600">TB</span>
-                        <span className="font-medium text-slate-900">{patient.tinggi_badan} cm</span>
-                      </div>
-                    )}
-                    {patient.gol_darah && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-slate-600">Gol Darah</span>
-                        <span className="font-medium text-slate-900">{patient.gol_darah}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="mt-5 flex items-center text-[#059669] transition-all group-hover:gap-2">
-                    <span className="text-sm font-medium">Buka Triage</span>
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                    <span className={`rounded-full border px-3 py-1 text-[0.7rem] font-semibold ${getTriageLevelClass(triageLevel)}`}>
+                      {triageLevel}
+                    </span>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
-        )}
 
-        {/* Empty State */}
-        {!loading && filteredPatients.length === 0 && (
-          <div className="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)]">
-            <p className="text-slate-500">
-              {searchQuery
-                ? 'Tidak ada pasien yang sesuai dengan pencarian'
-                : 'Tidak ada pasien terdaftar'}
-            </p>
-          </div>
-        )}
+                <div className="space-y-2 border-t border-slate-100 pt-4">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-600">Usia</span>
+                    <span className="font-medium text-slate-900">{getPatientAge(patient)}</span>
+                  </div>
+                  <div className="flex justify-between gap-3 text-sm">
+                    <span className="text-slate-600">Kunjungan</span>
+                    <span className="font-medium text-slate-900">{patient.registration_id ? `#${patient.registration_id}` : '-'}</span>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                    <p className="text-[0.7rem] font-semibold uppercase tracking-widest text-slate-400">Ringkasan Kondisi</p>
+                    <p className="mt-2 line-clamp-3 text-sm text-slate-700">{getSummaryPreview(patient)}</p>
+                  </div>
+                </div>
 
-        {/* Footer Stats */}
-        {!loading && (
-          <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-4 text-center text-sm text-slate-600 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)]">
-            Menampilkan {filteredPatients.length} dari {patients.length} pasien
-          </div>
-        )}
+                <Collapsible className="mt-4 rounded-2xl border border-slate-200 bg-white">
+                  <CollapsibleTrigger className="group flex w-full items-center justify-between px-4 py-3 text-left">
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">Ringkasan Kondisi Pasien</p>
+                      <p className="mt-1 text-xs text-slate-500">Lihat SOAP awal dan kondisi pasien terbaru</p>
+                    </div>
+                    <ChevronDown className="size-4 text-slate-400 transition-transform group-data-[state=open]:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="border-t border-slate-200 px-4 py-4">
+                    <div className="space-y-4">
+                      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">SOAP Awal Dokter</p>
+                        <div className="mt-3 space-y-3 text-sm text-slate-700">
+                          <div>
+                            <p className="font-semibold text-slate-900">Subjective</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.soap_subjective || '-'}</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-slate-900">Objective</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.soap_objective || '-'}</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-slate-900">Assessment</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.soap_assessment || '-'}</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-slate-900">Plan</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.soap_plan || '-'}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                        <div className="flex items-center justify-between gap-3">
+                          <p className="text-xs font-semibold uppercase tracking-widest text-emerald-700">Kondisi Pasien Terbaru</p>
+                          <span className={`rounded-full border px-2.5 py-1 text-[0.7rem] font-semibold ${getTriageLevelClass(triageLevel)}`}>
+                            {triageLevel}
+                          </span>
+                        </div>
+                        <div className="mt-3 space-y-3 text-sm text-slate-700">
+                          <div>
+                            <p className="font-semibold text-slate-900">Kondisi Pasien</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.patient_condition || '-'}</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-slate-900">Ringkasan Clinical Notes</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.clinical_note_summary || patient.examination_notes || '-'}</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-slate-900">Assessment Terbaru</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.clinical_note_assessment || '-'}</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-slate-900">Plan Terbaru</p>
+                            <p className="mt-1 whitespace-pre-line">{patient.clinical_note_plan || '-'}</p>
+                          </div>
+                          <div className="flex justify-between gap-3 text-xs text-slate-500">
+                            <span>Sumber: {patient.clinical_note_source || 'external_examinations'}</span>
+                            <span>Diperbarui: {formatDateTime(patient.clinical_note_created_at)}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+
+                <div className="mt-5 flex items-center justify-between gap-3">
+                  <Link
+                    href={`/triage-igd/${patient.id}`}
+                    className="inline-flex items-center text-[#059669] transition-all hover:gap-2"
+                  >
+                    <span className="text-sm font-medium">Buka Triage</span>
+                    <span className="transition-transform hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {!loading && filteredPatients.length === 0 && (
+        <div className="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)]">
+          <p className="text-slate-500">
+            {searchQuery
+              ? 'Tidak ada pasien yang sesuai dengan pencarian'
+              : 'Tidak ada pasien terdaftar'}
+          </p>
+        </div>
+      )}
+
+      {!loading && (
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-4 text-center text-sm text-slate-600 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)]">
+          Menampilkan {filteredPatients.length} dari {patients.length} pasien
+        </div>
+      )}
     </div>
   );
 }

@@ -21,6 +21,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const patientIdRaw = searchParams.get("patientId");
   const registrationIdRaw = searchParams.get("registrationId");
+  const triageVisitIdRaw = searchParams.get("triageVisitId");
   const limitRaw = searchParams.get("limit");
   const limit = Math.max(1, Number(limitRaw ?? "1"));
 
@@ -35,6 +36,10 @@ export async function GET(request: Request) {
   const registrationId = registrationIdRaw ? Number(registrationIdRaw) : null;
   if (registrationIdRaw && !Number.isFinite(registrationId)) {
     return NextResponse.json({ error: "registrationId must be a number" }, { status: 400 });
+  }
+  const triageVisitId = triageVisitIdRaw ? Number(triageVisitIdRaw) : null;
+  if (triageVisitIdRaw && !Number.isFinite(triageVisitId)) {
+    return NextResponse.json({ error: "triageVisitId must be a number" }, { status: 400 });
   }
 
   try {
@@ -57,14 +62,17 @@ export async function GET(request: Request) {
 
     const nurseId = nurseResult.rows[0].id as number;
     if (limit === 1) {
-      const note = await getLatestClinicalNote(patientId, nurseId, registrationId);
+      const note = await getLatestClinicalNote(patientId, nurseId, registrationId, triageVisitId);
       return NextResponse.json({ note });
     }
 
-    const notes = await listClinicalNotes(patientId, limit, nurseId, registrationId);
+    const notes = await listClinicalNotes(patientId, limit, nurseId, registrationId, triageVisitId);
     return NextResponse.json({ notes });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to load clinical notes" }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to load clinical notes" },
+      { status: 500 }
+    );
   }
 }
 
@@ -111,6 +119,7 @@ export async function POST(request: Request) {
     const note = await createClinicalNote({
       patientId,
       doctorId: body.doctorId ?? null,
+      triageVisitId: body.triageVisitId ?? null,
       source: body.source,
       status: body.status ?? "draft",
       summary: body.summary ?? null,
@@ -124,6 +133,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ note }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to save clinical note" }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to save clinical note" },
+      { status: 500 }
+    );
   }
 }

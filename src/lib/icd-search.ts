@@ -9,6 +9,11 @@ export type ClinicalIcdReference = {
   priority?: number | null;
 };
 
+
+function normalizeIcdCode(value?: string | null) {
+  return String(value || "").trim().toUpperCase();
+}
+
 type SearchTerm = {
   term: string;
   codeHint?: string;
@@ -91,6 +96,23 @@ function buildSearchTerms(text: string) {
   const firstToken = lower.split(/\s+/).find(Boolean);
   if (firstToken) {
     terms.push({ term: firstToken });
+  }
+
+  const stopwords = new Set([
+    'update', 'kondisi', 'pasien', 'yang', 'dan', 'atau', 'dengan', 'pada', 'ada', 'sudah', 'belum',
+    'lebih', 'kurang', 'masih', 'tidak', 'lagi', 'untuk', 'dari', 'karena', 'hasil', 'terbaru', 'keluhan'
+  ]);
+  const tokens = lower
+    .split(/[^a-z0-9]+/)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 3 && !stopwords.has(token));
+
+  tokens.slice(0, 6).forEach((token) => {
+    terms.push({ term: token });
+  });
+
+  for (let i = 0; i < Math.min(tokens.length - 1, 4); i += 1) {
+    terms.push({ term: `${tokens[i]} ${tokens[i + 1]}` });
   }
 
   return uniqueTerms(terms);
@@ -223,4 +245,35 @@ export async function searchClinicalIcdReferences(text: string, limit: number = 
   return [...references.values()]
     .sort((a, b) => rankReference(b, searchText, searchTerms) - rankReference(a, searchText, searchTerms))
     .slice(0, limit);
+}
+
+
+export async function resolveClinicalIcdCodes(codes: string[]): Promise<ClinicalIcdReference[]> {
+  const normalizedCodes = [...new Set(codes.map((code) => normalizeIcdCode(code)).filter(Boolean))];
+  if (normalizedCodes.length === 0) return [];
+
+  const result = await hospitalQuery(
+    `SELECT code, name
+     FROM public.icd10_diagnoses
+     WHERE is_active = true
+       AND code = ANY($1::text[])
+     ORDER BY code ASC`,
+    [normalizedCodes]
+  );
+
+  const mapped = new Map<string, ClinicalIcdReference>();
+  result.rows.forEach((row) => {
+    const icd_code = normalizeIcdCode(String(row.code || '-'));
+    const icd_name = String(row.name || '-');
+    mapped.set(icd_code, {
+      icd_code,
+      icd_name,
+      source: 'icd10_diagnoses',
+      keyword: null,
+      priority: null,
+      triageLevel: assignTriageLevel({ icd_code, icd_name }),
+    });
+  });
+
+  return normalizedCodes.map((code) => mapped.get(code)).filter((value): value is ClinicalIcdReference => Boolean(value));
 }

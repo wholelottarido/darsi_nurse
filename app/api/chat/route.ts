@@ -6,7 +6,7 @@ import { listVisitSummaries, resolveVisitContext } from '@/lib/visit-context';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { message, patientId } = body;
+    const { message, patientId, registrationId, triageVisitId } = body;
 
     // Validation
     if (!message || typeof message !== 'string') {
@@ -23,13 +23,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (registrationId !== undefined && registrationId !== null && !Number.isFinite(Number(registrationId))) {
+      return NextResponse.json(
+        { error: 'registrationId must be a number' },
+        { status: 400 }
+      );
+    }
+
+    if (triageVisitId !== undefined && triageVisitId !== null && !Number.isFinite(Number(triageVisitId))) {
+      return NextResponse.json(
+        { error: 'triageVisitId must be a number' },
+        { status: 400 }
+      );
+    }
+
     console.log('📨 Chat API - Received message:', {
       messageLength: message.length,
       patientId,
     });
 
     // Call agent - agent will call tools as needed
-    const result = await chat(message, patientId);
+    const result = await chat(
+      message,
+      patientId,
+      triageVisitId !== undefined && triageVisitId !== null
+        ? Number(triageVisitId)
+        : (registrationId !== undefined && registrationId !== null ? Number(registrationId) : null)
+    );
 
     if (!result.success) {
       return NextResponse.json(
@@ -59,6 +79,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const patientIdRaw = searchParams.get('patientId');
   const registrationIdRaw = searchParams.get('registrationId');
+  const triageVisitIdRaw = searchParams.get('triageVisitId');
   const limitRaw = searchParams.get('limit');
 
   if (!patientIdRaw) {
@@ -86,19 +107,32 @@ export async function GET(request: NextRequest) {
       { status: 400 }
     );
   }
+  const triageVisitId = triageVisitIdRaw ? Number(triageVisitIdRaw) : null;
+  if (triageVisitIdRaw && !Number.isFinite(triageVisitId)) {
+    return NextResponse.json(
+      { error: 'triageVisitId must be a number' },
+      { status: 400 }
+    );
+  }
 
   const limit = Math.max(1, Math.min(100, Number(limitRaw ?? '50')));
 
   try {
-    const [visitContext, visits] = await Promise.all([
-      resolveVisitContext(patientId, registrationId),
+    const activeVisitContext = await resolveVisitContext(patientId);
+    const visitContext = triageVisitId
+      ? await resolveVisitContext(patientId, triageVisitId)
+      : activeVisitContext;
+    const [messages, visits] = await Promise.all([
+      getConversationHistory(visitContext, limit),
       listVisitSummaries(patientId),
     ]);
-    const messages = await getConversationHistory(visitContext, limit);
 
     return NextResponse.json({
       messages,
+      triageVisitId: visitContext.triageVisitId,
+      activeTriageVisitId: activeVisitContext.triageVisitId,
       registrationId: visitContext.registrationId,
+      activeRegistrationId: activeVisitContext.registrationId,
       visits,
     });
   } catch (error) {

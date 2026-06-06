@@ -4,6 +4,7 @@ export type ClinicalNote = {
   id: number;
   patient_id: number;
   doctor_id?: number | null;
+  triage_visit_id?: number | null;
   source: "chat" | "clinical_summary" | "external_examinations" | "nurse_check";
   status: "draft" | "final";
   patient_condition?: string | null;
@@ -21,6 +22,7 @@ export type ClinicalNote = {
 export type ClinicalNoteInput = {
   patientId: number;
   doctorId?: number | null;
+  triageVisitId?: number | null;
   source: ClinicalNote["source"];
   status?: ClinicalNote["status"];
   patientCondition?: string | null;
@@ -67,11 +69,18 @@ function normalizeClinicalNote(row: Record<string, unknown>) {
   } as ClinicalNote;
 }
 
+async function ensureClinicalNotesVisitColumn() {
+  // Schema migration is handled separately. Avoid DDL on request-time reads.
+}
+
 export async function createClinicalNote(input: ClinicalNoteInput) {
+  await ensureClinicalNotesVisitColumn();
+
   const result = await hospitalQuery(
     `INSERT INTO clinical_notes (
       patient_id,
       doctor_id,
+      triage_visit_id,
       source,
       status,
       patient_condition,
@@ -82,11 +91,12 @@ export async function createClinicalNote(input: ClinicalNoteInput) {
       triage_level,
       evidence_refs,
       doctor_read_at
-    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
     RETURNING *`,
     [
       input.patientId,
       input.doctorId ?? null,
+      input.triageVisitId ?? null,
       input.source,
       input.status ?? "draft",
       input.patientCondition ?? null,
@@ -103,27 +113,45 @@ export async function createClinicalNote(input: ClinicalNoteInput) {
   return normalizeClinicalNote(result.rows[0] as Record<string, unknown>);
 }
 
-export async function getLatestClinicalNote(patientId: number, nurseId?: number, registrationId?: number | null) {
+export async function getLatestClinicalNote(
+  patientId: number,
+  nurseId?: number,
+  registrationId?: number | null,
+  triageVisitId?: number | null
+) {
+  await ensureClinicalNotesVisitColumn();
+
   if (nurseId) {
-    const result = registrationId
+    const result = triageVisitId
       ? await hospitalQuery(
           `SELECT *
            FROM clinical_notes
            WHERE patient_id = $1
              AND evidence_refs->>'nurse_id' = $2
-             AND evidence_refs->>'registration_id' = $3
-           ORDER BY created_at DESC
+             AND triage_visit_id = $3
+           ORDER BY created_at DESC, id DESC
            LIMIT 1`,
-          [patientId, String(nurseId), String(registrationId)]
+          [patientId, String(nurseId), triageVisitId]
         )
-      : await hospitalQuery(
-          `SELECT *
-           FROM clinical_notes
-           WHERE patient_id = $1 AND evidence_refs->>'nurse_id' = $2
-           ORDER BY created_at DESC
-           LIMIT 1`,
-          [patientId, String(nurseId)]
-        );
+      : registrationId
+        ? await hospitalQuery(
+            `SELECT *
+             FROM clinical_notes
+             WHERE patient_id = $1
+               AND evidence_refs->>'nurse_id' = $2
+               AND evidence_refs->>'registration_id' = $3
+             ORDER BY created_at DESC, id DESC
+             LIMIT 1`,
+            [patientId, String(nurseId), String(registrationId)]
+          )
+        : await hospitalQuery(
+            `SELECT *
+             FROM clinical_notes
+             WHERE patient_id = $1 AND evidence_refs->>'nurse_id' = $2
+             ORDER BY created_at DESC, id DESC
+             LIMIT 1`,
+            [patientId, String(nurseId)]
+          );
 
     return result.rows[0]
       ? normalizeClinicalNote(result.rows[0] as Record<string, unknown>)
@@ -134,7 +162,7 @@ export async function getLatestClinicalNote(patientId: number, nurseId?: number,
     `SELECT *
      FROM clinical_notes
      WHERE patient_id = $1
-     ORDER BY created_at DESC
+     ORDER BY created_at DESC, id DESC
      LIMIT 1`,
     [patientId]
   );
@@ -144,27 +172,46 @@ export async function getLatestClinicalNote(patientId: number, nurseId?: number,
     : null;
 }
 
-export async function listClinicalNotes(patientId: number, limit: number = 10, nurseId?: number, registrationId?: number | null) {
+export async function listClinicalNotes(
+  patientId: number,
+  limit: number = 10,
+  nurseId?: number,
+  registrationId?: number | null,
+  triageVisitId?: number | null
+) {
+  await ensureClinicalNotesVisitColumn();
+
   if (nurseId) {
-    const result = registrationId
+    const result = triageVisitId
       ? await hospitalQuery(
           `SELECT *
            FROM clinical_notes
            WHERE patient_id = $1
              AND evidence_refs->>'nurse_id' = $3
-             AND evidence_refs->>'registration_id' = $4
-           ORDER BY created_at DESC
+             AND triage_visit_id = $4
+           ORDER BY created_at DESC, id DESC
            LIMIT $2`,
-          [patientId, limit, String(nurseId), String(registrationId)]
+          [patientId, limit, String(nurseId), triageVisitId]
         )
-      : await hospitalQuery(
-          `SELECT *
-           FROM clinical_notes
-           WHERE patient_id = $1 AND evidence_refs->>'nurse_id' = $3
-           ORDER BY created_at DESC
-           LIMIT $2`,
-          [patientId, limit, String(nurseId)]
-        );
+      : registrationId
+        ? await hospitalQuery(
+            `SELECT *
+             FROM clinical_notes
+             WHERE patient_id = $1
+               AND evidence_refs->>'nurse_id' = $3
+               AND evidence_refs->>'registration_id' = $4
+             ORDER BY created_at DESC, id DESC
+             LIMIT $2`,
+            [patientId, limit, String(nurseId), String(registrationId)]
+          )
+        : await hospitalQuery(
+            `SELECT *
+             FROM clinical_notes
+             WHERE patient_id = $1 AND evidence_refs->>'nurse_id' = $3
+             ORDER BY created_at DESC, id DESC
+             LIMIT $2`,
+            [patientId, limit, String(nurseId)]
+          );
 
     return result.rows.map((row) => normalizeClinicalNote(row as Record<string, unknown>));
   }
@@ -173,7 +220,7 @@ export async function listClinicalNotes(patientId: number, limit: number = 10, n
     `SELECT *
      FROM clinical_notes
      WHERE patient_id = $1
-     ORDER BY created_at DESC
+     ORDER BY created_at DESC, id DESC
      LIMIT $2`,
     [patientId, limit]
   );

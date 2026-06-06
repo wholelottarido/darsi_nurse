@@ -1,10 +1,12 @@
 import { generateText } from "ai";
 
-import { searchClinicalIcdReferences } from "@/lib/icd-search";
+import { resolveClinicalIcdCodes, searchClinicalIcdReferences } from "@/lib/icd-search";
 import { getChatModel } from "@/lib/llm";
+import { buildMedicationRecommendation } from "@/lib/medication-recommendations";
 import { hospitalQuery } from "@/lib/hospital-db";
 import { getCurrentPerawat } from "@/lib/nurse-auth";
 import { createClinicalNote, type ClinicalNote } from "@/lib/clinical-notes";
+import { resolveVisitContext } from "@/lib/visit-context";
 
 type UpdateKind = "subjective" | "objective";
 
@@ -224,14 +226,18 @@ function parseIcdSection(
   return results;
 }
 
-function resolveSelectedIcd(args: {
+async function resolveSelectedIcd(args: {
   generatedIcd: Array<{ icd_code: string; icd_name: string; triageLevel?: string | null }>;
   baseIcd: Array<{ icd_code: string; icd_name: string; triageLevel?: string | null }>;
   candidateIcd: Array<{ icd_code: string; icd_name: string; triageLevel?: string | null }>;
 }) {
   const allowed = mergeIcdReferences(args.baseIcd, args.candidateIcd);
   const allowedCodes = new Set(allowed.map((item) => item.icd_code.toUpperCase()));
-  const filteredGenerated = args.generatedIcd.filter((item) => allowedCodes.has(item.icd_code.toUpperCase()));
+  const validatedGenerated = await resolveClinicalIcdCodes(args.generatedIcd.map((item) => item.icd_code));
+  const validatedGeneratedMerged = mergeIcdReferences(validatedGenerated, args.generatedIcd);
+  const filteredGenerated = allowedCodes.size > 0
+    ? validatedGeneratedMerged.filter((item) => allowedCodes.has(item.icd_code.toUpperCase()))
+    : validatedGeneratedMerged;
   const basePrimary = args.baseIcd[0] ?? null;
   const updatePrimary =
     filteredGenerated.find((item) => item.icd_code.toUpperCase() !== basePrimary?.icd_code?.toUpperCase()) ||
@@ -248,6 +254,10 @@ function resolveSelectedIcd(args: {
 
   if (updatePrimary) {
     return [updatePrimary];
+  }
+
+  if (filteredGenerated.length > 0) {
+    return filteredGenerated.slice(0, 2);
   }
 
   return allowed.slice(0, 2);
@@ -373,6 +383,7 @@ async function generateSections(
 
 export async function createClinicalNoteFromChatUpdate(args: {
   patientId: number;
+  triageVisitId?: number | null;
   updateKind: UpdateKind;
   updateText: string;
 }): Promise<ChatClinicalUpdateResult | null> {
@@ -398,53 +409,79 @@ export async function createClinicalNoteFromChatUpdate(args: {
 
   const patient = buildPatientContext(patientResult.rows[0] as PatientRow);
 
-  const [registrationResult, examResult, icdReferences] = await Promise.all([
-    hospitalQuery(
-      `SELECT id
-       FROM registrations
-       WHERE patient_id = $1 AND nurse_id = $2
-       ORDER BY COALESCE(updated_at, created_at) DESC
-       LIMIT 1`,
-      [args.patientId, nurseId]
-    ),
-    hospitalQuery(
-      `SELECT id, registration_id, doctor_id, doctor_username, status, soap_subjective, soap_objective, soap_assessment, soap_plan, diagnoses, examination_notes, created_at
-       FROM external_examinations
-       WHERE patient_id = $1
-       ORDER BY created_at DESC
-       LIMIT 1`,
-      [args.patientId]
-    ),
+  const visitContext = await resolveVisitContext(args.patientId, args.triageVisitId ?? null);
+  const registrationId = visitContext.registrationId ?? null;
+
+  const [examResult, icdReferences] = await Promise.all([
+    registrationId
+      ? hospitalQuery(
+          `SELECT id, registration_id, doctor_id, doctor_username, status, soap_subjective, soap_objective, soap_assessment, soap_plan, diagnoses, examination_notes, created_at
+           FROM external_examinations
+           WHERE registration_id = $1
+           ORDER BY created_at DESC, id DESC
+           LIMIT 1`,
+          [registrationId]
+        )
+      : hospitalQuery(
+          `SELECT id, registration_id, doctor_id, doctor_username, status, soap_subjective, soap_objective, soap_assessment, soap_plan, diagnoses, examination_notes, created_at
+           FROM external_examinations
+           WHERE patient_id = $1
+           ORDER BY created_at DESC, id DESC
+           LIMIT 1`,
+          [args.patientId]
+        ),
     searchClinicalIcdReferences(updateText, 5),
   ]);
 
-  const registrationId = (registrationResult.rows[0]?.id as number | undefined) ?? null;
   const exam = (examResult.rows[0] as ExternalExamination | undefined) ?? null;
   const baseIcd = normalizeExamDiagnoses(exam?.diagnoses);
   const allowedIcdReferences = mergeIcdReferences(baseIcd, icdReferences);
 
   const prompt = buildPrompt(patient, exam, args.updateKind, updateText, allowedIcdReferences);
   const generated = await generateSections(prompt, allowedIcdReferences);
-  const selectedIcd = resolveSelectedIcd({
+  const generatedSearchText = [
+    generated.patientCondition,
+    generated.summary,
+    generated.assessment,
+    generated.plan,
+    updateText,
+  ].filter(Boolean).join(' ');
+  const secondaryIcdReferences = allowedIcdReferences.length === 0
+    ? await searchClinicalIcdReferences(generatedSearchText, 5)
+    : [];
+  const resolvedIcdReferences = mergeIcdReferences(allowedIcdReferences, secondaryIcdReferences);
+  const selectedIcd = await resolveSelectedIcd({
     generatedIcd: generated.icd,
     baseIcd,
-    candidateIcd: allowedIcdReferences,
+    candidateIcd: resolvedIcdReferences,
   });
+  const finalIcd = selectedIcd.length > 0 ? selectedIcd : resolvedIcdReferences.slice(0, 2);
+  const finalMedication = generated.medication && generated.medication.trim() !== '-'
+    ? generated.medication
+    : buildMedicationRecommendation({
+        icd: finalIcd,
+        patientCondition: generated.patientCondition,
+        summary: generated.summary,
+        assessment: generated.assessment,
+        plan: generated.plan,
+      });
 
   const note = await createClinicalNote({
     patientId: args.patientId,
     doctorId: exam?.doctor_id ?? null,
+    triageVisitId: visitContext.triageVisitId ?? null,
     source: "chat",
     status: "draft",
     patientCondition: generated.patientCondition,
     summary: generated.summary,
     assessment: generated.assessment,
     plan: generated.plan,
-    medicationRecommendation: generated.medication,
+    medicationRecommendation: finalMedication,
     triageLevel: generated.triageLevel,
     evidenceRefs: {
       nurse_id: nurseId,
       registration_id: registrationId,
+      triage_visit_id: visitContext.triageVisitId ?? null,
       external_examination_id: exam?.id ?? null,
       base_external_examination: exam
         ? {
@@ -457,7 +494,7 @@ export async function createClinicalNoteFromChatUpdate(args: {
         : null,
       chat_update_type: args.updateKind,
       chat_update_text: updateText,
-      icd: selectedIcd,
+      icd: finalIcd,
     },
   });
 
@@ -470,6 +507,6 @@ export async function createClinicalNoteFromChatUpdate(args: {
     note,
     updateKind: args.updateKind,
     updateText,
-    icd: selectedIcd,
+    icd: finalIcd,
   };
 }
