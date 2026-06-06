@@ -1,197 +1,125 @@
 "use client";
 
-import type { ComponentType } from "react";
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  ChevronDown,
-  CircleCheck,
-  ClipboardList,
-  HeartPulse,
-  LayoutDashboard,
-  PanelLeftClose,
-  PanelLeftOpen,
-  Users,
-  Zap,
-} from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import StaffProfileMenu from "@/components/StaffProfileMenu";
+import { Logo } from "@/components/logo";
+import { NAV_ITEMS } from "@/lib/app-nav";
+import { logoutNurseClient } from "@/lib/logout-client";
+import type { PerawatSession } from "@/lib/nurse-auth";
 import { cn } from "@/lib/utils";
 
-type NavItem = {
-  href: string;
-  icon: ComponentType<{ className?: string }>;
-  label: string;
-  match?: string[];
+type SidebarProps = {
+  perawat: PerawatSession;
+  collapsed?: boolean;
+  className?: string;
 };
 
-type NavSection = {
-  label: string;
-  items: NavItem[];
-};
-
-const navSections: NavSection[] = [
-  {
-    label: "OPERASIONAL",
-    items: [
-      {
-        href: "/dashboard",
-        icon: LayoutDashboard,
-        label: "Overview",
-      },
-      {
-        href: "/pasien",
-        icon: Users,
-        label: "Manajemen Pasien",
-        match: ["/pasien", "/tambah-pasien"],
-      },
-    ],
-  },
-  {
-    label: "KLINIS",
-    items: [
-      {
-        href: "/triage-igd",
-        icon: Zap,
-        label: "Triage IGD",
-      },
-      {
-        href: "#",
-        icon: ClipboardList,
-        label: "Catatan Pasien",
-      },
-      {
-        href: "#",
-        icon: CircleCheck,
-        label: "Klaim & Resume",
-      },
-    ],
-  },
-];
-
-export default function Sidebar() {
+export default function Sidebar({ perawat, collapsed = false, className }: SidebarProps) {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
 
-  const isActive = (item: NavItem) => {
-    const paths = item.match ?? [item.href];
-    return paths.some((path) => pathname === path || pathname.startsWith(path + "/"));
-  };
-
-  const renderNavItem = (item: NavItem) => {
-    const Icon = item.icon;
-    const active = isActive(item);
-
-    return (
-      <Link
-        key={item.label}
-        href={item.href}
-        title={collapsed ? item.label : undefined}
-        className={cn(
-          "flex min-h-11 items-center gap-3 rounded-2xl border text-sm font-bold transition-all",
-          collapsed ? "justify-center px-0" : "px-3",
-          active
-            ? "border-[#b7f7d4] bg-gradient-to-r from-[#047857] via-[#059669] to-[#10b981] text-white shadow-[0_12px_30px_-18px_rgba(16,185,129,0.55)]"
-            : "border-transparent text-slate-600 hover:border-slate-200 hover:bg-slate-50 hover:text-slate-900"
-        )}
-      >
-        <Icon className="size-5 shrink-0" />
-        {collapsed ? <span className="sr-only">{item.label}</span> : item.label}
-      </Link>
+  const isActive = (href: string, match?: string[]) => {
+    const paths = match ?? [href];
+    return paths.some(
+      (path) => path !== "#" && (pathname === path || pathname.startsWith(`${path}/`))
     );
   };
 
   return (
     <aside
       className={cn(
-        "flex h-screen flex-shrink-0 bg-gradient-to-b from-slate-50 to-white p-4 transition-[width] duration-300",
-        collapsed ? "w-24" : "w-72"
+        "flex h-full flex-col overflow-hidden rounded-2xl border border-slate-300 bg-white",
+        collapsed ? "w-[84px]" : "w-[250px]",
+        className
       )}
     >
-      <div className="flex h-full w-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_16px_40px_-28px_rgba(15,23,42,0.45)]">
-        <div
-          className={cn(
-            "flex items-center border-b border-slate-100 bg-gradient-to-r from-[#f8fffb] to-white px-4",
-            collapsed ? "h-24 flex-col justify-center gap-2" : "h-20 justify-between gap-3"
-          )}
-        >
-          <div className={cn("flex items-center", collapsed ? "justify-center" : "gap-3")}>
-            <div className="flex size-10 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/80">
-              <Image
-                src="/logo.png"
-                alt="DARSI Nurse"
-                width={40}
-                height={40}
-                className="h-full w-full object-contain p-1"
-                priority
-              />
+      <div className={cn("border-b border-slate-300", collapsed ? "px-2 py-4" : "px-4 py-5")}>
+        <div className={cn("flex items-center", collapsed ? "justify-center" : "gap-3")}>
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
+            <Logo size={26} />
+          </div>
+          {!collapsed ? (
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.04em] text-slate-800">
+                DARSI Nurse
+              </p>
+              <p className="text-[11px] uppercase tracking-[0.1em] text-emerald-800">
+                Clinical Care Workspace
+              </p>
             </div>
-            {!collapsed && (
-              <div>
-                <h1 className="font-extrabold leading-tight tracking-wider text-[#064E3B]">
-                  DARSI
-                </h1>
-                <p className="text-[0.6rem] font-medium uppercase tracking-widest text-slate-400">
-                  Digital Assistant for Nurse
-                </p>
-              </div>
-            )}
-          </div>
-
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon-sm"
-            aria-label={collapsed ? "Perluas sidebar" : "Ciutkan sidebar"}
-            title={collapsed ? "Perluas sidebar" : "Ciutkan sidebar"}
-            onClick={() => setCollapsed((value) => !value)}
-            className="rounded-2xl text-slate-500 transition hover:bg-slate-100 hover:text-slate-800"
-          >
-            {collapsed ? (
-              <PanelLeftOpen className="size-4" />
-            ) : (
-              <PanelLeftClose className="size-4" />
-            )}
-          </Button>
+          ) : null}
         </div>
+      </div>
 
-        <div className="flex-1 overflow-y-auto px-4 py-6">
-          {!collapsed && (
-            <p className="mb-4 text-xs font-bold tracking-[0.24em] text-slate-400">
-              MENU UTAMA
-            </p>
-          )}
+      {!collapsed ? (
+        <div className="px-4 pt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+          Menu Perawat
+        </div>
+      ) : null}
 
-          <div className="space-y-7">
-            {navSections.map((section, index) =>
-              collapsed ? (
-                <div
-                  key={section.label}
-                  className={cn("space-y-2", index > 0 && "border-t border-slate-100 pt-5")}
+      <nav className={cn("flex-1 overflow-y-auto", collapsed ? "px-2 py-4" : "px-3 py-3")}>
+        <div className="space-y-1">
+          {NAV_ITEMS.map((item) => {
+            const Icon = item.icon;
+            const active = isActive(item.href, item.match);
+
+            if (item.href === "#") {
+              return (
+                <button
+                  key={item.label}
+                  type="button"
+                  disabled
+                  className={cn(
+                    "flex w-full cursor-not-allowed items-center rounded-lg text-slate-400 opacity-60",
+                    collapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3 py-2 text-left text-sm font-medium"
+                  )}
+                  aria-label={item.label}
                 >
-                  {section.items.map(renderNavItem)}
-                </div>
-              ) : (
-                <Collapsible key={section.label} defaultOpen className="space-y-2 rounded-2xl bg-slate-50/40 p-3">
-                  <CollapsibleTrigger className="group flex w-full items-center justify-between rounded-xl px-1 text-xs font-bold tracking-[0.24em] text-slate-400 transition-colors hover:text-[#059669]">
-                    <span>{section.label}</span>
-                    <ChevronDown className="size-3.5 transition-transform group-data-[state=open]:rotate-180" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="space-y-2">
-                    {section.items.map(renderNavItem)}
-                  </CollapsibleContent>
-                </Collapsible>
-              )
-            )}
-          </div>
+                  <Icon className="h-4 w-4" />
+                  {!collapsed ? <span>{item.label}</span> : null}
+                </button>
+              );
+            }
+
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                title={collapsed ? item.label : undefined}
+                className={cn(
+                  "flex w-full items-center rounded-lg text-slate-600 transition",
+                  collapsed
+                    ? "justify-center px-0 py-2.5 hover:text-slate-900"
+                    : "gap-3 px-3 py-2 text-left text-sm font-medium hover:bg-slate-100 hover:text-slate-900",
+                  active &&
+                    (collapsed ? "text-emerald-800" : "bg-emerald-100/70 text-emerald-800")
+                )}
+                aria-label={item.label}
+              >
+                <span
+                  className={cn(
+                    "flex items-center justify-center",
+                    collapsed && active && "h-7 w-7 rounded-md bg-emerald-200/90 text-emerald-800"
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                </span>
+                {!collapsed ? <span>{item.label}</span> : null}
+              </Link>
+            );
+          })}
         </div>
+      </nav>
+
+      <div className={cn("mt-auto border-t border-slate-300 p-4", collapsed && "px-2 py-3")}>
+        <StaffProfileMenu
+          fullName={perawat.namaLengkap}
+          username={perawat.username}
+          roleLabel={`Perawat · ${perawat.status}`}
+          isSidebarCollapsed={collapsed}
+          onLogout={() => void logoutNurseClient()}
+        />
       </div>
     </aside>
   );

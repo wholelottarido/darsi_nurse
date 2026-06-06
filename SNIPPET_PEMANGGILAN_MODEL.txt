@@ -1,0 +1,198 @@
+================================================================================
+DARSI — SNIPPET KODE PEMANGGILAN MODEL LLM
+================================================================================
+Ganti model: LLM_PROFILE di .env atau  npm run llm:profile -- <id>
+Profil:     chatbot-agent-cs/config/llm-profiles.json
+Panduan:    chatbot-agent-cs/docs/TATA_CARA_GANTI_MODEL.md
+================================================================================
+
+--------------------------------------------------------------------------------
+1. KONFIGURASI PROFIL (baca LLM_PROFILE → llm-profiles.json)
+--------------------------------------------------------------------------------
+File: chatbot-agent-cs/lib/llmConfig.ts
+
+  export function applyLlmProfileFromEnv(): ResolvedLlmConfig {
+    const profiles = loadLlmProfiles();
+    const profileId = envTrim("LLM_PROFILE");
+    const profile = profileId ? profiles[profileId] : undefined;
+    // ...
+    if (chatProvider === "openai-compatible") {
+      process.env.OPENAI_API_KEY = chatApiKey;
+      process.env.OPENAI_BASE_URL = chatApiBaseUrl;
+    }
+    return { chatModel, chatApiBaseUrl, openAiExtraBody, ... };
+  }
+
+Contoh profil Nemotron (config/llm-profiles.json):
+
+  "nemotron-dgx": {
+    "chatProvider": "openai-compatible",
+    "chatApiBaseUrl": "http://10.9.23.200:8000/v1",
+    "chatApiKey": "EMPTY",
+    "chatModel": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "openAiExtraBody": {
+      "chat_template_kwargs": { "enable_thinking": false }
+    }
+  }
+
+--------------------------------------------------------------------------------
+2. CHAT UTAMA PASIEN (VoltAgent — jalur utama DARSI)
+--------------------------------------------------------------------------------
+
+2a) Registrasi model ke Agent
+File: chatbot-agent-cs/src/index.ts
+
+  const llmConfig = applyLlmProfileFromEnv();
+  const voltAgentModel = createVoltAgentLanguageModel();
+
+  const agent = new Agent({
+    name: "HospitalCSAgent",
+    instructions: SYSTEM_INSTRUCTIONS,
+    tools: [],
+    model: voltAgentModel,
+    maxSteps: 1,
+    modelConfig: {
+      temperature: 0.3,
+      top_p: 0.9,
+      toolChoice: "none",
+    },
+    hooks: createHooks({
+      onPrepareModelMessages: async ({ modelMessages, context }) => {
+        // RAG + prompt dari hospitalAgent.ts
+        return { modelMessages: prepared.modelMessages };
+      },
+    }),
+  });
+
+2b) Factory model (Ollama vs Nemotron/vLLM)
+File: chatbot-agent-cs/lib/llmConfig.ts
+
+  export function createVoltAgentLanguageModel(): LanguageModel | string {
+    const cfg = getResolvedLlmConfig();
+    if (cfg.chatProvider === "ollama") {
+      return `ollama/${cfg.chatModel}`;
+    }
+
+    const provider = createOpenAICompatible({
+      name: "vllm",
+      baseURL: cfg.chatApiBaseUrl,
+      apiKey: cfg.chatApiKey,
+      transformRequestBody: (body) => mergeOpenAiRequestBody(body, extra),
+    });
+
+    return provider.chatModel(cfg.chatModel);
+  }
+
+2c) UI memanggil agent (stream SSE)
+File: hospital-cs-ui/app/api/chat/route.ts
+
+  backendResponse = await fetch(
+    `${VOLTAGENT_BACKEND_URL}/agents/HospitalCSAgent/stream`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: voltagentInput,
+        options: {
+          conversationId: threadId,
+          userId: voltagentUserId,
+        },
+      }),
+    },
+  );
+
+  VOLTAGENT_BACKEND_URL default: http://localhost:4300
+
+--------------------------------------------------------------------------------
+3. PANGGILAN HTTP LANGSUNG (refiner, tes, utilitas UI)
+--------------------------------------------------------------------------------
+File: chatbot-agent-cs/lib/llmConfig.ts — generateWithLlmDetailed()
+
+3a) Nemotron / OpenAI-compatible → POST /v1/chat/completions
+
+  const body = mergeOpenAiRequestBody(
+    {
+      model: cfg.chatModel,
+      messages: [{ role: "user", content: options.prompt }],
+      temperature,
+      max_tokens: maxTokens,
+    },
+    cfg.openAiExtraBody,
+  );
+
+  const response = await fetch(`${base}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${cfg.chatApiKey}`,
+    },
+    body: JSON.stringify(body),
+  });
+
+3b) Ollama → POST /api/generate
+
+  const response = await fetch(`${cfg.ollamaHost}/api/generate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: cfg.chatModel,
+      prompt: options.prompt,
+      stream: false,
+      options: { temperature, num_predict: maxTokens },
+    }),
+  });
+
+3c) Pemakai generateWithLlm / generateWithLlmDetailed:
+  - chatbot-agent-cs/src/lib/queryRefinerAgent.ts
+  - chatbot-agent-cs/scripts/testLlmConnection.ts  (npm run llm:test)
+  - hospital-cs-ui/lib/llm-config.ts → generateChatText()
+
+--------------------------------------------------------------------------------
+4. UTILITAS UI (feedback invite, pembuka antrian)
+--------------------------------------------------------------------------------
+File: hospital-cs-ui/lib/llm-config.ts
+
+  export async function generateChatText(options: {
+    prompt: string;
+    temperature?: number;
+    maxTokens?: number;
+  }): Promise<string | null> {
+    applyLlmProfileFromEnv();
+    // ollama: /api/generate  |  openai-compatible: /chat/completions
+  }
+
+Dipanggil dari: hospital-cs-ui/app/api/chat/route.ts
+  - generateFeedbackInviteWithLLM()
+  - generateQueueOpeningWithLLM()
+
+--------------------------------------------------------------------------------
+5. RAG (bukan model chat — hanya embedding Ollama)
+--------------------------------------------------------------------------------
+File: chatbot-agent-cs/lib/lancedbService.ts
+
+  OLLAMA_HOST + OLLAMA_EMBEDDING_MODEL  →  /api/embeddings
+  (tetap lokal; tidak ikut ganti profil chat Nemotron)
+
+--------------------------------------------------------------------------------
+ALUR SINGKAT
+--------------------------------------------------------------------------------
+
+  Browser → hospital-cs-ui /api/chat
+         → POST http://localhost:4300/agents/HospitalCSAgent/stream
+         → VoltAgent Agent(model = createVoltAgentLanguageModel())
+         → vLLM Nemotron ATAU Ollama
+
+  Query refiner / llm:test:
+         → generateWithLlm() → fetch langsung ke API model
+
+--------------------------------------------------------------------------------
+PERINTAH BERGUNA
+--------------------------------------------------------------------------------
+
+  npm run llm:list
+  npm run llm:profile -- nemotron-dgx
+  npm run llm:profile -- ollama-local-8b
+  npm run llm:test
+  pm2 restart chatbot-agent-cs hospital-cs-ui --update-env
+
+================================================================================

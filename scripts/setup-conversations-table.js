@@ -1,6 +1,10 @@
 const { Client } = require('pg');
 
-const connectionString = 'postgresql://ridho:labduafa@10.9.23.205:5435/darsi_nurse';
+const connectionString = process.env.HOSPITAL_CS_DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error('HOSPITAL_CS_DATABASE_URL belum dikonfigurasi.');
+}
 
 async function setupConversationsTable() {
   const client = new Client({
@@ -27,7 +31,7 @@ async function setupConversationsTable() {
     await client.query(`
       CREATE TABLE conversations (
         id SERIAL PRIMARY KEY,
-        patient_id INT NOT NULL REFERENCES pasien(id) ON DELETE CASCADE,
+        patient_id INT NOT NULL REFERENCES patients(id) ON DELETE CASCADE,
         role VARCHAR(10) NOT NULL CHECK (role IN ('user', 'agent')),
         message TEXT NOT NULL,
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { chat } from '@/lib/agent';
+import { getConversationHistory } from '@/lib/conversations';
+import { listVisitSummaries, resolveVisitContext } from '@/lib/visit-context';
 
 export async function POST(request: NextRequest) {
   try {
@@ -53,13 +55,56 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
-  return NextResponse.json({
-    message: 'Chat API endpoint',
-    method: 'POST',
-    body: {
-      message: 'string (required)',
-      patientId: 'string (optional, UUID format)',
-    },
-  });
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const patientIdRaw = searchParams.get('patientId');
+  const registrationIdRaw = searchParams.get('registrationId');
+  const limitRaw = searchParams.get('limit');
+
+  if (!patientIdRaw) {
+    return NextResponse.json({
+      message: 'Chat API endpoint',
+      method: 'POST',
+      body: {
+        message: 'string (required)',
+        patientId: 'string (optional, UUID format)',
+      },
+    });
+  }
+
+  const patientId = Number(patientIdRaw);
+  if (!Number.isFinite(patientId)) {
+    return NextResponse.json(
+      { error: 'patientId must be a number' },
+      { status: 400 }
+    );
+  }
+  const registrationId = registrationIdRaw ? Number(registrationIdRaw) : null;
+  if (registrationIdRaw && !Number.isFinite(registrationId)) {
+    return NextResponse.json(
+      { error: 'registrationId must be a number' },
+      { status: 400 }
+    );
+  }
+
+  const limit = Math.max(1, Math.min(100, Number(limitRaw ?? '50')));
+
+  try {
+    const [visitContext, visits] = await Promise.all([
+      resolveVisitContext(patientId, registrationId),
+      listVisitSummaries(patientId),
+    ]);
+    const messages = await getConversationHistory(visitContext, limit);
+
+    return NextResponse.json({
+      messages,
+      registrationId: visitContext.registrationId,
+      visits,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Failed to load conversation history' },
+      { status: 500 }
+    );
+  }
 }

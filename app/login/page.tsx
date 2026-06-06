@@ -1,19 +1,28 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { FormEvent, useState } from "react";
+import {
+  ArrowRight,
+  Eye,
+  EyeOff,
+  Lock,
+  ShieldCheck,
+  UserRound,
+} from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [isError, setIsError] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     setMessage(null);
@@ -35,6 +44,7 @@ export default function LoginPage() {
 
       if (!response.ok) {
         setMessage(data.error || "Login gagal. Coba lagi.");
+        setIsError(true);
         setLoading(false);
         return;
       }
@@ -47,102 +57,101 @@ export default function LoginPage() {
           ? "Login terlalu lama. Coba lagi."
           : "Terjadi kesalahan. Coba lagi."
       );
+      setIsError(true);
       setLoading(false);
     }
   };
 
   return (
-    <div className="h-full w-full bg-background px-6 py-10">
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center">
-        <div className="mb-4 flex w-full justify-end">
-          <ThemeToggle />
-        </div>
-        <div className="w-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_10px_30px_-18px_rgba(15,23,42,0.3)]">
-          <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
-            <div className="relative hidden items-center justify-center bg-gradient-to-br from-[#059669] to-[#10B981] p-10 text-white md:flex">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold">
-                  <span className="h-2 w-2 rounded-full bg-white" />
-                  DARSI Nurse
-                </div>
-                <h1 className="text-3xl font-extrabold tracking-tight">
-                  Login Perawat
-                </h1>
-                <p className="text-sm text-emerald-50/90">
-                  Akses data pasien dan triage secara aman menggunakan akun perawat.
-                </p>
-                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 text-xs leading-relaxed">
-                  Pastikan username dan password sesuai dengan akun yang sudah disetujui administrator.
-                </div>
-              </div>
-            </div>
-
-            <div className="p-8 sm:p-10">
-              <div className="mb-8 space-y-2">
-                <p className="text-xs font-bold tracking-widest text-slate-400">
-                  SISTEM LOGIN
-                </p>
-                <h2 className="text-2xl font-extrabold text-slate-800">
-                  Masuk ke Dashboard
-                </h2>
-                <p className="text-sm font-medium text-slate-500">
-                  Gunakan akun perawat yang sudah aktif.
-                </p>
-              </div>
-
-              <Separator className="my-6" />
-
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                {message && (
-                  <div className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-xs font-semibold text-red-600">
-                    {message}
-                  </div>
-                )}
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-                    Username
-                  </label>
-                  <Input
-                    type="text"
-                    value={username}
-                    onChange={(event) => setUsername(event.target.value)}
-                    placeholder="Masukkan username"
-                    className="w-full rounded-2xl text-sm font-semibold"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-                    Password
-                  </label>
-                  <Input
-                    type="password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    placeholder="Masukkan password"
-                    className="w-full rounded-2xl text-sm font-semibold"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full rounded-2xl"
-                >
-                  {loading ? "Memproses..." : "Masuk"}
-                </Button>
-              </form>
-
-              <p className="mt-6 text-xs font-medium text-slate-500">
-                Belum punya akun?{" "}
-                <Link href="/register" className="font-bold text-[#059669] hover:text-[#047857]">
-                  Daftar di sini
-                </Link>
-              </p>
-            </div>
+    <main className="app-auth-shell">
+      <div className="w-full max-w-md">
+        <div className="mb-8 text-center">
+          <div className="app-auth-brand-badge">
+            <ShieldCheck className="h-8 w-8" />
           </div>
+          <p className="app-auth-brand-title">DARSI</p>
+          <p className="app-auth-brand-subtitle">Clinical Intelligence Platform</p>
         </div>
+
+        <section className="app-auth-card">
+          <h1 className="app-auth-heading">Masuk ke Platform</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Gunakan akun perawat yang sudah aktif untuk mengakses dashboard.
+          </p>
+
+          <form className="mt-5 space-y-3" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="username" className="app-form-label">
+                Username
+              </label>
+              <div className="relative mt-1.5">
+                <UserRound className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  placeholder="Masukkan username"
+                  required
+                  className="h-11 pl-9"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="app-form-label">
+                Password
+              </label>
+              <div className="relative mt-1.5">
+                <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Masukkan password"
+                  required
+                  className="h-11 pl-9 pr-10"
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  onClick={() => setShowPassword((previous) => !previous)}
+                  aria-label={showPassword ? "Sembunyikan password" : "Lihat password"}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <Button
+              type="submit"
+              className="h-11 w-full rounded-xl text-base"
+              disabled={loading}
+            >
+              <ArrowRight className="h-4 w-4" />
+              {loading ? "Memproses..." : "Masuk"}
+            </Button>
+          </form>
+
+          {message ? (
+            <p className={`mt-3 text-sm ${isError ? "text-red-600" : "text-emerald-600"}`}>
+              {message}
+            </p>
+          ) : null}
+
+          <p className="mt-6 text-center text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Belum punya akun?{" "}
+            <Link href="/register" className="app-link-primary">
+              Daftar akun
+            </Link>
+          </p>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

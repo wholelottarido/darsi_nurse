@@ -1,7 +1,11 @@
 import pkg from 'pg';
 const { Client } = pkg;
 
-const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://ridho:labduafa@10.9.23.205:5435/darsi_nurse';
+const DATABASE_URL = process.env.HOSPITAL_CS_DATABASE_URL;
+
+if (!DATABASE_URL) {
+  throw new Error('HOSPITAL_CS_DATABASE_URL belum dikonfigurasi.');
+}
 
 async function createConversationsTable() {
   const client = new Client({
@@ -16,11 +20,11 @@ async function createConversationsTable() {
     await client.query('DROP TABLE IF EXISTS conversations CASCADE;');
     console.log('🗑️  Dropped existing conversations table (if any)');
 
-    // Create table dengan UUID
+    // Create table untuk hospital_cs patient ID
     await client.query(`
       CREATE TABLE conversations (
         id SERIAL PRIMARY KEY,
-        patient_id UUID NOT NULL REFERENCES pasien(id) ON DELETE CASCADE,
+        patient_id INTEGER NOT NULL REFERENCES patients(id) ON DELETE CASCADE,
         role VARCHAR(10) NOT NULL CHECK (role IN ('user', 'agent')),
         message TEXT NOT NULL,
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

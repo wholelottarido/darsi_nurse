@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DARSI Nurse",
-  description: "Digital Assistant for RSI",
+  title: "DARSI - Asisten Digital RSI Surabaya",
+  description:
+    "Platform perawat DARSI untuk manajemen pasien, triage IGD, dan dokumentasi klinis di RSI Surabaya",
 };
 
 export default function RootLayout({
@@ -25,11 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-background text-foreground" suppressHydrationWarning>
+      <body className={`${geistSans.variable} min-h-full bg-background text-foreground`} suppressHydrationWarning>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

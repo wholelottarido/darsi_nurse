@@ -20,6 +20,7 @@ const allowedStatuses = new Set(["draft", "final"]);
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const patientIdRaw = searchParams.get("patientId");
+  const registrationIdRaw = searchParams.get("registrationId");
   const limitRaw = searchParams.get("limit");
   const limit = Math.max(1, Number(limitRaw ?? "1"));
 
@@ -30,6 +31,10 @@ export async function GET(request: Request) {
   const patientId = Number(patientIdRaw);
   if (!Number.isFinite(patientId)) {
     return NextResponse.json({ error: "patientId must be a number" }, { status: 400 });
+  }
+  const registrationId = registrationIdRaw ? Number(registrationIdRaw) : null;
+  if (registrationIdRaw && !Number.isFinite(registrationId)) {
+    return NextResponse.json({ error: "registrationId must be a number" }, { status: 400 });
   }
 
   try {
@@ -52,11 +57,11 @@ export async function GET(request: Request) {
 
     const nurseId = nurseResult.rows[0].id as number;
     if (limit === 1) {
-      const note = await getLatestClinicalNote(patientId, nurseId);
+      const note = await getLatestClinicalNote(patientId, nurseId, registrationId);
       return NextResponse.json({ note });
     }
 
-    const notes = await listClinicalNotes(patientId, limit, nurseId);
+    const notes = await listClinicalNotes(patientId, limit, nurseId, registrationId);
     return NextResponse.json({ notes });
   } catch (error) {
     return NextResponse.json({ error: "Failed to load clinical notes" }, { status: 500 });
