@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 
-import { getCurrentLogAdmin } from "@/lib/admin-log-auth";
-import { getAgentInteractionLogById } from "@/lib/agent-interaction-logs";
+import { getCurrentLogAdmin } from "@/lib/auth/admin-log-auth";
+import { getAgentInteractionLogById } from "@/lib/logging/agent-interaction-logs";
 import {
   listAgentDataSourceLogsByInteractionId,
   listAgentPerformanceLogsByInteractionId,
-} from "@/lib/agent-observability-details";
+} from "@/lib/logging/agent-observability-details";
 
 export async function GET(
   _request: Request,

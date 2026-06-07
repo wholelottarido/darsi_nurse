@@ -1,19 +1,19 @@
 import { NextResponse } from "next/server";
 
-import { generateClinicalNotesFromSoap } from "@/lib/agent";
-import { saveAgentInteractionLog } from "@/lib/agent-interaction-logs";
+import { generateClinicalNotesFromSoap } from "@/lib/agents/triage-agent";
+import { saveAgentInteractionLog } from "@/lib/logging/agent-interaction-logs";
 import {
   saveAgentDataSourceLogs,
   saveAgentPerformanceLog,
   type SaveAgentDataSourceLogInput,
-} from "@/lib/agent-observability-details";
-import { createClinicalNote, getLatestClinicalNote } from "@/lib/clinical-notes";
-import { hospitalQuery } from "@/lib/hospital-db";
-import { buildMedicationRecommendation } from "@/lib/medication-recommendations";
-import { getCurrentPerawat } from "@/lib/nurse-auth";
-import { getClinicalLlmConfig } from "@/lib/llm-router";
-import { regenerateSoapAssessmentPlan } from "@/lib/soap-followup";
-import { resolveVisitContext } from "@/lib/visit-context";
+} from "@/lib/logging/agent-observability-details";
+import { createClinicalNote, getLatestClinicalNote } from "@/lib/clinical/clinical-notes";
+import { hospitalQuery } from "@/lib/db/hospital-db";
+import { buildMedicationRecommendation } from "@/lib/clinical/medication-recommendations";
+import { getCurrentPerawat } from "@/lib/auth/nurse-auth";
+import { getClinicalLlmConfig } from "@/lib/agents/llm-router";
+import { regenerateSoapAssessmentPlan } from "@/lib/clinical/soap-followup";
+import { resolveVisitContext } from "@/lib/clinical/visit-context";
 
 type ExternalDiagnosis = {
   icd_code?: string | null;

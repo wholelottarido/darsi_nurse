@@ -6,14 +6,14 @@ import {
   ADMIN_LOG_SESSION_MAX_AGE,
   createAdminLogSessionToken,
   isAdminLogCredential,
-} from "@/lib/admin-log-auth";
-import { hospitalQuery } from "@/lib/hospital-db";
+} from "@/lib/auth/admin-log-auth";
+import { hospitalQuery } from "@/lib/db/hospital-db";
 import {
   canPerawatLogin,
   createNurseSessionToken,
   NURSE_SESSION_COOKIE,
   NURSE_SESSION_MAX_AGE,
-} from "@/lib/nurse-auth";
+} from "@/lib/auth/nurse-auth";
 
 export const runtime = "nodejs";
 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
-import { hospitalQuery } from "@/lib/hospital-db";
+import { hospitalQuery } from "@/lib/db/hospital-db";
 
 export const runtime = "nodejs";
 

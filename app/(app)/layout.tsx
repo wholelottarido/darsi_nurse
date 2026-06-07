@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
-import AppShell from "../../src/components/AppShell";
-import { getCurrentPerawat } from "../../src/lib/nurse-auth";
+import AppShell from "@/components/layout/AppShell";
+import { getCurrentPerawat } from "@/lib/auth/nurse-auth";
 
 export default async function AppLayout({
   children,

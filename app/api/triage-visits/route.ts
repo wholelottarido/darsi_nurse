@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-import { createClinicalNote, getLatestClinicalNote } from '@/lib/clinical-notes';
-import { createTriageVisit, listVisitSummaries, resolveNurseId, resolveVisitContext } from '@/lib/visit-context';
+import { createClinicalNote, getLatestClinicalNote } from '@/lib/clinical/clinical-notes';
+import { createTriageVisit, listVisitSummaries, resolveNurseId, resolveVisitContext } from '@/lib/clinical/visit-context';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

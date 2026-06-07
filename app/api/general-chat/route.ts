@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { generalGuidanceChat, getGeneralGuidanceAgentStatus } from "@/lib/general-agent";
+import { generalGuidanceChat, getGeneralGuidanceAgentStatus } from "@/lib/agents/general-agent";
 
 export async function POST(request: NextRequest) {
   try {

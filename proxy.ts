@@ -7,7 +7,7 @@ import {
   isLandingPath,
   isNurseProductionHost,
   isPublicAuthPath,
-} from "./src/lib/portal-redirect";
+} from "./src/lib/auth/portal-redirect";
 
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host");

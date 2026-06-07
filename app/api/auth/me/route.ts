@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getCurrentPerawat } from "@/lib/nurse-auth";
+import { getCurrentPerawat } from "@/lib/auth/nurse-auth";
 
 export const dynamic = "force-dynamic";
 

@@ -4,9 +4,9 @@ import {
   createClinicalNote,
   getLatestClinicalNote,
   listClinicalNotes,
-} from "@/lib/clinical-notes";
-import { getCurrentPerawat } from "@/lib/nurse-auth";
-import { hospitalQuery } from "@/lib/hospital-db";
+} from "@/lib/clinical/clinical-notes";
+import { getCurrentPerawat } from "@/lib/auth/nurse-auth";
+import { hospitalQuery } from "@/lib/db/hospital-db";
 
 const allowedSources = new Set([
   "chat",

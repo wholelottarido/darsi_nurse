@@ -13,7 +13,7 @@ import {
   Stethoscope,
 } from "lucide-react";
 
-import MarkdownMessage from "@/components/MarkdownMessage";
+import MarkdownMessage from "@/components/chat/MarkdownMessage";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 

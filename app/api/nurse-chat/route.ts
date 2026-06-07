@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { saveAgentInteractionLog } from "@/lib/agent-interaction-logs";
+import { saveAgentInteractionLog } from "@/lib/logging/agent-interaction-logs";
 import {
   saveAgentDataSourceLogs,
   saveAgentPerformanceLog,
   type SaveAgentDataSourceLogInput,
-} from "@/lib/agent-observability-details";
+} from "@/lib/logging/agent-observability-details";
 import {
   buildSessionTitleFromMessage,
   createNurseChatSession,
@@ -15,10 +15,10 @@ import {
   listNurseChatSessions,
   saveNurseChatMessage,
   updateNurseChatSessionTitle,
-} from "@/lib/nurse-chat-history";
-import { getCurrentPerawat } from "@/lib/nurse-auth";
-import { getNurseChatStatus, routeNurseChat } from "@/lib/nurse-chat-router";
-import { getGeneralGuidanceLlmConfig, getOperationalLlmConfig } from "@/lib/llm-router";
+} from "@/lib/conversations/nurse-chat-history";
+import { getCurrentPerawat } from "@/lib/auth/nurse-auth";
+import { getNurseChatStatus, routeNurseChat } from "@/lib/conversations/nurse-chat-router";
+import { getGeneralGuidanceLlmConfig, getOperationalLlmConfig } from "@/lib/agents/llm-router";
 
 async function persistInteractionLog(input: Parameters<typeof saveAgentInteractionLog>[0]) {
   try {

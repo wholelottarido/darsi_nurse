@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
-import { hospitalQuery } from "@/lib/hospital-db";
-import { getCurrentPerawat } from "@/lib/nurse-auth";
-import { regenerateSoapAssessmentPlan } from "@/lib/soap-followup";
+import { hospitalQuery } from "@/lib/db/hospital-db";
+import { getCurrentPerawat } from "@/lib/auth/nurse-auth";
+import { regenerateSoapAssessmentPlan } from "@/lib/clinical/soap-followup";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

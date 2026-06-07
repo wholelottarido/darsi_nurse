@@ -1,0 +1,660 @@
+2026-04-13 19:48:11 +07:00: 2026-04-13 19:48:11 +07:00: 2026-04-13 19:48:12 +07:00: 2026-04-13 19:48:12 +07:00: 2026-04-13 19:48:13 +07:00: 2026-04-13 19:48:13 +07:00: 2026-04-13 19:48:13 +07:00: 2026-04-13 19:48:14 +07:00: 2026-04-13 19:48:14 +07:00: 2026-04-13 19:48:15 +07:00: 2026-04-13 19:48:36 +07:00: 2026-04-13 19:48:36 +07:00: 2026-04-13 19:48:37 +07:00: 2026-04-13 19:48:37 +07:00: 2026-04-13 19:48:38 +07:00: 2026-04-13 19:48:38 +07:00: 2026-04-13 19:48:39 +07:00: 2026-04-13 19:48:39 +07:00: 2026-04-13 19:48:40 +07:00: 2026-04-13 19:48:40 +07:00: 2026-04-13 19:49:30 +07:00: 2026-04-13 19:49:30 +07:00: 2026-04-13 19:49:31 +07:00: 2026-04-13 19:49:31 +07:00: 2026-04-13 19:49:32 +07:00: 2026-04-13 19:49:32 +07:00: 2026-04-13 19:49:33 +07:00: 2026-04-13 19:49:33 +07:00: 2026-04-13 19:49:34 +07:00: 2026-04-13 19:49:34 +07:00: 2026-04-14 13:28:19 +07:00: 2026-04-14 13:28:20 +07:00: 2026-04-14 13:28:20 +07:00: 2026-04-14 13:28:21 +07:00: 2026-04-14 13:28:21 +07:00: 2026-04-14 13:28:21 +07:00: 2026-04-14 13:28:22 +07:00: 2026-04-14 13:28:22 +07:00: 2026-04-14 13:28:23 +07:00: 2026-04-14 13:28:23 +07:00: 2026-04-14 13:28:45 +07:00: 2026-04-14 13:28:46 +07:00: 2026-04-14 13:28:46 +07:00: 2026-04-14 13:28:47 +07:00: 2026-04-14 13:28:47 +07:00: 2026-04-14 13:28:48 +07:00: 2026-04-14 13:28:48 +07:00: 2026-04-14 13:28:49 +07:00: 2026-04-14 13:28:49 +07:00: 2026-04-14 13:28:49 +07:00: 2026-05-26 11:15:21 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:21 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:21 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:21 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:21 +07:00:   errno: -99,
+2026-05-26 11:15:21 +07:00:   syscall: 'listen',
+2026-05-26 11:15:21 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:21 +07:00:   port: 6767
+2026-05-26 11:15:21 +07:00: }
+2026-05-26 11:15:22 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:22 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:22 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:22 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:22 +07:00:   errno: -99,
+2026-05-26 11:15:22 +07:00:   syscall: 'listen',
+2026-05-26 11:15:22 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:22 +07:00:   port: 6767
+2026-05-26 11:15:22 +07:00: }
+2026-05-26 11:15:23 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:23 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:23 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:23 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:23 +07:00:   errno: -99,
+2026-05-26 11:15:23 +07:00:   syscall: 'listen',
+2026-05-26 11:15:23 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:23 +07:00:   port: 6767
+2026-05-26 11:15:23 +07:00: }
+2026-05-26 11:15:23 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:23 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:23 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:23 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:23 +07:00:   errno: -99,
+2026-05-26 11:15:23 +07:00:   syscall: 'listen',
+2026-05-26 11:15:23 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:23 +07:00:   port: 6767
+2026-05-26 11:15:23 +07:00: }
+2026-05-26 11:15:24 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:24 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:24 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:24 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:24 +07:00:   errno: -99,
+2026-05-26 11:15:24 +07:00:   syscall: 'listen',
+2026-05-26 11:15:24 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:24 +07:00:   port: 6767
+2026-05-26 11:15:24 +07:00: }
+2026-05-26 11:15:25 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:25 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:25 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:25 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:25 +07:00:   errno: -99,
+2026-05-26 11:15:25 +07:00:   syscall: 'listen',
+2026-05-26 11:15:25 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:25 +07:00:   port: 6767
+2026-05-26 11:15:25 +07:00: }
+2026-05-26 11:15:26 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:26 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:26 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:26 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:26 +07:00:   errno: -99,
+2026-05-26 11:15:26 +07:00:   syscall: 'listen',
+2026-05-26 11:15:26 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:26 +07:00:   port: 6767
+2026-05-26 11:15:26 +07:00: }
+2026-05-26 11:15:27 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:27 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:27 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:27 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:27 +07:00:   errno: -99,
+2026-05-26 11:15:27 +07:00:   syscall: 'listen',
+2026-05-26 11:15:27 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:27 +07:00:   port: 6767
+2026-05-26 11:15:27 +07:00: }
+2026-05-26 11:15:27 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:27 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:27 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:27 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:27 +07:00:   errno: -99,
+2026-05-26 11:15:27 +07:00:   syscall: 'listen',
+2026-05-26 11:15:27 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:27 +07:00:   port: 6767
+2026-05-26 11:15:27 +07:00: }
+2026-05-26 11:15:28 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:28 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:28 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:28 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:28 +07:00:   errno: -99,
+2026-05-26 11:15:28 +07:00:   syscall: 'listen',
+2026-05-26 11:15:28 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:28 +07:00:   port: 6767
+2026-05-26 11:15:28 +07:00: }
+2026-05-26 11:15:49 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:49 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:49 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:49 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:49 +07:00:   errno: -99,
+2026-05-26 11:15:49 +07:00:   syscall: 'listen',
+2026-05-26 11:15:49 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:49 +07:00:   port: 6767
+2026-05-26 11:15:49 +07:00: }
+2026-05-26 11:15:50 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:50 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:50 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:50 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:50 +07:00:   errno: -99,
+2026-05-26 11:15:50 +07:00:   syscall: 'listen',
+2026-05-26 11:15:50 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:50 +07:00:   port: 6767
+2026-05-26 11:15:50 +07:00: }
+2026-05-26 11:15:50 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:50 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:50 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:50 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:50 +07:00:   errno: -99,
+2026-05-26 11:15:50 +07:00:   syscall: 'listen',
+2026-05-26 11:15:50 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:50 +07:00:   port: 6767
+2026-05-26 11:15:50 +07:00: }
+2026-05-26 11:15:51 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:51 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:51 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:51 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:51 +07:00:   errno: -99,
+2026-05-26 11:15:51 +07:00:   syscall: 'listen',
+2026-05-26 11:15:51 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:51 +07:00:   port: 6767
+2026-05-26 11:15:51 +07:00: }
+2026-05-26 11:15:52 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:52 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:52 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:52 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:52 +07:00:   errno: -99,
+2026-05-26 11:15:52 +07:00:   syscall: 'listen',
+2026-05-26 11:15:52 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:52 +07:00:   port: 6767
+2026-05-26 11:15:52 +07:00: }
+2026-05-26 11:15:53 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:53 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:53 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:53 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:53 +07:00:   errno: -99,
+2026-05-26 11:15:53 +07:00:   syscall: 'listen',
+2026-05-26 11:15:53 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:53 +07:00:   port: 6767
+2026-05-26 11:15:53 +07:00: }
+2026-05-26 11:15:54 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:54 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:54 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:54 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:54 +07:00:   errno: -99,
+2026-05-26 11:15:54 +07:00:   syscall: 'listen',
+2026-05-26 11:15:54 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:54 +07:00:   port: 6767
+2026-05-26 11:15:54 +07:00: }
+2026-05-26 11:15:54 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:54 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:54 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:54 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:54 +07:00:   errno: -99,
+2026-05-26 11:15:54 +07:00:   syscall: 'listen',
+2026-05-26 11:15:54 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:54 +07:00:   port: 6767
+2026-05-26 11:15:54 +07:00: }
+2026-05-26 11:15:55 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:55 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:55 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:55 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:55 +07:00:   errno: -99,
+2026-05-26 11:15:55 +07:00:   syscall: 'listen',
+2026-05-26 11:15:55 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:55 +07:00:   port: 6767
+2026-05-26 11:15:55 +07:00: }
+2026-05-26 11:15:56 +07:00: ⨯ Failed to start server
+2026-05-26 11:15:56 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:15:56 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:15:56 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:15:56 +07:00:   errno: -99,
+2026-05-26 11:15:56 +07:00:   syscall: 'listen',
+2026-05-26 11:15:56 +07:00:   address: '10.9.23.21',
+2026-05-26 11:15:56 +07:00:   port: 6767
+2026-05-26 11:15:56 +07:00: }
+2026-05-26 11:17:35 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:35 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:35 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:35 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:35 +07:00:   errno: -99,
+2026-05-26 11:17:35 +07:00:   syscall: 'listen',
+2026-05-26 11:17:35 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:35 +07:00:   port: 6767
+2026-05-26 11:17:35 +07:00: }
+2026-05-26 11:17:36 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:36 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:36 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:36 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:36 +07:00:   errno: -99,
+2026-05-26 11:17:36 +07:00:   syscall: 'listen',
+2026-05-26 11:17:36 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:36 +07:00:   port: 6767
+2026-05-26 11:17:36 +07:00: }
+2026-05-26 11:17:37 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:37 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:37 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:37 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:37 +07:00:   errno: -99,
+2026-05-26 11:17:37 +07:00:   syscall: 'listen',
+2026-05-26 11:17:37 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:37 +07:00:   port: 6767
+2026-05-26 11:17:37 +07:00: }
+2026-05-26 11:17:37 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:37 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:37 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:37 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:37 +07:00:   errno: -99,
+2026-05-26 11:17:37 +07:00:   syscall: 'listen',
+2026-05-26 11:17:37 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:37 +07:00:   port: 6767
+2026-05-26 11:17:37 +07:00: }
+2026-05-26 11:17:38 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:38 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:38 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:38 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:38 +07:00:   errno: -99,
+2026-05-26 11:17:38 +07:00:   syscall: 'listen',
+2026-05-26 11:17:38 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:38 +07:00:   port: 6767
+2026-05-26 11:17:38 +07:00: }
+2026-05-26 11:17:39 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:39 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:39 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:39 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:39 +07:00:   errno: -99,
+2026-05-26 11:17:39 +07:00:   syscall: 'listen',
+2026-05-26 11:17:39 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:39 +07:00:   port: 6767
+2026-05-26 11:17:39 +07:00: }
+2026-05-26 11:17:40 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:40 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:40 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:40 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:40 +07:00:   errno: -99,
+2026-05-26 11:17:40 +07:00:   syscall: 'listen',
+2026-05-26 11:17:40 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:40 +07:00:   port: 6767
+2026-05-26 11:17:40 +07:00: }
+2026-05-26 11:17:41 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:41 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:41 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:41 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:41 +07:00:   errno: -99,
+2026-05-26 11:17:41 +07:00:   syscall: 'listen',
+2026-05-26 11:17:41 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:41 +07:00:   port: 6767
+2026-05-26 11:17:41 +07:00: }
+2026-05-26 11:17:42 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:42 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:42 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:42 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:42 +07:00:   errno: -99,
+2026-05-26 11:17:42 +07:00:   syscall: 'listen',
+2026-05-26 11:17:42 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:42 +07:00:   port: 6767
+2026-05-26 11:17:42 +07:00: }
+2026-05-26 11:17:42 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:42 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:42 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:42 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:42 +07:00:   errno: -99,
+2026-05-26 11:17:42 +07:00:   syscall: 'listen',
+2026-05-26 11:17:42 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:42 +07:00:   port: 6767
+2026-05-26 11:17:42 +07:00: }
+2026-05-26 11:17:56 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:56 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:56 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:56 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:56 +07:00:   errno: -99,
+2026-05-26 11:17:56 +07:00:   syscall: 'listen',
+2026-05-26 11:17:56 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:56 +07:00:   port: 6767
+2026-05-26 11:17:56 +07:00: }
+2026-05-26 11:17:56 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:56 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:56 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:56 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:56 +07:00:   errno: -99,
+2026-05-26 11:17:56 +07:00:   syscall: 'listen',
+2026-05-26 11:17:56 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:56 +07:00:   port: 6767
+2026-05-26 11:17:56 +07:00: }
+2026-05-26 11:17:57 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:57 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:57 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:57 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:57 +07:00:   errno: -99,
+2026-05-26 11:17:57 +07:00:   syscall: 'listen',
+2026-05-26 11:17:57 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:57 +07:00:   port: 6767
+2026-05-26 11:17:57 +07:00: }
+2026-05-26 11:17:58 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:58 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:58 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:58 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:58 +07:00:   errno: -99,
+2026-05-26 11:17:58 +07:00:   syscall: 'listen',
+2026-05-26 11:17:58 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:58 +07:00:   port: 6767
+2026-05-26 11:17:58 +07:00: }
+2026-05-26 11:17:59 +07:00: ⨯ Failed to start server
+2026-05-26 11:17:59 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:17:59 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:17:59 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:17:59 +07:00:   errno: -99,
+2026-05-26 11:17:59 +07:00:   syscall: 'listen',
+2026-05-26 11:17:59 +07:00:   address: '10.9.23.21',
+2026-05-26 11:17:59 +07:00:   port: 6767
+2026-05-26 11:17:59 +07:00: }
+2026-05-26 11:18:00 +07:00: ⨯ Failed to start server
+2026-05-26 11:18:00 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:18:00 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:18:00 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:18:00 +07:00:   errno: -99,
+2026-05-26 11:18:00 +07:00:   syscall: 'listen',
+2026-05-26 11:18:00 +07:00:   address: '10.9.23.21',
+2026-05-26 11:18:00 +07:00:   port: 6767
+2026-05-26 11:18:00 +07:00: }
+2026-05-26 11:18:00 +07:00: ⨯ Failed to start server
+2026-05-26 11:18:00 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:18:00 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:18:00 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:18:00 +07:00:   errno: -99,
+2026-05-26 11:18:00 +07:00:   syscall: 'listen',
+2026-05-26 11:18:00 +07:00:   address: '10.9.23.21',
+2026-05-26 11:18:00 +07:00:   port: 6767
+2026-05-26 11:18:00 +07:00: }
+2026-05-26 11:18:01 +07:00: ⨯ Failed to start server
+2026-05-26 11:18:01 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:18:01 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:18:01 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:18:01 +07:00:   errno: -99,
+2026-05-26 11:18:01 +07:00:   syscall: 'listen',
+2026-05-26 11:18:01 +07:00:   address: '10.9.23.21',
+2026-05-26 11:18:01 +07:00:   port: 6767
+2026-05-26 11:18:01 +07:00: }
+2026-05-26 11:18:02 +07:00: ⨯ Failed to start server
+2026-05-26 11:18:02 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:18:02 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:18:02 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:18:02 +07:00:   errno: -99,
+2026-05-26 11:18:02 +07:00:   syscall: 'listen',
+2026-05-26 11:18:02 +07:00:   address: '10.9.23.21',
+2026-05-26 11:18:02 +07:00:   port: 6767
+2026-05-26 11:18:02 +07:00: }
+2026-05-26 11:18:03 +07:00: ⨯ Failed to start server
+2026-05-26 11:18:03 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:18:03 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:18:03 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:18:03 +07:00:   errno: -99,
+2026-05-26 11:18:03 +07:00:   syscall: 'listen',
+2026-05-26 11:18:03 +07:00:   address: '10.9.23.21',
+2026-05-26 11:18:03 +07:00:   port: 6767
+2026-05-26 11:18:03 +07:00: }
+2026-05-26 11:19:48 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:48 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:48 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:48 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:48 +07:00:   errno: -99,
+2026-05-26 11:19:48 +07:00:   syscall: 'listen',
+2026-05-26 11:19:48 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:48 +07:00:   port: 6767
+2026-05-26 11:19:48 +07:00: }
+2026-05-26 11:19:49 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:49 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:49 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:49 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:49 +07:00:   errno: -99,
+2026-05-26 11:19:49 +07:00:   syscall: 'listen',
+2026-05-26 11:19:49 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:49 +07:00:   port: 6767
+2026-05-26 11:19:49 +07:00: }
+2026-05-26 11:19:50 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:50 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:50 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:50 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:50 +07:00:   errno: -99,
+2026-05-26 11:19:50 +07:00:   syscall: 'listen',
+2026-05-26 11:19:50 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:50 +07:00:   port: 6767
+2026-05-26 11:19:50 +07:00: }
+2026-05-26 11:19:51 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:51 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:51 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:51 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:51 +07:00:   errno: -99,
+2026-05-26 11:19:51 +07:00:   syscall: 'listen',
+2026-05-26 11:19:51 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:51 +07:00:   port: 6767
+2026-05-26 11:19:51 +07:00: }
+2026-05-26 11:19:51 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:51 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:51 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:51 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:51 +07:00:   errno: -99,
+2026-05-26 11:19:51 +07:00:   syscall: 'listen',
+2026-05-26 11:19:51 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:51 +07:00:   port: 6767
+2026-05-26 11:19:51 +07:00: }
+2026-05-26 11:19:52 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:52 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:52 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:52 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:52 +07:00:   errno: -99,
+2026-05-26 11:19:52 +07:00:   syscall: 'listen',
+2026-05-26 11:19:52 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:52 +07:00:   port: 6767
+2026-05-26 11:19:52 +07:00: }
+2026-05-26 11:19:53 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:53 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:53 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:53 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:53 +07:00:   errno: -99,
+2026-05-26 11:19:53 +07:00:   syscall: 'listen',
+2026-05-26 11:19:53 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:53 +07:00:   port: 6767
+2026-05-26 11:19:53 +07:00: }
+2026-05-26 11:19:54 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:54 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:54 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:54 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:54 +07:00:   errno: -99,
+2026-05-26 11:19:54 +07:00:   syscall: 'listen',
+2026-05-26 11:19:54 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:54 +07:00:   port: 6767
+2026-05-26 11:19:54 +07:00: }
+2026-05-26 11:19:55 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:55 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:55 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:55 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:55 +07:00:   errno: -99,
+2026-05-26 11:19:55 +07:00:   syscall: 'listen',
+2026-05-26 11:19:55 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:55 +07:00:   port: 6767
+2026-05-26 11:19:55 +07:00: }
+2026-05-26 11:19:56 +07:00: ⨯ Failed to start server
+2026-05-26 11:19:56 +07:00: Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767
+2026-05-26 11:19:56 +07:00:     at <unknown> (Error: listen EADDRNOTAVAIL: address not available 10.9.23.21:6767) {
+2026-05-26 11:19:56 +07:00:   code: 'EADDRNOTAVAIL',
+2026-05-26 11:19:56 +07:00:   errno: -99,
+2026-05-26 11:19:56 +07:00:   syscall: 'listen',
+2026-05-26 11:19:56 +07:00:   address: '10.9.23.21',
+2026-05-26 11:19:56 +07:00:   port: 6767
+2026-05-26 11:19:56 +07:00: }
+2026-05-26 11:26:27 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:27 +07:00: 
+2026-05-26 11:26:27 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:27 +07:00: - PID:          1017743
+2026-05-26 11:26:27 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:27 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:27 +07:00: 
+2026-05-26 11:26:27 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:29 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:29 +07:00: 
+2026-05-26 11:26:29 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:29 +07:00: - PID:          1017743
+2026-05-26 11:26:29 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:29 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:29 +07:00: 
+2026-05-26 11:26:29 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:31 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:31 +07:00: 
+2026-05-26 11:26:31 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:31 +07:00: - PID:          1017743
+2026-05-26 11:26:31 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:31 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:31 +07:00: 
+2026-05-26 11:26:31 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:33 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:33 +07:00: 
+2026-05-26 11:26:33 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:33 +07:00: - PID:          1017743
+2026-05-26 11:26:33 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:33 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:33 +07:00: 
+2026-05-26 11:26:33 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:35 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:35 +07:00: 
+2026-05-26 11:26:35 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:35 +07:00: - PID:          1017743
+2026-05-26 11:26:35 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:35 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:35 +07:00: 
+2026-05-26 11:26:35 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:37 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:37 +07:00: 
+2026-05-26 11:26:37 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:37 +07:00: - PID:          1017743
+2026-05-26 11:26:37 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:37 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:37 +07:00: 
+2026-05-26 11:26:37 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:39 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:39 +07:00: 
+2026-05-26 11:26:39 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:39 +07:00: - PID:          1017743
+2026-05-26 11:26:39 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:39 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:39 +07:00: 
+2026-05-26 11:26:39 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:41 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:41 +07:00: 
+2026-05-26 11:26:41 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:41 +07:00: - PID:          1017743
+2026-05-26 11:26:41 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:41 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:41 +07:00: 
+2026-05-26 11:26:41 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:43 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:43 +07:00: 
+2026-05-26 11:26:43 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:43 +07:00: - PID:          1017743
+2026-05-26 11:26:43 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:43 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:43 +07:00: 
+2026-05-26 11:26:43 +07:00: Run kill 1017743 to stop it.
+2026-05-26 11:26:45 +07:00: ⨯ Another next dev server is already running.
+2026-05-26 11:26:45 +07:00: 
+2026-05-26 11:26:45 +07:00: - Local:        http://localhost:3019
+2026-05-26 11:26:45 +07:00: - PID:          1017743
+2026-05-26 11:26:45 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-05-26 11:26:45 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-05-26 11:26:45 +07:00: 
+2026-05-26 11:26:45 +07:00: Run kill 1017743 to stop it.
+2026-06-02 15:53:47 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:53:47 +07:00: 
+2026-06-02 15:53:47 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:53:47 +07:00: - PID:          2652118
+2026-06-02 15:53:47 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:53:47 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:53:47 +07:00: 
+2026-06-02 15:53:47 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:53:47 +07:00: npm notice
+2026-06-02 15:53:47 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:53:47 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:53:47 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:53:47 +07:00: npm notice
+2026-06-02 15:53:49 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:53:49 +07:00: 
+2026-06-02 15:53:49 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:53:49 +07:00: - PID:          2652118
+2026-06-02 15:53:49 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:53:49 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:53:49 +07:00: 
+2026-06-02 15:53:49 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:53:49 +07:00: npm notice
+2026-06-02 15:53:49 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:53:49 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:53:49 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:53:49 +07:00: npm notice
+2026-06-02 15:53:52 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:53:52 +07:00: 
+2026-06-02 15:53:52 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:53:52 +07:00: - PID:          2652118
+2026-06-02 15:53:52 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:53:52 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:53:52 +07:00: 
+2026-06-02 15:53:52 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:53:52 +07:00: npm notice
+2026-06-02 15:53:52 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:53:52 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:53:52 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:53:52 +07:00: npm notice
+2026-06-02 15:53:54 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:53:54 +07:00: 
+2026-06-02 15:53:54 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:53:54 +07:00: - PID:          2652118
+2026-06-02 15:53:54 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:53:54 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:53:54 +07:00: 
+2026-06-02 15:53:54 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:53:54 +07:00: npm notice
+2026-06-02 15:53:54 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:53:54 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:53:54 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:53:54 +07:00: npm notice
+2026-06-02 15:53:57 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:53:57 +07:00: 
+2026-06-02 15:53:57 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:53:57 +07:00: - PID:          2652118
+2026-06-02 15:53:57 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:53:57 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:53:57 +07:00: 
+2026-06-02 15:53:57 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:53:57 +07:00: npm notice
+2026-06-02 15:53:57 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:53:57 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:53:57 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:53:57 +07:00: npm notice
+2026-06-02 15:53:59 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:53:59 +07:00: 
+2026-06-02 15:53:59 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:53:59 +07:00: - PID:          2652118
+2026-06-02 15:53:59 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:53:59 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:53:59 +07:00: 
+2026-06-02 15:53:59 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:53:59 +07:00: npm notice
+2026-06-02 15:53:59 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:53:59 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:53:59 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:53:59 +07:00: npm notice
+2026-06-02 15:54:02 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:54:02 +07:00: 
+2026-06-02 15:54:02 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:54:02 +07:00: - PID:          2652118
+2026-06-02 15:54:02 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:54:02 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:54:02 +07:00: 
+2026-06-02 15:54:02 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:54:02 +07:00: npm notice
+2026-06-02 15:54:02 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:54:02 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:54:02 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:54:02 +07:00: npm notice
+2026-06-02 15:54:04 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:54:04 +07:00: 
+2026-06-02 15:54:04 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:54:04 +07:00: - PID:          2652118
+2026-06-02 15:54:04 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:54:04 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:54:04 +07:00: 
+2026-06-02 15:54:04 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:54:04 +07:00: npm notice
+2026-06-02 15:54:04 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:54:04 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:54:04 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:54:04 +07:00: npm notice
+2026-06-02 15:54:07 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:54:07 +07:00: 
+2026-06-02 15:54:07 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:54:07 +07:00: - PID:          2652118
+2026-06-02 15:54:07 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:54:07 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:54:07 +07:00: 
+2026-06-02 15:54:07 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:54:07 +07:00: npm notice
+2026-06-02 15:54:07 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:54:07 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:54:07 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:54:07 +07:00: npm notice
+2026-06-02 15:54:09 +07:00: ⨯ Another next dev server is already running.
+2026-06-02 15:54:09 +07:00: 
+2026-06-02 15:54:09 +07:00: - Local:        http://localhost:3001
+2026-06-02 15:54:09 +07:00: - PID:          2652118
+2026-06-02 15:54:09 +07:00: - Dir:          /home/ridho/volt/darsi-nurse
+2026-06-02 15:54:09 +07:00: - Log:          .next/dev/logs/next-development.log
+2026-06-02 15:54:09 +07:00: 
+2026-06-02 15:54:09 +07:00: Run kill 2652118 to stop it.
+2026-06-02 15:54:09 +07:00: npm notice
+2026-06-02 15:54:09 +07:00: npm notice New major version of npm available! 10.9.4 -> 11.16.0
+2026-06-02 15:54:09 +07:00: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2026-06-02 15:54:09 +07:00: npm notice To update run: npm install -g npm@11.16.0
+2026-06-02 15:54:09 +07:00: npm notice

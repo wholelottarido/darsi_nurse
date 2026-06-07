@@ -4,11 +4,11 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Search, X } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import type { AgentInteractionLog } from "@/lib/agent-interaction-logs";
+import type { AgentInteractionLog } from "@/lib/logging/agent-interaction-logs";
 import type {
   AgentDataSourceLog,
   AgentPerformanceLog,
-} from "@/lib/agent-observability-details";
+} from "@/lib/logging/agent-observability-details";
 
 type RegisteredNurseOption = {
   id: number;

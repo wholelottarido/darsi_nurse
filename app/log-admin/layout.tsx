@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { getCurrentLogAdmin } from "@/lib/admin-log-auth";
+import { getCurrentLogAdmin } from "@/lib/auth/admin-log-auth";
 
 export default async function LogAdminLayout({
   children,

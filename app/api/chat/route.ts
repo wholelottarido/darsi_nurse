@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { chat } from '@/lib/agent';
-import { getClinicalLlmConfig } from '@/lib/llm-router';
-import { saveAgentInteractionLog } from '@/lib/agent-interaction-logs';
+import { chat } from '@/lib/agents/triage-agent';
+import { getClinicalLlmConfig } from '@/lib/agents/llm-router';
+import { saveAgentInteractionLog } from '@/lib/logging/agent-interaction-logs';
 import {
   saveAgentDataSourceLogs,
   saveAgentPerformanceLog,
   type SaveAgentDataSourceLogInput,
-} from '@/lib/agent-observability-details';
-import { getConversationHistory } from '@/lib/conversations';
-import { getCurrentPerawat } from '@/lib/nurse-auth';
-import { listVisitSummaries, resolveVisitContext } from '@/lib/visit-context';
+} from '@/lib/logging/agent-observability-details';
+import { getConversationHistory } from '@/lib/conversations/conversations';
+import { getCurrentPerawat } from '@/lib/auth/nurse-auth';
+import { listVisitSummaries, resolveVisitContext } from '@/lib/clinical/visit-context';
 
 async function persistInteractionLog(input: Parameters<typeof saveAgentInteractionLog>[0]) {
   try {

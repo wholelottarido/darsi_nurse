@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getOperationalAgentStatus, operationalChat } from "@/lib/operational-agent";
+import { getOperationalAgentStatus, operationalChat } from "@/lib/agents/operational-agent";
 
 export async function POST(request: NextRequest) {
   try {

@@ -1,8 +1,8 @@
-import { LogAdminLogoutButton } from "@/components/log-admin-logout-button";
+import { LogAdminLogoutButton } from "@/components/log-admin/log-admin-logout-button";
 import { LogAdminDashboard } from "@/components/log-admin/log-admin-dashboard";
-import { getCurrentLogAdmin } from "@/lib/admin-log-auth";
-import { listAgentInteractionLogs } from "@/lib/agent-interaction-logs";
-import { hospitalQuery } from "@/lib/hospital-db";
+import { getCurrentLogAdmin } from "@/lib/auth/admin-log-auth";
+import { listAgentInteractionLogs } from "@/lib/logging/agent-interaction-logs";
+import { hospitalQuery } from "@/lib/db/hospital-db";
 
 type RegisteredNurseOption = {
   id: number;

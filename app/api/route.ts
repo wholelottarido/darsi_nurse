@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { getHospitalPatientsByPerawatUsername } from '../../src/lib/get-hospital-patients';
-import { createPatient } from '../../src/lib/post-patient';
-import { deletePatient } from '../../src/lib/delete-patient';
-import { updatePatientMedis } from '../../src/lib/update-patient';
-import { getCurrentPerawat } from '@/lib/nurse-auth';
+import { getHospitalPatientsByPerawatUsername } from '@/lib/patients/get-hospital-patients';
+import { createPatient } from '@/lib/patients/post-patient';
+import { deletePatient } from '@/lib/patients/delete-patient';
+import { updatePatientMedis } from '@/lib/patients/update-patient';
+import { getCurrentPerawat } from '@/lib/auth/nurse-auth';
 
 export async function GET() {
   try {
