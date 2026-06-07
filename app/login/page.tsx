@@ -49,7 +49,7 @@ export default function LoginPage() {
         return;
       }
 
-      window.location.assign("/dashboard");
+      window.location.assign(typeof data.redirectTo === "string" ? data.redirectTo : "/dashboard");
     } catch (error) {
       console.error("Login error:", error);
       setMessage(

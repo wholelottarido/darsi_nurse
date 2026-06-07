@@ -1,7 +1,7 @@
 import { Agent } from '@voltagent/core';
 
 import { hospitalQuery } from '@/lib/hospital-db';
-import { getChatModel, getResolvedLlmConfig } from '@/lib/llm';
+import { getClinicalLlmConfig, getClinicalModel } from '@/lib/llm-router';
 
 type ExternalDiagnosis = {
   icd_code?: string | null;
@@ -44,7 +44,7 @@ type SoapFollowUpResult = {
   error?: string;
 };
 
-const soapModel = getChatModel();
+const soapModel = getClinicalModel();
 
 let soapFollowUpAgent: Agent | null = null;
 
@@ -228,7 +228,7 @@ async function getSoapFollowUpAgent() {
     return soapFollowUpAgent;
   }
 
-  const llmConfig = getResolvedLlmConfig();
+  const llmConfig = getClinicalLlmConfig();
 
   console.log('🧠 SOAP follow-up model:', llmConfig.model);
 

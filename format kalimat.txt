@@ -1,0 +1,126 @@
+Berdasarkan dokumentasi yang ada, VoltAgent mendukung **markdown formatting** untuk respons teks dengan mengaktifkan properti `markdown: true` pada `Agent`.
+
+Contoh dari dokumentasi `Agent Overview`:
+
+```ts
+const agent = new Agent({
+  name: "Assistant",
+  instructions: "Answer questions clearly.",
+  model: openai("gpt-4o"),
+  markdown: true,
+});
+
+const result = await agent.generateText("Explain how to make tea.");
+// Response will be formatted with markdown
+```
+
+## Cara mengaktifkannya
+
+Tambahkan `markdown: true` saat membuat agent:
+
+```ts
+import { Agent } from "@voltagent/core";
+import { openai } from "@ai-sdk/openai";
+
+const agent = new Agent({
+  name: "Assistant",
+  instructions: "Jawab dengan format markdown yang rapi.",
+  model: openai("gpt-4o"),
+  markdown: true,
+});
+```
+
+Kalau Anda memakai model lokal, polanya tetap sama. Yang berubah hanya bagian `model`:
+
+```ts
+import { Agent } from "@voltagent/core";
+import { createOllama } from "ollama-ai-provider-v2";
+
+const ollama = createOllama({
+  baseURL: process.env.OLLAMA_HOST ?? "http://localhost:11434/api",
+});
+
+const agent = new Agent({
+  name: "Assistant",
+  instructions: "Jawab dengan format markdown yang rapi.",
+  model: ollama("llama3.2:latest"),
+  markdown: true,
+});
+```
+
+## Untuk bold dan miring
+
+Dengan `markdown: true`, agent akan menggunakan sintaks markdown seperti:
+- heading
+- list
+- **bold**
+- *italic*
+
+Jadi untuk **bold** dan **miring**, dukungannya memang ada lewat markdown.
+
+## Untuk underline
+
+Dari konteks yang tersedia, dokumentasi hanya menyebut markdown syntax seperti:
+- headings
+- lists
+- bold text
+
+Tidak ada penjelasan khusus bahwa VoltAgent menyediakan format **underline**.
+
+Jadi yang bisa dipastikan dari konteks:
+- **bold**: didukung lewat markdown
+- **miring**: didukung lewat markdown
+- **underline**: tidak disebutkan secara eksplisit di dokumentasi yang tersedia
+
+## Supaya hasilnya benar-benar muncul di UI
+
+Ada satu hal penting: `markdown: true` membantu agent menghasilkan teks dalam format markdown, tetapi **UI Anda juga harus merender markdown**. Kalau UI hanya menampilkan string biasa, maka yang terlihat mungkin hanya karakter seperti:
+
+```txt
+**tebal**
+*miring*
+```
+
+bukan format visualnya.
+
+Dari konteks Next.js yang ada, contoh UI hanya menampilkan:
+
+```tsx
+<div>{message.content}</div>
+```
+
+Artinya, contoh itu hanya merender teks biasa. Jadi kalau Anda ingin bold atau miring benar-benar tampil sebagai format visual, Anda perlu memastikan komponen frontend Anda merender markdown, bukan plain text.
+
+## Ringkasnya
+
+1. Aktifkan `markdown: true` pada `Agent`
+2. Beri `instructions` agar agent menjawab dengan format markdown
+3. Pastikan frontend Anda merender markdown
+
+Contoh agent:
+
+```ts
+const agent = new Agent({
+  name: "Nurse Assistant",
+  instructions:
+    "Jawab dengan markdown yang rapi. Gunakan **bold** untuk poin penting dan *italic* untuk penekanan.",
+  model: ollama("medgemma"),
+  markdown: true,
+});
+```
+
+## Batasan dari konteks
+
+Saya hanya bisa memastikan dari dokumentasi yang diberikan bahwa:
+- markdown formatting tersedia
+- markdown mencakup bold, list, heading, dan format markdown umum
+
+Saya **tidak bisa memastikan dari konteks ini**:
+- apakah underline didukung langsung oleh VoltAgent
+- library frontend markdown apa yang sebaiknya dipakai untuk render underline
+- apakah HTML inline untuk underline diizinkan di renderer UI Anda
+
+Kalau Anda mau, saya bisa bantu lanjut buatkan:
+1. contoh `Agent` dengan `markdown: true`
+2. contoh UI Next.js agar output markdown benar-benar tampil sebagai **bold** dan *italic*
+3. strategi untuk menangani **underline** di frontend Anda sesuai renderer yang dipakai

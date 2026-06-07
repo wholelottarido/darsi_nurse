@@ -257,6 +257,28 @@ export default function DashboardPage() {
             </Link>
 
             <Link
+              href="/asisten-perawat"
+              className="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)] transition-all hover:border-[#059669]/30 hover:shadow-md"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#065f46] via-[#047857] to-[#10b981] text-white shadow-sm">
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-4l-3 3-3-3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-extrabold text-slate-800">Asisten Perawat</p>
+                    <p className="mt-0.5 text-sm font-medium text-slate-500">Satu chat untuk operasional dan panduan umum</p>
+                  </div>
+                </div>
+                <svg className="h-5 w-5 text-slate-400 transition-all group-hover:translate-x-1 group-hover:text-[#059669]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </Link>
+
+            <Link
               href="#"
               className="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.35)] transition-all hover:border-[#059669]/30 hover:shadow-md"
             >

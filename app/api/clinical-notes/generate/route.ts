@@ -1,10 +1,17 @@
 import { NextResponse } from "next/server";
 
 import { generateClinicalNotesFromSoap } from "@/lib/agent";
+import { saveAgentInteractionLog } from "@/lib/agent-interaction-logs";
+import {
+  saveAgentDataSourceLogs,
+  saveAgentPerformanceLog,
+  type SaveAgentDataSourceLogInput,
+} from "@/lib/agent-observability-details";
 import { createClinicalNote, getLatestClinicalNote } from "@/lib/clinical-notes";
 import { hospitalQuery } from "@/lib/hospital-db";
 import { buildMedicationRecommendation } from "@/lib/medication-recommendations";
 import { getCurrentPerawat } from "@/lib/nurse-auth";
+import { getClinicalLlmConfig } from "@/lib/llm-router";
 import { regenerateSoapAssessmentPlan } from "@/lib/soap-followup";
 import { resolveVisitContext } from "@/lib/visit-context";
 
@@ -242,17 +249,117 @@ function parseEvidenceRefs(value: unknown) {
   return null;
 }
 
+
+async function persistInteractionLog(input: Parameters<typeof saveAgentInteractionLog>[0]) {
+  try {
+    return await saveAgentInteractionLog(input);
+  } catch (error) {
+    console.error("Failed to save /api/clinical-notes/generate interaction log:", error);
+    return null;
+  }
+}
+
+async function persistInteractionDetails(
+  interactionLogId: number,
+  entries: SaveAgentDataSourceLogInput[],
+  performance: Parameters<typeof saveAgentPerformanceLog>[0]
+) {
+  try {
+    await Promise.all([
+      saveAgentDataSourceLogs(entries.map((entry) => ({ ...entry, interactionLogId }))),
+      saveAgentPerformanceLog({ ...performance, interactionLogId }),
+    ]);
+  } catch (error) {
+    console.error("Failed to save /api/clinical-notes/generate detail logs:", error);
+  }
+}
+
+function buildClinicalGenerateDataSourceLogs(
+  interactionLogId: number,
+  patientId: number | null,
+  registrationId: number | null,
+  triageVisitId: number | null,
+  nurseId: number | null,
+  latestChatNoteId: number | null,
+  examId: number | null,
+  isCached: boolean
+): SaveAgentDataSourceLogInput[] {
+  const logs: SaveAgentDataSourceLogInput[] = [];
+
+  if (patientId) {
+    logs.push({
+      interactionLogId,
+      sourceCategory: "patient_master",
+      tableName: "patients",
+      fieldNames: ["id", "no_rm", "full_name", "date_of_birth", "phone", "email", "medical_record"],
+      reason: "Mengambil identitas dasar pasien sebelum generate clinical notes.",
+      recordIdentifier: `patient_id=${patientId}`,
+      sourceSummary: "Master data pasien untuk clinical summary.",
+    });
+  }
+
+  logs.push({
+    interactionLogId,
+    sourceCategory: "visit_context",
+    tableName: "registrations",
+    fieldNames: ["id", "patient_id", "status", "doctor_id", "updated_at", "created_at"],
+    reason: "Menentukan registration aktif yang menjadi dasar clinical notes.",
+    recordIdentifier: registrationId ? `registration_id=${registrationId}` : null,
+    sourceSummary: "Konteks kunjungan aktif pasien.",
+  });
+
+  logs.push({
+    interactionLogId,
+    sourceCategory: "soap",
+    tableName: "external_examinations",
+    fieldNames: ["soap_subjective", "soap_objective", "soap_assessment", "soap_plan", "diagnoses", "examination_notes", "registration_id"],
+    reason: "Mengambil SOAP awal dokter sebagai baseline generate clinical notes.",
+    recordIdentifier: examId ? `exam_id=${examId}` : registrationId ? `registration_id=${registrationId}` : null,
+    sourceSummary: isCached ? "SOAP dokter digunakan untuk validasi cache note yang ada." : "SOAP dokter digunakan sebagai baseline generate note baru.",
+  });
+
+  logs.push({
+    interactionLogId,
+    sourceCategory: "clinical_notes",
+    tableName: "clinical_notes",
+    fieldNames: ["patient_condition", "summary", "assessment", "plan", "medication_recommendation", "triage_level", "triage_visit_id", "registration_id"],
+    reason: "Mengambil update triage chat terbaru dan/atau note terbaru sebagai konteks clinical summary.",
+    recordIdentifier: latestChatNoteId ? `clinical_note_id=${latestChatNoteId}` : triageVisitId ? `triage_visit_id=${triageVisitId}` : null,
+    sourceSummary: "Clinical notes terbaru pada kunjungan aktif.",
+    metadata: { nurseId },
+  });
+
+  return logs;
+}
+
 export async function POST(request: Request) {
+  const startedAt = Date.now();
+  const clinicalLlmConfig = getClinicalLlmConfig();
+  let logPerawat: Awaited<ReturnType<typeof getCurrentPerawat>> | null = null;
+  let logPatientId: number | null = null;
+  let logPatientName: string | null = null;
+  let logPatientNoRm: string | null = null;
+  let logRegistrationId: number | null = null;
+  let logResolvedTriageVisitId: number | null = null;
+  let logRequestMessage: string | null = null;
+  let logNurseRecordId: number | null = null;
+
   try {
     const body = await request.json();
     const patientId = Number(body.patientId);
     const triageVisitId = body.triageVisitId !== undefined && body.triageVisitId !== null ? Number(body.triageVisitId) : null;
+    logPatientId = Number.isFinite(patientId) ? patientId : null;
+    logResolvedTriageVisitId = triageVisitId;
+    logRequestMessage = Number.isFinite(patientId)
+      ? `Generate clinical notes untuk patient ${patientId}`
+      : "Generate clinical notes";
 
     if (!Number.isFinite(patientId)) {
       return NextResponse.json({ error: "patientId must be a number" }, { status: 400 });
     }
 
     const perawat = await getCurrentPerawat();
+    logPerawat = perawat;
     if (!perawat) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -270,6 +377,7 @@ export async function POST(request: Request) {
     }
 
     const nurseId = nurseResult.rows[0].id as number;
+    logNurseRecordId = nurseId;
 
     const patientResult = await hospitalQuery(
       `SELECT id, no_rm, full_name, date_of_birth, phone, email, medical_record
@@ -282,10 +390,50 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Patient not found" }, { status: 404 });
     }
 
+    logPatientName = (patientResult.rows[0] as PatientRow).full_name ?? null;
+    logPatientNoRm = (patientResult.rows[0] as PatientRow).no_rm ?? null;
+
     const visitContext = await resolveVisitContext(patientId, triageVisitId);
     const registrationId = visitContext.registrationId;
+    logRegistrationId = registrationId ?? null;
+    logResolvedTriageVisitId = visitContext.triageVisitId ?? logResolvedTriageVisitId;
 
     if (!registrationId) {
+      const interactionLog = await persistInteractionLog({
+        routeName: "/api/clinical-notes/generate",
+        agentType: "clinical",
+        requestKind: "generate_clinical_notes",
+        nurseId: logPerawat?.id ?? null,
+        nurseUsername: logPerawat?.username ?? null,
+        nurseName: logPerawat?.namaLengkap ?? null,
+        patientId: logPatientId,
+        patientName: logPatientName,
+        patientNoRm: logPatientNoRm,
+        registrationId: logRegistrationId,
+        triageVisitId: logResolvedTriageVisitId,
+        intent: "generate_clinical_notes",
+        requestMessage: logRequestMessage,
+        responseMessage: null,
+        success: false,
+        errorMessage: "no_registration",
+        latencyMs: Date.now() - startedAt,
+        metadata: { reason: "no_registration", modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+      });
+      if (interactionLog) {
+        await persistInteractionDetails(
+          interactionLog.id,
+          buildClinicalGenerateDataSourceLogs(interactionLog.id, logPatientId, logRegistrationId, logResolvedTriageVisitId, logNurseRecordId, null, null, false),
+          {
+            interactionLogId: interactionLog.id,
+            routeName: "/api/clinical-notes/generate",
+            agentType: "clinical",
+            totalLatencyMs: Date.now() - startedAt,
+            success: false,
+            errorMessage: "no_registration",
+            metadata: { reason: "no_registration", modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+          }
+        );
+      }
       return NextResponse.json({ note: null, reason: "no_registration" });
     }
     const examResult = await hospitalQuery(
@@ -312,6 +460,41 @@ export async function POST(request: Request) {
     );
 
     if (examResult.rows.length === 0) {
+      const interactionLog = await persistInteractionLog({
+        routeName: "/api/clinical-notes/generate",
+        agentType: "clinical",
+        requestKind: "generate_clinical_notes",
+        nurseId: logPerawat?.id ?? null,
+        nurseUsername: logPerawat?.username ?? null,
+        nurseName: logPerawat?.namaLengkap ?? null,
+        patientId: logPatientId,
+        patientName: logPatientName,
+        patientNoRm: logPatientNoRm,
+        registrationId: logRegistrationId,
+        triageVisitId: logResolvedTriageVisitId,
+        intent: "generate_clinical_notes",
+        requestMessage: logRequestMessage,
+        responseMessage: null,
+        success: false,
+        errorMessage: "no_soap",
+        latencyMs: Date.now() - startedAt,
+        metadata: { reason: "no_soap", modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+      });
+      if (interactionLog) {
+        await persistInteractionDetails(
+          interactionLog.id,
+          buildClinicalGenerateDataSourceLogs(interactionLog.id, logPatientId, logRegistrationId, logResolvedTriageVisitId, logNurseRecordId, null, null, false),
+          {
+            interactionLogId: interactionLog.id,
+            routeName: "/api/clinical-notes/generate",
+            agentType: "clinical",
+            totalLatencyMs: Date.now() - startedAt,
+            success: false,
+            errorMessage: "no_soap",
+            metadata: { reason: "no_soap", modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+          }
+        );
+      }
       return NextResponse.json({ note: null, reason: "no_soap" });
     }
 
@@ -375,13 +558,86 @@ export async function POST(request: Request) {
       snapshotsMatch(latestSnapshot, currentSnapshot) &&
       !hasNewerChatContext
     ) {
+      const interactionLog = await persistInteractionLog({
+        routeName: "/api/clinical-notes/generate",
+        agentType: "clinical",
+        requestKind: "generate_clinical_notes",
+        nurseId: logPerawat?.id ?? null,
+        nurseUsername: logPerawat?.username ?? null,
+        nurseName: logPerawat?.namaLengkap ?? null,
+        patientId: logPatientId,
+        patientName: logPatientName,
+        patientNoRm: logPatientNoRm,
+        registrationId: logRegistrationId,
+        triageVisitId: logResolvedTriageVisitId,
+        intent: "generate_clinical_notes",
+        requestMessage: logRequestMessage,
+        responseMessage: latestNote.summary ?? "Menggunakan clinical note cached",
+        success: true,
+        latencyMs: Date.now() - startedAt,
+        metadata: { cached: true, noteId: latestNote.id, modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+      });
+      if (interactionLog) {
+        await persistInteractionDetails(
+          interactionLog.id,
+          buildClinicalGenerateDataSourceLogs(interactionLog.id, logPatientId, logRegistrationId, logResolvedTriageVisitId, logNurseRecordId, latestNote.id, latestExamId, true),
+          {
+            interactionLogId: interactionLog.id,
+            routeName: "/api/clinical-notes/generate",
+            agentType: "clinical",
+            totalLatencyMs: Date.now() - startedAt,
+            success: true,
+            metadata: { cached: true, noteId: latestNote.id, examId: latestExamId, modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+          }
+        );
+      }
       return NextResponse.json({ note: latestNote });
     }
 
     const prompt = buildPrompt(patientResult.rows[0] as PatientRow, exam, latestChatNote);
+    const llmStartedAt = Date.now();
     const generation = await generateClinicalNotesFromSoap(prompt);
+    const llmLatencyMs = Date.now() - llmStartedAt;
 
     if (!generation.success || !generation.text) {
+      const interactionLog = await persistInteractionLog({
+        routeName: "/api/clinical-notes/generate",
+        agentType: "clinical",
+        requestKind: "generate_clinical_notes",
+        nurseId: logPerawat?.id ?? null,
+        nurseUsername: logPerawat?.username ?? null,
+        nurseName: logPerawat?.namaLengkap ?? null,
+        patientId: logPatientId,
+        patientName: logPatientName,
+        patientNoRm: logPatientNoRm,
+        registrationId: logRegistrationId,
+        triageVisitId: logResolvedTriageVisitId,
+        intent: "generate_clinical_notes",
+        requestMessage: logRequestMessage,
+        responseMessage: null,
+        success: false,
+        errorMessage: generation.error || "Failed to generate clinical notes",
+        toolsUsed: generation.toolsUsed ?? [],
+        latencyMs: Date.now() - startedAt,
+        metadata: { modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+      });
+      if (interactionLog) {
+        await persistInteractionDetails(
+          interactionLog.id,
+          buildClinicalGenerateDataSourceLogs(interactionLog.id, logPatientId, logRegistrationId, logResolvedTriageVisitId, logNurseRecordId, latestChatNote?.id ?? null, exam.id, false),
+          {
+            interactionLogId: interactionLog.id,
+            routeName: "/api/clinical-notes/generate",
+            agentType: "clinical",
+            totalLatencyMs: Date.now() - startedAt,
+            llmLatencyMs,
+            toolLatencyMs: generation.toolsUsed?.length ? llmLatencyMs : 0,
+            success: false,
+            errorMessage: generation.error || "Failed to generate clinical notes",
+            metadata: { toolsUsed: generation.toolsUsed ?? [], modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+          }
+        );
+      }
       return NextResponse.json({ error: generation.error || "Failed to generate clinical notes" }, { status: 500 });
     }
 
@@ -469,10 +725,81 @@ export async function POST(request: Request) {
       },
     });
 
+    const interactionLog = await persistInteractionLog({
+      routeName: "/api/clinical-notes/generate",
+      agentType: "clinical",
+      requestKind: "generate_clinical_notes",
+      nurseId: logPerawat?.id ?? null,
+      nurseUsername: logPerawat?.username ?? null,
+      nurseName: logPerawat?.namaLengkap ?? null,
+      patientId: logPatientId,
+      patientName: logPatientName,
+      patientNoRm: logPatientNoRm,
+      registrationId: logRegistrationId,
+      triageVisitId: logResolvedTriageVisitId,
+      intent: "generate_clinical_notes",
+      requestMessage: logRequestMessage,
+      responseMessage: note.summary ?? "Clinical note generated",
+      success: true,
+      toolsUsed: generation.toolsUsed ?? [],
+      latencyMs: Date.now() - startedAt,
+      metadata: { noteId: note.id, examId: updatedExam.id, modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+    });
+    if (interactionLog) {
+      await persistInteractionDetails(
+        interactionLog.id,
+        buildClinicalGenerateDataSourceLogs(interactionLog.id, logPatientId, logRegistrationId, logResolvedTriageVisitId, logNurseRecordId, latestChatNote?.id ?? null, updatedExam.id, false),
+        {
+          interactionLogId: interactionLog.id,
+          routeName: "/api/clinical-notes/generate",
+          agentType: "clinical",
+          totalLatencyMs: Date.now() - startedAt,
+          llmLatencyMs,
+          toolLatencyMs: generation.toolsUsed?.length ? llmLatencyMs : 0,
+          success: true,
+          metadata: { noteId: note.id, examId: updatedExam.id, toolsUsed: generation.toolsUsed ?? [], modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+        }
+      );
+    }
+
     return NextResponse.json({ examination: updatedExam, note, toolsUsed: generation.toolsUsed ?? [] }, { status: 201 });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to generate clinical notes";
     console.error("Clinical notes generation error:", message);
+    const interactionLog = await persistInteractionLog({
+      routeName: "/api/clinical-notes/generate",
+      agentType: "clinical",
+      requestKind: "generate_clinical_notes",
+      nurseId: logPerawat?.id ?? null,
+      nurseUsername: logPerawat?.username ?? null,
+      nurseName: logPerawat?.namaLengkap ?? null,
+      patientId: logPatientId,
+      patientName: logPatientName,
+      patientNoRm: logPatientNoRm,
+      registrationId: logRegistrationId,
+      triageVisitId: logResolvedTriageVisitId,
+      intent: "generate_clinical_notes",
+      requestMessage: logRequestMessage,
+      responseMessage: null,
+      success: false,
+      errorMessage: message,
+      latencyMs: Date.now() - startedAt,
+      metadata: { modelsUsed: [clinicalLlmConfig.displayName], primaryModel: clinicalLlmConfig.displayName },
+    });
+    if (interactionLog) {
+      await persistInteractionDetails(
+        interactionLog.id,
+        buildClinicalGenerateDataSourceLogs(interactionLog.id, logPatientId, logRegistrationId, logResolvedTriageVisitId, logNurseRecordId, null, null, false),
+        {
+          interactionLogId: interactionLog.id,
+          routeName: "/api/clinical-notes/generate",
+          agentType: "clinical",
+          totalLatencyMs: Date.now() - startedAt,
+          success: false,
+          errorMessage: message,
+        }
+      );
+    }
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
+import {
+  ADMIN_LOG_SESSION_COOKIE,
+  ADMIN_LOG_SESSION_MAX_AGE,
+  createAdminLogSessionToken,
+  isAdminLogCredential,
+} from "@/lib/admin-log-auth";
 import { hospitalQuery } from "@/lib/hospital-db";
 import {
   canPerawatLogin,
@@ -31,6 +37,29 @@ export async function POST(request: Request) {
         { error: "Username dan password wajib diisi." },
         { status: 400 }
       );
+    }
+
+    if (isAdminLogCredential(username, password)) {
+      const adminToken = createAdminLogSessionToken(username);
+      const response = NextResponse.json({
+        message: "Login admin log berhasil.",
+        role: "log_admin",
+        redirectTo: "/log-admin",
+      });
+
+      response.cookies.set({
+        name: ADMIN_LOG_SESSION_COOKIE,
+        value: adminToken,
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+        maxAge: ADMIN_LOG_SESSION_MAX_AGE,
+      });
+
+      response.cookies.delete(NURSE_SESSION_COOKIE);
+
+      return response;
     }
 
     const result = await hospitalQuery(
@@ -67,6 +96,8 @@ export async function POST(request: Request) {
     const token = createNurseSessionToken(perawat.id, perawat.username);
     const response = NextResponse.json({
       message: "Login berhasil.",
+      role: "perawat",
+      redirectTo: "/dashboard",
       perawat: {
         id: perawat.id,
         username: perawat.username,
@@ -84,6 +115,8 @@ export async function POST(request: Request) {
       path: "/",
       maxAge: NURSE_SESSION_MAX_AGE,
     });
+
+    response.cookies.delete(ADMIN_LOG_SESSION_COOKIE);
 
     return response;
   } catch (error) {

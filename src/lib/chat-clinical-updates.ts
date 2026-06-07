@@ -1,7 +1,7 @@
 import { generateText } from "ai";
 
 import { resolveClinicalIcdCodes, searchClinicalIcdReferences } from "@/lib/icd-search";
-import { getChatModel } from "@/lib/llm";
+import { getClinicalModel } from "@/lib/llm-router";
 import { buildMedicationRecommendation } from "@/lib/medication-recommendations";
 import { hospitalQuery } from "@/lib/hospital-db";
 import { getCurrentPerawat } from "@/lib/nurse-auth";
@@ -352,7 +352,7 @@ async function generateSections(
   icdCandidates: Array<{ icd_code: string; icd_name: string; triageLevel?: string | null }>
 ): Promise<GeneratedSections> {
   const result = await generateText({
-    model: getChatModel(),
+    model: getClinicalModel(),
     prompt,
     temperature: 0.2,
     maxOutputTokens: 1000,

@@ -3,6 +3,7 @@ import {
   CircleCheck,
   ClipboardList,
   LayoutDashboard,
+  MessageSquareMore,
   Users,
   Zap,
 } from "lucide-react";
@@ -34,6 +35,13 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Triage IGD",
     description: "Prioritas dan penanganan IGD",
     icon: Zap,
+  },
+  {
+    href: "/asisten-perawat",
+    label: "Asisten Perawat",
+    description: "Chat operasional dan panduan umum",
+    icon: MessageSquareMore,
+    match: ["/asisten-perawat"],
   },
   {
     href: "#",

@@ -4,12 +4,12 @@ import { createClinicalNoteFromChatUpdate } from './chat-clinical-updates';
 import { hospitalQuery } from './hospital-db';
 import { getLatestClinicalNote } from './clinical-notes';
 import { getConversationHistory, saveConversation } from './conversations';
-import { getChatModel, getResolvedLlmConfig } from './llm';
+import { getClinicalLlmConfig, getClinicalModel } from './llm-router';
 import { resolveVisitContext } from './visit-context';
 
-// ============ MODEL ============
+// MODel
 
-const model = getChatModel();
+const model = getClinicalModel();
 
 type ConversationMessage = {
   role: 'user' | 'agent';
@@ -203,7 +203,7 @@ async function initializeAgent() {
   }
 
   try {
-    const llmConfig = getResolvedLlmConfig();
+    const llmConfig = getClinicalLlmConfig();
     console.log('🚀 Initializing DARSI Triage Agent...');
     console.log('🤖 LLM provider:', llmConfig.provider);
     console.log('📍 LLM endpoint:', llmConfig.baseUrl);
@@ -572,7 +572,7 @@ export async function generateClinicalNotesFromSoap(prompt: string) {
 export async function checkStatus() {
   try {
     const agent = await initializeAgent();
-    const llmConfig = getResolvedLlmConfig();
+    const llmConfig = getClinicalLlmConfig();
     return {
       status: 'ready',
       agentName: agent.name,
