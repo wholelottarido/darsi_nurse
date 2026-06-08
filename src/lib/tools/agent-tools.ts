@@ -160,8 +160,32 @@ function extractIcdFromEvidenceRefs(value: unknown) {
   return Array.isArray(icd) ? icd : [];
 }
 
+function normalizeActionText(value?: string | null) {
+  if (!value) {
+    return '-';
+  }
+
+  const normalized = value
+    .replace(/\r/g, '')
+    .split('\n')
+    .map((line) => line.trimEnd())
+    .join('\n')
+    .trim();
+
+  return normalized || '-';
+}
+
 function formatActionSection(label: string, value?: string | null) {
-  return `${label}:\n${value?.trim() || '-'}`;
+  return `${label}\n${normalizeActionText(value)}`;
+}
+
+function formatActionList(label: string, items: Array<string | null | undefined>) {
+  const lines = items
+    .map((item) => normalizeActionText(item))
+    .filter((item) => item !== '-')
+    .map((item) => `- ${item}`);
+
+  return formatActionSection(label, lines.length > 0 ? lines.join('\n') : '-');
 }
 
 function buildDiagnosisSummary(diagnoses?: Array<{ icd_code?: string | null; icd_name?: string | null }> | null) {
@@ -170,38 +194,74 @@ function buildDiagnosisSummary(diagnoses?: Array<{ icd_code?: string | null; icd
   }
 
   return diagnoses
-    .map((item) => `${item.icd_code || '-'} - ${item.icd_name || '-'}`)
-    .join('; ');
+    .map((item) => `- ${item.icd_code || '-'} - ${item.icd_name || '-'}`)
+    .join('\n');
 }
 
-function buildActionAdvice(triageLevel: string, summary: string, assessment: string, plan: string, allergies: string, diagnoses: string) {
-  const normalizedTriage = triageLevel.toUpperCase();
-  const actionLines: string[] = [];
+function summarizeForAction(value?: string | null, maxLength = 160) {
+  const normalized = normalizeActionText(value);
+  if (normalized === '-') {
+    return normalized;
+  }
 
-  actionLines.push(`Kondisi ringkas: ${summary || '-'}`);
-  actionLines.push(`Interpretasi klinis: ${assessment || '-'}`);
-  actionLines.push(`Rencana SOAP: ${plan || '-'}`);
-  actionLines.push(`Diagnosa ICD: ${diagnoses || '-'}`);
+  const flattened = normalized.replace(/\s+/g, ' ').trim();
+  const firstSentence = flattened.split(/(?<=[.!?])\s+/)[0]?.trim() || flattened;
+  const concise = firstSentence.length <= maxLength
+    ? firstSentence
+    : `${firstSentence.slice(0, maxLength - 3).trimEnd()}...`;
+
+  return concise || '-';
+}
+
+function extractPlanHighlights(plan?: string | null, limit = 2) {
+  const normalized = normalizeActionText(plan);
+  if (normalized === '-') {
+    return [] as string[];
+  }
+
+  const bulletLines = normalized
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => line.replace(/^[-*]\s*/, ''))
+    .filter((line) => line.length > 0);
+
+  if (bulletLines.length > 1) {
+    return bulletLines.slice(0, limit).map((item) => summarizeForAction(item, 140));
+  }
+
+  return normalized
+    .split(/(?<=[.!?])\s+/)
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .slice(0, limit)
+    .map((item) => summarizeForAction(item, 140));
+}
+function buildActionAdvice(triageLevel: string, allergies: string) {
+  const normalizedTriage = triageLevel.toUpperCase();
+  const actions: string[] = [];
+  const monitoring: string[] = [];
+  const cautions: string[] = [];
 
   if (normalizedTriage === 'URGENT') {
-    actionLines.push('Tindakan: segera evaluasi dokter/IGD, monitor tanda vital, dan jangan pulangkan pasien sebelum stabil.');
+    actions.push('Segera evaluasi dokter/IGD, monitor tanda vital, dan jangan pulangkan pasien sebelum stabil.');
   } else if (normalizedTriage === 'HIGH') {
-    actionLines.push('Tindakan: konsultasi dokter segera, lakukan observasi ketat, dan siapkan eskalasi bila gejala memburuk.');
+    actions.push('Konsultasi dokter segera, lakukan observasi ketat, dan siapkan eskalasi bila gejala memburuk.');
   } else if (normalizedTriage === 'MODERATE') {
-    actionLines.push('Tindakan: observasi, berikan terapi simptomatik sesuai SOAP, dan jadwalkan review dokter bila perlu.');
+    actions.push('Observasi, berikan terapi simptomatik sesuai SOAP, dan jadwalkan review dokter bila perlu.');
   } else {
-    actionLines.push('Tindakan: terapi suportif, edukasi red flags, dan kontrol ulang sesuai kondisi pasien.');
+    actions.push('Terapi suportif, edukasi red flags, dan kontrol ulang sesuai kondisi pasien.');
   }
+
+  monitoring.push('Pantau perubahan gejala, tanda vital, dan respons terhadap terapi.');
+  cautions.push('Jika ada tanda bahaya seperti sesak, penurunan kesadaran, demam tinggi menetap, atau nyeri memberat, eskalasi segera.');
 
   if (allergies && allergies !== '-') {
-    actionLines.push(`Perhatian alergi: ${allergies}. Hindari obat/terapi yang berisiko menimbulkan reaksi alergi.`);
+    cautions.push(`Perhatikan alergi: ${allergies}. Hindari obat atau terapi yang berisiko memicu reaksi alergi.`);
   }
 
-  actionLines.push('Jika ada tanda bahaya seperti sesak, penurunan kesadaran, demam tinggi menetap, atau nyeri memberat, eskalasi segera.');
-
-  return actionLines.join('\n');
+  return { actions, monitoring, cautions };
 }
-
 async function buildPatientActionRecommendation(patientId: number) {
   const patientResult = await hospitalQuery(
     `SELECT id, no_rm, full_name, medical_record
@@ -237,20 +297,30 @@ async function buildPatientActionRecommendation(patientId: number) {
   const plan = latestNote?.plan?.trim() || exam?.soap_plan?.trim() || '-';
   const diagnoses = buildDiagnosisSummary(noteDiagnoses.length > 0 ? noteDiagnoses : (exam?.diagnoses ?? null));
   const allergies = patient.alergi || '-';
+  const advice = buildActionAdvice(triageLevel, allergies);
+  const actionItems = Array.from(new Set([...advice.actions, ...extractPlanHighlights(plan, 2)])).slice(0, 3);
+  const mainProblem = summarizeForAction(summary !== '-' ? summary : assessment, 180);
+  const medication = summarizeForAction(latestNote?.medication_recommendation || '-', 160);
 
   return [
-    `REKOMENDASI TINDAKAN UNTUK ${patient.nama.toUpperCase()}`,
+    `Rekomendasi tindakan untuk ${patient.nama}`,
     `NRM: ${patient.no_rm || '-'}`,
-    formatActionSection('SUMMARY', summary),
-    formatActionSection('ASSESSMENT', assessment),
-    formatActionSection('PLAN', plan),
-    formatActionSection('MEDICATION', latestNote?.medication_recommendation || '-'),
-    formatActionSection('TRIAGE_LEVEL', triageLevel.toUpperCase()),
-    `DIAGNOSA ICD:\n${diagnoses}`,
-    buildActionAdvice(triageLevel, summary, assessment, plan, allergies, diagnoses),
-  ].join('\n\n');
+    '',
+    formatActionSection('Masalah Utama', mainProblem),
+    '',
+    formatActionSection('Triage', triageLevel.toUpperCase()),
+    '',
+    formatActionList('Tindakan', actionItems),
+    '',
+    formatActionList('Monitoring', advice.monitoring),
+    '',
+    formatActionSection('Obat', medication),
+    '',
+    formatActionSection('ICD', diagnoses),
+    '',
+    formatActionList('Perhatian', advice.cautions),
+  ].join('\n');
 }
-
 export async function updateLatestSoapSubjective(patientId: number, subjective: string) {
   const patientResult = await hospitalQuery(
     `SELECT id, no_rm, full_name

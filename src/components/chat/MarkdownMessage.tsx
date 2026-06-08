@@ -172,8 +172,8 @@ function renderBlocks(content: string) {
     }
 
     blocks.push(
-      <p key={`p-${index}`} className="leading-6">
-        {renderInline(paragraphLines.join(" "))}
+      <p key={`p-${index}`} className="whitespace-pre-wrap leading-6">
+        {renderInline(paragraphLines.join("\n"))}
       </p>
     );
   }

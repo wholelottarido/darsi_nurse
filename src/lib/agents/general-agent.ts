@@ -6,6 +6,41 @@ type AgentGenerationResult = {
   text: string | Promise<string>;
 };
 
+const ACTION_REQUEST_PATTERNS = [
+  /\btindakan\b/i,
+  /\bapa yang harus\b/i,
+  /\blangkah awal\b/i,
+  /\bobservasi\b/i,
+  /\bedukasi\b/i,
+];
+
+function isConciseActionRequest(message: string) {
+  return ACTION_REQUEST_PATTERNS.some((pattern) => pattern.test(message));
+}
+
+function buildUserPrompt(userMessage: string) {
+  const normalized = userMessage.trim();
+
+  if (!isConciseActionRequest(normalized)) {
+    return normalized;
+  }
+
+  return [
+    normalized,
+    '',
+    'Instruksi format jawaban: jawab singkat dan langsung pakai format berikut.',
+    'Maksimal 7 baris isi, tanpa paragraf panjang, tanpa summary atau assessment panjang.',
+    'Format wajib:',
+    'Triage',
+    '- ...',
+    'Tindakan',
+    '- ...',
+    'Monitoring',
+    '- ...',
+    'Eskalasi',
+    '- ...',
+  ].join('\n');
+}
 type NurseChatHistoryMessage = {
   role: "user" | "assistant";
   message: string;
@@ -15,7 +50,7 @@ function buildConversationMessages(
   userMessage: string,
   history: NurseChatHistoryMessage[] = []
 ) {
-  const normalizedUserMessage = userMessage.trim();
+  const normalizedUserMessage = buildUserPrompt(userMessage);
   const conversation = history
     .filter(
       (entry) =>
@@ -65,12 +100,10 @@ Fokus Anda:
 Gaya jawaban:
 - Gunakan Bahasa Indonesia yang hangat dan suportif tanpa terdengar berlebihan.
 - Jawab dengan struktur yang jelas dan mudah dipakai di lapangan.
+- Utamakan jawaban singkat berbentuk list atau blok pendek, bukan paragraf panjang.
 - Gunakan markdown rapi bila membantu, misalnya **bold** untuk poin penting, *italic* untuk penekanan ringan, dan list untuk langkah atau observasi.
-- Bila cocok, gunakan format singkat seperti:
-  - Kondisi umum
-  - Yang perlu dipantau
-  - Langkah awal
-  - Kapan eskalasi
+- Untuk pertanyaan tindakan, observasi, edukasi, atau langkah awal, jawaban harus ringkas dan langsung ke aksi.
+- Untuk pertanyaan tindakan, gunakan format sesingkat mungkin seperti: Triage, Tindakan, Monitoring, Eskalasi.
 - Hindari paragraf panjang jika poin singkat lebih jelas.
 - Jika user tampak bingung, jawab dengan nada membimbing dan tidak menghakimi.
 
@@ -109,7 +142,7 @@ export async function generalGuidanceChat(
   const result = (await agent.generateText(
     buildConversationMessages(userMessage, history),
     {
-      maxOutputTokens: 1000,
+      maxOutputTokens: isConciseActionRequest(userMessage) ? 320 : 1000,
       maxSteps: 4,
       temperature: 0.2,
     }

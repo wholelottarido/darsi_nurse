@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from '@/components/ui/separator';
+import MarkdownMessage from "@/components/chat/MarkdownMessage";
 import {
   Collapsible,
   CollapsibleContent,
@@ -417,6 +418,19 @@ export default function PatientChatPage() {
     if (gender === 'm' || gender === 'l' || gender === 'laki-laki') return 'Laki-laki';
     if (gender === 'f' || gender === 'p' || gender === 'perempuan') return 'Perempuan';
     return '-';
+  };
+
+  const formatDateTime = (value?: string | null) => {
+    if (!value) return '-';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return '-';
+    return date.toLocaleString('id-ID', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
   };
 
   const getExamStatusLabel = (value?: string | null) => {
@@ -831,17 +845,25 @@ export default function PatientChatPage() {
 
   const renderClinicalSummary = (currentPatient: Patient) => (
     <div className="space-y-4">
-      {examination && (
+      {clinicalNote && (
         <div className="rounded-2xl border border-slate-200 bg-white p-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Dokter Pemeriksa</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Status Baca Dokter</p>
               <p className="text-sm font-semibold text-slate-800">
-                {examination.doctor_username || 'N/A'}
+                {clinicalNote.doctor_read_at
+                  ? `Clinical notes sudah dibaca dokter pada ${formatDateTime(clinicalNote.doctor_read_at)}`
+                  : 'Clinical notes belum dibaca dokter'}
               </p>
             </div>
-            <span className={`rounded-full px-3 py-1 text-xs font-semibold ${getExamStatusClass(examination.status)}`}>
-              {getExamStatusLabel(examination.status)}
+            <span
+              className={`rounded-full border px-3 py-1 text-[0.7rem] font-semibold ${
+                clinicalNote.doctor_read_at
+                  ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                  : 'border-amber-200 bg-amber-50 text-amber-700'
+              }`}
+            >
+              {clinicalNote.doctor_read_at ? 'Sudah dibaca dokter' : 'Belum dibaca dokter'}
             </span>
           </div>
         </div>
@@ -1251,7 +1273,7 @@ export default function PatientChatPage() {
                             : 'border border-slate-200 bg-white text-slate-900 shadow-sm'
                         }`}
                       >
-                        <p className="text-sm">{msg.message}</p>
+                        <MarkdownMessage className="space-y-3 text-sm leading-6" content={msg.message} />
                         {msg.timestamp && (
                           <p
                             className={`mt-1 text-xs ${

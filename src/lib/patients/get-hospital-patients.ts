@@ -1,3 +1,4 @@
+import { buildExternalExaminationPriorityOrder } from '@/lib/clinical/external-examinations';
 import { hospitalQuery } from '@/lib/db/hospital-db';
 
 export async function getHospitalPatients(limit = 50) {
@@ -68,6 +69,7 @@ export async function getHospitalPatientsByPerawatUsername(username: string, lim
       lc.plan AS clinical_note_plan,
       lc.medication_recommendation,
       lc.triage_level,
+      lc.doctor_read_at AS clinical_note_doctor_read_at,
       lc.created_at AS clinical_note_created_at
     FROM patients p
     INNER JOIN indirect_staff_nurses n
@@ -95,7 +97,7 @@ export async function getHospitalPatientsByPerawatUsername(username: string, lim
         ee.examination_notes
       FROM external_examinations ee
       WHERE ee.registration_id = lr.id
-      ORDER BY ee.created_at DESC, ee.id DESC
+      ORDER BY ${buildExternalExaminationPriorityOrder('ee')}
       LIMIT 1
     ) le ON true
     LEFT JOIN LATERAL (
@@ -108,6 +110,7 @@ export async function getHospitalPatientsByPerawatUsername(username: string, lim
         cn.plan,
         cn.medication_recommendation,
         cn.triage_level,
+        cn.doctor_read_at,
         cn.created_at
       FROM clinical_notes cn
       WHERE cn.patient_id = p.id

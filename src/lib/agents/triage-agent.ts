@@ -1,6 +1,7 @@
 import { Agent } from '@voltagent/core';
 import { createClinicalNoteFromChatUpdate } from '@/lib/clinical/chat-clinical-updates';
 import { getLatestClinicalNote } from '@/lib/clinical/clinical-notes';
+import { buildExternalExaminationPriorityOrder, hasMeaningfulDoctorSoap } from '@/lib/clinical/external-examinations';
 import { resolveVisitContext } from '@/lib/clinical/visit-context';
 import { getConversationHistory, saveConversation } from '@/lib/conversations/conversations';
 import { hospitalQuery } from '@/lib/db/hospital-db';
@@ -39,6 +40,14 @@ const SUMMARY_REQUEST_PATTERNS = [
   /\bsoap\b/i,
 ];
 
+const OBJECTIVE_SUMMARY_REQUEST_PATTERNS = [
+  /\bringk(a|a)?s?kan\s+objective\b/i,
+  /\bringkasan\s+objective\b/i,
+  /\bsummary\s+objective\b/i,
+  /\bsoap\s*objective\b/i,
+  /\bobjective\s+pasien\b/i,
+];
+
 const ACTION_REQUEST_PATTERNS = [
   /\bapa tindakan\b/i,
   /\btindakan\b/i,
@@ -71,6 +80,10 @@ function isSummaryRequest(message: string) {
   return SUMMARY_REQUEST_PATTERNS.some((pattern) => pattern.test(message));
 }
 
+function isObjectiveSummaryRequest(message: string) {
+  return OBJECTIVE_SUMMARY_REQUEST_PATTERNS.some((pattern) => pattern.test(message));
+}
+
 function isActionRequest(message: string) {
   return ACTION_REQUEST_PATTERNS.some((pattern) => pattern.test(message));
 }
@@ -99,10 +112,127 @@ function extractObjectiveText(message: string) {
   return stripped || message.trim();
 }
 
-function formatSummarySection(label: string, value?: string | null) {
-  return `${label}:\n${value?.trim() || '-'}`;
+function normalizeReadableText(value?: string | null) {
+  if (!value) {
+    return '-';
+  }
+
+  const normalized = value
+    .replace(/\r/g, '')
+    .split('\n')
+    .map((line) => line.trimEnd())
+    .join('\n')
+    .trim();
+
+  return normalized || '-';
 }
 
+function formatReadableSection(label: string, value?: string | null) {
+  return `${label}\n${normalizeReadableText(value)}`;
+}
+
+function formatReadableIcdList(items: Array<{ icd_code?: string | null; icd_name?: string | null }>) {
+  if (items.length === 0) {
+    return '-';
+  }
+
+  return items
+    .map((item) => `- ${item.icd_code || '-'} - ${item.icd_name || '-'}`)
+    .join('\n');
+}
+
+
+function formatReadableIcdText(value?: string | null) {
+  const normalized = normalizeReadableText(value);
+  if (normalized === '-') {
+    return normalized;
+  }
+
+  const parts = normalized
+    .split(/[;\n]+/)
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .map((item) => item.replace(/^[-*]\s*/, ''));
+
+  return parts.length > 0 ? parts.map((item) => `- ${item}`).join('\n') : '-';
+}
+
+function buildTriageResponse(title: string, noRm: string, sections: Array<{ label: string; value?: string | null }>) {
+  return [
+    title,
+    `NRM: ${noRm}`,
+    '',
+    ...sections.flatMap((section, index) => [
+      formatReadableSection(section.label, section.value),
+      ...(index < sections.length - 1 ? [''] : []),
+    ]),
+  ].join('\n');
+}
+
+function buildChatUpdateResponse(args: {
+  patientName: string;
+  noRm: string;
+  updateKind: 'subjective' | 'objective';
+  updateText: string;
+  patientCondition?: string | null;
+  assessment?: string | null;
+  plan?: string | null;
+  medicationRecommendation?: string | null;
+  triageLevel?: string | null;
+  icd: Array<{ icd_code?: string | null; icd_name?: string | null }>;
+}) {
+  const updateLabel = args.updateKind === 'objective' ? 'Objective Terbaru' : 'Update Kondisi Terbaru';
+
+  return buildTriageResponse(
+    `Update ${args.updateKind} dari triage chat berhasil disimpan ke clinical notes untuk ${args.patientName}.`,
+    args.noRm,
+    [
+      { label: updateLabel, value: args.updateText },
+      { label: 'Kondisi Pasien', value: args.patientCondition },
+      { label: 'Assessment', value: args.assessment },
+      { label: 'Plan', value: args.plan },
+      { label: 'Obat', value: args.medicationRecommendation },
+      { label: 'ICD', value: formatReadableIcdList(args.icd) },
+      { label: 'Triage', value: args.triageLevel },
+    ]
+  );
+}
+
+function normalizeGeneratedTriageResponse(text: string) {
+  let normalized = normalizeReadableText(text);
+
+  normalized = normalized.replace(/\n{3,}/g, '\n\n');
+  normalized = normalized.replace(/^[-*]\s*\[(\d+)\]\s*/gm, '- ');
+  normalized = normalized.replace(/^\[(\d+)\]\s*/gm, '- ');
+
+  const headings = [
+    'KONDISI_PASIEN',
+    'KONDISI PASIEN',
+    'SUMMARY',
+    'ASSESSMENT',
+    'PLAN',
+    'MEDICATION',
+    'OBAT',
+    'TRIAGE_LEVEL',
+    'TRIAGE',
+    'DIAGNOSA ICD',
+    'DIAGNOSIS',
+    'DATA PASIEN',
+    'REKOMENDASI',
+    'TINDAKAN',
+    'PERIKSA',
+    'HINDARI',
+  ];
+
+  for (const heading of headings) {
+    const regex = new RegExp(`(^|\n)(\\s*)(${heading})(\\s*:)`, 'gi');
+    normalized = normalized.replace(regex, (_match, prefix, indent, label) => `${prefix}${indent}${label}\n`);
+  }
+
+  normalized = normalized.replace(/^(DIAGNOSA ICD|DIAGNOSIS)\n([^\n]+(?:;\s*[^\n]+)+)$/gmi, (_match, label, value) => `${label}\n${formatReadableIcdText(value)}`);
+
+  return normalized.trim();
+}
 function extractPatientCondition(value: unknown) {
   if (!value || typeof value !== 'object') {
     return null;
@@ -123,6 +253,72 @@ function extractIcdFromEvidenceRefs(value: unknown) {
   return Array.isArray(icd) ? icd : [];
 }
 
+async function buildObjectiveSummaryResponse(patientId: number, registrationId?: number | null) {
+  const patientResult = await hospitalQuery(
+    `SELECT id, no_rm, full_name
+     FROM patients
+     WHERE id = $1`,
+    [patientId]
+  );
+
+  if (patientResult.rows.length === 0) {
+    return null;
+  }
+
+  const patient = patientResult.rows[0] as { id: number; no_rm?: string | null; full_name?: string | null };
+
+  const examResult = registrationId
+    ? await hospitalQuery(
+        `SELECT soap_objective, status, created_at
+         FROM external_examinations
+         WHERE registration_id = $1
+         ORDER BY ${buildExternalExaminationPriorityOrder('external_examinations')}
+         LIMIT 1`,
+        [registrationId]
+      )
+    : await hospitalQuery(
+        `SELECT soap_objective, status, created_at
+         FROM external_examinations
+         WHERE patient_id = $1
+         ORDER BY ${buildExternalExaminationPriorityOrder('external_examinations')}
+         LIMIT 1`,
+        [patientId]
+      );
+
+  if (examResult.rows.length === 0) {
+    return buildTriageResponse(
+      `Ringkasan objective pasien untuk ${patient.full_name || 'Pasien'}.`,
+      patient.no_rm || '-',
+      [
+        { label: 'Status', value: 'Belum ada data SOAP objective pada external_examinations.' },
+      ]
+    );
+  }
+
+  const exam = examResult.rows[0] as {
+    soap_objective?: string | null;
+    status?: string | null;
+    created_at?: string | null;
+  };
+
+  const objectiveValue = exam.soap_objective?.trim();
+  const isPendingWithoutSoap = !objectiveValue && String(exam.status || '').toLowerCase() === 'pending';
+
+  return buildTriageResponse(
+    `Ringkasan objective pasien untuk ${patient.full_name || 'Pasien'}.`,
+    patient.no_rm || '-',
+    [
+      {
+        label: 'Objective',
+        value: objectiveValue || (isPendingWithoutSoap
+          ? 'Pemeriksaan dokter masih pending. SOAP objective belum tersedia di external_examinations.'
+          : '-'),
+      },
+      { label: 'Triage', value: exam.status?.toUpperCase() || '-' },
+      { label: 'Sumber Data', value: 'external_examinations.soap_objective' },
+    ]
+  );
+}
 async function buildClinicalSummaryResponse(patientId: number) {
   const patientResult = await hospitalQuery(
     `SELECT id, no_rm, full_name
@@ -141,32 +337,39 @@ async function buildClinicalSummaryResponse(patientId: number) {
   if (latestNote && (latestNote.source === 'clinical_summary' || latestNote.source === 'external_examinations' || latestNote.source === 'chat')) {
     const noteDiagnoses = extractIcdFromEvidenceRefs(latestNote.evidence_refs);
     const patientCondition = latestNote.patient_condition || extractPatientCondition(latestNote.evidence_refs);
-    return [
-      `Ringkasan kondisi pasien untuk ${patient.full_name || 'Pasien'} (NRM: ${patient.no_rm || '-'})`,
-      formatSummarySection('KONDISI_PASIEN', patientCondition),
-      formatSummarySection('SUMMARY', latestNote.summary),
-      formatSummarySection('ASSESSMENT', latestNote.assessment),
-      formatSummarySection('PLAN', latestNote.plan),
-      formatSummarySection('MEDICATION', latestNote.medication_recommendation),
-      formatSummarySection('TRIAGE_LEVEL', latestNote.triage_level),
-      `DIAGNOSA ICD:\n${noteDiagnoses.length > 0 ? noteDiagnoses.map((item) => `${item.icd_code || '-'} - ${item.icd_name || '-'}`).join('; ') : '-'}`,
-    ].join('\n\n');
+
+    return buildTriageResponse(
+      `Ringkasan kondisi pasien untuk ${patient.full_name || 'Pasien'}.`,
+      patient.no_rm || '-',
+      [
+        { label: 'Kondisi Pasien', value: patientCondition },
+        { label: 'Summary', value: latestNote.summary },
+        { label: 'Assessment', value: latestNote.assessment },
+        { label: 'Plan', value: latestNote.plan },
+        { label: 'Obat', value: latestNote.medication_recommendation },
+        { label: 'ICD', value: formatReadableIcdList(noteDiagnoses) },
+        { label: 'Triage', value: latestNote.triage_level },
+      ]
+    );
   }
 
   const examResult = await hospitalQuery(
-    `SELECT soap_subjective, soap_objective, soap_assessment, soap_plan, diagnoses, status
+    `SELECT soap_subjective, soap_objective, soap_assessment, soap_plan, diagnoses, status, examination_notes
      FROM external_examinations
      WHERE patient_id = $1
-     ORDER BY created_at DESC
+     ORDER BY ${buildExternalExaminationPriorityOrder('external_examinations')}
      LIMIT 1`,
     [patientId]
   );
 
   if (examResult.rows.length === 0) {
-    return [
-      `Ringkasan kondisi pasien untuk ${patient.full_name || 'Pasien'} (NRM: ${patient.no_rm || '-'})`,
-      'Belum ada data SOAP atau clinical summary yang tersedia.',
-    ].join('\n\n');
+    return buildTriageResponse(
+      `Ringkasan kondisi pasien untuk ${patient.full_name || 'Pasien'}.`,
+      patient.no_rm || '-',
+      [
+        { label: 'Status', value: 'Belum ada data SOAP atau clinical summary yang tersedia.' },
+      ]
+    );
   }
 
   const exam = examResult.rows[0] as {
@@ -176,23 +379,34 @@ async function buildClinicalSummaryResponse(patientId: number) {
     soap_plan?: string | null;
     diagnoses?: Array<{ icd_code?: string | null; icd_name?: string | null }> | null;
     status?: string | null;
+    examination_notes?: string | null;
   };
 
   const diagnosisText = Array.isArray(exam.diagnoses) && exam.diagnoses.length > 0
     ? exam.diagnoses.map((item) => `${item.icd_code || '-'} - ${item.icd_name || '-'}`).join('; ')
     : '-';
+  const summaryValue = [exam.soap_subjective, exam.soap_objective].filter(Boolean).join(' | ');
+  const hasDoctorSoap = hasMeaningfulDoctorSoap(exam);
+  const isPendingWithoutSoap = !hasDoctorSoap && String(exam.status || '').toLowerCase() === 'pending';
 
-  return [
-    `Ringkasan kondisi pasien untuk ${patient.full_name || 'Pasien'} (NRM: ${patient.no_rm || '-'})`,
-    formatSummarySection('SUMMARY', [exam.soap_subjective, exam.soap_objective].filter(Boolean).join(' | ')),
-    formatSummarySection('ASSESSMENT', exam.soap_assessment),
-    formatSummarySection('PLAN', exam.soap_plan),
-    formatSummarySection('MEDICATION', '-'),
-    formatSummarySection('TRIAGE_LEVEL', exam.status?.toUpperCase() || '-'),
-    `DIAGNOSA ICD:\n${diagnosisText}`,
-  ].join('\n\n');
+  return buildTriageResponse(
+    `Ringkasan kondisi pasien untuk ${patient.full_name || 'Pasien'}.`,
+    patient.no_rm || '-',
+    [
+      {
+        label: 'Summary',
+        value: summaryValue || (isPendingWithoutSoap
+          ? 'Pemeriksaan dokter masih pending. SOAP dokter belum tersedia di external_examinations.'
+          : '-'),
+      },
+      { label: 'Assessment', value: exam.soap_assessment || '-' },
+      { label: 'Plan', value: exam.soap_plan || '-' },
+      { label: 'Obat', value: '-' },
+      { label: 'ICD', value: formatReadableIcdText(diagnosisText) },
+      { label: 'Triage', value: exam.status?.toUpperCase() || '-' },
+    ]
+  );
 }
-
 // ============ AGENT INITIALIZATION ============
 
 let agentInstance: Agent | null = null;
@@ -340,34 +554,18 @@ export async function chat(
         };
       }
 
-      const icdText = updated.icd.length > 0
-        ? updated.icd.map((item) => `${item.icd_code} - ${item.icd_name}`).join('; ')
-        : '-';
-      const responseParts = [
-        `Update ${updateKind} dari triage chat berhasil disimpan ke clinical notes untuk ${updated.patient.full_name}.`,
-        `NRM: ${updated.patient.no_rm}`,
-        `${updateKind === 'objective' ? 'Objective terbaru' : 'Update kondisi terbaru'}: ${updateText}`,
-        '',
-        'Kondisi Pasien',
-        `${updated.note.patient_condition || '-'}`,
-        '',
-        'Assessment',
-        `${updated.note.assessment || '-'}`,
-        '',
-        'Plan',
-        `${updated.note.plan || '-'}`,
-        '',
-        'Obat',
-        `${updated.note.medication_recommendation || '-'}`,
-        '',
-        'ICD',
-        `${icdText}`,
-        '',
-        'Triage',
-        `${updated.note.triage_level || '-'}`,
-      ];
-
-      const responseText = responseParts.join('\n');
+      const responseText = buildChatUpdateResponse({
+        patientName: updated.patient.full_name,
+        noRm: updated.patient.no_rm,
+        updateKind,
+        updateText,
+        patientCondition: updated.note.patient_condition,
+        assessment: updated.note.assessment,
+        plan: updated.note.plan,
+        medicationRecommendation: updated.note.medication_recommendation,
+        triageLevel: updated.note.triage_level,
+        icd: updated.icd,
+      });
 
 
       await Promise.all([
@@ -381,6 +579,24 @@ export async function chat(
         toolsUsed: ['clinical_notes_chat_update'],
         timestamp: new Date().toISOString(),
       };
+    }
+
+    if (normalizedPatientId && isObjectiveSummaryRequest(userMessage)) {
+      const objectiveSummaryResponse = await buildObjectiveSummaryResponse(normalizedPatientId, visitContext?.registrationId ?? null);
+
+      if (objectiveSummaryResponse) {
+        await Promise.all([
+          saveConversation(visitContext ?? { patientId: normalizedPatientId }, 'user', userMessage),
+          saveConversation(visitContext ?? { patientId: normalizedPatientId }, 'agent', objectiveSummaryResponse),
+        ]);
+
+        return {
+          success: true,
+          message: objectiveSummaryResponse,
+          toolsUsed: ['external_examinations_objective_summary'],
+          timestamp: new Date().toISOString(),
+        };
+      }
     }
 
     if (normalizedPatientId && isSummaryRequest(userMessage)) {
@@ -480,7 +696,7 @@ export async function chat(
     // IMPORTANT: result.text is a Promise<string>, must await it!
     let responseText = '';
     try {
-      responseText = await result.text;
+      responseText = normalizeGeneratedTriageResponse(await result.text);
       console.log('✨ Got response text, length:', responseText.length);
     } catch (textError) {
       console.error('❌ Failed to await result.text:', textError);

@@ -31,6 +31,7 @@ interface Patient {
   doctor_specialization?: string | null;
   doctor_username?: string | null;
   examination_status?: string | null;
+  clinical_note_doctor_read_at?: string | null;
   soap_subjective?: string | null;
   soap_objective?: string | null;
   soap_assessment?: string | null;
@@ -108,6 +109,20 @@ export default function TriageIGDPage() {
     if (patient.doctor_username?.trim()) return patient.doctor_username.trim();
     if (patient.registration_doctor_id) return `Dokter #${patient.registration_doctor_id}`;
     return 'Belum ditetapkan';
+  };
+
+  const getDoctorReadStatus = (patient: Patient) => {
+    if (patient.clinical_note_doctor_read_at) {
+      return {
+        label: 'Sudah dibaca dokter',
+        className: 'border-emerald-200 bg-emerald-50 text-emerald-700',
+      };
+    }
+
+    return {
+      label: 'Belum dibaca dokter',
+      className: 'border-amber-200 bg-amber-50 text-amber-700',
+    };
   };
 
   const getSummaryPreview = (patient: Patient) =>
@@ -235,9 +250,14 @@ export default function TriageIGDPage() {
                         )}
                       </div>
                     </div>
-                    <p className="text-sm text-slate-600">
-                      Dokter: <span className="font-medium text-slate-900">{getDoctorLabel(patient)}</span>
-                    </p>
+                    <div className="mt-1 flex flex-wrap items-center gap-2">
+                      <p className="text-sm text-slate-600">
+                        Dokter: <span className="font-medium text-slate-900">{getDoctorLabel(patient)}</span>
+                      </p>
+                      <span className={`inline-flex rounded-full border px-2.5 py-1 text-[0.65rem] font-semibold ${getDoctorReadStatus(patient).className}`}>
+                        {getDoctorReadStatus(patient).label}
+                      </span>
+                    </div>
                     {patient.doctor_specialization && (
                       <p className="mt-1 text-xs text-slate-500">{patient.doctor_specialization}</p>
                     )}

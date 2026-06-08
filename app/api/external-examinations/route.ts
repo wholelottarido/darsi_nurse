@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { hospitalQuery } from "@/lib/db/hospital-db";
 import { getCurrentPerawat } from "@/lib/auth/nurse-auth";
+import { buildExternalExaminationPriorityOrder } from "@/lib/clinical/external-examinations";
 import { regenerateSoapAssessmentPlan } from "@/lib/clinical/soap-followup";
 
 export async function GET(request: Request) {
@@ -66,7 +67,7 @@ export async function GET(request: Request) {
         updated_at
       FROM external_examinations
       WHERE registration_id = $1
-      ORDER BY created_at DESC
+      ORDER BY ${buildExternalExaminationPriorityOrder('external_examinations')}
       LIMIT 1`,
       [registrationId]
     );
