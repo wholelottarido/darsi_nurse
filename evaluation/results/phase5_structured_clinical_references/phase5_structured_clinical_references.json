@@ -1,0 +1,1742 @@
+[
+  {
+    "caseId": "CASE001",
+    "nurseUsername": "alif",
+    "nurseFullName": "Alif",
+    "patientName": "Iqbal Ramadhan",
+    "noRm": "RMDUMMY26021",
+    "registrationId": 78,
+    "patientData": {
+      "age": 35,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1990-06-21",
+        "patientId": 55,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr, Haqqi Afzal",
+        "doctorSpecialization": "Umum"
+      }
+    },
+    "soapNote": {
+      "subjective": "Gatal pada kulit setelah memakai sabun baru.",
+      "objective": "TD 116/74 mmHg, Nadi 78 bpm, Suhu 36.6 C, ruam ringan pada lengan.",
+      "assessment": "Gejala konsisten dengan reaksi iritan kontak ringan (L29.9) terkait sabun baru, dengan demam yang membaik (R50.9). Tidak ada bukti infeksi sekunder atau reaksi alergi berat. Pemulihan klinis berjalan dengan residual kelelahan (lemas) dan gejala kulit yang masih ada tetapi tidak progresif. Subyektif terbaru menunjukkan peningkatan nafsu makan dan penurunan demam, mendukung trajet pemulihan. ICD: L29.9 Pruritus, unspecified",
+      "plan": "Teruskan pemantauan kondisi kulit dan sistemik. Edukasi pasien untuk menghindari pemicu sabun yang diduga menyebabkan iritasi. Gunakan pelembap bila diperlukan. Jika demam kembali atau ruam menyebar/menambah, segera evaluasi ulang. Libatkan dokter jika muncul tanda infeksi atau reaksi alergi berat."
+    },
+    "icd10": {
+      "code": "L29.9",
+      "name": "Pruritus, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami pemulihan klinis dengan demam yang membaik, gejala lemas yang masih ada, dan nafsu makan yang mulai membaik. Ruam kulit ringan pada lengan masih terdapat tanpa tanda progresi atau infeksi sekunder.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, ruam kulit ringan pada lengan tanpa progresi atau infeksi sekunder.",
+      "clinicalNotes": "Gejala konsisten dengan reaksi iritan kontak ringan (L29.9) terkait sabun baru, dengan demam yang membaik (R50.9). Tidak ada bukti infeksi sekunder atau reaksi alergi berat. Pemulihan klinis berjalan dengan residual kelelahan (lemas) dan gejala kulit yang masih ada tetapi tidak progresif. Subyektif terbaru menunjukkan peningkatan nafsu makan dan penurunan demam, mendukung trajet pemulihan. ICD: L29.9 Pruritus, unspecified | Teruskan pemantauan kondisi kulit dan sistemik. Edukasi pasien untuk menghindari pemicu sabun yang diduga menyebabkan iritasi. Gunakan pelembap bila diperlukan. Jika demam kembali atau ruam menyebar/menambah, segera evaluasi ulang. Libatkan dokter jika muncul tanda infeksi atau reaksi alergi berat. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Gejala konsisten dengan reaksi iritan kontak ringan (L29.9) terkait sabun baru, dengan demam yang membaik (R50.9). Tidak ada bukti infeksi sekunder atau reaksi alergi berat. Pemulihan klinis berjalan dengan residual kelelahan (lemas) dan gejala kulit yang masih ada tetapi tidak progresif. Subyektif terbaru menunjukkan peningkatan nafsu makan dan penurunan demam, mendukung trajet pemulihan. | Teruskan pemantauan kondisi kulit dan sistemik. Edukasi pasien untuk menghindari pemicu sabun yang diduga menyebabkan iritasi. Gunakan pelembap bila diperlukan. Jika demam kembali atau ruam menyebar/menambah, segera evaluasi ulang. Libatkan dokter jika muncul tanda infeksi atau reaksi alergi berat. | Pasien mengalami pemulihan klinis dengan demam yang membaik, gejala lemas yang masih ada, dan nafsu makan yang mulai membaik. Ruam kulit ringan pada lengan masih terdapat tanpa tanda progresi atau infeksi sekunder.",
+      "examinationData": "Gatal pada kulit setelah memakai sabun baru. | TD 116/74 mmHg, Nadi 78 bpm, Suhu 36.6 C, ruam ringan pada lengan. | Gejala konsisten dengan reaksi iritan kontak ringan (L29.9) terkait sabun baru, dengan demam yang membaik (R50.9). Tidak ada bukti infeksi sekunder atau reaksi alergi berat. Pemulihan klinis berjalan dengan residual kelelahan (lemas) dan gejala kulit yang masih ada tetapi tidak progresif. Subyektif terbaru menunjukkan peningkatan nafsu makan dan penurunan demam, mendukung trajet pemulihan. ICD: L29.9 Pruritus, unspecified | Teruskan pemantauan kondisi kulit dan sistemik. Edukasi pasien untuk menghindari pemicu sabun yang diduga menyebabkan iritasi. Gunakan pelembap bila diperlukan. Jika demam kembali atau ruam menyebar/menambah, segera evaluasi ulang. Libatkan dokter jika muncul tanda infeksi atau reaksi alergi berat."
+    },
+    "structuredReference": "The patient presents with Gatal pada kulit setelah memakai sabun baru. Objective findings show TD 116/74 mmHg, Nadi 78 bpm, Suhu 36.6 C, ruam ringan pada lengan. The clinical assessment is Gejala konsisten dengan reaksi iritan kontak ringan (L29.9) terkait sabun baru, dengan demam yang membaik (R50.9). Tidak ada bukti infeksi sekunder atau reaksi alergi berat. Pemulihan klinis berjalan dengan residual kelelahan (lemas) dan gejala kulit yang masih ada tetapi tidak progresif. Subyektif terbaru menunjukkan peningkatan nafsu makan dan penurunan demam, mendukung trajet pemulihan. ICD: L29.9 Pruritus, unspecified, supported by ICD-10 code L29.9, Pruritus, unspecified. The triage level is LOW. The recommended plan is Teruskan pemantauan kondisi kulit dan sistemik. Edukasi pasien untuk menghindari pemicu sabun yang diduga menyebabkan iritasi. Gunakan pelembap bila diperlukan. Jika demam kembali atau ruam menyebar/menambah, segera evaluasi ulang. Libatkan dokter jika muncul tanda infeksi atau reaksi alergi berat.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 65,
+      "noteId": 601
+    }
+  },
+  {
+    "caseId": "CASE002",
+    "nurseUsername": "anisa",
+    "nurseFullName": "Anisa",
+    "patientName": "Lia Kartika",
+    "noRm": "RMDUMMY26012",
+    "registrationId": 69,
+    "patientData": {
+      "age": 30,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1995-10-22",
+        "patientId": 46,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr, Haqqi Afzal",
+        "doctorSpecialization": "Umum"
+      }
+    },
+    "soapNote": {
+      "subjective": "Hidung tersumbat, bersin, pilek encer.",
+      "objective": "TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8 C, mukosa hidung hiperemis.",
+      "assessment": "Nasofaringitis akut ringan dalam fase pemulihan. Subjektif terkini menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objective: TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8°C, mukosa hidung hiperemis. Tidak ada tanda bakteri sekunder atau komplikasi. ICD J00 konsisten dengan apresentasi klinis saat ini. ICD: J00 Acute nasopharyngitis [common cold]",
+      "plan": "Teruskan hidrasi cukup, istirahat, dan nutrisi seimbang. Pantau tingkat kelelahan dan gejala respiratori. Jika lemas tidak membaik dalam 48–72 jam atau muncul tanda berat (demam >39°C, sesak napas, muntah berulang), pertimbangkan evaluasi ulang."
+    },
+    "icd10": {
+      "code": "J00",
+      "name": "Acute nasopharyngitis [common cold]",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami perbaikan demam dengan masih ada rasa lemas dan peningkatan nafsu makan, sesuai dengan fase pemulihan nasofaringitis akut.",
+      "latestCondition": "demam membaik, masih lemas, nafsu makan mulai membaik",
+      "clinicalNotes": "Nasofaringitis akut ringan dalam fase pemulihan. Subjektif terkini menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objective: TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8°C, mukosa hidung hiperemis. Tidak ada tanda bakteri sekunder atau komplikasi. ICD J00 konsisten dengan apresentasi klinis saat ini. ICD: J00 Acute nasopharyngitis [common cold] | Teruskan hidrasi cukup, istirahat, dan nutrisi seimbang. Pantau tingkat kelelahan dan gejala respiratori. Jika lemas tidak membaik dalam 48–72 jam atau muncul tanda berat (demam >39°C, sesak napas, muntah berulang), pertimbangkan evaluasi ulang. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Nasofaringitis akut ringan dalam fase pemulihan. Subjektif terkini menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objective: TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8°C, mukosa hidung hiperemis. Tidak ada tanda bakteri sekunder atau komplikasi. | Teruskan hidrasi cukup, istirahat, dan nutrisi seimbang. Pantau tingkat kelelahan dan gejala respiratori. Jika lemas tidak membaik dalam 48–72 jam atau muncul tanda berat (demam >39°C, sesak napas, muntah berulang), pertimbangkan evaluasi ulang. | Pasien mengalami perbaikan demam dengan masih ada rasa lemas dan peningkatan nafsu makan, sesuai dengan fase pemulihan nasofaringitis akut.",
+      "examinationData": "Hidung tersumbat, bersin, pilek encer. | TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8 C, mukosa hidung hiperemis. | Nasofaringitis akut ringan dalam fase pemulihan. Subjektif terkini menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objective: TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8°C, mukosa hidung hiperemis. Tidak ada tanda bakteri sekunder atau komplikasi. ICD J00 konsisten dengan apresentasi klinis saat ini. ICD: J00 Acute nasopharyngitis [common cold] | Teruskan hidrasi cukup, istirahat, dan nutrisi seimbang. Pantau tingkat kelelahan dan gejala respiratori. Jika lemas tidak membaik dalam 48–72 jam atau muncul tanda berat (demam >39°C, sesak napas, muntah berulang), pertimbangkan evaluasi ulang."
+    },
+    "structuredReference": "The patient presents with Hidung tersumbat, bersin, pilek encer. Objective findings show TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8 C, mukosa hidung hiperemis. The clinical assessment is Nasofaringitis akut ringan dalam fase pemulihan. Subjektif terkini menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objective: TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8°C, mukosa hidung hiperemis. Tidak ada tanda bakteri sekunder atau komplikasi. ICD J00 konsisten dengan apresentasi klinis saat ini. ICD: J00 Acute nasopharyngitis [common cold], supported by ICD-10 code J00, Acute nasopharyngitis [common cold]. The triage level is LOW. The recommended plan is Teruskan hidrasi cukup, istirahat, dan nutrisi seimbang. Pantau tingkat kelelahan dan gejala respiratori. Jika lemas tidak membaik dalam 48–72 jam atau muncul tanda berat (demam >39°C, sesak napas, muntah berulang), pertimbangkan evaluasi ulang.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 56,
+      "noteId": 585
+    }
+  },
+  {
+    "caseId": "CASE003",
+    "nurseUsername": "arga",
+    "nurseFullName": "Arga",
+    "patientName": "Budi Santoso",
+    "noRm": "RMDUMMY26001",
+    "registrationId": 58,
+    "patientData": {
+      "age": 38,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1988-01-11",
+        "patientId": 35,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Demam sejak 2 hari, badan lemas, nafsu makan menurun.",
+      "objective": "TD 120/80 mmHg, Nadi 92 bpm, Suhu 38.2 C, RR 20 x/menit.",
+      "assessment": "Demam akut dalam fase pemulihan dengan subjektif membaik (demam menurun, nafsu makan mulai meningkat) dan objektif stabil (TD 120/80, HR 92, Suhu 38.2°C, RR 20). Tidak ada tanda infeksi berat atau komplikasi. Diagnosis R50.9 tetap relevan sebagai gejala utama yang sedang membaik, konsisten dengan infeksi viral ringan dalam tahap pemulihan. ICD: R50.9 Fever, unspecified",
+      "plan": "Terus monitor suhu dan vital signs secara rutin, pastikan hidrasi dan istirahat cukup, lanjutkan terapi simptomatik bila diperlukan (paracetamol untuk demam jika >38.5°C), edukasi kembali tanda peringatan, dan kontrol ulang jika demam kembali naik, memburuk, atau muncul gejala baru setelah 48 jam."
+    },
+    "icd10": {
+      "code": "R50.9",
+      "name": "Fever, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami demam akut dalam fase pemulihan dengan perbaikan subjektif: demam membaik, nafsu makan mulai membaik, meski masih ada keluhan lemas. Vital signs stabil (TD 120/80 mmHg, Nadi 92 bpm, Suhu 38.2°C, RR 20 x/menit) tanpa tanda komplikasi atau deteriorasi. Keluhan utama tetap demam sesuai deteksi awal.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Demam akut dalam fase pemulihan dengan subjektif membaik (demam menurun, nafsu makan mulai meningkat) dan objektif stabil (TD 120/80, HR 92, Suhu 38.2°C, RR 20). Tidak ada tanda infeksi berat atau komplikasi. Diagnosis R50.9 tetap relevan sebagai gejala utama yang sedang membaik, konsisten dengan infeksi viral ringan dalam tahap pemulihan. ICD: R50.9 Fever, unspecified | Terus monitor suhu dan vital signs secara rutin, pastikan hidrasi dan istirahat cukup, lanjutkan terapi simptomatik bila diperlukan (paracetamol untuk demam jika >38.5°C), edukasi kembali tanda peringatan, dan kontrol ulang jika demam kembali naik, memburuk, atau muncul gejala baru setelah 48 jam. | paracetamol untuk demam jika >38.5°C | Demam akut dalam fase pemulihan dengan subjektif membaik (demam menurun, nafsu makan mulai meningkat) dan objektif stabil (TD 120/80, HR 92, Suhu 38.2°C, RR 20). Tidak ada tanda infeksi berat atau komplikasi. Diagnosis R50.9 tetap relevan sebagai gejala utama yang sedang membaik, konsisten dengan infeksi viral ringan dalam tahap pemulihan. | Terus monitor suhu dan vital signs secara rutin, pastikan hidrasi dan istirahat cukup, lanjutkan terapi simptomatik bila diperlukan (paracetamol untuk demam jika >38.5°C), edukasi kembali tanda peringatan, dan kontrol ulang jika demam kembali naik, memburuk, atau muncul gejala baru setelah 48 jam. | Pasien mengalami demam akut dalam fase pemulihan dengan perbaikan subjektif: demam membaik, nafsu makan mulai membaik, meski masih ada keluhan lemas. Vital signs stabil (TD 120/80 mmHg, Nadi 92 bpm, Suhu 38.2°C, RR 20 x/menit) tanpa tanda komplikasi atau deteriorasi. Keluhan utama tetap demam sesuai deteksi awal.",
+      "examinationData": "Demam sejak 2 hari, badan lemas, nafsu makan menurun. | TD 120/80 mmHg, Nadi 92 bpm, Suhu 38.2 C, RR 20 x/menit. | Demam akut dalam fase pemulihan dengan subjektif membaik (demam menurun, nafsu makan mulai meningkat) dan objektif stabil (TD 120/80, HR 92, Suhu 38.2°C, RR 20). Tidak ada tanda infeksi berat atau komplikasi. Diagnosis R50.9 tetap relevan sebagai gejala utama yang sedang membaik, konsisten dengan infeksi viral ringan dalam tahap pemulihan. ICD: R50.9 Fever, unspecified | Terus monitor suhu dan vital signs secara rutin, pastikan hidrasi dan istirahat cukup, lanjutkan terapi simptomatik bila diperlukan (paracetamol untuk demam jika >38.5°C), edukasi kembali tanda peringatan, dan kontrol ulang jika demam kembali naik, memburuk, atau muncul gejala baru setelah 48 jam."
+    },
+    "structuredReference": "The patient presents with Demam sejak 2 hari, badan lemas, nafsu makan menurun. Objective findings show TD 120/80 mmHg, Nadi 92 bpm, Suhu 38.2 C, RR 20 x/menit. The clinical assessment is Demam akut dalam fase pemulihan dengan subjektif membaik (demam menurun, nafsu makan mulai meningkat) dan objektif stabil (TD 120/80, HR 92, Suhu 38.2°C, RR 20). Tidak ada tanda infeksi berat atau komplikasi. Diagnosis R50.9 tetap relevan sebagai gejala utama yang sedang membaik, konsisten dengan infeksi viral ringan dalam tahap pemulihan. ICD: R50.9 Fever, unspecified, supported by ICD-10 code R50.9, Fever, unspecified. The triage level is LOW. The recommended plan is Terus monitor suhu dan vital signs secara rutin, pastikan hidrasi dan istirahat cukup, lanjutkan terapi simptomatik bila diperlukan (paracetamol untuk demam jika >38.5°C), edukasi kembali tanda peringatan, dan kontrol ulang jika demam kembali naik, memburuk, atau muncul gejala baru setelah 48 jam.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 45,
+      "noteId": 589
+    }
+  },
+  {
+    "caseId": "CASE004",
+    "nurseUsername": "arif",
+    "nurseFullName": "Arif",
+    "patientName": "Fajar Nugroho",
+    "noRm": "RMDUMMY26017",
+    "registrationId": 74,
+    "patientData": {
+      "age": 42,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1984-04-03",
+        "patientId": 51,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Batuk, pilek, nyeri tenggorokan ringan.",
+      "objective": "TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3 C, faring hiperemis.",
+      "assessment": "ISP A akut ringan (J06.9) menunjukkan trend pemulihan sesuai perkembangan subjektif: demam membaik, nafsu makan mulai membaik, tanpa gejala pernapasan berat atau tanda infeksi sekunder. Objective stabil (TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3°C, faring hiperemis) menunjukkan respons baik terhadap konservatif. Lemas mungkin terkait pemulihan pasca-demam. ICD: J06.9 Acute upper respiratory infection, unspecified",
+      "plan": "Teruskan edukasi istirahat cukup, hidrasi, dan nutrisi seimbang. Gunakan masker jika beraktivitas di luar rumah. Pantau suhu dan gejala sehari-hari. Kembali jika demam kembali >38°C, sesak napas, nyeri tenggorokan parah, atau tidak ada peningkatan dalam 48–72 jam. Evaluasi kembali jika lemas memburuk atau menyertai tanda lain seperti pusing, hiperhidrosis, atau penurunan konsiensian."
+    },
+    "icd10": {
+      "code": "J06.9",
+      "name": "Acute upper respiratory infection, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan ISPA akut ringan (J06.9) dalam fase pemulihan: demam menurun, nafsu makan mulai meningkat, masih mengalami lemas dan batuk dengan pilek serta nyeri tenggorokan ringan. Vital signs stabil tanpa tanda infeksi sekunder.",
+      "latestCondition": "demam membaik, masih lemas, nafsu makan mulai membaik",
+      "clinicalNotes": "ISP A akut ringan (J06.9) menunjukkan trend pemulihan sesuai perkembangan subjektif: demam membaik, nafsu makan mulai membaik, tanpa gejala pernapasan berat atau tanda infeksi sekunder. Objective stabil (TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3°C, faring hiperemis) menunjukkan respons baik terhadap konservatif. Lemas mungkin terkait pemulihan pasca-demam. ICD: J06.9 Acute upper respiratory infection, unspecified | Teruskan edukasi istirahat cukup, hidrasi, dan nutrisi seimbang. Gunakan masker jika beraktivitas di luar rumah. Pantau suhu dan gejala sehari-hari. Kembali jika demam kembali >38°C, sesak napas, nyeri tenggorokan parah, atau tidak ada peningkatan dalam 48–72 jam. Evaluasi kembali jika lemas memburuk atau menyertai tanda lain seperti pusing, hiperhidrosis, atau penurunan konsiensian. | J06.9: parasetamol bila ada demam/nyeri serta terapi simptomatik batuk seperti ambroxol atau asetilsistein bila sesuai keluhan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian. | ISP A akut ringan (J06.9) dengan trend pemulihan sesuai perkembangan subjektif: demam membaik, nafsu makan mulai membaik, tanpa gejala pernapasan berat atau tanda infeksi sekunder. Objective stabil (TD 118/76, Nadi 82, Suhu 37.3°C, faring hiperemis) menunjukkan respons baik terhadap konservatif. Lemas mungkin terkait pemulihan pasca-demam, belum cukup data untuk diagnosa tambahan. | Teruskan edukasi istirahat cukup, hidrasi, dan nutrisi seimbang. Gunakan masker jika beraktivitas di luar rumah. Pantau suhu dan gejala sehari-hari. Kembali jika demam kembali >38°C, sesak napas, nyeri tenggorokan parah, atau tidak ada peningkatan dalam 48–72 jam. Evaluasi kembali jika lemas memburuk atau menyertai tanda lain seperti pusing, hiperhidrosis, atau penurunan konsiensian. | Pasien dengan ISPA akut ringan (J06.9) dalam fase pemulihan: demam menurun, nafsu makan mulai meningkat, masih mengalami lemas dan batuk dengan pilek serta nyeri tenggorokan ringan. Vital signs stabil tanpa tanda infeksi sekunder.",
+      "examinationData": "Batuk, pilek, nyeri tenggorokan ringan. | TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3 C, faring hiperemis. | ISP A akut ringan (J06.9) menunjukkan trend pemulihan sesuai perkembangan subjektif: demam membaik, nafsu makan mulai membaik, tanpa gejala pernapasan berat atau tanda infeksi sekunder. Objective stabil (TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3°C, faring hiperemis) menunjukkan respons baik terhadap konservatif. Lemas mungkin terkait pemulihan pasca-demam. ICD: J06.9 Acute upper respiratory infection, unspecified | Teruskan edukasi istirahat cukup, hidrasi, dan nutrisi seimbang. Gunakan masker jika beraktivitas di luar rumah. Pantau suhu dan gejala sehari-hari. Kembali jika demam kembali >38°C, sesak napas, nyeri tenggorokan parah, atau tidak ada peningkatan dalam 48–72 jam. Evaluasi kembali jika lemas memburuk atau menyertai tanda lain seperti pusing, hiperhidrosis, atau penurunan konsiensian."
+    },
+    "structuredReference": "The patient presents with Batuk, pilek, nyeri tenggorokan ringan. Objective findings show TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3 C, faring hiperemis. The clinical assessment is ISP A akut ringan (J06.9) menunjukkan trend pemulihan sesuai perkembangan subjektif: demam membaik, nafsu makan mulai membaik, tanpa gejala pernapasan berat atau tanda infeksi sekunder. Objective stabil (TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3°C, faring hiperemis) menunjukkan respons baik terhadap konservatif. Lemas mungkin terkait pemulihan pasca-demam. ICD: J06.9 Acute upper respiratory infection, unspecified, supported by ICD-10 code J06.9, Acute upper respiratory infection, unspecified. The triage level is LOW. The recommended plan is Teruskan edukasi istirahat cukup, hidrasi, dan nutrisi seimbang. Gunakan masker jika beraktivitas di luar rumah. Pantau suhu dan gejala sehari-hari. Kembali jika demam kembali >38°C, sesak napas, nyeri tenggorokan parah, atau tidak ada peningkatan dalam 48–72 jam. Evaluasi kembali jika lemas memburuk atau menyertai tanda lain seperti pusing, hiperhidrosis, atau penurunan konsiensian.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 61,
+      "noteId": 590
+    }
+  },
+  {
+    "caseId": "CASE005",
+    "nurseUsername": "ayu",
+    "nurseFullName": "Ayu",
+    "patientName": "Sinta Melani",
+    "noRm": "RMDUMMY26028",
+    "registrationId": 85,
+    "patientData": {
+      "age": 34,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1991-09-12",
+        "patientId": 62,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Andooon",
+        "doctorSpecialization": "Spesialis Obat"
+      }
+    },
+    "soapNote": {
+      "subjective": "Mudah lelah dan sering haus, kontrol gula darah.",
+      "objective": "TD 120/78 mmHg, Nadi 82 bpm, Suhu 36.6 C, tanpa keluhan akut berat.",
+      "assessment": "E11.9 Diabetes tipe 2 tanpa komplikasi dengan demam yang membaik (R50.9). Lemas terkait pemulihan dari infeksi ringan atau fluktuasi gula darah, tanpa tanda infeksi aktif atau krisis metabolik berdasarkan vital sign stabil. Kondisi saat ini menunjukkan respons positif terhadap pemulihan, dengan perbaikan demam dan nafsu makan, namun lemas masih berlanjut sebagai bagian dari fase pemulihan. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications",
+      "plan": "Teruskan monitoring gula darah, hidrasi, dan gejala lemas. Edukasi pola makan seimbang dan istirahat cukup. Evaluasi kembali jika lemas memburuk atau demam kembali dalam 24-48 jam. Follow up sesuai rutin diabetes."
+    },
+    "icd10": {
+      "code": "E11.9",
+      "name": "Non-insulin-dependent diabetes mellitus ,  Without complications",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien diabetes tipe 2 menunjukkan perbaikan demam dan nafsu makan, namun masih mengalami lemas. Vital sign stabil (TD 120/78 mmHg, Nadi 82 bpm, Suhu 36.6°C) tanpa tanda komplikasi akut atau infeksi aktif. Kondisi konsisten dengan pemulihan dari infeksi ringan pada dasar diabetes tipe 2 terkontrol.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "E11.9 Diabetes tipe 2 tanpa komplikasi dengan demam yang membaik (R50.9). Lemas terkait pemulihan dari infeksi ringan atau fluktuasi gula darah, tanpa tanda infeksi aktif atau krisis metabolik berdasarkan vital sign stabil. Kondisi saat ini menunjukkan respons positif terhadap pemulihan, dengan perbaikan demam dan nafsu makan, namun lemas masih berlanjut sebagai bagian dari fase pemulihan. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications | Teruskan monitoring gula darah, hidrasi, dan gejala lemas. Edukasi pola makan seimbang dan istirahat cukup. Evaluasi kembali jika lemas memburuk atau demam kembali dalam 24-48 jam. Follow up sesuai rutin diabetes. | E11.9: lanjutkan terapi antidiabetik sesuai regimen dokter dan monitor glukosa; jangan memulai obat baru tanpa verifikasi regimen yang sedang berjalan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian. | E11.9 Diabetes tipe 2 tanpa komplikasi dengan demam yang membaik (R50.9). Lemas terkait pemulihan dari infeksi ringan atau fluktuasi gula darah, tanpa tanda infeksi aktif atau krisis metabolik berdasarkan vital sign stabil. Kondisi saat ini menunjukkan respons positif terhadap pemulihan, dengan perbaikan demam dan nafsu makan, namun lemas masih berlanjut sebagai bagian dari fase pemulihan. | Teruskan monitoring gula darah, hidrasi, dan gejala lemas. Edukasi pola makan seimbang dan istirahat cukup. Evaluasi kembali jika lemas memburuk atau demam kembali dalam 24-48 jam. Follow up sesuai rutin diabetes. | Pasien diabetes tipe 2 menunjukkan perbaikan demam dan nafsu makan, namun masih mengalami lemas. Vital sign stabil (TD 120/78 mmHg, Nadi 82 bpm, Suhu 36.6°C) tanpa tanda komplikasi akut atau infeksi aktif. Kondisi konsisten dengan pemulihan dari infeksi ringan pada dasar diabetes tipe 2 terkontrol.",
+      "examinationData": "Mudah lelah dan sering haus, kontrol gula darah. | TD 120/78 mmHg, Nadi 82 bpm, Suhu 36.6 C, tanpa keluhan akut berat. | E11.9 Diabetes tipe 2 tanpa komplikasi dengan demam yang membaik (R50.9). Lemas terkait pemulihan dari infeksi ringan atau fluktuasi gula darah, tanpa tanda infeksi aktif atau krisis metabolik berdasarkan vital sign stabil. Kondisi saat ini menunjukkan respons positif terhadap pemulihan, dengan perbaikan demam dan nafsu makan, namun lemas masih berlanjut sebagai bagian dari fase pemulihan. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications | Teruskan monitoring gula darah, hidrasi, dan gejala lemas. Edukasi pola makan seimbang dan istirahat cukup. Evaluasi kembali jika lemas memburuk atau demam kembali dalam 24-48 jam. Follow up sesuai rutin diabetes."
+    },
+    "structuredReference": "The patient presents with Mudah lelah dan sering haus, kontrol gula darah. Objective findings show TD 120/78 mmHg, Nadi 82 bpm, Suhu 36.6 C, tanpa keluhan akut berat. The clinical assessment is E11.9 Diabetes tipe 2 tanpa komplikasi dengan demam yang membaik (R50.9). Lemas terkait pemulihan dari infeksi ringan atau fluktuasi gula darah, tanpa tanda infeksi aktif atau krisis metabolik berdasarkan vital sign stabil. Kondisi saat ini menunjukkan respons positif terhadap pemulihan, dengan perbaikan demam dan nafsu makan, namun lemas masih berlanjut sebagai bagian dari fase pemulihan. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications, supported by ICD-10 code E11.9, Non-insulin-dependent diabetes mellitus , Without complications. The triage level is LOW. The recommended plan is Teruskan monitoring gula darah, hidrasi, dan gejala lemas. Edukasi pola makan seimbang dan istirahat cukup. Evaluasi kembali jika lemas memburuk atau demam kembali dalam 24-48 jam. Follow up sesuai rutin diabetes.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 72,
+      "noteId": 602
+    }
+  },
+  {
+    "caseId": "CASE006",
+    "nurseUsername": "bagas",
+    "nurseFullName": "Bagas",
+    "patientName": "Dimas Prakoso",
+    "noRm": "RMDUMMY26005",
+    "registrationId": 62,
+    "patientData": {
+      "age": 47,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1979-05-18",
+        "patientId": 39,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Andooon",
+        "doctorSpecialization": "Spesialis Obat"
+      }
+    },
+    "soapNote": {
+      "subjective": "Diare cair 4 kali sejak pagi, perut mulas.",
+      "objective": "TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8 C, turgor cukup, abdomen kram ringan.",
+      "assessment": "Gastroenteritis akut ringan (A09) dalam tahap pemulihan dengan respons klinis positif: demam membaik, nafsu makan mulai meningkat, tanpa tanda dehydrasi. Gejala lemas masih ada tetapi sesuai dengan fase pemulihan pasca diare akut, didukung oleh subjektif (demam membaik, nafsu makan meningkat) dan objektif (TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8°C, turgor cukup, abdomen kram ringan). Tidak ada indikasi infeksi berulang atau komplikasi. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin",
+      "plan": "Pantau frekuensi bowel movement dan tingkat kelelahan. Pastikan hidrasi dan asupan nutrisi cukup. Edukasi pasien untuk meningkatkan konsumsi makanan lembut dan cairan elektrolit. Kontrol jika lemas memburuk, demam kembali, atau diare berulang/berdarah."
+    },
+    "icd10": {
+      "code": "A09",
+      "name": "Other gastroenteritis and colitis of infectious and unspecified origin",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan gastroenteritis akut ringan menunjukkan perbaikan klinis: demam menurun, nafsu makan meningkat, tetapi masih mengalami lemas dan diare cair tanpa tanda dehydrasi. Keluhan utama tetap diare dengan perut mulas, konsisten dengan fase pemulihan.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, diare cair 4 kali sejak pagi dengan perut mulas, tanpa tanda dehydrasi.",
+      "clinicalNotes": "Gastroenteritis akut ringan (A09) dalam tahap pemulihan dengan respons klinis positif: demam membaik, nafsu makan mulai meningkat, tanpa tanda dehydrasi. Gejala lemas masih ada tetapi sesuai dengan fase pemulihan pasca diare akut, didukung oleh subjektif (demam membaik, nafsu makan meningkat) dan objektif (TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8°C, turgor cukup, abdomen kram ringan). Tidak ada indikasi infeksi berulang atau komplikasi. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin | Pantau frekuensi bowel movement dan tingkat kelelahan. Pastikan hidrasi dan asupan nutrisi cukup. Edukasi pasien untuk meningkatkan konsumsi makanan lembut dan cairan elektrolit. Kontrol jika lemas memburuk, demam kembali, atau diare berulang/berdarah. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Gastroenteritis akut ringan (A09) dalam tahap pemulihan dengan respons klinis positif: demam membaik, nafsu makan mulai meningkat, tanpa tanda dehydrasi. Gejala lemas masih ada tetapi sesuai dengan fase pemulihan pasca diare akut, didukung oleh subjektif (demam membaik, nafsu makan meningkat) dan objektif (TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8°C, turgor cukup, abdomen kram ringan). Tidak ada indikasi infeksi berulang atau komplikasi. | Pantau frekuensi bowel movement dan tingkat kelelahan. Pastikan hidrasi dan asupan nutrisi cukup. Edukasi pasien untuk meningkatkan konsumsi makanan lembut dan cairan elektrolit. Kontrol jika lemas memburuk, demam kembali, atau diare berulang/berdarah. | Pasien dengan gastroenteritis akut ringan menunjukkan perbaikan klinis: demam menurun, nafsu makan meningkat, tetapi masih mengalami lemas dan diare cair tanpa tanda dehydrasi. Keluhan utama tetap diare dengan perut mulas, konsisten dengan fase pemulihan.",
+      "examinationData": "Diare cair 4 kali sejak pagi, perut mulas. | TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8 C, turgor cukup, abdomen kram ringan. | Gastroenteritis akut ringan (A09) dalam tahap pemulihan dengan respons klinis positif: demam membaik, nafsu makan mulai meningkat, tanpa tanda dehydrasi. Gejala lemas masih ada tetapi sesuai dengan fase pemulihan pasca diare akut, didukung oleh subjektif (demam membaik, nafsu makan meningkat) dan objektif (TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8°C, turgor cukup, abdomen kram ringan). Tidak ada indikasi infeksi berulang atau komplikasi. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin | Pantau frekuensi bowel movement dan tingkat kelelahan. Pastikan hidrasi dan asupan nutrisi cukup. Edukasi pasien untuk meningkatkan konsumsi makanan lembut dan cairan elektrolit. Kontrol jika lemas memburuk, demam kembali, atau diare berulang/berdarah."
+    },
+    "structuredReference": "The patient presents with Diare cair 4 kali sejak pagi, perut mulas. Objective findings show TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8 C, turgor cukup, abdomen kram ringan. The clinical assessment is Gastroenteritis akut ringan (A09) dalam tahap pemulihan dengan respons klinis positif: demam membaik, nafsu makan mulai meningkat, tanpa tanda dehydrasi. Gejala lemas masih ada tetapi sesuai dengan fase pemulihan pasca diare akut, didukung oleh subjektif (demam membaik, nafsu makan meningkat) dan objektif (TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8°C, turgor cukup, abdomen kram ringan). Tidak ada indikasi infeksi berulang atau komplikasi. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin, supported by ICD-10 code A09, Other gastroenteritis and colitis of infectious and unspecified origin. The triage level is LOW. The recommended plan is Pantau frekuensi bowel movement dan tingkat kelelahan. Pastikan hidrasi dan asupan nutrisi cukup. Edukasi pasien untuk meningkatkan konsumsi makanan lembut dan cairan elektrolit. Kontrol jika lemas memburuk, demam kembali, atau diare berulang/berdarah.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 49,
+      "noteId": 593
+    }
+  },
+  {
+    "caseId": "CASE007",
+    "nurseUsername": "dafi",
+    "nurseFullName": "Dafi",
+    "patientName": "Rina Wulandari",
+    "noRm": "RM004",
+    "registrationId": 57,
+    "patientData": {
+      "age": 33,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1992-11-07",
+        "patientId": 21,
+        "patientSource": "manual",
+        "insuranceType": "JKN",
+        "registrationStatus": "dipanggil",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-06",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Pasien mengalami gejala asam lambung tanpa data objektif tambahan atau riwayat penyakit yang relevan.",
+      "objective": "Tidak cukup data untuk membuat interpretasi klinis karena subjective, objective, assessment, dan diagnosis ICD tidak terisi baik dari SOAP awal maupun update triage chat. | -",
+      "assessment": "Tidak cukup data untuk membuat interpretasi klinis karena subjective, objective, assessment, dan diagnosis ICD tidak terisi baik dari SOAP awal maupun update triage chat.",
+      "plan": "-"
+    },
+    "icd10": {
+      "code": "K20.9",
+      "name": "Esofagitis tanpa tanda bleeding",
+      "referenceStatus": "available",
+      "source": "clinical_notes.evidence_refs.icd"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami gejala asam lambung tanpa data objektif tambahan atau riwayat penyakit yang relevan.",
+      "latestCondition": "mengalami asam lambung",
+      "clinicalNotes": "Gastritis atau dyspepsia fungional diduga berdasarkan keluhan asam lambung, namun diperlukan evaluasi lebih lanjut karena tidak ada data objektif atau riwayat penyakit pendukung. | Edukasi pola makan, hindari makanan bersantan, pedas, dan berlemak; konsumsi makanan teratur; hindari berserak dan merokok; kontrol kembali jika gejala memburuk atau muncul tanda peringatan (muntah darah, feses hitam, berat badan turun). | Antasida (misal: aluminium magnesium hidroksida) setelah makan dan sebelum tidur bila diperlukan, atau proton pump inhibitor (misal: omeprazol 20 mg sekali sehari sebelum sarapan) selama 2-4 minggu bila gejala konsisten. | Pasien tidak memiliki keluhan utama yang terdeteksi baik dari SOAP awal dokter maupun update triage chat terbaru. Tidak terdapat temuan objektif atau assessment yang signifikan.",
+      "examinationData": "Tidak cukup data untuk membuat interpretasi klinis karena subjective, objective, assessment, dan diagnosis ICD tidak terisi baik dari SOAP awal maupun update triage chat. | -"
+    },
+    "structuredReference": "The patient presents with Pasien mengalami gejala asam lambung tanpa data objektif tambahan atau riwayat penyakit yang relevan. Objective findings show Tidak cukup data untuk membuat interpretasi klinis karena subjective, objective, assessment, dan diagnosis ICD tidak terisi baik dari SOAP awal maupun update triage chat. | -. The clinical assessment is Tidak cukup data untuk membuat interpretasi klinis karena subjective, objective, assessment, dan diagnosis ICD tidak terisi baik dari SOAP awal maupun update triage chat, supported by ICD-10 code K20.9, Esofagitis tanpa tanda bleeding. The triage level is LOW. The recommended plan is -.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "dipanggil",
+      "examStatus": "pending",
+      "noteStatus": "draft",
+      "noteSource": "chat",
+      "examId": 44,
+      "noteId": 103
+    }
+  },
+  {
+    "caseId": "CASE008",
+    "nurseUsername": "desi",
+    "nurseFullName": "Desi",
+    "patientName": "Anisa Rahma",
+    "noRm": "RMDUMMY26020",
+    "registrationId": 77,
+    "patientData": {
+      "age": 27,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1999-05-30",
+        "patientId": 54,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Andooon",
+        "doctorSpecialization": "Spesialis Obat"
+      }
+    },
+    "soapNote": {
+      "subjective": "Diare dan mual sejak pagi, belum muntah.",
+      "objective": "TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5 C, abdomen bising usus meningkat.",
+      "assessment": "Gastroenteritis akut ringan dengan trend pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif: TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5°C, abdomen bising usus meningkat. Tidak ada tanda dehydrasi atau perburukan. Diagnosis ICD A09 mendukung gastroenteritis infektious. Kondisi stabil dan responsif terhadap oralit dan monitoring. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin",
+      "plan": "Teruskan oralit dan monitoring cairan masuk/keluar. Edukasi tanda bahaya dehydrasi. Evaluasi ulang dalam 24 jam jika lemas tidak migliora atau demam kembali."
+    },
+    "icd10": {
+      "code": "A09",
+      "name": "Other gastroenteritis and colitis of infectious and unspecified origin",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan gastroenteritis akut ringan menunjukkan perbaikan klinis: demam menurun, nafsu makan meningkat, dan stabil hemodinamis. Diare dan mual masih ada namun tanpa muntah atau tanda dehydrasi.",
+      "latestCondition": "demam membaik, masih lemas, nafsu makan mulai membaik, diare dan mual masih ada tanpa muntah atau tanda dehydrasi",
+      "clinicalNotes": "Gastroenteritis akut ringan dengan trend pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif: TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5°C, abdomen bising usus meningkat. Tidak ada tanda dehydrasi atau perburukan. Diagnosis ICD A09 mendukung gastroenteritis infektious. Kondisi stabil dan responsif terhadap oralit dan monitoring. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin | Teruskan oralit dan monitoring cairan masuk/keluar. Edukasi tanda bahaya dehydrasi. Evaluasi ulang dalam 24 jam jika lemas tidak migliora atau demam kembali. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Gastroenteritis akut ringan dengan trend pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif: TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5°C, abdomen bising usus meningkat. Tidak ada tanda dehydrasi atau perburukan. Diagnosis ICD A09 mendukung gastroenteritis infektious. Kondisi stabil dan responsif terhadap oralit dan monitoring. | Teruskan oralit dan monitoring cairan masuk/keluar. Edukasi tanda bahaya dehydrasi. Evaluasi ulang dalam 24 jam jika lemas tidak migliora atau demam kembali. | Pasien dengan gastroenteritis akut ringan menunjukkan perbaikan klinis: demam menurun, nafsu makan meningkat, dan stabil hemodinamis. Diare dan mual masih ada namun tanpa muntah atau tanda dehydrasi.",
+      "examinationData": "Diare dan mual sejak pagi, belum muntah. | TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5 C, abdomen bising usus meningkat. | Gastroenteritis akut ringan dengan trend pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif: TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5°C, abdomen bising usus meningkat. Tidak ada tanda dehydrasi atau perburukan. Diagnosis ICD A09 mendukung gastroenteritis infektious. Kondisi stabil dan responsif terhadap oralit dan monitoring. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin | Teruskan oralit dan monitoring cairan masuk/keluar. Edukasi tanda bahaya dehydrasi. Evaluasi ulang dalam 24 jam jika lemas tidak migliora atau demam kembali."
+    },
+    "structuredReference": "The patient presents with Diare dan mual sejak pagi, belum muntah. Objective findings show TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5 C, abdomen bising usus meningkat. The clinical assessment is Gastroenteritis akut ringan dengan trend pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif: TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5°C, abdomen bising usus meningkat. Tidak ada tanda dehydrasi atau perburukan. Diagnosis ICD A09 mendukung gastroenteritis infektious. Kondisi stabil dan responsif terhadap oralit dan monitoring. ICD: A09 Other gastroenteritis and colitis of infectious and unspecified origin, supported by ICD-10 code A09, Other gastroenteritis and colitis of infectious and unspecified origin. The triage level is LOW. The recommended plan is Teruskan oralit dan monitoring cairan masuk/keluar. Edukasi tanda bahaya dehydrasi. Evaluasi ulang dalam 24 jam jika lemas tidak migliora atau demam kembali.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 64,
+      "noteId": 592
+    }
+  },
+  {
+    "caseId": "CASE009",
+    "nurseUsername": "dewi",
+    "nurseFullName": "Dewi",
+    "patientName": "Citra Damayanti",
+    "noRm": "RMDUMMY26024",
+    "registrationId": 81,
+    "patientData": {
+      "age": 31,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1994-11-30",
+        "patientId": 58,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Nyeri punggung bawah setelah duduk lama.",
+      "objective": "TD 114/74 mmHg, Nadi 76 bpm, Suhu 36.5 C, nyeri tekan lumbal ringan.",
+      "assessment": "Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan, didukung oleh demam yang membaik, nafsu makan yang mulai meningkat, dan kelelahan yang masih ada. Tidak ditemukan tanda infeksi sistemik atau komplikasi. Diagnosis awal tetap relevan untuk menjelaskan kondisi saat ini. ICD: M54.5 Low back pain",
+      "plan": "Teruskan edukasi postur dan ergonomi duduk. Tingkatkan mobilisasi ringan dan stretching punggung bawah sesuai toleransi. Terapkan kompres hangat untuk nyeri. Pantau suhu, tingkat kelelahan, dan nafsu makan setiap 24 jam. Lakukan evaluasi ulang jika demam kembali, nafsu makan menurun drastis, atau nyeri menjalar ke anggota bawah."
+    },
+    "icd10": {
+      "code": "M54.5",
+      "name": "Low back pain",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami pemulihan dengan demam menurun dan nafsu makan mulai meningkat, namun masih merasa lemas. Nyeri punggung bawah tetap ada tetapi tidak memburuk, sesuai dengan fase pemulihan dari diagnosa awal.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik. Nyeri punggung bawah muskuloskeletal berlanjut dengan intensitas ringan.",
+      "clinicalNotes": "Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan, didukung oleh demam yang membaik, nafsu makan yang mulai meningkat, dan kelelahan yang masih ada. Tidak ditemukan tanda infeksi sistemik atau komplikasi. Diagnosis awal tetap relevan untuk menjelaskan kondisi saat ini. ICD: M54.5 Low back pain | Teruskan edukasi postur dan ergonomi duduk. Tingkatkan mobilisasi ringan dan stretching punggung bawah sesuai toleransi. Terapkan kompres hangat untuk nyeri. Pantau suhu, tingkat kelelahan, dan nafsu makan setiap 24 jam. Lakukan evaluasi ulang jika demam kembali, nafsu makan menurun drastis, atau nyeri menjalar ke anggota bawah. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan, didukung oleh demam yang membaik, nafsu makan yang mulai meningkat, dan kelelahan yang masih ada. Tidak ditemukan tanda infeksi sistemik atau komplikasi. Diagnosis awal tetap relevan untuk menjelaskan kondisi saat ini. | Teruskan edukasi postur dan ergonomi duduk. Tingkatkan mobilisasi ringan dan stretching punggung bawah sesuai toleransi. Terapkan kompres hangat untuk nyeri. Pantau suhu, tingkat kelelahan, dan nafsu makan setiap 24 jam. Lakukan evaluasi ulang jika demam kembali, nafsu makan menurun drastis, atau nyeri menjalar ke anggota bawah. | Pasien mengalami pemulihan dengan demam menurun dan nafsu makan mulai meningkat, namun masih merasa lemas. Nyeri punggung bawah tetap ada tetapi tidak memburuk, sesuai dengan fase pemulihan dari diagnosa awal.",
+      "examinationData": "Nyeri punggung bawah setelah duduk lama. | TD 114/74 mmHg, Nadi 76 bpm, Suhu 36.5 C, nyeri tekan lumbal ringan. | Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan, didukung oleh demam yang membaik, nafsu makan yang mulai meningkat, dan kelelahan yang masih ada. Tidak ditemukan tanda infeksi sistemik atau komplikasi. Diagnosis awal tetap relevan untuk menjelaskan kondisi saat ini. ICD: M54.5 Low back pain | Teruskan edukasi postur dan ergonomi duduk. Tingkatkan mobilisasi ringan dan stretching punggung bawah sesuai toleransi. Terapkan kompres hangat untuk nyeri. Pantau suhu, tingkat kelelahan, dan nafsu makan setiap 24 jam. Lakukan evaluasi ulang jika demam kembali, nafsu makan menurun drastis, atau nyeri menjalar ke anggota bawah."
+    },
+    "structuredReference": "The patient presents with Nyeri punggung bawah setelah duduk lama. Objective findings show TD 114/74 mmHg, Nadi 76 bpm, Suhu 36.5 C, nyeri tekan lumbal ringan. The clinical assessment is Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan, didukung oleh demam yang membaik, nafsu makan yang mulai meningkat, dan kelelahan yang masih ada. Tidak ditemukan tanda infeksi sistemik atau komplikasi. Diagnosis awal tetap relevan untuk menjelaskan kondisi saat ini. ICD: M54.5 Low back pain, supported by ICD-10 code M54.5, Low back pain. The triage level is LOW. The recommended plan is Teruskan edukasi postur dan ergonomi duduk. Tingkatkan mobilisasi ringan dan stretching punggung bawah sesuai toleransi. Terapkan kompres hangat untuk nyeri. Pantau suhu, tingkat kelelahan, dan nafsu makan setiap 24 jam. Lakukan evaluasi ulang jika demam kembali, nafsu makan menurun drastis, atau nyeri menjalar ke anggota bawah.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 68,
+      "noteId": 596
+    }
+  },
+  {
+    "caseId": "CASE010",
+    "nurseUsername": "dinda",
+    "nurseFullName": "Dinda",
+    "patientName": "Maya Permata",
+    "noRm": "RMDUMMY26004",
+    "registrationId": 61,
+    "patientData": {
+      "age": 35,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1990-11-13",
+        "patientId": 38,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Sakit kepala berdenyut, mual, sensitif cahaya.",
+      "objective": "TD 116/76 mmHg, Nadi 82 bpm, Suhu 36.7 C, neurologis kasar dalam batas normal.",
+      "assessment": "Migrain tanpa defisit neurologis akut dalam fase pemulihan dengan perbaikan klinis yang konsisten. Demam dalam proses penyembuhan yang membaik. Gejala postdromal (lemas, nafsu makan menurun) masih ada tetapi improving sesuai dengan update terbaru. Tidak ada indikasi komplikasi atau red flag neurologis berdasarkan evaluasi klinis dan vital signs stabil. ICD: G43 Migraine",
+      "plan": "Istirahat di ruangan tenang, monitoring nyeri dan suhu, evaluasi terus-menerus untuk red flag neurologis, terapi analgesik sesuai instruksi dokter, edukasi hidrasi dan nutrisi ringan."
+    },
+    "icd10": {
+      "code": "G43",
+      "name": "Migraine",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien migraine dalam fase pemulihan dengan perbaikan klinis: demam menurun, gejala postdromal (lemas, nafsu makan menurun) masih ada tetapi improving, sakit kepala berdenyut, mual, dan sensitif cahaya masih terasa. Vital signs stabil tanpa red flag neurologis.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, sakit kepala berdenyut, mual, sensitif cahaya masih ada tetapi improving.",
+      "clinicalNotes": "Migrain tanpa defisit neurologis akut dalam fase pemulihan dengan perbaikan klinis yang konsisten. Demam dalam proses penyembuhan yang membaik. Gejala postdromal (lemas, nafsu makan menurun) masih ada tetapi improving sesuai dengan update terbaru. Tidak ada indikasi komplikasi atau red flag neurologis berdasarkan evaluasi klinis dan vital signs stabil. ICD: G43 Migraine | Istirahat di ruangan tenang, monitoring nyeri dan suhu, evaluasi terus-menerus untuk red flag neurologis, terapi analgesik sesuai instruksi dokter, edukasi hidrasi dan nutrisi ringan. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Migrain tanpa defisit neurologis akut dalam fase pemulihan dengan perbaikan klinis yang konsisten. Demam dalam proses penyembuhan yang membaik. Gejala postdromal (lemas, nafsu makan menurun) masih ada tetapi improving sesuai dengan update terbaru. Tidak ada indikasi komplikasi atau red flag neurologis berdasarkan evaluasi klinis dan vital signs stabil. | Istirahat di ruangan tenang, monitoring nyeri dan suhu, evaluasi terus-menerus untuk red flag neurologis, terapi analgesik sesuai instruksi dokter, edukasi hidrasi dan nutrisi ringan. | Pasien migraine dalam fase pemulihan dengan perbaikan klinis: demam menurun, gejala postdromal (lemas, nafsu makan menurun) masih ada tetapi improving, sakit kepala berdenyut, mual, dan sensitif cahaya masih terasa. Vital signs stabil tanpa red flag neurologis.",
+      "examinationData": "Sakit kepala berdenyut, mual, sensitif cahaya. | TD 116/76 mmHg, Nadi 82 bpm, Suhu 36.7 C, neurologis kasar dalam batas normal. | Migrain tanpa defisit neurologis akut dalam fase pemulihan dengan perbaikan klinis yang konsisten. Demam dalam proses penyembuhan yang membaik. Gejala postdromal (lemas, nafsu makan menurun) masih ada tetapi improving sesuai dengan update terbaru. Tidak ada indikasi komplikasi atau red flag neurologis berdasarkan evaluasi klinis dan vital signs stabil. ICD: G43 Migraine | Istirahat di ruangan tenang, monitoring nyeri dan suhu, evaluasi terus-menerus untuk red flag neurologis, terapi analgesik sesuai instruksi dokter, edukasi hidrasi dan nutrisi ringan."
+    },
+    "structuredReference": "The patient presents with Sakit kepala berdenyut, mual, sensitif cahaya. Objective findings show TD 116/76 mmHg, Nadi 82 bpm, Suhu 36.7 C, neurologis kasar dalam batas normal. The clinical assessment is Migrain tanpa defisit neurologis akut dalam fase pemulihan dengan perbaikan klinis yang konsisten. Demam dalam proses penyembuhan yang membaik. Gejala postdromal (lemas, nafsu makan menurun) masih ada tetapi improving sesuai dengan update terbaru. Tidak ada indikasi komplikasi atau red flag neurologis berdasarkan evaluasi klinis dan vital signs stabil. ICD: G43 Migraine, supported by ICD-10 code G43, Migraine. The triage level is LOW. The recommended plan is Istirahat di ruangan tenang, monitoring nyeri dan suhu, evaluasi terus-menerus untuk red flag neurologis, terapi analgesik sesuai instruksi dokter, edukasi hidrasi dan nutrisi ringan.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 48,
+      "noteId": 577
+    }
+  },
+  {
+    "caseId": "CASE011",
+    "nurseUsername": "fad",
+    "nurseFullName": "Fadhli",
+    "patientName": "Agus Prasetyo",
+    "noRm": "RM005",
+    "registrationId": 56,
+    "patientData": {
+      "age": 38,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1988-01-29",
+        "patientId": 22,
+        "patientSource": "manual",
+        "insuranceType": "JKN",
+        "registrationStatus": "selesai",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-05",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Gatal-gatal di bagian kepala belakang - -",
+      "objective": "TD: 120/80 Nadi: 120 Suhu: 40 RR: 20 BB: 78 Kepala: abnormal Mata: normal THT: normal Leher: normal Paru: normal Jantung: normal Abdomen: normal Ekstermitas: normal Uro: normal",
+      "assessment": "Pruritus progresif dengan nyeri kulit konsisten dengan dermatitis kontak akut yang mungkin mengalami irritasi sekundær atau perubahan neurosensitif. Tidak ada tanda infeksi, sistemik, atau reaksi alergi berat. Diagnosa L29.9 (Pruritus, unspecified) tetap relevan sebagai dasar keluhan awal dengan evolusi klinis menuju reaksi inflamatori aktif. ICD: L29.9 Pruritus, unspecified",
+      "plan": "Melanjutkan observasi dengan monitoring gatal dan nyeri. Edukasi untuk menghindari menggaruk atau menyentuh area yang nyeri, menggunakan pakaian lembut, dan kompres dingin bila diperlukan. Pertimbangkan krim kortikosteroid topikal ringan (hidrokortison 1%) untuk mengurangi inflamasi. Evaluasi ulang bila nyeri menyebar, muncul bengkak, atau disertai tanda sistemik."
+    },
+    "icd10": {
+      "code": "L29.9",
+      "name": "Pruritus, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami gatal-gatal progresif di bagian kepala belakang dengan munculnya ruam merah dan kini menambahkan nyeri kulit, menunjukkan evolusi dari pruritus menjadi reaksi inflamatori atau neuropatik lokal tanpa tanda sistemik.",
+      "latestCondition": "Nyeri kulit terkini pada bagian kepala belakang, tanpa demam atau perubahan vital signifikan",
+      "clinicalNotes": "Pruritus progresif dengan nyeri kulit konsisten dengan dermatitis kontak akut yang mungkin mengalami irritasi sekundær atau perubahan neurosensitif. Tidak ada tanda infeksi, sistemik, atau reaksi alergi berat. Diagnosa L29.9 (Pruritus, unspecified) tetap relevan sebagai dasar keluhan awal dengan evolusi klinis menuju reaksi inflamatori aktif. ICD: L29.9 Pruritus, unspecified | Melanjutkan observasi dengan monitoring gatal dan nyeri. Edukasi untuk menghindari menggaruk atau menyentuh area yang nyeri, menggunakan pakaian lembut, dan kompres dingin bila diperlukan. Pertimbangkan krim kortikosteroid topikal ringan (hidrokortison 1%) untuk mengurangi inflamasi. Evaluasi ulang bila nyeri menyebar, muncul bengkak, atau disertai tanda sistemik. | Hidrokortison 1% krim topikal | Pruritus progresif dengan munculnya nyeri kulit, konsisten dengan dermatitis kontak akut yang mungkin mengalami irritasi sekundær atau perubahan neurosensitif. Tidak ada tanda infeksi, sistemik, atau reaksi alergi berat. Diagnosa dasar L29.9 tetap relevan; perlu pertimbangkan komponen nyoroatif atau neuropatik lokal. | Melanjutkan observasi dengan monitoring gatal dan nyeri. Edukasi hindari menggaruk atau menyentuh area yang nyeri, gunakan pakaian lembut, kompres dingin bila diperlukan. Pertimbangkan krim kortikosteroid topikal ringan (hidrokortison 1%) untuk mengurangi inflamasi. Evaluasi ulang bila nyeri menyebar, muncul bengkak, atau disertai tanda sistemik. | Pasien mengalami gatal-gatal progresif di bagian kepala belakang dengan munculnya ruam merah dan kini menambahkan nyeri kulit, menunjukkan evolusi dari pruritus menjadi reaksi inflamatori atau neuropatik lokal tanpa tanda sistemik.",
+      "examinationData": "Gatal-gatal di bagian kepala belakang - - | TD: 120/80 Nadi: 120 Suhu: 40 RR: 20 BB: 78 Kepala: abnormal Mata: normal THT: normal Leher: normal Paru: normal Jantung: normal Abdomen: normal Ekstermitas: normal Uro: normal | Pruritus progresif dengan nyeri kulit konsisten dengan dermatitis kontak akut yang mungkin mengalami irritasi sekundær atau perubahan neurosensitif. Tidak ada tanda infeksi, sistemik, atau reaksi alergi berat. Diagnosa L29.9 (Pruritus, unspecified) tetap relevan sebagai dasar keluhan awal dengan evolusi klinis menuju reaksi inflamatori aktif. ICD: L29.9 Pruritus, unspecified | Melanjutkan observasi dengan monitoring gatal dan nyeri. Edukasi untuk menghindari menggaruk atau menyentuh area yang nyeri, menggunakan pakaian lembut, dan kompres dingin bila diperlukan. Pertimbangkan krim kortikosteroid topikal ringan (hidrokortison 1%) untuk mengurangi inflamasi. Evaluasi ulang bila nyeri menyebar, muncul bengkak, atau disertai tanda sistemik."
+    },
+    "structuredReference": "The patient presents with Gatal-gatal di bagian kepala belakang - -. Objective findings show TD: 120/80 Nadi: 120 Suhu: 40 RR: 20 BB: 78 Kepala: abnormal Mata: normal THT: normal Leher: normal Paru: normal Jantung: normal Abdomen: normal Ekstermitas: normal Uro: normal. The clinical assessment is Pruritus progresif dengan nyeri kulit konsisten dengan dermatitis kontak akut yang mungkin mengalami irritasi sekundær atau perubahan neurosensitif. Tidak ada tanda infeksi, sistemik, atau reaksi alergi berat. Diagnosa L29.9 (Pruritus, unspecified) tetap relevan sebagai dasar keluhan awal dengan evolusi klinis menuju reaksi inflamatori aktif. ICD: L29.9 Pruritus, unspecified, supported by ICD-10 code L29.9, Pruritus, unspecified. The triage level is LOW. The recommended plan is Melanjutkan observasi dengan monitoring gatal dan nyeri. Edukasi untuk menghindari menggaruk atau menyentuh area yang nyeri, menggunakan pakaian lembut, dan kompres dingin bila diperlukan. Pertimbangkan krim kortikosteroid topikal ringan (hidrokortison 1%) untuk mengurangi inflamasi. Evaluasi ulang bila nyeri menyebar, muncul bengkak, atau disertai tanda sistemik.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "selesai",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 42,
+      "noteId": 118
+    }
+  },
+  {
+    "caseId": "CASE012",
+    "nurseUsername": "fajar",
+    "nurseFullName": "Fajar",
+    "patientName": "Agus Kurniawan",
+    "noRm": "RMDUMMY26009",
+    "registrationId": 66,
+    "patientData": {
+      "age": 48,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1977-08-24",
+        "patientId": 43,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Nyeri pinggang bawah setelah mengangkat barang.",
+      "objective": "TD 126/82 mmHg, Nadi 80 bpm, Suhu 36.5 C, nyeri tekan lumbal.",
+      "assessment": "Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan dengan demam yang membaik (R50.9). Subjektif menunjukkan demam membaik, nafsu makan mulai membaik, tetapi masih lemas. Objektif menunjukkan vital signs stabil (TD 126/82, Nadi 80, Suhu 36.5°C) dan nyeri tekan lumbal tanpa defisit neurologis. Tidak ada tanda infeksi berat atau komplikasi. ICD: M54.5 Low back pain",
+      "plan": "Teruskan istirahat relatif, kompres hangat pada area lumbal, edukasi ergonomi dan postur saat aktivitas. Pantau suhu dan gejala demam harian. Evaluasi kembali jika demam kembali tinggi, nyeri menjalar ke kaki, atau muncul kelemahan/nekropati. Edukasi pasien mengenai tanda bahaya."
+    },
+    "icd10": {
+      "code": "M54.5",
+      "name": "Low back pain",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dalam fase pemulihan demam dengan peningkatan nafsu makan, namun masih mengalami kelemahan dan nyeri punggung bawah lumbal. Vital signs stabil tanpa tanda komplikasi atau defisit neurologis.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik. Nyeri pinggang bawah persisten tanpa defisit neurologis, vital signs stabil.",
+      "clinicalNotes": "Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan dengan demam yang membaik (R50.9). Subjektif menunjukkan demam membaik, nafsu makan mulai membaik, tetapi masih lemas. Objektif menunjukkan vital signs stabil (TD 126/82, Nadi 80, Suhu 36.5°C) dan nyeri tekan lumbal tanpa defisit neurologis. Tidak ada tanda infeksi berat atau komplikasi. ICD: M54.5 Low back pain | Teruskan istirahat relatif, kompres hangat pada area lumbal, edukasi ergonomi dan postur saat aktivitas. Pantau suhu dan gejala demam harian. Evaluasi kembali jika demam kembali tinggi, nyeri menjalar ke kaki, atau muncul kelemahan/nekropati. Edukasi pasien mengenai tanda bahaya. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan dengan demam yang membaik (R50.9). Subjektif menunjukkan demam membaik, nafsu makan mulai membaik, tetapi masih lemas. Objektif menunjukkan vital signs stabil (TD 126/82, Nadi 80, Suhu 36.5°C) dan nyeri tekan lumbal tanpa defisit neurologis. Tidak ada tanda infeksi berat atau komplikasi. | Teruskan istirahat relatif, kompres hangat pada area lumbal, edukasi ergonomi dan postur saat aktivitas. Pantau suhu dan gejala demam harian. Evaluasi kembali jika demam kembali tinggi, nyeri menjalar ke kaki, atau muncul kelemahan/nekropati. Edukasi pasien mengenai tanda bahaya. | Pasien dalam fase pemulihan demam dengan peningkatan nafsu makan, namun masih mengalami kelemahan dan nyeri punggung bawah lumbal. Vital signs stabil tanpa tanda komplikasi atau defisit neurologis.",
+      "examinationData": "Nyeri pinggang bawah setelah mengangkat barang. | TD 126/82 mmHg, Nadi 80 bpm, Suhu 36.5 C, nyeri tekan lumbal. | Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan dengan demam yang membaik (R50.9). Subjektif menunjukkan demam membaik, nafsu makan mulai membaik, tetapi masih lemas. Objektif menunjukkan vital signs stabil (TD 126/82, Nadi 80, Suhu 36.5°C) dan nyeri tekan lumbal tanpa defisit neurologis. Tidak ada tanda infeksi berat atau komplikasi. ICD: M54.5 Low back pain | Teruskan istirahat relatif, kompres hangat pada area lumbal, edukasi ergonomi dan postur saat aktivitas. Pantau suhu dan gejala demam harian. Evaluasi kembali jika demam kembali tinggi, nyeri menjalar ke kaki, atau muncul kelemahan/nekropati. Edukasi pasien mengenai tanda bahaya."
+    },
+    "structuredReference": "The patient presents with Nyeri pinggang bawah setelah mengangkat barang. Objective findings show TD 126/82 mmHg, Nadi 80 bpm, Suhu 36.5 C, nyeri tekan lumbal. The clinical assessment is Nyeri punggung bawah muskuloskeletal (M54.5) dalam tahap pemulihan dengan demam yang membaik (R50.9). Subjektif menunjukkan demam membaik, nafsu makan mulai membaik, tetapi masih lemas. Objektif menunjukkan vital signs stabil (TD 126/82, Nadi 80, Suhu 36.5°C) dan nyeri tekan lumbal tanpa defisit neurologis. Tidak ada tanda infeksi berat atau komplikasi. ICD: M54.5 Low back pain, supported by ICD-10 code M54.5, Low back pain. The triage level is LOW. The recommended plan is Teruskan istirahat relatif, kompres hangat pada area lumbal, edukasi ergonomi dan postur saat aktivitas. Pantau suhu dan gejala demam harian. Evaluasi kembali jika demam kembali tinggi, nyeri menjalar ke kaki, atau muncul kelemahan/nekropati. Edukasi pasien mengenai tanda bahaya.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 53,
+      "noteId": 591
+    }
+  },
+  {
+    "caseId": "CASE013",
+    "nurseUsername": "farhan",
+    "nurseFullName": "Farhan",
+    "patientName": "Arif Rahman",
+    "noRm": "RMDUMMY26027",
+    "registrationId": 84,
+    "patientData": {
+      "age": 43,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1983-01-19",
+        "patientId": 61,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr, Haqqi Afzal",
+        "doctorSpecialization": "Umum"
+      }
+    },
+    "soapNote": {
+      "subjective": "Pilek, bersin, hidung tersumbat sejak kemarin.",
+      "objective": "TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9 C, sekret hidung jernih.",
+      "assessment": "Common cold (J00) dengan perbaikan klinis sesuai subjektif dan objektif terbaru: demam membaik, nafsu makan mulai membaik, masih lemas. Vital signs stabil (TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9°C) dan sekret hidung jernih konsisten dengan diagnosa nasofaringitis akut tanpa tanda infeksi sekunder atau komplikasi. ICD: J00 Acute nasopharyngitis [common cold]",
+      "plan": "Teruskan istirahat, konsumsi cairan cukup, monitor suhu dan gejala sehari-hari. Edukasi tanda bahaya yang perlu dikembalikan ke fasilitas kesehatan jika demam kembali, muncul sesak napas, atau gejala memburuk."
+    },
+    "icd10": {
+      "code": "J00",
+      "name": "Acute nasopharyngitis [common cold]",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan diagnosa acute nasopharyngitis menunjukkan perbaikan klinis: demam membaik, nafsu makan mulai meningkat, meski masih merasa lemas dan gejala pilek (bersin, hidung tersumbat) masih ada. Vital signs stabil dan sekret hidung jernih konsisten dengan diagnosa nasofaringitis akut tanpa tanda infeksi sekunder atau komplikasi.",
+      "latestCondition": "demam membaik, masih lemas, nafsu makan mulai membaik, pilek, bersin, hidung tersumbat",
+      "clinicalNotes": "Common cold (J00) dengan perbaikan klinis sesuai subjektif dan objektif terbaru: demam membaik, nafsu makan mulai membaik, masih lemas. Vital signs stabil (TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9°C) dan sekret hidung jernih konsisten dengan diagnosa nasofaringitis akut tanpa tanda infeksi sekunder atau komplikasi. ICD: J00 Acute nasopharyngitis [common cold] | Teruskan istirahat, konsumsi cairan cukup, monitor suhu dan gejala sehari-hari. Edukasi tanda bahaya yang perlu dikembalikan ke fasilitas kesehatan jika demam kembali, muncul sesak napas, atau gejala memburuk. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Common cold (J00) dengan perbaikan klinis sesuai subjektif dan objektif terbaru: demam membaik, nafsu makan mulai membaik, masih lemas. Vital signs stabil (TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9°C) dan sekret hidung jernih konsisten dengan diagnosa nasofaringitis akut tanpa tanda infeksi sekunder atau komplikasi. | Teruskan istirahat, konsumsi cairan cukup, monitor suhu dan gejala sehari-hari. Edukasi tanda bahaya yang perlu dikembalikan ke fasilitas kesehatan jika demam kembali, muncul sesak napas, atau gejala memburuk. | Pasien dengan diagnosa acute nasopharyngitis menunjukkan perbaikan klinis: demam membaik, nafsu makan mulai meningkat, meski masih merasa lemas dan gejala pilek (bersin, hidung tersumbat) masih ada. Vital signs stabil dan sekret hidung jernih konsisten dengan diagnosa nasofaringitis akut tanpa tanda infeksi sekunder atau komplikasi.",
+      "examinationData": "Pilek, bersin, hidung tersumbat sejak kemarin. | TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9 C, sekret hidung jernih. | Common cold (J00) dengan perbaikan klinis sesuai subjektif dan objektif terbaru: demam membaik, nafsu makan mulai membaik, masih lemas. Vital signs stabil (TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9°C) dan sekret hidung jernih konsisten dengan diagnosa nasofaringitis akut tanpa tanda infeksi sekunder atau komplikasi. ICD: J00 Acute nasopharyngitis [common cold] | Teruskan istirahat, konsumsi cairan cukup, monitor suhu dan gejala sehari-hari. Edukasi tanda bahaya yang perlu dikembalikan ke fasilitas kesehatan jika demam kembali, muncul sesak napas, atau gejala memburuk."
+    },
+    "structuredReference": "The patient presents with Pilek, bersin, hidung tersumbat sejak kemarin. Objective findings show TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9 C, sekret hidung jernih. The clinical assessment is Common cold (J00) dengan perbaikan klinis sesuai subjektif dan objektif terbaru: demam membaik, nafsu makan mulai membaik, masih lemas. Vital signs stabil (TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9°C) dan sekret hidung jernih konsisten dengan diagnosa nasofaringitis akut tanpa tanda infeksi sekunder atau komplikasi. ICD: J00 Acute nasopharyngitis [common cold], supported by ICD-10 code J00, Acute nasopharyngitis [common cold]. The triage level is LOW. The recommended plan is Teruskan istirahat, konsumsi cairan cukup, monitor suhu dan gejala sehari-hari. Edukasi tanda bahaya yang perlu dikembalikan ke fasilitas kesehatan jika demam kembali, muncul sesak napas, atau gejala memburuk.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 71,
+      "noteId": 603
+    }
+  },
+  {
+    "caseId": "CASE014",
+    "nurseUsername": "faris",
+    "nurseFullName": "Faris",
+    "patientName": "Rangga Setiawan",
+    "noRm": "RMDUMMY26019",
+    "registrationId": 76,
+    "patientData": {
+      "age": 43,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1982-12-15",
+        "patientId": 53,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Sakit kepala berdenyut sebelah, mual.",
+      "objective": "TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6 C, tanda neurologis fokal tidak tampak.",
+      "assessment": "Migrain tanpa red flag neurologis dalam fase pemuluhan. Subjektif menunjukkan demam membaik, lemas masih terasa, dan nafsu makan mulai membaik. Objektif menunjukkan TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6°C, tanpa tanda neurologis fokal. Diagnosis ICD G43 Migraine konsisten dengan riwayat headache berdenyut sebelah dan mual yang membaik. Lemas mungkin terkait post-migrainous state atau pemulihan pasca demam. ICD: G43 Migraine",
+      "plan": "Istirahat cukup, hidrasi baik, monitor terus perkembangan demam, nyeri kepala, dan tingkat lemas. Edukasi pencegah trigger migrain dan pentingnya pola makan serta tidur teratur. Kembali kontrol jika demam kembali, neurologi memburuk, atau lemas tidak membaik dalam 48 jam."
+    },
+    "icd10": {
+      "code": "G43",
+      "name": "Migraine",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami perbaikan demam dengan gejala lemas yang masih terasa dan nafsu makan yang mulai meningkat, tanpa tanda neurologis fokal, konsisten dengan fase pemulihan migrain. Keluhan utama sakit kepala berdenyut sebelah dengan mual telah membaik.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Migrain tanpa red flag neurologis dalam fase pemuluhan. Subjektif menunjukkan demam membaik, lemas masih terasa, dan nafsu makan mulai membaik. Objektif menunjukkan TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6°C, tanpa tanda neurologis fokal. Diagnosis ICD G43 Migraine konsisten dengan riwayat headache berdenyut sebelah dan mual yang membaik. Lemas mungkin terkait post-migrainous state atau pemulihan pasca demam. ICD: G43 Migraine | Istirahat cukup, hidrasi baik, monitor terus perkembangan demam, nyeri kepala, dan tingkat lemas. Edukasi pencegah trigger migrain dan pentingnya pola makan serta tidur teratur. Kembali kontrol jika demam kembali, neurologi memburuk, atau lemas tidak membaik dalam 48 jam. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Migrain tanpa red flag neurologis dalam fase pemuluhan. Subjektif menunjukkan demam membaik, lemas masih terasa, dan nafsu makan mulai membaik. Objektif menunjukkan TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6°C, tanpa tanda neurologis fokal. Diagnosis ICD G43 Migraine konsisten dengan riwayat headache berdenyut sebelah dan mual yang membaik. Lemas mungkin terkait post-migrainous state atau pemulihan pasca demam. | Istirahat cukup, hidrasi baik, monitor terus perkembangan demam, nyeri kepala, dan tingkat lemas. Edukasi pencegah trigger migrain dan pentingnya pola makan serta tidur teratur. Kembali kontrol jika demam kembali, neurologi memburuk, atau lemas tidak membaik dalam 48 jam. | Pasien mengalami perbaikan demam dengan gejala lemas yang masih terasa dan nafsu makan yang mulai meningkat, tanpa tanda neurologis fokal, konsisten dengan fase pemulihan migrain. Keluhan utama sakit kepala berdenyut sebelah dengan mual telah membaik.",
+      "examinationData": "Sakit kepala berdenyut sebelah, mual. | TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6 C, tanda neurologis fokal tidak tampak. | Migrain tanpa red flag neurologis dalam fase pemuluhan. Subjektif menunjukkan demam membaik, lemas masih terasa, dan nafsu makan mulai membaik. Objektif menunjukkan TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6°C, tanpa tanda neurologis fokal. Diagnosis ICD G43 Migraine konsisten dengan riwayat headache berdenyut sebelah dan mual yang membaik. Lemas mungkin terkait post-migrainous state atau pemulihan pasca demam. ICD: G43 Migraine | Istirahat cukup, hidrasi baik, monitor terus perkembangan demam, nyeri kepala, dan tingkat lemas. Edukasi pencegah trigger migrain dan pentingnya pola makan serta tidur teratur. Kembali kontrol jika demam kembali, neurologi memburuk, atau lemas tidak membaik dalam 48 jam."
+    },
+    "structuredReference": "The patient presents with Sakit kepala berdenyut sebelah, mual. Objective findings show TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6 C, tanda neurologis fokal tidak tampak. The clinical assessment is Migrain tanpa red flag neurologis dalam fase pemuluhan. Subjektif menunjukkan demam membaik, lemas masih terasa, dan nafsu makan mulai membaik. Objektif menunjukkan TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6°C, tanpa tanda neurologis fokal. Diagnosis ICD G43 Migraine konsisten dengan riwayat headache berdenyut sebelah dan mual yang membaik. Lemas mungkin terkait post-migrainous state atau pemulihan pasca demam. ICD: G43 Migraine, supported by ICD-10 code G43, Migraine. The triage level is LOW. The recommended plan is Istirahat cukup, hidrasi baik, monitor terus perkembangan demam, nyeri kepala, dan tingkat lemas. Edukasi pencegah trigger migrain dan pentingnya pola makan serta tidur teratur. Kembali kontrol jika demam kembali, neurologi memburuk, atau lemas tidak membaik dalam 48 jam.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 63,
+      "noteId": 584
+    }
+  },
+  {
+    "caseId": "CASE015",
+    "nurseUsername": "fikri",
+    "nurseFullName": "Fikri",
+    "patientName": "Galih Wicaksono",
+    "noRm": "RMDUMMY26029",
+    "registrationId": 86,
+    "patientData": {
+      "age": 41,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1985-03-25",
+        "patientId": 63,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Perut terasa begah, mual, sendawa berulang.",
+      "objective": "TD 116/74 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen tanpa tanda akut.",
+      "assessment": "Dispepsia fungsional ringan dalam proses pemuluhan dengan demam yang membaik dan nafsu makan yang mulai meningkat. Subjektif awal dan terbaru menunjukkan demam membaik, nafsu makan meningkat, dan lemas yang masih ada namun menunjukkan tren membaik. Objective menunjukkan vital sign stabil tanpa tanda akut pada abdomen. Diagnosis ICD K30 (Dyspepsia) konsisten dengan keluhan mual muntah dan perut begah awal. Tidak ada gejala baru atau tanda komplikasi sistemik. ICD: K30 Dyspepsia",
+      "plan": "Teruskan atur pola makan, hindari pemicu dispepsia, pastikan asupan nutrisi dan hidrasi cukup. Pantau lemas, nafsu makan, dan gejala dispepsia (terutama mual muntah dan perut begah). Jika lemas memburuk atau demam kembali, pertimbangkan evaluasi ulang."
+    },
+    "icd10": {
+      "code": "K30",
+      "name": "Dyspepsia",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan dispepsia fungsional ringan menunjukkan perbaikan klinis: demam menurun, nafsu makan mulai pulih, namun masih mengalami lemas. Keluhan utama mual muntah dan perut begah konsisten dengan diagnosa dispepsia. Vital sign stabil (TD 116/74 mmHg, Nadi 80 bpm, Suhu 36.6°C), abdomen tanpa tanda akut.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Dispepsia fungsional ringan dalam proses pemuluhan dengan demam yang membaik dan nafsu makan yang mulai meningkat. Subjektif awal dan terbaru menunjukkan demam membaik, nafsu makan meningkat, dan lemas yang masih ada namun menunjukkan tren membaik. Objective menunjukkan vital sign stabil tanpa tanda akut pada abdomen. Diagnosis ICD K30 (Dyspepsia) konsisten dengan keluhan mual muntah dan perut begah awal. Tidak ada gejala baru atau tanda komplikasi sistemik. ICD: K30 Dyspepsia | Teruskan atur pola makan, hindari pemicu dispepsia, pastikan asupan nutrisi dan hidrasi cukup. Pantau lemas, nafsu makan, dan gejala dispepsia (terutama mual muntah dan perut begah). Jika lemas memburuk atau demam kembali, pertimbangkan evaluasi ulang. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Dispepsia fungsional ringan dalam proses pemuluhan dengan demam yang membaik dan nafsu makan yang mulai meningkat. Subjektif awal dan terbaru menunjukkan demam membaik, nafsu makan meningkat, dan lemas yang masih ada namun menunjukkan tren membaik. Objective menunjukkan vital sign stabil tanpa tanda akut pada abdomen. Diagnosis ICD K30 (Dyspepsia) konsisten dengan keluhan mual muntah dan perut begah awal. Tidak ada gejala baru atau tanda komplikasi sistemik. | Teruskan atur pola makan, hindari pemicu dispepsia, pastikan asupan nutrisi dan hidrasi cukup. Pantau lemas, nafsu makan, dan gejala dispepsia (terutama mual muntah dan perut begah). Jika lemas memburuk atau demam kembali, pertimbangkan evaluasi ulang. | Pasien dengan dispepsia fungsional ringan menunjukkan perbaikan klinis: demam menurun, nafsu makan mulai pulih, namun masih mengalami lemas. Keluhan utama mual muntah dan perut begah konsisten dengan diagnosa dispepsia. Vital sign stabil (TD 116/74 mmHg, Nadi 80 bpm, Suhu 36.6°C), abdomen tanpa tanda akut.",
+      "examinationData": "Perut terasa begah, mual, sendawa berulang. | TD 116/74 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen tanpa tanda akut. | Dispepsia fungsional ringan dalam proses pemuluhan dengan demam yang membaik dan nafsu makan yang mulai meningkat. Subjektif awal dan terbaru menunjukkan demam membaik, nafsu makan meningkat, dan lemas yang masih ada namun menunjukkan tren membaik. Objective menunjukkan vital sign stabil tanpa tanda akut pada abdomen. Diagnosis ICD K30 (Dyspepsia) konsisten dengan keluhan mual muntah dan perut begah awal. Tidak ada gejala baru atau tanda komplikasi sistemik. ICD: K30 Dyspepsia | Teruskan atur pola makan, hindari pemicu dispepsia, pastikan asupan nutrisi dan hidrasi cukup. Pantau lemas, nafsu makan, dan gejala dispepsia (terutama mual muntah dan perut begah). Jika lemas memburuk atau demam kembali, pertimbangkan evaluasi ulang."
+    },
+    "structuredReference": "The patient presents with Perut terasa begah, mual, sendawa berulang. Objective findings show TD 116/74 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen tanpa tanda akut. The clinical assessment is Dispepsia fungsional ringan dalam proses pemuluhan dengan demam yang membaik dan nafsu makan yang mulai meningkat. Subjektif awal dan terbaru menunjukkan demam membaik, nafsu makan meningkat, dan lemas yang masih ada namun menunjukkan tren membaik. Objective menunjukkan vital sign stabil tanpa tanda akut pada abdomen. Diagnosis ICD K30 (Dyspepsia) konsisten dengan keluhan mual muntah dan perut begah awal. Tidak ada gejala baru atau tanda komplikasi sistemik. ICD: K30 Dyspepsia, supported by ICD-10 code K30, Dyspepsia. The triage level is LOW. The recommended plan is Teruskan atur pola makan, hindari pemicu dispepsia, pastikan asupan nutrisi dan hidrasi cukup. Pantau lemas, nafsu makan, dan gejala dispepsia (terutama mual muntah dan perut begah). Jika lemas memburuk atau demam kembali, pertimbangkan evaluasi ulang.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 73,
+      "noteId": 595
+    }
+  },
+  {
+    "caseId": "CASE016",
+    "nurseUsername": "fitri",
+    "nurseFullName": "Fitri",
+    "patientName": "Vina Maharani",
+    "noRm": "RMDUMMY26014",
+    "registrationId": 71,
+    "patientData": {
+      "age": 32,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1993-07-02",
+        "patientId": 48,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Perut kembung dan cepat kenyang, mual ringan.",
+      "objective": "TD 112/72 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen datar, nyeri epigastrium minimal.",
+      "assessment": "Dispepsia dalam fase pemulihan dengan demam yang membaik, gejala sistemik yang terus membaik (nafsu makan mulai meningkat, meski lemas masih terasa), dan tidak ada tanda komplikasi atau infeksi berat. Kondisi konsisten dengan dispepsia yang responsif terhadap konservasi dan edukasi sebelumnya. ICD: K30 Dyspepsia. ICD: K30 Dyspepsia",
+      "plan": "Teruskan edukasi pola makan teratur, hindari makanan berlemak, pedas, dan bersoda. Pantau nafsu makan, keluhan lemas, dan kembali demam. Ajarkan tanda bahaya: muntah berulang, nyeri perut memburuk, demam kembali, atau feses berdarah. Kembali kontrol dalam 2–3 hari jika tidak ada progres atau jika memburuk."
+    },
+    "icd10": {
+      "code": "K30",
+      "name": "Dyspepsia",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan dispepsia dalam fase pemulihan klinis: demam membaik, nafsu makan mulai meningkat, masih ada rasa lemas, perut kembung dan cepat kenyang, mual ringan, tanpa tanda komplikasi atau pemburukan gejala. Vital signs stabil, abdomen datar, nyeri epigastrium minimal.",
+      "latestCondition": "demam membaik, masih lemas, nafsu makan mulai membaik",
+      "clinicalNotes": "Dispepsia dalam fase pemulihan dengan demam yang membaik, gejala sistemik yang terus membaik (nafsu makan mulai meningkat, meski lemas masih terasa), dan tidak ada tanda komplikasi atau infeksi berat. Kondisi konsisten dengan dispepsia yang responsif terhadap konservasi dan edukasi sebelumnya. ICD: K30 Dyspepsia. ICD: K30 Dyspepsia | Teruskan edukasi pola makan teratur, hindari makanan berlemak, pedas, dan bersoda. Pantau nafsu makan, keluhan lemas, dan kembali demam. Ajarkan tanda bahaya: muntah berulang, nyeri perut memburuk, demam kembali, atau feses berdarah. Kembali kontrol dalam 2–3 hari jika tidak ada progres atau jika memburuk. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Dispepsia dalam fase pemulihan dengan demam yang membaik, gejala sistemik yang terus membaik (nafsu makan mulai meningkat, meski lemas masih terasa), dan tidak ada tanda komplikasi atau infeksi berat. Kondisi konsisten dengan dispepsia yang responsif terhadap konservasi dan edukasi sebelumnya. | Teruskan edukasi pola makan teratur, hindari makanan berlemak, pedas, dan bersoda. Pantau nafsu makan, keluhan lemas, dan kembali demam. Ajarkan tanda bahaya: muntah berulang, nyeri perut memburuk, demam kembali, atau feses berdarah. Kembali kontrol dalam 2–3 hari jika tidak ada progres atau jika memburuk. | Pasien dengan dispepsia dalam fase pemulihan klinis: demam membaik, nafsu makan mulai meningkat, masih ada rasa lemas, perut kembung dan cepat kenyang, mual ringan, tanpa tanda komplikasi atau pemburukan gejala. Vital signs stabil, abdomen datar, nyeri epigastrium minimal.",
+      "examinationData": "Perut kembung dan cepat kenyang, mual ringan. | TD 112/72 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen datar, nyeri epigastrium minimal. | Dispepsia dalam fase pemulihan dengan demam yang membaik, gejala sistemik yang terus membaik (nafsu makan mulai meningkat, meski lemas masih terasa), dan tidak ada tanda komplikasi atau infeksi berat. Kondisi konsisten dengan dispepsia yang responsif terhadap konservasi dan edukasi sebelumnya. ICD: K30 Dyspepsia. ICD: K30 Dyspepsia | Teruskan edukasi pola makan teratur, hindari makanan berlemak, pedas, dan bersoda. Pantau nafsu makan, keluhan lemas, dan kembali demam. Ajarkan tanda bahaya: muntah berulang, nyeri perut memburuk, demam kembali, atau feses berdarah. Kembali kontrol dalam 2–3 hari jika tidak ada progres atau jika memburuk."
+    },
+    "structuredReference": "The patient presents with Perut kembung dan cepat kenyang, mual ringan. Objective findings show TD 112/72 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen datar, nyeri epigastrium minimal. The clinical assessment is Dispepsia dalam fase pemulihan dengan demam yang membaik, gejala sistemik yang terus membaik (nafsu makan mulai meningkat, meski lemas masih terasa), dan tidak ada tanda komplikasi atau infeksi berat. Kondisi konsisten dengan dispepsia yang responsif terhadap konservasi dan edukasi sebelumnya. ICD: K30 Dyspepsia. ICD: K30 Dyspepsia, supported by ICD-10 code K30, Dyspepsia. The triage level is LOW. The recommended plan is Teruskan edukasi pola makan teratur, hindari makanan berlemak, pedas, dan bersoda. Pantau nafsu makan, keluhan lemas, dan kembali demam. Ajarkan tanda bahaya: muntah berulang, nyeri perut memburuk, demam kembali, atau feses berdarah. Kembali kontrol dalam 2–3 hari jika tidak ada progres atau jika memburuk.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 58,
+      "noteId": 600
+    }
+  },
+  {
+    "caseId": "CASE017",
+    "nurseUsername": "galih",
+    "nurseFullName": "Galih",
+    "patientName": "Fahmi Hidayat",
+    "noRm": "RMDUMMY26011",
+    "registrationId": 68,
+    "patientData": {
+      "age": 35,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1991-06-05",
+        "patientId": 45,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Andooon",
+        "doctorSpecialization": "Spesialis Obat"
+      }
+    },
+    "soapNote": {
+      "subjective": "Badan pegal seluruh tubuh setelah aktivitas berat.",
+      "objective": "TD 118/76 mmHg, Nadi 84 bpm, Suhu 36.9 C, nyeri otot difus ringan.",
+      "assessment": "Mialgia ringan (ICD M79.1) dalam tahap pemulihan sesuai dengan penurunan demam dan peningkatan nafsu makan. Gejala lemas masih ada tetapi tidak memburuk, konsisten dengan respons baik terhadap istirahat dan hidrasi. Tidak ada tanda infeksi berat atau komplikasi. ICD: M79.1 Myalgia",
+      "plan": "Teruskan istirahat adekvat, hidrasi yang cukup, peregangan otot ringan, dan monitor subjektif lemas serta nafsu makan. Edukasi pasien untuk kembali ke fasilitas kesehatan jika demam kembali, lemas memburuk, atau muncul gejala baru seperti pusing, sesak napas, atau nyeri yang membengkak."
+    },
+    "icd10": {
+      "code": "M79.1",
+      "name": "Myalgia",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami mialgia ringan setelah aktivitas berat dengan demam yang membaik, subjektif masih merasa lemas tetapi nafsu makan mulai membaik, tanpa perubahan signifikan pada vital signs.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Mialgia ringan (ICD M79.1) dalam tahap pemulihan sesuai dengan penurunan demam dan peningkatan nafsu makan. Gejala lemas masih ada tetapi tidak memburuk, konsisten dengan respons baik terhadap istirahat dan hidrasi. Tidak ada tanda infeksi berat atau komplikasi. ICD: M79.1 Myalgia | Teruskan istirahat adekvat, hidrasi yang cukup, peregangan otot ringan, dan monitor subjektif lemas serta nafsu makan. Edukasi pasien untuk kembali ke fasilitas kesehatan jika demam kembali, lemas memburuk, atau muncul gejala baru seperti pusing, sesak napas, atau nyeri yang membengkak. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Mialgia ringan (M79.1) dalam tahap pemulihan sesuai dengan penurunan demam dan peningkatan nafsu makan. Gejala lemas masih ada tetapi tidak memburuk, konsisten dengan respons baik terhadap istirahat dan hidrasi. Tidak ada tanda infeksi berat atau komplikasi. | Teruskan istirahat adekvat, hidrasi yang cukup, peregangan otot ringan, dan monitor subjektif lemas serta nafsu makan. Edukasi pasien untuk kembali ke fasilitas kesehatan jika demam kembali, lemas memburuk, atau muncul gejala baru seperti pusing, sesak napas, atau nyeri yang membengkak. | Pasien mengalami mialgia ringan setelah aktivitas berat dengan demam yang membaik, subjektif masih merasa lemas tetapi nafsu makan mulai membaik, tanpa perubahan signifikan pada vital signs.",
+      "examinationData": "Badan pegal seluruh tubuh setelah aktivitas berat. | TD 118/76 mmHg, Nadi 84 bpm, Suhu 36.9 C, nyeri otot difus ringan. | Mialgia ringan (ICD M79.1) dalam tahap pemulihan sesuai dengan penurunan demam dan peningkatan nafsu makan. Gejala lemas masih ada tetapi tidak memburuk, konsisten dengan respons baik terhadap istirahat dan hidrasi. Tidak ada tanda infeksi berat atau komplikasi. ICD: M79.1 Myalgia | Teruskan istirahat adekvat, hidrasi yang cukup, peregangan otot ringan, dan monitor subjektif lemas serta nafsu makan. Edukasi pasien untuk kembali ke fasilitas kesehatan jika demam kembali, lemas memburuk, atau muncul gejala baru seperti pusing, sesak napas, atau nyeri yang membengkak."
+    },
+    "structuredReference": "The patient presents with Badan pegal seluruh tubuh setelah aktivitas berat. Objective findings show TD 118/76 mmHg, Nadi 84 bpm, Suhu 36.9 C, nyeri otot difus ringan. The clinical assessment is Mialgia ringan (ICD M79.1) dalam tahap pemulihan sesuai dengan penurunan demam dan peningkatan nafsu makan. Gejala lemas masih ada tetapi tidak memburuk, konsisten dengan respons baik terhadap istirahat dan hidrasi. Tidak ada tanda infeksi berat atau komplikasi. ICD: M79.1 Myalgia, supported by ICD-10 code M79.1, Myalgia. The triage level is LOW. The recommended plan is Teruskan istirahat adekvat, hidrasi yang cukup, peregangan otot ringan, dan monitor subjektif lemas serta nafsu makan. Edukasi pasien untuk kembali ke fasilitas kesehatan jika demam kembali, lemas memburuk, atau muncul gejala baru seperti pusing, sesak napas, atau nyeri yang membengkak.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 55,
+      "noteId": 575
+    }
+  },
+  {
+    "caseId": "CASE018",
+    "nurseUsername": "hafiz",
+    "nurseFullName": "Hafiz",
+    "patientName": "Bayu Firmansyah",
+    "noRm": "RMDUMMY26023",
+    "registrationId": 80,
+    "patientData": {
+      "age": 46,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1980-02-27",
+        "patientId": 57,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Andooon",
+        "doctorSpecialization": "Spesialis Obat"
+      }
+    },
+    "soapNote": {
+      "subjective": "Nyeri BAK dan urine terasa keruh.",
+      "objective": "TD 118/76 mmHg, Nadi 88 bpm, Suhu 37.7 C, nyeri suprapubik.",
+      "assessment": "Infeksi saluran kemih (N39.0) masih menjadi diagnosa utama dengan respons klinis yang membaik: demam menurun dan nafsu makan meningkat. Namun, gejala lemas dan nyeri suprapubik masih ada, menunjukkan penyembuhan belum sempurna. Tidak ada tanda komplikasi atau pemburukan berdasarkan data vital dan keluhan terkini. ICD: N39.0 Urinary tract infection, site not specified",
+      "plan": "Teruskan konsumsi cairan cukup, pantau nyeri suprapubik dan tingkat lemas, lakukan urinalisis untuk konfirmasi penyembuhan, pertimbangkan antibiotik jika hasil urinalisis mendukung adanya infeksi aktif dan tidak ada kontraindikasi."
+    },
+    "icd10": {
+      "code": "N39.0",
+      "name": "Urinary tract infection, site not specified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan infeksi saluran kemih menunjukkan respons klinis yang membaik: demam menurun dan nafsu makan meningkat, tetapi masih mengalami kelelahan dan nyeri suprapubik terkait disuria dan urine keruh. Tanda vital stabil tanpa tanda infeksi akut atau pemburukan kondisi.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, nyeri suprapubik masih ada.",
+      "clinicalNotes": "Infeksi saluran kemih (N39.0) masih menjadi diagnosa utama dengan respons klinis yang membaik: demam menurun dan nafsu makan meningkat. Namun, gejala lemas dan nyeri suprapubik masih ada, menunjukkan penyembuhan belum sempurna. Tidak ada tanda komplikasi atau pemburukan berdasarkan data vital dan keluhan terkini. ICD: N39.0 Urinary tract infection, site not specified | Teruskan konsumsi cairan cukup, pantau nyeri suprapubik dan tingkat lemas, lakukan urinalisis untuk konfirmasi penyembuhan, pertimbangkan antibiotik jika hasil urinalisis mendukung adanya infeksi aktif dan tidak ada kontraindikasi. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Infeksi saluran kemih (N39.0) masih menjadi diagnosa utama dengan respons klinis yang membaik: demam menurun dan nafsu makan meningkat. Namun, gejala lemas dan nyeri suprapubik masih ada, menunjukkan penyembuhan belum sempurna. Tidak ada tanda komplikasi atau pemburukan berdasarkan data vital dan keluhan terkini. | Teruskan konsumsi cairan cukup, pantau nyeri suprapubik dan tingkat lemas, lakukan urinalisis untuk konfirmasi penyembuhan, pertimbangkan antibiotik jika hasil urinalisis mendukung adanya infeksi aktif dan tidak ada kontraindikasi. | Pasien dengan infeksi saluran kemih menunjukkan respons klinis yang membaik: demam menurun dan nafsu makan meningkat, tetapi masih mengalami kelelahan dan nyeri suprapubik terkait disuria dan urine keruh. Tanda vital stabil tanpa tanda infeksi akut atau pemburukan kondisi.",
+      "examinationData": "Nyeri BAK dan urine terasa keruh. | TD 118/76 mmHg, Nadi 88 bpm, Suhu 37.7 C, nyeri suprapubik. | Infeksi saluran kemih (N39.0) masih menjadi diagnosa utama dengan respons klinis yang membaik: demam menurun dan nafsu makan meningkat. Namun, gejala lemas dan nyeri suprapubik masih ada, menunjukkan penyembuhan belum sempurna. Tidak ada tanda komplikasi atau pemburukan berdasarkan data vital dan keluhan terkini. ICD: N39.0 Urinary tract infection, site not specified | Teruskan konsumsi cairan cukup, pantau nyeri suprapubik dan tingkat lemas, lakukan urinalisis untuk konfirmasi penyembuhan, pertimbangkan antibiotik jika hasil urinalisis mendukung adanya infeksi aktif dan tidak ada kontraindikasi."
+    },
+    "structuredReference": "The patient presents with Nyeri BAK dan urine terasa keruh. Objective findings show TD 118/76 mmHg, Nadi 88 bpm, Suhu 37.7 C, nyeri suprapubik. The clinical assessment is Infeksi saluran kemih (N39.0) masih menjadi diagnosa utama dengan respons klinis yang membaik: demam menurun dan nafsu makan meningkat. Namun, gejala lemas dan nyeri suprapubik masih ada, menunjukkan penyembuhan belum sempurna. Tidak ada tanda komplikasi atau pemburukan berdasarkan data vital dan keluhan terkini. ICD: N39.0 Urinary tract infection, site not specified, supported by ICD-10 code N39.0, Urinary tract infection, site not specified. The triage level is LOW. The recommended plan is Teruskan konsumsi cairan cukup, pantau nyeri suprapubik dan tingkat lemas, lakukan urinalisis untuk konfirmasi penyembuhan, pertimbangkan antibiotik jika hasil urinalisis mendukung adanya infeksi aktif dan tidak ada kontraindikasi.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 67,
+      "noteId": 586
+    }
+  },
+  {
+    "caseId": "CASE019",
+    "nurseUsername": "ilham",
+    "nurseFullName": "Ilham",
+    "patientName": "Hendra Wijaya",
+    "noRm": "RMDUMMY26007",
+    "registrationId": 64,
+    "patientData": {
+      "age": 42,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1983-12-29",
+        "patientId": 41,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Sesak episodik dan batuk malam, riwayat asma.",
+      "objective": "TD 122/80 mmHg, Nadi 94 bpm, RR 24 x/menit, wheezing ringan bilateral.",
+      "assessment": "Eksaserbasi asma ringan (J45.9) dalam fase pemulihan dengan demam membaik, nafsu makan mulai meningkat, dan lemas sebagai gejala pasca-akut. Wheezing bilateral ringan persisten tanpa tanda distress berat atau hipoksia. Tidak ada indikasi infeksi sekunder atau komplikasi baru. Keluhan utama batuk konsisten dengan riwayat asma. ICD: J45.9 Asthma, unspecified",
+      "plan": "Pantau RR dan saturasi bila tersedia, pastikan hidrasi dan istirahat cukup, evaluasi kebutuhan bronkodilator sesuai respons klinik, edukasi tanda peringatan asma, dan rencanakan kontrol jika gejala memburuk atau tidak ada peningkatan dalam 24-48 jam. Pertimbangkan penambahan vitamin atau nutrisi pendukung jika lemas berkepanjangan."
+    },
+    "icd10": {
+      "code": "J45.9",
+      "name": "Asthma, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan riwayat asma mengalami perbaikan demam dan peningkatan nafsu makan, tetapi masih mengalami lemas. Gejala respiratori berupa sesak episodik, batuk malam, dan wheezing bilateral ringan persisten konsisten dengan asma tanpa tanda distress berat atau hipoksia. Vital signs stabil.",
+      "latestCondition": "demam membaik, masih lemas, nafsu makan mulai membaik, sesak episodik dan batuk malam, wheezing ringan bilateral",
+      "clinicalNotes": "Eksaserbasi asma ringan (J45.9) dalam fase pemulihan dengan demam membaik, nafsu makan mulai meningkat, dan lemas sebagai gejala pasca-akut. Wheezing bilateral ringan persisten tanpa tanda distress berat atau hipoksia. Tidak ada indikasi infeksi sekunder atau komplikasi baru. Keluhan utama batuk konsisten dengan riwayat asma. ICD: J45.9 Asthma, unspecified | Pantau RR dan saturasi bila tersedia, pastikan hidrasi dan istirahat cukup, evaluasi kebutuhan bronkodilator sesuai respons klinik, edukasi tanda peringatan asma, dan rencanakan kontrol jika gejala memburuk atau tidak ada peningkatan dalam 24-48 jam. Pertimbangkan penambahan vitamin atau nutrisi pendukung jika lemas berkepanjangan. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Eksaserbasi asma ringan (J45.9) dalam fase pemulihan dengan demam membaik, nafsu makan mulai meningkat, dan lemas sebagai gejala pasca-akut. Wheezing bilateral ringan persisten tanpa tanda distress berat atau hipoksia. Tidak ada indikasi infeksi sekunder atau komplikasi baru. Keluhan utama tetap batuk konsisten dengan riwayat asma. | Pantau RR dan saturasi bila tersedia, pastikan hidrasi dan istirahat cukup, evaluasi kebutuhan bronkodilator sesuai respons klinik, edukasi tanda peringatan asma, dan rencanakan kontrol jika gejala memburuk atau tidak ada peningkatan dalam 24-48 jam. Pertimbangkan penambahan vitamin atau nutrisi pendukung jika lemas berkepanjangan. | Pasien dengan riwayat asma mengalami perbaikan demam dan peningkatan nafsu makan, tetapi masih mengalami lemas. Gejala respiratori berupa sesak episodik, batuk malam, dan wheezing bilateral ringan persisten konsisten dengan asma tanpa tanda distress berat atau hipoksia. Vital signs stabil.",
+      "examinationData": "Sesak episodik dan batuk malam, riwayat asma. | TD 122/80 mmHg, Nadi 94 bpm, RR 24 x/menit, wheezing ringan bilateral. | Eksaserbasi asma ringan (J45.9) dalam fase pemulihan dengan demam membaik, nafsu makan mulai meningkat, dan lemas sebagai gejala pasca-akut. Wheezing bilateral ringan persisten tanpa tanda distress berat atau hipoksia. Tidak ada indikasi infeksi sekunder atau komplikasi baru. Keluhan utama batuk konsisten dengan riwayat asma. ICD: J45.9 Asthma, unspecified | Pantau RR dan saturasi bila tersedia, pastikan hidrasi dan istirahat cukup, evaluasi kebutuhan bronkodilator sesuai respons klinik, edukasi tanda peringatan asma, dan rencanakan kontrol jika gejala memburuk atau tidak ada peningkatan dalam 24-48 jam. Pertimbangkan penambahan vitamin atau nutrisi pendukung jika lemas berkepanjangan."
+    },
+    "structuredReference": "The patient presents with Sesak episodik dan batuk malam, riwayat asma. Objective findings show TD 122/80 mmHg, Nadi 94 bpm, RR 24 x/menit, wheezing ringan bilateral. The clinical assessment is Eksaserbasi asma ringan (J45.9) dalam fase pemulihan dengan demam membaik, nafsu makan mulai meningkat, dan lemas sebagai gejala pasca-akut. Wheezing bilateral ringan persisten tanpa tanda distress berat atau hipoksia. Tidak ada indikasi infeksi sekunder atau komplikasi baru. Keluhan utama batuk konsisten dengan riwayat asma. ICD: J45.9 Asthma, unspecified, supported by ICD-10 code J45.9, Asthma, unspecified. The triage level is LOW. The recommended plan is Pantau RR dan saturasi bila tersedia, pastikan hidrasi dan istirahat cukup, evaluasi kebutuhan bronkodilator sesuai respons klinik, edukasi tanda peringatan asma, dan rencanakan kontrol jika gejala memburuk atau tidak ada peningkatan dalam 24-48 jam. Pertimbangkan penambahan vitamin atau nutrisi pendukung jika lemas berkepanjangan.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 51,
+      "noteId": 599
+    }
+  },
+  {
+    "caseId": "CASE020",
+    "nurseUsername": "intan",
+    "nurseFullName": "Intan",
+    "patientName": "Putri Noviana",
+    "noRm": "RMDUMMY26022",
+    "registrationId": 79,
+    "patientData": {
+      "age": 38,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1987-10-09",
+        "patientId": 56,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Sesak ringan saat malam dan batuk kering.",
+      "objective": "TD 112/72 mmHg, Nadi 90 bpm, RR 23 x/menit, wheezing ringan.",
+      "assessment": "Asma ringan dengan wheezing ringan (J45.9) tetap menjadi diagnosis utama. Demam menunjukkan respons baik dengan penurunan, sehingga tidak lagi menjadi fokus klinis aktif. Gejala lemas mungkin terkait pemulihan pasca-demam atau efek residual bronkodilator. Nafsu makan yang mulai membaik mendukung tren pemulihan. Tidak ada tanda infeksi berat atau komplikasi baru. Kondisi stabil sesuai tren pulih. ICD: J45.9 Asthma, unspecified",
+      "plan": "Pantau napas, tingkat kelelahan, dan nafsu makan. Pastikan hidrasi, istirahat cukup, dan nutrisi yang memadai. Edukasi tentang tanda peringatan asma dan kapan harus kembali ke fasilitas kesehatan. Kunjungi kembali jika muncul sesak berat, wheezing memburuk, demam kembali, atau kelelahan yang memburuk tanpa peningkatan."
+    },
+    "icd10": {
+      "code": "J45.9",
+      "name": "Asthma, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien asma ringan dengan perbaikan demam, masih mengalami kelelahan dan nafsu makan mulai membaik. Batuk kering dan sesak ringan malam hari tetap ada dengan wheezing ringan. Vital signs stabil tanpa tanda komplikasi.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik. Batuk kering dan sesak ringan malam hari tetap ada dengan wheezing ringan.",
+      "clinicalNotes": "Asma ringan dengan wheezing ringan (J45.9) tetap menjadi diagnosis utama. Demam menunjukkan respons baik dengan penurunan, sehingga tidak lagi menjadi fokus klinis aktif. Gejala lemas mungkin terkait pemulihan pasca-demam atau efek residual bronkodilator. Nafsu makan yang mulai membaik mendukung tren pemulihan. Tidak ada tanda infeksi berat atau komplikasi baru. Kondisi stabil sesuai tren pulih. ICD: J45.9 Asthma, unspecified | Pantau napas, tingkat kelelahan, dan nafsu makan. Pastikan hidrasi, istirahat cukup, dan nutrisi yang memadai. Edukasi tentang tanda peringatan asma dan kapan harus kembali ke fasilitas kesehatan. Kunjungi kembali jika muncul sesak berat, wheezing memburuk, demam kembali, atau kelelahan yang memburuk tanpa peningkatan. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Asma ringan dengan wheezing ringan (J45.9) tetap menjadi diagnosis utama. Demam menunjukkan respons baik dengan penurunan, sehingga tidak lagi menjadi fokus klinis aktif. Gejala lemas mungkin terkait pemulihan pasca-demam atau efek residual bronkodilator. Nafsu makan yang mulai membaik mendukung tren pemulihan. Tidak ada tanda infeksi berat atau komplikasi baru. Kondisi stabil sesuai tren pulih. | Pantau napas, tingkat kelelahan, dan nafsu makan. Pastikan hidrasi, istirahat cukup, dan nutrisi yang memadai. Edukasi tentang tanda peringatan asma dan kapan harus kembali ke fasilitas kesehatan. Kunjungi kembali jika muncul sesak berat, wheezing memburuk, demam kembali, atau kelelahan yang memburuk tanpa peningkatan. | Pasien asma ringan dengan perbaikan demam, masih mengalami kelelahan dan nafsu makan mulai membaik. Batuk kering dan sesak ringan malam hari tetap ada dengan wheezing ringan. Vital signs stabil tanpa tanda komplikasi.",
+      "examinationData": "Sesak ringan saat malam dan batuk kering. | TD 112/72 mmHg, Nadi 90 bpm, RR 23 x/menit, wheezing ringan. | Asma ringan dengan wheezing ringan (J45.9) tetap menjadi diagnosis utama. Demam menunjukkan respons baik dengan penurunan, sehingga tidak lagi menjadi fokus klinis aktif. Gejala lemas mungkin terkait pemulihan pasca-demam atau efek residual bronkodilator. Nafsu makan yang mulai membaik mendukung tren pemulihan. Tidak ada tanda infeksi berat atau komplikasi baru. Kondisi stabil sesuai tren pulih. ICD: J45.9 Asthma, unspecified | Pantau napas, tingkat kelelahan, dan nafsu makan. Pastikan hidrasi, istirahat cukup, dan nutrisi yang memadai. Edukasi tentang tanda peringatan asma dan kapan harus kembali ke fasilitas kesehatan. Kunjungi kembali jika muncul sesak berat, wheezing memburuk, demam kembali, atau kelelahan yang memburuk tanpa peningkatan."
+    },
+    "structuredReference": "The patient presents with Sesak ringan saat malam dan batuk kering. Objective findings show TD 112/72 mmHg, Nadi 90 bpm, RR 23 x/menit, wheezing ringan. The clinical assessment is Asma ringan dengan wheezing ringan (J45.9) tetap menjadi diagnosis utama. Demam menunjukkan respons baik dengan penurunan, sehingga tidak lagi menjadi fokus klinis aktif. Gejala lemas mungkin terkait pemulihan pasca-demam atau efek residual bronkodilator. Nafsu makan yang mulai membaik mendukung tren pemulihan. Tidak ada tanda infeksi berat atau komplikasi baru. Kondisi stabil sesuai tren pulih. ICD: J45.9 Asthma, unspecified, supported by ICD-10 code J45.9, Asthma, unspecified. The triage level is LOW. The recommended plan is Pantau napas, tingkat kelelahan, dan nafsu makan. Pastikan hidrasi, istirahat cukup, dan nutrisi yang memadai. Edukasi tentang tanda peringatan asma dan kapan harus kembali ke fasilitas kesehatan. Kunjungi kembali jika muncul sesak berat, wheezing memburuk, demam kembali, atau kelelahan yang memburuk tanpa peningkatan.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 66,
+      "noteId": 588
+    }
+  },
+  {
+    "caseId": "CASE021",
+    "nurseUsername": "linda",
+    "nurseFullName": "Linda",
+    "patientName": "Tika Amelia",
+    "noRm": "RMDUMMY26016",
+    "registrationId": 73,
+    "patientData": {
+      "age": 28,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1998-01-26",
+        "patientId": 50,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Andooon",
+        "doctorSpecialization": "Spesialis Obat"
+      }
+    },
+    "soapNote": {
+      "subjective": "Demam disertai menggigil sejak semalam.",
+      "objective": "TD 112/70 mmHg, Nadi 98 bpm, Suhu 38.5 C, RR 21 x/menit.",
+      "assessment": "Demam akut dengan menggigil (ICD R50.9) menunjukkan respons terapi yang baik berupa penurunan subjektif demam dan stabilitas vital signs. Kondisi subjektif terkini: demam membaik, masih lemas, nafsu makan mulai membaik. Tidak ada bukti infeksi berat atau komplikasi. Kondisi umum membaik namun masih memerlukan observasi untuk pemulihan penuh. ICD: R50.9 Fever, unspecified",
+      "plan": "Pantau suhu dan tanda vital secara berkadar, pastikan asupan cairan dan nutrisi cukup, dorong istirahat, edukasi tanda bahaya, dan evaluasi kembali jika demam kembali atau muncul gejala baru."
+    },
+    "icd10": {
+      "code": "R50.9",
+      "name": "Fever, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan demam akut sejak semalam menunjukkan peningkatan kondisi subjektif: demam membaik, nafsu makan mulai pulih, meski masih merasa lemas. Tanda vital stabil (TD 112/70 mmHg, HR 98 bpm, Suhu 38.5°C, RR 21 x/menit) tanpa tanda deteriorasi. Keluhan utama tetap demam dengan respons positif terhadap penurunan suhu.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Demam akut dengan menggigil (ICD R50.9) menunjukkan respons terapi yang baik berupa penurunan subjektif demam dan stabilitas vital signs. Kondisi subjektif terkini: demam membaik, masih lemas, nafsu makan mulai membaik. Tidak ada bukti infeksi berat atau komplikasi. Kondisi umum membaik namun masih memerlukan observasi untuk pemulihan penuh. ICD: R50.9 Fever, unspecified | Pantau suhu dan tanda vital secara berkadar, pastikan asupan cairan dan nutrisi cukup, dorong istirahat, edukasi tanda bahaya, dan evaluasi kembali jika demam kembali atau muncul gejala baru. | R50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian. | Demam akut dengan menggigil (R50.9) menunjukkan respons terapi yang baik berupa penurunan subjektif demam dan stabilitas vital signs. Kondisi subjektif terkini: demam membaik, masih lemas, nafsu makan mulai membaik. Tidak ada bukti infeksi berat atau komplikasi. Kondisi umum membaik namun masih memerlukan observasi untuk pemulihan penuh. | Pantau suhu dan tanda vital secara berkadar, pastikan asupan cairan dan nutrisi cukup, dorong istirahat, edukasi tanda bahaya, dan evaluasi kembali jika demam kembali atau muncul gejala baru. | Pasien dengan demam akut sejak semalam menunjukkan peningkatan kondisi subjektif: demam membaik, nafsu makan mulai pulih, meski masih merasa lemas. Tanda vital stabil (TD 112/70 mmHg, HR 98 bpm, Suhu 38.5°C, RR 21 x/menit) tanpa tanda deteriorasi. Keluhan utama tetap demam dengan respons positif terhadap penurunan suhu.",
+      "examinationData": "Demam disertai menggigil sejak semalam. | TD 112/70 mmHg, Nadi 98 bpm, Suhu 38.5 C, RR 21 x/menit. | Demam akut dengan menggigil (ICD R50.9) menunjukkan respons terapi yang baik berupa penurunan subjektif demam dan stabilitas vital signs. Kondisi subjektif terkini: demam membaik, masih lemas, nafsu makan mulai membaik. Tidak ada bukti infeksi berat atau komplikasi. Kondisi umum membaik namun masih memerlukan observasi untuk pemulihan penuh. ICD: R50.9 Fever, unspecified | Pantau suhu dan tanda vital secara berkadar, pastikan asupan cairan dan nutrisi cukup, dorong istirahat, edukasi tanda bahaya, dan evaluasi kembali jika demam kembali atau muncul gejala baru."
+    },
+    "structuredReference": "The patient presents with Demam disertai menggigil sejak semalam. Objective findings show TD 112/70 mmHg, Nadi 98 bpm, Suhu 38.5 C, RR 21 x/menit. The clinical assessment is Demam akut dengan menggigil (ICD R50.9) menunjukkan respons terapi yang baik berupa penurunan subjektif demam dan stabilitas vital signs. Kondisi subjektif terkini: demam membaik, masih lemas, nafsu makan mulai membaik. Tidak ada bukti infeksi berat atau komplikasi. Kondisi umum membaik namun masih memerlukan observasi untuk pemulihan penuh. ICD: R50.9 Fever, unspecified, supported by ICD-10 code R50.9, Fever, unspecified. The triage level is LOW. The recommended plan is Pantau suhu dan tanda vital secara berkadar, pastikan asupan cairan dan nutrisi cukup, dorong istirahat, edukasi tanda bahaya, dan evaluasi kembali jika demam kembali atau muncul gejala baru.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 60,
+      "noteId": 576
+    }
+  },
+  {
+    "caseId": "CASE022",
+    "nurseUsername": "melati",
+    "nurseFullName": "Melati",
+    "patientName": "Nadia Fitriani",
+    "noRm": "RMDUMMY26026",
+    "registrationId": 83,
+    "patientData": {
+      "age": 29,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1996-11-04",
+        "patientId": 60,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Pegal otot dan badan terasa nyeri setelah aktivitas.",
+      "objective": "TD 110/70 mmHg, Nadi 82 bpm, Suhu 36.8 C, nyeri otot ekstremitas ringan.",
+      "assessment": "Mialgia ringan pasca aktivitas dengan demam yang membaik, nafsu makan mulai pulih, dan lemas yang masih ada. Kondisi menunjukkan respons baik terhadap perawatan konservatif tanpa tanda infeksi berat atau komplikasi. Diagnosis utama tetap M79.1 (Myalgia) sesuai dengan nyeri otot, sementara demam yang membaik tidak lagi menjadi fokus klinis aktif. ICD: M79.1 Myalgia",
+      "plan": "Istirahat, hidrasi cukup, kompres hangat pada area nyeri, monitor suhu dan gejala secara rutin. Edukasi mengenai perlahan meningkatkan aktivitas sesuai toleransi. Kembali jika demam kembali tinggi, nyeri memburuk, muncul tanda infeksi, atau lemas tidak membaik dalam 48 jam."
+    },
+    "icd10": {
+      "code": "M79.1",
+      "name": "Myalgia",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien menunjukkan perbaikan demam dengan pulihnya nafsu makan, namun masih mengalami lemas dan nyeri otot ringan pasca aktivitas. Vital sign stabil tanpa tanda infeksi berat atau komplikasi.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, nyeri otot ekstremitas ringan.",
+      "clinicalNotes": "Mialgia ringan pasca aktivitas dengan demam yang membaik, nafsu makan mulai pulih, dan lemas yang masih ada. Kondisi menunjukkan respons baik terhadap perawatan konservatif tanpa tanda infeksi berat atau komplikasi. Diagnosis utama tetap M79.1 (Myalgia) sesuai dengan nyeri otot, sementara demam yang membaik tidak lagi menjadi fokus klinis aktif. ICD: M79.1 Myalgia | Istirahat, hidrasi cukup, kompres hangat pada area nyeri, monitor suhu dan gejala secara rutin. Edukasi mengenai perlahan meningkatkan aktivitas sesuai toleransi. Kembali jika demam kembali tinggi, nyeri memburuk, muncul tanda infeksi, atau lemas tidak membaik dalam 48 jam. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Mialgia ringan pasca aktivitas dengan demam yang membaik, nafsu makan mulai pulih, dan lemas yang masih ada. Kondisi menunjukkan respons baik terhadap perawatan konservatif tanpa tanda infeksi berat atau komplikasi. Diagnosis utama tetap M79.1 (Myalgia) sesuai dengan nyeri otot, sementara demam yang membaik tidak lagi menjadi fokus klinis aktif. | Istirahat, hidrasi cukup, kompres hangat pada area nyeri, monitor suhu dan gejala secara rutin. Edukasi mengenai perlahan meningkatkan aktivitas sesuai toleransi. Kembali jika demam kembali tinggi, nyeri memburuk, muncul tanda infeksi, atau lemas tidak membaik dalam 48 jam. | Pasien menunjukkan perbaikan demam dengan pulihnya nafsu makan, namun masih mengalami lemas dan nyeri otot ringan pasca aktivitas. Vital sign stabil tanpa tanda infeksi berat atau komplikasi.",
+      "examinationData": "Pegal otot dan badan terasa nyeri setelah aktivitas. | TD 110/70 mmHg, Nadi 82 bpm, Suhu 36.8 C, nyeri otot ekstremitas ringan. | Mialgia ringan pasca aktivitas dengan demam yang membaik, nafsu makan mulai pulih, dan lemas yang masih ada. Kondisi menunjukkan respons baik terhadap perawatan konservatif tanpa tanda infeksi berat atau komplikasi. Diagnosis utama tetap M79.1 (Myalgia) sesuai dengan nyeri otot, sementara demam yang membaik tidak lagi menjadi fokus klinis aktif. ICD: M79.1 Myalgia | Istirahat, hidrasi cukup, kompres hangat pada area nyeri, monitor suhu dan gejala secara rutin. Edukasi mengenai perlahan meningkatkan aktivitas sesuai toleransi. Kembali jika demam kembali tinggi, nyeri memburuk, muncul tanda infeksi, atau lemas tidak membaik dalam 48 jam."
+    },
+    "structuredReference": "The patient presents with Pegal otot dan badan terasa nyeri setelah aktivitas. Objective findings show TD 110/70 mmHg, Nadi 82 bpm, Suhu 36.8 C, nyeri otot ekstremitas ringan. The clinical assessment is Mialgia ringan pasca aktivitas dengan demam yang membaik, nafsu makan mulai pulih, dan lemas yang masih ada. Kondisi menunjukkan respons baik terhadap perawatan konservatif tanpa tanda infeksi berat atau komplikasi. Diagnosis utama tetap M79.1 (Myalgia) sesuai dengan nyeri otot, sementara demam yang membaik tidak lagi menjadi fokus klinis aktif. ICD: M79.1 Myalgia, supported by ICD-10 code M79.1, Myalgia. The triage level is LOW. The recommended plan is Istirahat, hidrasi cukup, kompres hangat pada area nyeri, monitor suhu dan gejala secara rutin. Edukasi mengenai perlahan meningkatkan aktivitas sesuai toleransi. Kembali jika demam kembali tinggi, nyeri memburuk, muncul tanda infeksi, atau lemas tidak membaik dalam 48 jam.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 70,
+      "noteId": 587
+    }
+  },
+  {
+    "caseId": "CASE023",
+    "nurseUsername": "nisa",
+    "nurseFullName": "Nisa",
+    "patientName": "Ayu Lestari",
+    "noRm": "RMDUMMY26002",
+    "registrationId": 59,
+    "patientData": {
+      "age": 34,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1992-03-07",
+        "patientId": 36,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Andooon",
+        "doctorSpecialization": "Spesialis Obat"
+      }
+    },
+    "soapNote": {
+      "subjective": "Batuk pilek sejak 3 hari, tenggorokan terasa gatal.",
+      "objective": "TD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4 C, faring hiperemis ringan.",
+      "assessment": "Infeksi saluran napas atas akut (J06.9) dalam tahap pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif menunjukkan vital stabil dengan faring hiperemis ringan. Tidak ada indikasi infeksi bakteri sekunder atau komplikasi. Diagnosis konsisten dengan keluhan utama batuk dan progresi klinis yang sesuai. ICD: J06.9 Acute upper respiratory infection, unspecified",
+      "plan": "Teruskan istirahat dan konsumsi cairan yang cukup. Pantau gejala lemas dan nafsu makan. Edukasi tanda bahaya: demam kembali, sesak napas, atau batuk berlekuk. Kontrol kembali jika tidak ada perbaikan dalam 2-3 hari atau muncul gejala baru."
+    },
+    "icd10": {
+      "code": "J06.9",
+      "name": "Acute upper respiratory infection, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan infeksi saluran napas atas akut (J06.9) dalam fase pemulihan, mengalami perbaikan demam dengan gejala lemas dan nafsu makan yang mulai pulih, serta batuk pilek masih ada. Vital stabil (TD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4°C) dengan faring hiperemis ringan, tanpa indikasi infeksi bakteri sekunder atau komplikasi.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, batuk pilek masih ada, vital stabil tanpa tanda komplikasi.",
+      "clinicalNotes": "Infeksi saluran napas atas akut (J06.9) dalam tahap pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif menunjukkan vital stabil dengan faring hiperemis ringan. Tidak ada indikasi infeksi bakteri sekunder atau komplikasi. Diagnosis konsisten dengan keluhan utama batuk dan progresi klinis yang sesuai. ICD: J06.9 Acute upper respiratory infection, unspecified | Teruskan istirahat dan konsumsi cairan yang cukup. Pantau gejala lemas dan nafsu makan. Edukasi tanda bahaya: demam kembali, sesak napas, atau batuk berlekuk. Kontrol kembali jika tidak ada perbaikan dalam 2-3 hari atau muncul gejala baru. | J06.9: parasetamol bila ada demam/nyeri serta terapi simptomatik batuk seperti ambroxol atau asetilsistein bila sesuai keluhan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian. | Infeksi saluran napas atas akut (J06.9) dalam tahap pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif menunjukkan vital stabil (TD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4°C) dengan faring hiperemis ringan. Tidak ada indikasi infeksi bakteri sekunder atau komplikasi. | Teruskan istirahat dan konsumsi cairan yang cukup. Pantau gejala lemas dan nafsu makan. Edukasi tanda bahaya: demam kembali, sesak napas, atau batuk berlekuk. Kontrol kembali jika tidak ada perbaikan dalam 2-3 hari atau muncul gejala baru. | Pasien dengan infeksi saluran napas atas akut (J06.9) dalam fase pemulihan, mengalami perbaikan demam dengan gejala lemas dan nafsu makan yang mulai pulih, serta batuk pilek masih ada. Vital stabil (TD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4°C) dengan faring hiperemis ringan, tanpa indikasi infeksi bakteri sekunder atau komplikasi.",
+      "examinationData": "Batuk pilek sejak 3 hari, tenggorokan terasa gatal. | TD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4 C, faring hiperemis ringan. | Infeksi saluran napas atas akut (J06.9) dalam tahap pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif menunjukkan vital stabil dengan faring hiperemis ringan. Tidak ada indikasi infeksi bakteri sekunder atau komplikasi. Diagnosis konsisten dengan keluhan utama batuk dan progresi klinis yang sesuai. ICD: J06.9 Acute upper respiratory infection, unspecified | Teruskan istirahat dan konsumsi cairan yang cukup. Pantau gejala lemas dan nafsu makan. Edukasi tanda bahaya: demam kembali, sesak napas, atau batuk berlekuk. Kontrol kembali jika tidak ada perbaikan dalam 2-3 hari atau muncul gejala baru."
+    },
+    "structuredReference": "The patient presents with Batuk pilek sejak 3 hari, tenggorokan terasa gatal. Objective findings show TD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4 C, faring hiperemis ringan. The clinical assessment is Infeksi saluran napas atas akut (J06.9) dalam tahap pemulihan. Subjektif menunjukkan demam membaik, masih lemas, nafsu makan mulai membaik. Objektif menunjukkan vital stabil dengan faring hiperemis ringan. Tidak ada indikasi infeksi bakteri sekunder atau komplikasi. Diagnosis konsisten dengan keluhan utama batuk dan progresi klinis yang sesuai. ICD: J06.9 Acute upper respiratory infection, unspecified, supported by ICD-10 code J06.9, Acute upper respiratory infection, unspecified. The triage level is LOW. The recommended plan is Teruskan istirahat dan konsumsi cairan yang cukup. Pantau gejala lemas dan nafsu makan. Edukasi tanda bahaya: demam kembali, sesak napas, atau batuk berlekuk. Kontrol kembali jika tidak ada perbaikan dalam 2-3 hari atau muncul gejala baru.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 46,
+      "noteId": 579
+    }
+  },
+  {
+    "caseId": "CASE024",
+    "nurseUsername": "putri",
+    "nurseFullName": "Putri",
+    "patientName": "Sari Wulandari",
+    "noRm": "RMDUMMY26006",
+    "registrationId": 63,
+    "patientData": {
+      "age": 29,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1996-09-01",
+        "patientId": 40,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Gatal menyebar di lengan dan punggung sejak kemarin.",
+      "objective": "TD 110/70 mmHg, Nadi 78 bpm, Suhu 36.6 C, tampak ruam ekskoriasi ringan.",
+      "assessment": "Pruritus dengan ruam ringan (L29.9) dalam fase pemulihan, didukung oleh penurunan demam dan peningkatan nafsu makan. Keluhan lemas yang masih terasa mungkin terkait pemulihan pasca-pirokoksis atau dehidrasi ringan, tetapi vital sign stabil dan tidak menunjukkan kondisi akut. Tidak ada indikasi infeksi berat atau reaksi alergi sistemik. Demam tidak lagi aktif, sehingga tidak diperlukan diagnosa fever sebagai masalah klinis utama saat ini. ICD: L29.9 Pruritus, unspecified",
+      "plan": "Teruskan hindari garukan dan pemicu ruam, berikan edukasi perawatan kulit, pastikan asupan nutrisi dan hidrasi cukup untuk mendukung pemulihan, monitor demam dan kondisi umum secara rutin, dan ajukan kembali kontrol jika demam kembali atau ruam memburuk. Sediakan edukasi tentang pentingnya istirahat dan hidrasi yang cukup untuk mengatasi keluhan lemas."
+    },
+    "icd10": {
+      "code": "L29.9",
+      "name": "Pruritus, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien menunjukkan perbaikan demam dan nafsu makan, tetapi masih mengalami keluhan lemas. Ruam ekskorasi ringan pada lengan dan punggung tetap ada tanpa tanda inflamasi atau infeksi berat. Vital sign stabil (TD 110/70 mmHg, Nadi 78 bpm, Suhu 36.6°C). Kondisi dalam fase pemulihan dengan perbaikan progresif.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, ruam ekskorasi ringan pada lengan dan punggung tanpa perubahan signifikan.",
+      "clinicalNotes": "Pruritus dengan ruam ringan (L29.9) dalam fase pemulihan, didukung oleh penurunan demam dan peningkatan nafsu makan. Keluhan lemas yang masih terasa mungkin terkait pemulihan pasca-pirokoksis atau dehidrasi ringan, tetapi vital sign stabil dan tidak menunjukkan kondisi akut. Tidak ada indikasi infeksi berat atau reaksi alergi sistemik. Demam tidak lagi aktif, sehingga tidak diperlukan diagnosa fever sebagai masalah klinis utama saat ini. ICD: L29.9 Pruritus, unspecified | Teruskan hindari garukan dan pemicu ruam, berikan edukasi perawatan kulit, pastikan asupan nutrisi dan hidrasi cukup untuk mendukung pemulihan, monitor demam dan kondisi umum secara rutin, dan ajukan kembali kontrol jika demam kembali atau ruam memburuk. Sediakan edukasi tentang pentingnya istirahat dan hidrasi yang cukup untuk mengatasi keluhan lemas. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Pruritus dengan ruam ringan (L29.9) dalam fase pemulihan, didukung oleh penurunan demam dan peningkatan nafsu makan. Keluhan lemas yang masih terasa mungkin terkait pemulihan pasca-pirokoksis atau dehidrasi ringan, tetapi vital sign stabil (TD 110/70, Nadi 78, Suhu 36.6°C) dan tidak menunjukkan kondisi akut. Tidak ada indikasi infeksi berat atau reaksi alergi sistemik. Demam tidak lagi aktif, sehingga tidak diperlukan diagnosa fever sebagai masalah klinis utama saat ini. | Teruskan hindari garukan dan pemicu ruam, berikan edukasi perawatan kulit, pastikan asupan nutrisi dan hidrasi cukup untuk mendukung pemulihan, monitor demam dan kondisi umum secara rutin, dan ajukan kembali kontrol jika demam kembali atau ruam memburuk. Sediakan edukasi tentang pentingnya istirahat dan hidrasi yang cukup untuk mengatasi keluhan lemas. | Pasien menunjukkan perbaikan demam dan nafsu makan, tetapi masih mengalami keluhan lemas. Ruam ekskorasi ringan pada lengan dan punggung tetap ada tanpa tanda inflamasi atau infeksi berat. Vital sign stabil (TD 110/70 mmHg, Nadi 78 bpm, Suhu 36.6°C). Kondisi dalam fase pemulihan dengan perbaikan progresif.",
+      "examinationData": "Gatal menyebar di lengan dan punggung sejak kemarin. | TD 110/70 mmHg, Nadi 78 bpm, Suhu 36.6 C, tampak ruam ekskoriasi ringan. | Pruritus dengan ruam ringan (L29.9) dalam fase pemulihan, didukung oleh penurunan demam dan peningkatan nafsu makan. Keluhan lemas yang masih terasa mungkin terkait pemulihan pasca-pirokoksis atau dehidrasi ringan, tetapi vital sign stabil dan tidak menunjukkan kondisi akut. Tidak ada indikasi infeksi berat atau reaksi alergi sistemik. Demam tidak lagi aktif, sehingga tidak diperlukan diagnosa fever sebagai masalah klinis utama saat ini. ICD: L29.9 Pruritus, unspecified | Teruskan hindari garukan dan pemicu ruam, berikan edukasi perawatan kulit, pastikan asupan nutrisi dan hidrasi cukup untuk mendukung pemulihan, monitor demam dan kondisi umum secara rutin, dan ajukan kembali kontrol jika demam kembali atau ruam memburuk. Sediakan edukasi tentang pentingnya istirahat dan hidrasi yang cukup untuk mengatasi keluhan lemas."
+    },
+    "structuredReference": "The patient presents with Gatal menyebar di lengan dan punggung sejak kemarin. Objective findings show TD 110/70 mmHg, Nadi 78 bpm, Suhu 36.6 C, tampak ruam ekskoriasi ringan. The clinical assessment is Pruritus dengan ruam ringan (L29.9) dalam fase pemulihan, didukung oleh penurunan demam dan peningkatan nafsu makan. Keluhan lemas yang masih terasa mungkin terkait pemulihan pasca-pirokoksis atau dehidrasi ringan, tetapi vital sign stabil dan tidak menunjukkan kondisi akut. Tidak ada indikasi infeksi berat atau reaksi alergi sistemik. Demam tidak lagi aktif, sehingga tidak diperlukan diagnosa fever sebagai masalah klinis utama saat ini. ICD: L29.9 Pruritus, unspecified, supported by ICD-10 code L29.9, Pruritus, unspecified. The triage level is LOW. The recommended plan is Teruskan hindari garukan dan pemicu ruam, berikan edukasi perawatan kulit, pastikan asupan nutrisi dan hidrasi cukup untuk mendukung pemulihan, monitor demam dan kondisi umum secara rutin, dan ajukan kembali kontrol jika demam kembali atau ruam memburuk. Sediakan edukasi tentang pentingnya istirahat dan hidrasi yang cukup untuk mengatasi keluhan lemas.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 50,
+      "noteId": 583
+    }
+  },
+  {
+    "caseId": "CASE025",
+    "nurseUsername": "rafi",
+    "nurseFullName": "Rafi",
+    "patientName": "Rizal Maulana",
+    "noRm": "RMDUMMY26003",
+    "registrationId": 60,
+    "patientData": {
+      "age": 40,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1985-07-20",
+        "patientId": 37,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr, Haqqi Afzal",
+        "doctorSpecialization": "Umum"
+      }
+    },
+    "soapNote": {
+      "subjective": "Nyeri ulu hati, mual, terasa penuh setelah makan.",
+      "objective": "TD 118/78 mmHg, Nadi 86 bpm, Suhu 36.8 C, abdomen nyeri epigastrium ringan.",
+      "assessment": "Gastritis dengan dispepsia dan nyeri epigastrium ringan yang sedang membaik sesuai evaluasi awal. Demam telah berkurang, nafsu makan mulai pulih, dan tidak ada tanda komplikasi atau gejala peringatan. Kondisi konsisten dengan pemulihan tanpa perlu perubahan terapi. ICD: K29.7 Gastritis, unspecified",
+      "plan": "Teruskan diet porsi kecil, hindari makanan pedas/asam, cukup istirahat, pantau konsumsi makanan dan air, serta aktivitas sesuai toleransi karena masih lemas. Kembali kontrol bila nyeri memburuk, demam kembali, atau lemas tidak membaik."
+    },
+    "icd10": {
+      "code": "K29.7",
+      "name": "Gastritis, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan gastritis unspecified (K29.7) mengalami pemulihan: demam menurun, nafsu makan mulai meningkat, masih ada rasa lemas, vital signs stabil, dan abdominal tenderness ringan di epigastrium tanpa tanda komplikasi.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Gastritis dengan dispepsia dan nyeri epigastrium ringan yang sedang membaik sesuai evaluasi awal. Demam telah berkurang, nafsu makan mulai pulih, dan tidak ada tanda komplikasi atau gejala peringatan. Kondisi konsisten dengan pemulihan tanpa perlu perubahan terapi. ICD: K29.7 Gastritis, unspecified | Teruskan diet porsi kecil, hindari makanan pedas/asam, cukup istirahat, pantau konsumsi makanan dan air, serta aktivitas sesuai toleransi karena masih lemas. Kembali kontrol bila nyeri memburuk, demam kembali, atau lemas tidak membaik. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Gastritis dengan dispepsia dan nyeri epigastrium ringan yang sedang membaik sesuai evaluasi awal. Demam telah berkurang, nafsu makan mulai pulih, dan tidak ada tanda komplikasi atau gejala peringatan. Kondisi konsisten dengan pemulihan tanpa perlu perubahan terapi. | Teruskan diet porsi kecil, hindari makanan pedas/asam, cukup istirahat, pantau konsumsi makanan dan air, serta aktivitas sesuai toleransi karena masih lemas. Kembali kontrol bila nyeri memburuk, demam kembali, atau lemas tidak membaik. | Pasien dengan gastritis unspecified (K29.7) mengalami pemulihan: demam menurun, nafsu makan mulai meningkat, masih ada rasa lemas, vital signs stabil, dan abdominal tenderness ringan di epigastrium tanpa tanda komplikasi.",
+      "examinationData": "Nyeri ulu hati, mual, terasa penuh setelah makan. | TD 118/78 mmHg, Nadi 86 bpm, Suhu 36.8 C, abdomen nyeri epigastrium ringan. | Gastritis dengan dispepsia dan nyeri epigastrium ringan yang sedang membaik sesuai evaluasi awal. Demam telah berkurang, nafsu makan mulai pulih, dan tidak ada tanda komplikasi atau gejala peringatan. Kondisi konsisten dengan pemulihan tanpa perlu perubahan terapi. ICD: K29.7 Gastritis, unspecified | Teruskan diet porsi kecil, hindari makanan pedas/asam, cukup istirahat, pantau konsumsi makanan dan air, serta aktivitas sesuai toleransi karena masih lemas. Kembali kontrol bila nyeri memburuk, demam kembali, atau lemas tidak membaik."
+    },
+    "structuredReference": "The patient presents with Nyeri ulu hati, mual, terasa penuh setelah makan. Objective findings show TD 118/78 mmHg, Nadi 86 bpm, Suhu 36.8 C, abdomen nyeri epigastrium ringan. The clinical assessment is Gastritis dengan dispepsia dan nyeri epigastrium ringan yang sedang membaik sesuai evaluasi awal. Demam telah berkurang, nafsu makan mulai pulih, dan tidak ada tanda komplikasi atau gejala peringatan. Kondisi konsisten dengan pemulihan tanpa perlu perubahan terapi. ICD: K29.7 Gastritis, unspecified, supported by ICD-10 code K29.7, Gastritis, unspecified. The triage level is LOW. The recommended plan is Teruskan diet porsi kecil, hindari makanan pedas/asam, cukup istirahat, pantau konsumsi makanan dan air, serta aktivitas sesuai toleransi karena masih lemas. Kembali kontrol bila nyeri memburuk, demam kembali, atau lemas tidak membaik.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 47,
+      "noteId": 574
+    }
+  },
+  {
+    "caseId": "CASE026",
+    "nurseUsername": "ratih",
+    "nurseFullName": "Ratih",
+    "patientName": "Nina Safitri",
+    "noRm": "RMDUMMY26008",
+    "registrationId": 65,
+    "patientData": {
+      "age": 32,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1994-04-16",
+        "patientId": 42,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr, Haqqi Afzal",
+        "doctorSpecialization": "Umum"
+      }
+    },
+    "soapNote": {
+      "subjective": "Nyeri saat BAK dan sering BAK sejak 2 hari.",
+      "objective": "TD 114/72 mmHg, Nadi 88 bpm, Suhu 37.6 C, nyeri suprapubik ringan.",
+      "assessment": "Infeksi saluran kemih bawah (N39.0) menunjukkan respons klinis positif terhadap perawatan konservatif: demam membaik, nafsu makan mulai meningkat, dan vital sign stabil. Nyeri suprapubik masih ada tetapi ringan, serta lemas masih ada tanpa tanda komplikasi atau pemburuan infeksi sistemik. Kondisi saat ini konsisten dengan respons baik terhadap perawatan konservatif. ICD: N39.0 Urinary tract infection, site not specified",
+      "plan": "Teruskan konsumsi cairan cukup, pantau perkembangan lemas, suhu, dan nyeri BAK, edukasi tanda peringatan (demam kembali, nyeri punggung, darah dalam urine), dan pertimbangkan pemeriksaan urine bila tidak ada peningkatan signifikan dalam 24-48 jam atau muncul gejala baru."
+    },
+    "icd10": {
+      "code": "N39.0",
+      "name": "Urinary tract infection, site not specified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan infeksi saluran kemih bawah menunjukkan perbaikan klinis: demam membaik, nafsu makan meningkat, vital sign stabil, tetapi masih mengalami lemas dan nyeri suprapubik ringan dengan pola BAK yang meningkat sejak 2 hari lalu. Tidak ada tanda komplikasi atau pemburuan infeksi sistemik.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, nyeri suprapubik ringan, vital sign stabil.",
+      "clinicalNotes": "Infeksi saluran kemih bawah (N39.0) menunjukkan respons klinis positif terhadap perawatan konservatif: demam membaik, nafsu makan mulai meningkat, dan vital sign stabil. Nyeri suprapubik masih ada tetapi ringan, serta lemas masih ada tanpa tanda komplikasi atau pemburuan infeksi sistemik. Kondisi saat ini konsisten dengan respons baik terhadap perawatan konservatif. ICD: N39.0 Urinary tract infection, site not specified | Teruskan konsumsi cairan cukup, pantau perkembangan lemas, suhu, dan nyeri BAK, edukasi tanda peringatan (demam kembali, nyeri punggung, darah dalam urine), dan pertimbangkan pemeriksaan urine bila tidak ada peningkatan signifikan dalam 24-48 jam atau muncul gejala baru. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Infeksi saluran kemih bawah (N39.0) menunjukkan respons klinis positif: demam membaik, nafsu makan mulai meningkat, dan vital sign stabil. Nyeri suprapubik masih ada tetapi ringan, serta lemas masih ada tanpa tanda komplikasi atau pemburuan infeksi sistemik. Kondisi saat ini konsisten dengan respons baik terhadap perawatan konservatif. | Teruskan konsumsi cairan cukup, pantau perkembangan lemas, suhu, dan nyeri BAK, edukasi tanda peringatan (demam kembali, nyeri punggung, darah dalam urine), dan pertimbangkan pemeriksaan urine bila tidak ada peningkatan signifikan dalam 24-48 jam atau muncul gejala baru. | Pasien dengan infeksi saluran kemih bawah menunjukkan perbaikan klinis: demam membaik, nafsu makan meningkat, vital sign stabil, tetapi masih mengalami lemas dan nyeri suprapubik ringan dengan pola BAK yang meningkat sejak 2 hari lalu. Tidak ada tanda komplikasi atau pemburuan infeksi sistemik.",
+      "examinationData": "Nyeri saat BAK dan sering BAK sejak 2 hari. | TD 114/72 mmHg, Nadi 88 bpm, Suhu 37.6 C, nyeri suprapubik ringan. | Infeksi saluran kemih bawah (N39.0) menunjukkan respons klinis positif terhadap perawatan konservatif: demam membaik, nafsu makan mulai meningkat, dan vital sign stabil. Nyeri suprapubik masih ada tetapi ringan, serta lemas masih ada tanpa tanda komplikasi atau pemburuan infeksi sistemik. Kondisi saat ini konsisten dengan respons baik terhadap perawatan konservatif. ICD: N39.0 Urinary tract infection, site not specified | Teruskan konsumsi cairan cukup, pantau perkembangan lemas, suhu, dan nyeri BAK, edukasi tanda peringatan (demam kembali, nyeri punggung, darah dalam urine), dan pertimbangkan pemeriksaan urine bila tidak ada peningkatan signifikan dalam 24-48 jam atau muncul gejala baru."
+    },
+    "structuredReference": "The patient presents with Nyeri saat BAK dan sering BAK sejak 2 hari. Objective findings show TD 114/72 mmHg, Nadi 88 bpm, Suhu 37.6 C, nyeri suprapubik ringan. The clinical assessment is Infeksi saluran kemih bawah (N39.0) menunjukkan respons klinis positif terhadap perawatan konservatif: demam membaik, nafsu makan mulai meningkat, dan vital sign stabil. Nyeri suprapubik masih ada tetapi ringan, serta lemas masih ada tanpa tanda komplikasi atau pemburuan infeksi sistemik. Kondisi saat ini konsisten dengan respons baik terhadap perawatan konservatif. ICD: N39.0 Urinary tract infection, site not specified, supported by ICD-10 code N39.0, Urinary tract infection, site not specified. The triage level is LOW. The recommended plan is Teruskan konsumsi cairan cukup, pantau perkembangan lemas, suhu, dan nyeri BAK, edukasi tanda peringatan (demam kembali, nyeri punggung, darah dalam urine), dan pertimbangkan pemeriksaan urine bila tidak ada peningkatan signifikan dalam 24-48 jam atau muncul gejala baru.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 52,
+      "noteId": 581
+    }
+  },
+  {
+    "caseId": "CASE027",
+    "nurseUsername": "ridwan",
+    "nurseFullName": "Ridwan",
+    "patientName": "Ilham Pratama",
+    "noRm": "RMDUMMY26025",
+    "registrationId": 82,
+    "patientData": {
+      "age": 37,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1988-07-14",
+        "patientId": 59,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Afzal Haqqi",
+        "doctorSpecialization": "Spesialis AI Kedokteran"
+      }
+    },
+    "soapNote": {
+      "subjective": "Pusing, leher terasa berat, riwayat hipertensi.",
+      "objective": "TD 154/96 mmHg, Nadi 84 bpm, Suhu 36.7 C, kesadaran baik.",
+      "assessment": "Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam membaik sesuai dengan peningkatan sebelumnya, sehingga tidak lagi aktif sebagai masalah klinis utama. Keluhan lemas mungkin terkait dengan hipertensi yang belum terkontrol atau pemulihan pasca-demam. Nafsu makan mulai membaik menunjukkan respons positif terhadap pemulihan umum. Tidak ada tanda infeksi berat atau komplikasi akut saat ini. ICD: I10 Essential (primary) hypertension",
+      "plan": "Terus monitor tekanan darah dan gejala hipertensi. Edukasi patuh konsumsi obat hipertensi, diet rendah garam, dan cukup istirahat. Evaluasi ulang dalam 3-5 hari atau lebih awal jika gejala berat kembali. Tidak perlu antibiotik atau antipiretik karena demam sudah membaik."
+    },
+    "icd10": {
+      "code": "I10",
+      "name": "Essential (primary) hypertension",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan riwayat hipertensi mengalami pemulihan dari demam dengan residual kelelahan dan peningkatan nafsu makan. Tekanan darah tetap tidak terkontrol (154/96 mmHg), nadi dan suhu normal, kesadaran baik. Keluhan utama sakit kepala masih terkait dengan hipertensi esensial yang belum terkontrol optimal.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam membaik sesuai dengan peningkatan sebelumnya, sehingga tidak lagi aktif sebagai masalah klinis utama. Keluhan lemas mungkin terkait dengan hipertensi yang belum terkontrol atau pemulihan pasca-demam. Nafsu makan mulai membaik menunjukkan respons positif terhadap pemulihan umum. Tidak ada tanda infeksi berat atau komplikasi akut saat ini. ICD: I10 Essential (primary) hypertension | Terus monitor tekanan darah dan gejala hipertensi. Edukasi patuh konsumsi obat hipertensi, diet rendah garam, dan cukup istirahat. Evaluasi ulang dalam 3-5 hari atau lebih awal jika gejala berat kembali. Tidak perlu antibiotik atau antipiretik karena demam sudah membaik. | I10: lanjutkan/optimalkan antihipertensi sesuai regimen dokter, misalnya amlodipine, dengan monitoring tekanan darah. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian. | Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal (TD 154/96 mmHg). Demam membaik sesuai dengan peningkatan sebelumnya, sehingga tidak lagi aktif sebagai masalah klinis utama. Keluhan lemas mungkin terkait dengan hipertensi yang belum terkontrol atau pemulihan pasca-demam. Nafsu makan mulai membaik menunjukkan respons positif terhadap pemulihan umum. Tidak ada tanda infeksi berat atau komplikasi akut saat ini. | Terus monitor tekanan darah dan gejala hipertensi. Edukasi patuh konsumsi obat hipertensi, diet rendah garam, dan cukup istirahat. Evaluasi ulang dalam 3-5 hari atau lebih awal jika gejala berat kembali. Tidak perlu antibiotik atau antipiretik karena demam sudah membaik. | Pasien dengan riwayat hipertensi mengalami pemulihan dari demam dengan residual kelelahan dan peningkatan nafsu makan. Tekanan darah tetap tidak terkontrol (154/96 mmHg), nadi dan suhu normal, kesadaran baik. Keluhan utama sakit kepala masih terkait dengan hipertensi esensial yang belum terkontrol optimal.",
+      "examinationData": "Pusing, leher terasa berat, riwayat hipertensi. | TD 154/96 mmHg, Nadi 84 bpm, Suhu 36.7 C, kesadaran baik. | Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam membaik sesuai dengan peningkatan sebelumnya, sehingga tidak lagi aktif sebagai masalah klinis utama. Keluhan lemas mungkin terkait dengan hipertensi yang belum terkontrol atau pemulihan pasca-demam. Nafsu makan mulai membaik menunjukkan respons positif terhadap pemulihan umum. Tidak ada tanda infeksi berat atau komplikasi akut saat ini. ICD: I10 Essential (primary) hypertension | Terus monitor tekanan darah dan gejala hipertensi. Edukasi patuh konsumsi obat hipertensi, diet rendah garam, dan cukup istirahat. Evaluasi ulang dalam 3-5 hari atau lebih awal jika gejala berat kembali. Tidak perlu antibiotik atau antipiretik karena demam sudah membaik."
+    },
+    "structuredReference": "The patient presents with Pusing, leher terasa berat, riwayat hipertensi. Objective findings show TD 154/96 mmHg, Nadi 84 bpm, Suhu 36.7 C, kesadaran baik. The clinical assessment is Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam membaik sesuai dengan peningkatan sebelumnya, sehingga tidak lagi aktif sebagai masalah klinis utama. Keluhan lemas mungkin terkait dengan hipertensi yang belum terkontrol atau pemulihan pasca-demam. Nafsu makan mulai membaik menunjukkan respons positif terhadap pemulihan umum. Tidak ada tanda infeksi berat atau komplikasi akut saat ini. ICD: I10 Essential (primary) hypertension, supported by ICD-10 code I10, Essential (primary) hypertension. The triage level is LOW. The recommended plan is Terus monitor tekanan darah dan gejala hipertensi. Edukasi patuh konsumsi obat hipertensi, diet rendah garam, dan cukup istirahat. Evaluasi ulang dalam 3-5 hari atau lebih awal jika gejala berat kembali. Tidak perlu antibiotik atau antipiretik karena demam sudah membaik.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 69,
+      "noteId": 594
+    }
+  },
+  {
+    "caseId": "CASE028",
+    "nurseUsername": "rizky",
+    "nurseFullName": "Rizky",
+    "patientName": "Teguh Saputra",
+    "noRm": "RMDUMMY26013",
+    "registrationId": 70,
+    "patientData": {
+      "age": 45,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1981-03-28",
+        "patientId": 47,
+        "patientSource": "manual",
+        "insuranceType": "jkn",
+        "registrationStatus": "menunggu",
+        "registrationType": "jkn",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Sering haus dan mudah lelah, riwayat gula darah tinggi.",
+      "objective": "TD 124/80 mmHg, Nadi 82 bpm, GDS meningkat berdasarkan riwayat pasien.",
+      "assessment": "Demam membaik menunjukkan respons terhadap proses pemulihan, tidak menunjukkan infeksi aktif yang signifikan. Kelelahan yang masih ada mungkin terkait pemulihan pasca-demam atau fluktuasi glukosa yang belum stabil. Diabetes melitus tipe 2 tanpa komplikasi akut tetap menjadi diagnosis utama (ICD: E11.9). Tidak ada indikasi untuk diagnosa tambahan saat ini. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications",
+      "plan": "Pantau gula darah secara rutin, dukung asupan nutrisi sejalan dengan nafsu makan yang meningkat, pastikan hidrasi dan istirahat cukup, serta teruskan kepatuhan obat diabetes. Edukasi pasien mengenai tanda bahaya dan pentingnya kontrol glukosa. Kontrol lanjutan sesuai instruksi dokter untuk mengevaluasi stabilitas metabolik."
+    },
+    "icd10": {
+      "code": "E11.9",
+      "name": "Non-insulin-dependent diabetes mellitus ,  Without complications",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien mengalami pemulihan dengan demam yang membaik, masih merasa lemas, dan nafsu makan mulai meningkat. Vital signs stabil (TD 124/80 mmHg, HR 82 bpm). GDS masih meningkat berdasarkan riwayat diabetes melitus tipe 2 tanpa komplikasi akut.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik.",
+      "clinicalNotes": "Demam membaik menunjukkan respons terhadap proses pemulihan, tidak menunjukkan infeksi aktif yang signifikan. Kelelahan yang masih ada mungkin terkait pemulihan pasca-demam atau fluktuasi glukosa yang belum stabil. Diabetes melitus tipe 2 tanpa komplikasi akut tetap menjadi diagnosis utama (ICD: E11.9). Tidak ada indikasi untuk diagnosa tambahan saat ini. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications | Pantau gula darah secara rutin, dukung asupan nutrisi sejalan dengan nafsu makan yang meningkat, pastikan hidrasi dan istirahat cukup, serta teruskan kepatuhan obat diabetes. Edukasi pasien mengenai tanda bahaya dan pentingnya kontrol glukosa. Kontrol lanjutan sesuai instruksi dokter untuk mengevaluasi stabilitas metabolik. | E11.9: lanjutkan terapi antidiabetik sesuai regimen dokter dan monitor glukosa; jangan memulai obat baru tanpa verifikasi regimen yang sedang berjalan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian. | Demam membaik menunjukkan respons terhadap proses pemulihan, tidak menunjukkan infeksi aktif yang signifikan. Kelelahan yang masih ada mungkin terkait pemulihan pasca-demam atau fluktuasi glukosa yang belum stabil. Diabetes melitus tipe 2 tanpa komplikasi akut tetap menjadi diagnosis utama (ICD: E11.9). Tidak ada indikasi untuk diagnosa tambahan saat ini. | Pantau gula darah secara rutin, dukung asupan nutrisi sejalan dengan nafsu makan yang meningkat, pastikan hidrasi dan istirahat cukup, serta teruskan kepatuhan obat diabetes. Edukasi pasien mengenai tanda bahaya dan pentingnya kontrol glukosa. Kontrol lanjutan sesuai instruksi dokter untuk mengevaluasi stabilitas metabolik. | Pasien mengalami pemulihan dengan demam yang membaik, masih merasa lemas, dan nafsu makan mulai meningkat. Vital signs stabil (TD 124/80 mmHg, HR 82 bpm). GDS masih meningkat berdasarkan riwayat diabetes melitus tipe 2 tanpa komplikasi akut.",
+      "examinationData": "Sering haus dan mudah lelah, riwayat gula darah tinggi. | TD 124/80 mmHg, Nadi 82 bpm, GDS meningkat berdasarkan riwayat pasien. | Demam membaik menunjukkan respons terhadap proses pemulihan, tidak menunjukkan infeksi aktif yang signifikan. Kelelahan yang masih ada mungkin terkait pemulihan pasca-demam atau fluktuasi glukosa yang belum stabil. Diabetes melitus tipe 2 tanpa komplikasi akut tetap menjadi diagnosis utama (ICD: E11.9). Tidak ada indikasi untuk diagnosa tambahan saat ini. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications | Pantau gula darah secara rutin, dukung asupan nutrisi sejalan dengan nafsu makan yang meningkat, pastikan hidrasi dan istirahat cukup, serta teruskan kepatuhan obat diabetes. Edukasi pasien mengenai tanda bahaya dan pentingnya kontrol glukosa. Kontrol lanjutan sesuai instruksi dokter untuk mengevaluasi stabilitas metabolik."
+    },
+    "structuredReference": "The patient presents with Sering haus dan mudah lelah, riwayat gula darah tinggi. Objective findings show TD 124/80 mmHg, Nadi 82 bpm, GDS meningkat berdasarkan riwayat pasien. The clinical assessment is Demam membaik menunjukkan respons terhadap proses pemulihan, tidak menunjukkan infeksi aktif yang signifikan. Kelelahan yang masih ada mungkin terkait pemulihan pasca-demam atau fluktuasi glukosa yang belum stabil. Diabetes melitus tipe 2 tanpa komplikasi akut tetap menjadi diagnosis utama (ICD: E11.9). Tidak ada indikasi untuk diagnosa tambahan saat ini. ICD: E11.9 Non-insulin-dependent diabetes mellitus , Without complications, supported by ICD-10 code E11.9, Non-insulin-dependent diabetes mellitus , Without complications. The triage level is LOW. The recommended plan is Pantau gula darah secara rutin, dukung asupan nutrisi sejalan dengan nafsu makan yang meningkat, pastikan hidrasi dan istirahat cukup, serta teruskan kepatuhan obat diabetes. Edukasi pasien mengenai tanda bahaya dan pentingnya kontrol glukosa. Kontrol lanjutan sesuai instruksi dokter untuk mengevaluasi stabilitas metabolik.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 57,
+      "noteId": 578
+    }
+  },
+  {
+    "caseId": "CASE029",
+    "nurseUsername": "tiara",
+    "nurseFullName": "Tiara",
+    "patientName": "Rina Anggraini",
+    "noRm": "RMDUMMY26010",
+    "registrationId": 67,
+    "patientData": {
+      "age": 37,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1989-02-10",
+        "patientId": 44,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr. Ridhooo",
+        "doctorSpecialization": "Spesialis Kelamin"
+      }
+    },
+    "soapNote": {
+      "subjective": "Pusing dan tekanan darah sering tinggi.",
+      "objective": "TD 150/94 mmHg, Nadi 86 bpm, Suhu 36.7 C, tanpa defisit neurologis.",
+      "assessment": "Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam menunjukkan tren penurunan sehingga tidak lagi aktif infeksi. Lemas mungkin terkait pemulihan pasca-demam atau efek hipertensi kronis. Nafsu makan yang mulai membaik menunjukkan respons positif terhadap pemulihan umum. Sakit kepala berhubungan dengan hipertensi. Tidak ada tanda infeksi sistemik atau defisit neurologis. ICD: I10 Essential (primary) hypertension",
+      "plan": "Terus monitor tekanan darah dan suhu harian, pastikan kepatuhan obat antihipertensi, edukasi hidrasi dan istirahat cukup, evaluasi kembali jika demam kembali atau lemas memburuk. Pertimbangkan penambahan aktivitas ringan sesuai toleransi untuk mengurangi lemas. Follow up sesuai jadwal atau lebih awal jika diperlukan."
+    },
+    "icd10": {
+      "code": "I10",
+      "name": "Essential (primary) hypertension",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan riwayat hipertensi esensial mengalami perbaikan demam dengan gejala lemas yang masih terasa dan nafsu makan yang mulai pulih. Tekanan darah tetap tidak terkontrol pada 150/94 mmHg dan sakit kepala berhubungan dengan hipertensi. Tidak ada defisit neurologis atau tanda infeksi sistemik.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, tekanan darah 150/94 mmHg, sakit kepala terkait hipertensi, tanpa defisit neurologis.",
+      "clinicalNotes": "Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam menunjukkan tren penurunan sehingga tidak lagi aktif infeksi. Lemas mungkin terkait pemulihan pasca-demam atau efek hipertensi kronis. Nafsu makan yang mulai membaik menunjukkan respons positif terhadap pemulihan umum. Sakit kepala berhubungan dengan hipertensi. Tidak ada tanda infeksi sistemik atau defisit neurologis. ICD: I10 Essential (primary) hypertension | Terus monitor tekanan darah dan suhu harian, pastikan kepatuhan obat antihipertensi, edukasi hidrasi dan istirahat cukup, evaluasi kembali jika demam kembali atau lemas memburuk. Pertimbangkan penambahan aktivitas ringan sesuai toleransi untuk mengurangi lemas. Follow up sesuai jadwal atau lebih awal jika diperlukan. | I10: lanjutkan/optimalkan antihipertensi sesuai regimen dokter, misalnya amlodipine, dengan monitoring tekanan darah. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian. | Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam menunjukkan tren penurunan sehingga tidak lagi aktif infeksi. Lemas mungkin terkait pemulihan pasca-demam atau efek hipertensi kronis. Nafsu makan yang mulai membaik menunjukkan respons positif terhadap pemulihan umum. Tidak ada tanda infeksi sistemik atau defisit neurologis. | Terus monitor tekanan darah dan suhu harian, pastikan kepatuhan obat antihipertensi, edukasi hidrasi dan istirahat cukup, evaluasi kembali jika demam kembali atau lemas memburuk. Pertimbangkan penambahan aktivitas ringan sesuai toleransi untuk mengurangi lemas. Follow up sesuai jadwal atau lebih awal jika diperlukan. | Pasien dengan riwayat hipertensi esensial mengalami perbaikan demam dengan gejala lemas yang masih terasa dan nafsu makan yang mulai pulih. Tekanan darah tetap tidak terkontrol pada 150/94 mmHg dan sakit kepala berhubungan dengan hipertensi. Tidak ada defisit neurologis atau tanda infeksi sistemik.",
+      "examinationData": "Pusing dan tekanan darah sering tinggi. | TD 150/94 mmHg, Nadi 86 bpm, Suhu 36.7 C, tanpa defisit neurologis. | Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam menunjukkan tren penurunan sehingga tidak lagi aktif infeksi. Lemas mungkin terkait pemulihan pasca-demam atau efek hipertensi kronis. Nafsu makan yang mulai membaik menunjukkan respons positif terhadap pemulihan umum. Sakit kepala berhubungan dengan hipertensi. Tidak ada tanda infeksi sistemik atau defisit neurologis. ICD: I10 Essential (primary) hypertension | Terus monitor tekanan darah dan suhu harian, pastikan kepatuhan obat antihipertensi, edukasi hidrasi dan istirahat cukup, evaluasi kembali jika demam kembali atau lemas memburuk. Pertimbangkan penambahan aktivitas ringan sesuai toleransi untuk mengurangi lemas. Follow up sesuai jadwal atau lebih awal jika diperlukan."
+    },
+    "structuredReference": "The patient presents with Pusing dan tekanan darah sering tinggi. Objective findings show TD 150/94 mmHg, Nadi 86 bpm, Suhu 36.7 C, tanpa defisit neurologis. The clinical assessment is Hipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam menunjukkan tren penurunan sehingga tidak lagi aktif infeksi. Lemas mungkin terkait pemulihan pasca-demam atau efek hipertensi kronis. Nafsu makan yang mulai membaik menunjukkan respons positif terhadap pemulihan umum. Sakit kepala berhubungan dengan hipertensi. Tidak ada tanda infeksi sistemik atau defisit neurologis. ICD: I10 Essential (primary) hypertension, supported by ICD-10 code I10, Essential (primary) hypertension. The triage level is LOW. The recommended plan is Terus monitor tekanan darah dan suhu harian, pastikan kepatuhan obat antihipertensi, edukasi hidrasi dan istirahat cukup, evaluasi kembali jika demam kembali atau lemas memburuk. Pertimbangkan penambahan aktivitas ringan sesuai toleransi untuk mengurangi lemas. Follow up sesuai jadwal atau lebih awal jika diperlukan.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 54,
+      "noteId": 582
+    }
+  },
+  {
+    "caseId": "CASE030",
+    "nurseUsername": "vina",
+    "nurseFullName": "Vina",
+    "patientName": "Dewi Cahyani",
+    "noRm": "RMDUMMY26018",
+    "registrationId": 75,
+    "patientData": {
+      "age": 28,
+      "gender": null,
+      "additionalInfo": {
+        "dateOfBirth": "1997-08-08",
+        "patientId": 52,
+        "patientSource": "manual",
+        "insuranceType": "umum",
+        "registrationStatus": "menunggu",
+        "registrationType": "umum",
+        "registrationDate": "2026-06-08",
+        "doctorName": "dr, Haqqi Afzal",
+        "doctorSpecialization": "Umum"
+      }
+    },
+    "soapNote": {
+      "subjective": "Nyeri ulu hati setelah makan pedas, mual.",
+      "objective": "TD 110/72 mmHg, Nadi 84 bpm, Suhu 36.7 C, nyeri epigastrium.",
+      "assessment": "Gastritis unspecified (K29.7) dengan demam yang membaik (R50.9). Subjektif menunjukkan respons baik terhadap konservasi diet dan hidrasi: demam menurun, nafsu makan mulai membaik. Objektif menunjukkan vital signs stabil tanpa tanda komplikasi akut. Keluhan lemas yang tersisa mungkin terkait pemulihan pasca demam atau asupan nutrisi yang belum optimal. ICD: K29.7 Gastritis, unspecified",
+      "plan": "Teruskan diet lunak, hindari makanan pedas/asam, pastikan asupan cairan dan nutrisi cukup. Pantau demam, nyeri epigastrium, nafsu makan, dan tingkat kelelahan. Kembali kontrol jika demam kembali, nyeri memburuk, muntah darah muncul, atau lemas tidak membaik dalam 2-3 hari."
+    },
+    "icd10": {
+      "code": "K29.7",
+      "name": "Gastritis, unspecified",
+      "referenceStatus": "available",
+      "source": "external_examinations.diagnoses"
+    },
+    "triage": {
+      "level": "LOW",
+      "status": "draft",
+      "referenceStatus": "available"
+    },
+    "clinicalContext": {
+      "summary": "Pasien dengan gastritis unspecified (K29.7) menunjukkan pemulihan dengan demam yang membaik, nafsu makan mulai meningkat, dan vital signs stabil (TD 110/72 mmHg, Nadi 84 bpm, Suhu 36.7°C). Keluhan utama tetap mual muntah, namun tidak ada muntah darah atau nyeri yang memburuk. Masih mengalami lemas dan nyeri epigastrium setelah konsumsi makanan pedas.",
+      "latestCondition": "Demam membaik, masih lemas, nafsu makan mulai membaik, vital signs stabil, tanpa tanda komplikasi akut.",
+      "clinicalNotes": "Gastritis unspecified (K29.7) dengan demam yang membaik (R50.9). Subjektif menunjukkan respons baik terhadap konservasi diet dan hidrasi: demam menurun, nafsu makan mulai membaik. Objektif menunjukkan vital signs stabil tanpa tanda komplikasi akut. Keluhan lemas yang tersisa mungkin terkait pemulihan pasca demam atau asupan nutrisi yang belum optimal. ICD: K29.7 Gastritis, unspecified | Teruskan diet lunak, hindari makanan pedas/asam, pastikan asupan cairan dan nutrisi cukup. Pantau demam, nyeri epigastrium, nafsu makan, dan tingkat kelelahan. Kembali kontrol jika demam kembali, nyeri memburuk, muntah darah muncul, atau lemas tidak membaik dalam 2-3 hari. | Parasetamol untuk demam/nyeri dapat dipertimbangkan sebagai terapi simptomatik, dengan verifikasi alergi dan evaluasi penyebab klinis. | Gastritis unspecified (K29.7) dengan demam yang membaik (R50.9). Subjektif menunjukkan respons baik terhadap konservasi diet dan hidrasi: demam menurun, nafsu makan mulai membaik. Objektif menunjukkan vital signs stabil tanpa tanda komplikasi akut. Keluhan lemas yang tersisa mungkin terkait pemulihan pasca demam atau asupan nutrisi yang belum optimal. | Teruskan diet lunak, hindari makanan pedas/asam, pastikan asupan cairan dan nutrisi cukup. Pantau demam, nyeri epigastrium, nafsu makan, dan tingkat kelelahan. Kembali kontrol jika demam kembali, nyeri memburuk, muntah darah muncul, atau lemas tidak membaik dalam 2-3 hari. | Pasien dengan gastritis unspecified (K29.7) menunjukkan pemulihan dengan demam yang membaik, nafsu makan mulai meningkat, dan vital signs stabil (TD 110/72 mmHg, Nadi 84 bpm, Suhu 36.7°C). Keluhan utama tetap mual muntah, namun tidak ada muntah darah atau nyeri yang memburuk. Masih mengalami lemas dan nyeri epigastrium setelah konsumsi makanan pedas.",
+      "examinationData": "Nyeri ulu hati setelah makan pedas, mual. | TD 110/72 mmHg, Nadi 84 bpm, Suhu 36.7 C, nyeri epigastrium. | Gastritis unspecified (K29.7) dengan demam yang membaik (R50.9). Subjektif menunjukkan respons baik terhadap konservasi diet dan hidrasi: demam menurun, nafsu makan mulai membaik. Objektif menunjukkan vital signs stabil tanpa tanda komplikasi akut. Keluhan lemas yang tersisa mungkin terkait pemulihan pasca demam atau asupan nutrisi yang belum optimal. ICD: K29.7 Gastritis, unspecified | Teruskan diet lunak, hindari makanan pedas/asam, pastikan asupan cairan dan nutrisi cukup. Pantau demam, nyeri epigastrium, nafsu makan, dan tingkat kelelahan. Kembali kontrol jika demam kembali, nyeri memburuk, muntah darah muncul, atau lemas tidak membaik dalam 2-3 hari."
+    },
+    "structuredReference": "The patient presents with Nyeri ulu hati setelah makan pedas, mual. Objective findings show TD 110/72 mmHg, Nadi 84 bpm, Suhu 36.7 C, nyeri epigastrium. The clinical assessment is Gastritis unspecified (K29.7) dengan demam yang membaik (R50.9). Subjektif menunjukkan respons baik terhadap konservasi diet dan hidrasi: demam menurun, nafsu makan mulai membaik. Objektif menunjukkan vital signs stabil tanpa tanda komplikasi akut. Keluhan lemas yang tersisa mungkin terkait pemulihan pasca demam atau asupan nutrisi yang belum optimal. ICD: K29.7 Gastritis, unspecified, supported by ICD-10 code K29.7, Gastritis, unspecified. The triage level is LOW. The recommended plan is Teruskan diet lunak, hindari makanan pedas/asam, pastikan asupan cairan dan nutrisi cukup. Pantau demam, nyeri epigastrium, nafsu makan, dan tingkat kelelahan. Kembali kontrol jika demam kembali, nyeri memburuk, muntah darah muncul, atau lemas tidak membaik dalam 2-3 hari.",
+    "referenceStatus": "complete",
+    "missingFields": [],
+    "isUsableForNlpEvaluation": true,
+    "provenance": {
+      "registrationStatus": "menunggu",
+      "examStatus": "examined",
+      "noteStatus": "draft",
+      "noteSource": "external_examinations",
+      "examId": 62,
+      "noteId": 597
+    }
+  }
+]

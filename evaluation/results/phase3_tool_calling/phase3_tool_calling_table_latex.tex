@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{l l r r r r r r r}
+\hline
+Workflow Stage & Expected Tool & Total Cases & Correct Tool Calls & Missing Tool Calls & Wrong Tool Calls & Tool-Calling Success Rate & Task Success Rate & Average Latency \\
+\hline
+Clinical summary & clinical\_summary & 30 & 30 & 0 & 0 & 100.0\% & 100.0\% & 1205 ms \\
+Objective summary & external\_examinations\_objective\_summary & 30 & 30 & 0 & 0 & 100.0\% & 100.0\% & 1016 ms \\
+Update kondisi pasien & clinical\_notes\_chat\_update & 30 & 30 & 0 & 0 & 100.0\% & 100.0\% & 67815 ms \\
+Generate clinical notes & Direct endpoint / N/A & 30 & N/A & N/A & N/A & N/A & 100.0\% & 84546 ms \\
+\hline
+\end{tabular}
+\caption{Phase 3 tool-calling evaluation across workflow stages. Generate clinical notes is treated as a direct endpoint and excluded from tool-calling denominators.}
+\label{tab:phase3-tool-calling}
+\end{table}

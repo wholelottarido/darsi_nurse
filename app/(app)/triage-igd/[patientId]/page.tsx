@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from '@/components/ui/separator';
+import { CareCoordinationThread } from "@/components/CareCoordinationThread";
 import MarkdownMessage from "@/components/chat/MarkdownMessage";
 import {
   Collapsible,
@@ -129,7 +130,9 @@ export default function PatientChatPage() {
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'chat' | 'notes'>('chat');
+  const [perawatUsername, setPerawatUsername] = useState('ridho');
+  const [perawatName, setPerawatName] = useState('Perawat');
+  const [activeTab, setActiveTab] = useState<'chat' | 'notes' | 'coordination'>('chat');
   const [showMobileSummary, setShowMobileSummary] = useState(false);
   const [examination, setExamination] = useState<ExternalExamination | null>(null);
   const [clinicalNote, setClinicalNote] = useState<ClinicalNote | null>(null);
@@ -1242,6 +1245,16 @@ export default function PatientChatPage() {
               >
                 Clinical Notes
               </button>
+              <button
+                onClick={() => setActiveTab('coordination')}
+                className={`border-b-2 px-3 py-3 text-sm font-medium transition-colors sm:px-4 sm:py-4 ${
+                  activeTab === 'coordination'
+                    ? 'border-violet-600 text-violet-700'
+                    : 'border-transparent text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Koordinasi
+              </button>
             </div>
           </div>
 
@@ -1329,6 +1342,17 @@ export default function PatientChatPage() {
                 </div>
               </div>
             </>
+          )}
+
+          {activeTab === 'coordination' && (
+            <div className="flex-1 overflow-y-auto bg-gradient-to-b from-violet-50/40 to-white p-4 sm:p-6">
+              <CareCoordinationThread
+                registrationId={selectedVisitOption?.registrationId ?? null}
+                authorRole="nurse"
+                authorUsername={perawatUsername}
+                authorName={perawatName}
+              />
+            </div>
           )}
 
           {/* Clinical Notes Tab */}

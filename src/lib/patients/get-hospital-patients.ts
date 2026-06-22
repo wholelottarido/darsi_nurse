@@ -48,6 +48,7 @@ export async function getHospitalPatientsByPerawatUsername(username: string, lim
       p.source,
       lr.id AS registration_id,
       lr.status AS registration_status,
+      lr.registration_type AS registration_type,
       lr.tanggal AS registration_date,
       lr.doctor_id AS registration_doctor_id,
       d.full_name AS doctor_full_name,

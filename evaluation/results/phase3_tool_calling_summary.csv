@@ -1,0 +1,5 @@
+Workflow Stage,Expected Tool,Total Cases,Correct Tool Calls,Missing Tool Calls,Wrong Tool Calls,Tool-Calling Success Rate,Tool Execution Success Rate,Wrong Tool Call Rate,Missing Tool Call Rate,Task Success Rate,Average Latency (ms),Notes
+Clinical summary,clinical_summary,30,30,0,0,100.0%,100.0%,0.0%,0.0%,100.0%,1205.2,Tool-calling stage.
+Objective summary,external_examinations_objective_summary,30,30,0,0,100.0%,100.0%,0.0%,0.0%,100.0%,1016.5,Tool-calling stage.
+Update kondisi pasien,clinical_notes_chat_update,30,30,0,0,100.0%,100.0%,0.0%,0.0%,100.0%,67815.2,Tool-calling stage.
+Generate clinical notes,Direct endpoint / N/A,30,N/A,N/A,N/A,N/A,N/A,N/A,N/A,100.0%,84546.5,Direct endpoint; excluded from tool-calling denominator.

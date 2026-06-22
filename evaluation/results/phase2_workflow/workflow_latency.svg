@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">Average Latency per Stage</title>
+  <desc id="desc">Waktu rata-rata respons untuk tiap workflow pada 30 perawat paralel.</desc>
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <text x="90" y="32" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a">Average Latency per Stage</text>
+  <text x="90" y="54" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">Waktu rata-rata respons untuk tiap workflow pada 30 perawat paralel.</text>
+  <line x1="90" y1="70.00" x2="1070" y2="70.00" stroke="#dbe4ea" stroke-width="1" /><text x="80" y="74.00" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">84546 ms</text><line x1="90" y1="138.00" x2="1070" y2="138.00" stroke="#dbe4ea" stroke-width="1" /><text x="80" y="142.00" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">67637 ms</text><line x1="90" y1="206.00" x2="1070" y2="206.00" stroke="#dbe4ea" stroke-width="1" /><text x="80" y="210.00" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">50728 ms</text><line x1="90" y1="274.00" x2="1070" y2="274.00" stroke="#dbe4ea" stroke-width="1" /><text x="80" y="278.00" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">33819 ms</text><line x1="90" y1="342.00" x2="1070" y2="342.00" stroke="#dbe4ea" stroke-width="1" /><text x="80" y="346.00" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">16909 ms</text><line x1="90" y1="410.00" x2="1070" y2="410.00" stroke="#dbe4ea" stroke-width="1" /><text x="80" y="414.00" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">0 ms</text>
+  
+      <rect x="90" y="405.15" width="231" height="4.85" rx="10" fill="#0f766e" />
+      <text x="205.50" y="397.15" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a">1205 ms</text>
+      <text x="205.50" y="464" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#334155">
+        Clinical summary
+      </text>
+    
+      <rect x="339" y="405.91" width="231" height="4.09" rx="10" fill="#0f766e" />
+      <text x="454.50" y="397.91" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a">1016 ms</text>
+      <text x="454.50" y="464" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#334155">
+        Objective summary
+      </text>
+    
+      <rect x="588" y="137.28" width="231" height="272.72" rx="10" fill="#0f766e" />
+      <text x="703.50" y="129.28" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a">67815 ms</text>
+      <text x="703.50" y="464" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#334155">
+        Update kondisi pasien
+      </text>
+    
+      <rect x="837" y="70.00" width="231" height="340.00" rx="10" fill="#0f766e" />
+      <text x="952.50" y="90.00" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a">84546 ms</text>
+      <text x="952.50" y="464" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#334155">
+        Generate clinical notes
+      </text>
+    
+</svg>

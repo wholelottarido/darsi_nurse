@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-06-10T17:24:27.741Z",
+  "mode": "offline",
+  "repo_analysis": {
+    "endpoints": [
+      {
+        "route": "/api/chat",
+        "purpose": "Workflow triage, monitoring pasien, summary objektif, dan update konteks klinis."
+      },
+      {
+        "route": "/api/clinical-notes/generate",
+        "purpose": "Membangkitkan clinical notes turunan dari SOAP, visit context, dan konteks triase."
+      },
+      {
+        "route": "/api/nurse-chat",
+        "purpose": "Nurse assistant dengan routing operational, general guidance, hybrid, atau out-of-scope."
+      },
+      {
+        "route": "/api/external-examinations",
+        "purpose": "Memuat dan memperbarui SOAP dokter dari tabel external_examinations."
+      },
+      {
+        "route": "/api/triage-visits",
+        "purpose": "Menyimpan konteks kunjungan triase aktif dan histori triage_visit."
+      }
+    ],
+    "tools": {
+      "clinical": [
+        "searchPatient",
+        "getPatientHealthSummary",
+        "monitorPatientStatus",
+        "updatePatientCondition",
+        "getPatientAllergies",
+        "getPatientMedicalHistory",
+        "searchDiagnosaWithTriage",
+        "getPatientActionRecommendation",
+        "updateSoapSubjective"
+      ],
+      "routeLevelClinical": [
+        "clinical_summary",
+        "external_examinations_objective_summary",
+        "clinical_notes_chat_update"
+      ],
+      "operational": [
+        "check_medicine_availability",
+        "list_assigned_patients",
+        "get_assigned_patient_summary"
+      ]
+    },
+    "tables": [
+      "patients",
+      "registrations",
+      "external_examinations",
+      "clinical_notes",
+      "triage_visits",
+      "conversations",
+      "nurse_chat_sessions",
+      "nurse_chat_conversations",
+      "icd10_diagnoses",
+      "soap_keyword_icd",
+      "darsi_ph_stok_obat",
+      "agent_interaction_logs",
+      "agent_data_source_logs",
+      "agent_performance_logs"
+    ],
+    "logging": {
+      "interactionLogs": "app/api/chat, app/api/nurse-chat, dan app/api/clinical-notes/generate menyimpan log request/response ke agent_interaction_logs.",
+      "dataSourceLogs": "saveAgentDataSourceLogs menyimpan tabel dan field yang dibaca ke agent_data_source_logs.",
+      "performanceLogs": "saveAgentPerformanceLog menyimpan totalLatencyMs, llmLatencyMs, toolLatencyMs, dan metadata model ke agent_performance_logs.",
+      "conversationHistory": "Triage chat memakai conversations; nurse assistant memakai nurse_chat_sessions dan nurse_chat_conversations."
+    },
+    "routing": {
+      "toolCalling": "Permintaan pasien-spesifik dan operasional diarahkan ke triage agent atau operational agent dengan tool calling.",
+      "generalGuidance": "Pertanyaan umum perawat dipetakan oleh nurse-chat-router ke general_guidance dan model medgemma:4b tanpa tools."
+    }
+  },
+  "total_scenarios": 150,
+  "summary": {
+    "workflow_summaries": [
+      {
+        "workflow": "triage_monitoring",
+        "workflow_label": "Triage dan Monitoring Pasien",
+        "total_scenarios": 30,
+        "accuracy": 0.8133,
+        "f1_score": 1,
+        "bleu": 1,
+        "perplexity_heuristic": 6,
+        "task_success_rate": 1,
+        "tool_success_rate": 1,
+        "average_response_time_ms": 1205.2,
+        "average_response_time_seconds": 1.205,
+        "hallucination_rate": 0
+      },
+      {
+        "workflow": "soap_clinical_notes",
+        "workflow_label": "SOAP dan Clinical Notes",
+        "total_scenarios": 30,
+        "accuracy": 0.9942,
+        "f1_score": 1,
+        "bleu": 1,
+        "perplexity_heuristic": 6,
+        "task_success_rate": 1,
+        "tool_success_rate": 1,
+        "average_response_time_ms": 67815.17,
+        "average_response_time_seconds": 67.815,
+        "hallucination_rate": 0
+      },
+      {
+        "workflow": "icd10_clinical_recommendation",
+        "workflow_label": "ICD-10 dan Rekomendasi Klinis",
+        "total_scenarios": 30,
+        "accuracy": 0.79,
+        "f1_score": 1,
+        "bleu": 1,
+        "perplexity_heuristic": 6,
+        "task_success_rate": 0.9333,
+        "tool_success_rate": null,
+        "average_response_time_ms": 84546.47,
+        "average_response_time_seconds": 84.546,
+        "hallucination_rate": 0
+      },
+      {
+        "workflow": "nurse_assistant_operational",
+        "workflow_label": "Nurse Assistant Operasional",
+        "total_scenarios": 30,
+        "accuracy": 1,
+        "f1_score": 1,
+        "bleu": 1,
+        "perplexity_heuristic": 6,
+        "task_success_rate": 1,
+        "tool_success_rate": 1,
+        "average_response_time_ms": 1100,
+        "average_response_time_seconds": 1.1,
+        "hallucination_rate": 0
+      },
+      {
+        "workflow": "general_nurse_questions",
+        "workflow_label": "Pertanyaan Umum Perawat",
+        "total_scenarios": 30,
+        "accuracy": 0.9145,
+        "f1_score": 1,
+        "bleu": 1,
+        "perplexity_heuristic": 6,
+        "task_success_rate": 1,
+        "tool_success_rate": null,
+        "average_response_time_ms": 900,
+        "average_response_time_seconds": 0.9,
+        "hallucination_rate": 0
+      }
+    ],
+    "overall": {
+      "total_scenarios": 150,
+      "accuracy": 0.9024,
+      "f1_score": 1,
+      "bleu": 1,
+      "perplexity_heuristic": 6,
+      "task_success_rate": 0.9867,
+      "tool_success_rate": 1,
+      "average_response_time_ms": 31113.37,
+      "average_response_time_seconds": 31.113,
+      "hallucination_rate": 0
+    }
+  }
+}

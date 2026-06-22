@@ -12,7 +12,14 @@
     "pm2:restart": "pm2 restart darsi-nurse",
     "pm2:delete": "pm2 delete darsi-nurse",
     "pm2:logs": "pm2 logs darsi-nurse",
-    "pm2:status": "pm2 status"
+    "pm2:status": "pm2 status",
+    "eval:workflow": "node evaluation/runners/workflow_runner.mjs",
+    "eval:phase3": "node evaluation/runners/phase3_tool_calling_eval.mjs",
+    "eval:phase3:dashboard": "node evaluation/runners/phase3_tool_calling_eval.mjs",
+    "eval:phase4": "node evaluation/runners/phase4_icd10_concurrent_eval.js",
+    "eval:phase4:dashboard": "node evaluation/runners/phase4_icd10_concurrent_eval.js",
+    "eval:phase5:references": "node evaluation/runners/phase5_generate_structured_references.js",
+    "eval:darsi": "node evaluation/runners/run-darsi-evaluation.mjs"
   },
   "dependencies": {
     "@ai-sdk/react": "^3.0.156",

@@ -2,17 +2,20 @@ module.exports = {
   apps: [
     {
       name: 'darsi-nurse',
-      script: 'npm',
-      args: 'run dev -- -p 6767 -H 0.0.0.0',
+      script: '/home/ridho/volt/darsi-nurse/node_modules/next/dist/bin/next',
+      args: 'start --port 6767 --hostname 0.0.0.0',
       cwd: '/home/ridho/volt/darsi-nurse',
+      interpreter: 'node',
       instances: 1,
       exec_mode: 'fork',
       watch: false,
       env: {
-        NODE_ENV: 'development'
+        NODE_ENV: 'production',
+        PORT: '6767',
+        HOSTNAME: '0.0.0.0'
       },
-      error_file: './logs/err.log',
-      out_file: './logs/out.log',
+      error_file: '/home/ridho/volt/darsi-nurse/logs/err.log',
+      out_file: '/home/ridho/volt/darsi-nurse/logs/out.log',
       log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
       merge_logs: true,
       autorestart: true,

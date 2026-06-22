@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workflow Test Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #d7dfea;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #0f766e;
+      --accent-2: #2563eb;
+      --success: #166534;
+      --success-bg: #dcfce7;
+      --danger: #991b1b;
+      --danger-bg: #fee2e2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 24%),
+        var(--bg);
+      color: var(--text);
+    }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 28px 20px 40px; }
+    .hero { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; align-items: stretch; margin-bottom: 20px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06); }
+    .hero-main { padding: 28px; }
+    h1 { margin: 0 0 10px; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; }
+    .subtitle { margin: 0 0 18px; color: var(--muted); max-width: 72ch; }
+    .meta-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .meta { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.98)); }
+    .meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+    .meta-value { font-size: 20px; font-weight: 800; }
+    .hero-side { display: grid; gap: 12px; }
+    .chart-card { padding: 16px; }
+    .chart-card img { width: 100%; height: auto; display: block; }
+    .section { margin-top: 20px; padding: 20px; }
+    .section h2 { margin: 0 0 14px; font-size: 20px; }
+    .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .card { padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, #fff, #f8fafc); }
+    .card-label { color: var(--muted); font-size: 13px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .card-value { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+    .card-meta { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+    .bar { height: 10px; border-radius: 999px; background: #e2e8f0; overflow: hidden; }
+    .bar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    table { width: 100%; border-collapse: collapse; min-width: 900px; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; font-size: 14px; vertical-align: top; }
+    th { position: sticky; top: 0; background: #f8fafc; color: #334155; z-index: 1; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+    td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    td.status.ok { color: var(--success); background: var(--success-bg); font-weight: 700; }
+    td.status.fail { color: var(--danger); background: var(--danger-bg); font-weight: 700; }
+    .foot { margin-top: 14px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 1100px) { .hero, .cards, .meta-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 720px) { .hero, .cards, .meta-grid { grid-template-columns: 1fr; } h1 { font-size: 26px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel hero-main">
+        <h1>Workflow Test Dashboard</h1>
+        <p class="subtitle">Ringkasan hasil pengujian paralel 30 perawat untuk validasi workflow triage, update kondisi pasien, dan generate clinical notes.</p>
+        <div class="meta-grid">
+          <div class="meta"><div class="meta-label">Perawat</div><div class="meta-value">30</div></div>
+          <div class="meta"><div class="meta-label">Interaction Logs</div><div class="meta-value">120</div></div>
+          <div class="meta"><div class="meta-label">Data Source Logs</div><div class="meta-value">480</div></div>
+          <div class="meta"><div class="meta-label">Performance Logs</div><div class="meta-value">120</div></div>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="panel chart-card"><img src="./workflow_latency.svg" alt="Average latency chart" /></div>
+        <div class="panel chart-card"><img src="./workflow_success_rate.svg" alt="Success rate chart" /></div>
+      </div>
+    </div>
+
+    <section class="panel section">
+      <h2>Stage Summary</h2>
+      <div class="cards">
+      <article class="card">
+        <div class="card-label">Clinical summary</div>
+        <div class="card-value">100.0%</div>
+        <div class="card-meta">Avg latency 1205 ms</div>
+        <div class="bar"><span style="width:100.0%"></span></div>
+      </article>
+    
+      <article class="card">
+        <div class="card-label">Objective summary</div>
+        <div class="card-value">100.0%</div>
+        <div class="card-meta">Avg latency 1016 ms</div>
+        <div class="bar"><span style="width:100.0%"></span></div>
+      </article>
+    
+      <article class="card">
+        <div class="card-label">Update kondisi pasien</div>
+        <div class="card-value">100.0%</div>
+        <div class="card-meta">Avg latency 67815 ms</div>
+        <div class="bar"><span style="width:100.0%"></span></div>
+      </article>
+    
+      <article class="card">
+        <div class="card-label">Generate clinical notes</div>
+        <div class="card-value">100.0%</div>
+        <div class="card-meta">Avg latency 84546 ms</div>
+        <div class="bar"><span style="width:100.0%"></span></div>
+      </article>
+    </div>
+    </section>
+
+    <section class="panel section">
+      <h2>Stage Table</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Stage</th><th>Success Rate</th><th>Average Latency</th></tr></thead>
+          <tbody>
+      <tr>
+        <td>Clinical summary</td>
+        <td class="num">100.0%</td>
+        <td class="num">1205 ms</td>
+      </tr>
+    
+      <tr>
+        <td>Objective summary</td>
+        <td class="num">100.0%</td>
+        <td class="num">1016 ms</td>
+      </tr>
+    
+      <tr>
+        <td>Update kondisi pasien</td>
+        <td class="num">100.0%</td>
+        <td class="num">67815 ms</td>
+      </tr>
+    
+      <tr>
+        <td>Generate clinical notes</td>
+        <td class="num">100.0%</td>
+        <td class="num">84546 ms</td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <h2>Per Nurse Detail</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nurse</th><th>Patient</th><th>Login</th><th>Summary</th><th>Objective</th><th>Update</th><th>Generate</th><th>Total Latency</th></tr></thead>
+          <tbody>
+      <tr>
+        <td>arga</td>
+        <td>Budi Santoso</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">133796 ms</td>
+      </tr>
+    
+      <tr>
+        <td>nisa</td>
+        <td>Ayu Lestari</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">89350 ms</td>
+      </tr>
+    
+      <tr>
+        <td>rafi</td>
+        <td>Rizal Maulana</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">115658 ms</td>
+      </tr>
+    
+      <tr>
+        <td>dinda</td>
+        <td>Maya Permata</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">115227 ms</td>
+      </tr>
+    
+      <tr>
+        <td>bagas</td>
+        <td>Dimas Prakoso</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">129761 ms</td>
+      </tr>
+    
+      <tr>
+        <td>putri</td>
+        <td>Sari Wulandari</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">132681 ms</td>
+      </tr>
+    
+      <tr>
+        <td>ilham</td>
+        <td>Hendra Wijaya</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">179483 ms</td>
+      </tr>
+    
+      <tr>
+        <td>ratih</td>
+        <td>Nina Safitri</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">199295 ms</td>
+      </tr>
+    
+      <tr>
+        <td>fajar</td>
+        <td>Agus Kurniawan</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">112853 ms</td>
+      </tr>
+    
+      <tr>
+        <td>tiara</td>
+        <td>Rina Anggraini</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">104161 ms</td>
+      </tr>
+    
+      <tr>
+        <td>galih</td>
+        <td>Fahmi Hidayat</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">78590 ms</td>
+      </tr>
+    
+      <tr>
+        <td>anisa</td>
+        <td>Lia Kartika</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">103445 ms</td>
+      </tr>
+    
+      <tr>
+        <td>rizky</td>
+        <td>Teguh Saputra</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">158102 ms</td>
+      </tr>
+    
+      <tr>
+        <td>fitri</td>
+        <td>Vina Maharani</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">123527 ms</td>
+      </tr>
+    
+      <tr>
+        <td>yudha</td>
+        <td>Yusuf Akbar</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">165479 ms</td>
+      </tr>
+    
+      <tr>
+        <td>linda</td>
+        <td>Tika Amelia</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">174061 ms</td>
+      </tr>
+    
+      <tr>
+        <td>arif</td>
+        <td>Fajar Nugroho</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">183565 ms</td>
+      </tr>
+    
+      <tr>
+        <td>vina</td>
+        <td>Dewi Cahyani</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">215403 ms</td>
+      </tr>
+    
+      <tr>
+        <td>faris</td>
+        <td>Rangga Setiawan</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">167948 ms</td>
+      </tr>
+    
+      <tr>
+        <td>desi</td>
+        <td>Anisa Rahma</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">193866 ms</td>
+      </tr>
+    
+      <tr>
+        <td>alif</td>
+        <td>Iqbal Ramadhan</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">174441 ms</td>
+      </tr>
+    
+      <tr>
+        <td>intan</td>
+        <td>Putri Noviana</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">235894 ms</td>
+      </tr>
+    
+      <tr>
+        <td>hafiz</td>
+        <td>Bayu Firmansyah</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">225323 ms</td>
+      </tr>
+    
+      <tr>
+        <td>dewi</td>
+        <td>Citra Damayanti</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">232140 ms</td>
+      </tr>
+    
+      <tr>
+        <td>ridwan</td>
+        <td>Ilham Pratama</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">170305 ms</td>
+      </tr>
+    
+      <tr>
+        <td>melati</td>
+        <td>Nadia Fitriani</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">211820 ms</td>
+      </tr>
+    
+      <tr>
+        <td>farhan</td>
+        <td>Arif Rahman</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">236503 ms</td>
+      </tr>
+    
+      <tr>
+        <td>ayu</td>
+        <td>Sinta Melani</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">226534 ms</td>
+      </tr>
+    
+      <tr>
+        <td>fikri</td>
+        <td>Galih Wicaksono</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">242057 ms</td>
+      </tr>
+    
+      <tr>
+        <td>zahra</td>
+        <td>Zahra Oktavia</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="status ok">OK</td>
+        <td class="num">157782 ms</td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+      <div class="foot">Started 2026-06-09T08:26:46.646Z | Finished 2026-06-09T08:30:48.879Z | Base URL http://127.0.0.1:3002</div>
+    </section>
+  </div>
+</body>
+</html>

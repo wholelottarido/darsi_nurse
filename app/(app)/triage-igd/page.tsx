@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Separator } from '@/components/ui/separator';
+import { PayerTypeBadge } from "@/components/PayerTypeBadge";
 import {
   Collapsible,
   CollapsibleContent,
@@ -25,6 +26,7 @@ interface Patient {
   gol_darah?: string;
   registration_id?: number | null;
   registration_status?: string | null;
+  registration_type?: string | null;
   registration_date?: string | null;
   registration_doctor_id?: number | null;
   doctor_full_name?: string | null;
@@ -242,9 +244,14 @@ export default function TriageIGDPage() {
                         {getInitials(getPatientName(patient))}
                       </div>
                       <div className="min-w-0">
-                        <h3 className="truncate text-lg font-semibold text-slate-900">
-                          {getPatientName(patient)}
-                        </h3>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="truncate text-lg font-semibold text-slate-900">
+                            {getPatientName(patient)}
+                          </h3>
+                          {patient.registration_type ? (
+                            <PayerTypeBadge type={patient.registration_type} compact />
+                          ) : null}
+                        </div>
                         {getPatientMrn(patient) && (
                           <p className="mt-1 text-sm text-slate-500">NRM: {getPatientMrn(patient)}</p>
                         )}

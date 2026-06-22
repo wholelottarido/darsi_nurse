@@ -1,0 +1,4678 @@
+{
+  "generatedAt": "2026-06-09T11:18:24.922Z",
+  "sourceFile": "evaluation/results/workflow_results.json",
+  "totalNurses": 30,
+  "auditSummary": {
+    "interactionCount": 120,
+    "dataSourceCount": 480,
+    "performanceCount": 120
+  },
+  "overallSummary": {
+    "totalCases": 120,
+    "requiredToolCalls": 90,
+    "correctToolCalls": 90,
+    "missingToolCalls": 0,
+    "wrongToolCalls": 0,
+    "successfulToolExecutions": 90,
+    "totalToolExecutions": 90,
+    "taskSuccessCount": 120,
+    "toolCallingSuccessRate": 100,
+    "toolExecutionSuccessRate": 100,
+    "wrongToolCallRate": 0,
+    "missingToolCallRate": 0,
+    "taskSuccessRate": 100,
+    "avgToolLatencyMs": 23345.61111111111,
+    "avgOverallLatencyMs": 38645.825
+  },
+  "stageSummaries": [
+    {
+      "key": "summary",
+      "label": "Clinical summary",
+      "expectedTool": "clinical_summary",
+      "toolMode": "tool-calling",
+      "totalCases": 30,
+      "correctToolCalls": 30,
+      "missingToolCalls": 0,
+      "wrongToolCalls": 0,
+      "toolCallingSuccessRate": 100,
+      "toolExecutionSuccessRate": 100,
+      "wrongToolCallRate": 0,
+      "missingToolCallRate": 0,
+      "taskSuccessRate": 100,
+      "averageLatencyMs": 1205.2,
+      "averageToolLatencyMs": 1205.2,
+      "successfulToolExecutions": 30,
+      "totalToolExecutions": 30,
+      "taskSuccessCount": 30,
+      "directEndpoint": false
+    },
+    {
+      "key": "objective",
+      "label": "Objective summary",
+      "expectedTool": "external_examinations_objective_summary",
+      "toolMode": "tool-calling",
+      "totalCases": 30,
+      "correctToolCalls": 30,
+      "missingToolCalls": 0,
+      "wrongToolCalls": 0,
+      "toolCallingSuccessRate": 100,
+      "toolExecutionSuccessRate": 100,
+      "wrongToolCallRate": 0,
+      "missingToolCallRate": 0,
+      "taskSuccessRate": 100,
+      "averageLatencyMs": 1016.4666666666667,
+      "averageToolLatencyMs": 1016.4666666666667,
+      "successfulToolExecutions": 30,
+      "totalToolExecutions": 30,
+      "taskSuccessCount": 30,
+      "directEndpoint": false
+    },
+    {
+      "key": "update",
+      "label": "Update kondisi pasien",
+      "expectedTool": "clinical_notes_chat_update",
+      "toolMode": "tool-calling",
+      "totalCases": 30,
+      "correctToolCalls": 30,
+      "missingToolCalls": 0,
+      "wrongToolCalls": 0,
+      "toolCallingSuccessRate": 100,
+      "toolExecutionSuccessRate": 100,
+      "wrongToolCallRate": 0,
+      "missingToolCallRate": 0,
+      "taskSuccessRate": 100,
+      "averageLatencyMs": 67815.16666666667,
+      "averageToolLatencyMs": 67815.16666666667,
+      "successfulToolExecutions": 30,
+      "totalToolExecutions": 30,
+      "taskSuccessCount": 30,
+      "directEndpoint": false
+    },
+    {
+      "key": "generate",
+      "label": "Generate clinical notes",
+      "expectedTool": "Direct endpoint / N/A",
+      "toolMode": "direct endpoint / N/A",
+      "totalCases": 30,
+      "correctToolCalls": null,
+      "missingToolCalls": null,
+      "wrongToolCalls": null,
+      "toolCallingSuccessRate": null,
+      "toolExecutionSuccessRate": null,
+      "wrongToolCallRate": null,
+      "missingToolCallRate": null,
+      "taskSuccessRate": 100,
+      "averageLatencyMs": 84546.46666666666,
+      "averageToolLatencyMs": null,
+      "successfulToolExecutions": null,
+      "totalToolExecutions": null,
+      "taskSuccessCount": 30,
+      "directEndpoint": true
+    }
+  ],
+  "perNurseResults": [
+    {
+      "nurseUsername": "arga",
+      "nurseFullName": "Arga",
+      "patientName": "Budi Santoso",
+      "noRm": "RMDUMMY26001",
+      "registrationId": 58,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1218,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 988,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 65156,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 56734,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1218,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 988,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 65156,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 56734,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "nisa",
+      "nurseFullName": "Nisa",
+      "patientName": "Ayu Lestari",
+      "noRm": "RMDUMMY26002",
+      "registrationId": 59,
+      "doctorName": "dr. Andooon",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1230,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1032,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 36029,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 44312,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1230,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1032,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 36029,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 44312,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "rafi",
+      "nurseFullName": "Rafi",
+      "patientName": "Rizal Maulana",
+      "noRm": "RMDUMMY26003",
+      "registrationId": 60,
+      "doctorName": "dr, Haqqi Afzal",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1180,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 994,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 27565,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 74293,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1180,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 994,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 27565,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 74293,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "dinda",
+      "nurseFullName": "Dinda",
+      "patientName": "Maya Permata",
+      "noRm": "RMDUMMY26004",
+      "registrationId": 61,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1191,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 992,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 29832,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 71584,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1191,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 992,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 29832,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 71584,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "bagas",
+      "nurseFullName": "Bagas",
+      "patientName": "Dimas Prakoso",
+      "noRm": "RMDUMMY26005",
+      "registrationId": 62,
+      "doctorName": "dr. Andooon",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1187,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 997,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 29051,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 86894,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1187,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 997,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 29051,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 86894,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "putri",
+      "nurseFullName": "Putri",
+      "patientName": "Sari Wulandari",
+      "noRm": "RMDUMMY26006",
+      "registrationId": 63,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1202,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1002,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 34468,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 84379,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1202,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1002,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 34468,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 84379,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "ilham",
+      "nurseFullName": "Ilham",
+      "patientName": "Hendra Wijaya",
+      "noRm": "RMDUMMY26007",
+      "registrationId": 64,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1195,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1003,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 75399,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 92178,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1195,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1003,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 75399,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 92178,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "ratih",
+      "nurseFullName": "Ratih",
+      "patientName": "Nina Safitri",
+      "noRm": "RMDUMMY26008",
+      "registrationId": 65,
+      "doctorName": "dr, Haqqi Afzal",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1208,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1006,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 70712,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 114750,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1208,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1006,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 70712,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 114750,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "fajar",
+      "nurseFullName": "Fajar",
+      "patientName": "Agus Kurniawan",
+      "noRm": "RMDUMMY26009",
+      "registrationId": 66,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1205,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1005,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 43990,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 55023,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1205,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1005,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 43990,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 55023,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "tiara",
+      "nurseFullName": "Tiara",
+      "patientName": "Rina Anggraini",
+      "noRm": "RMDUMMY26010",
+      "registrationId": 67,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1183,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 994,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 39261,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 51104,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1183,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 994,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 39261,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 51104,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "galih",
+      "nurseFullName": "Galih",
+      "patientName": "Fahmi Hidayat",
+      "noRm": "RMDUMMY26011",
+      "registrationId": 68,
+      "doctorName": "dr. Andooon",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1225,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1015,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 32903,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 33781,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1225,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1015,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 32903,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 33781,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "anisa",
+      "nurseFullName": "Anisa",
+      "patientName": "Lia Kartika",
+      "noRm": "RMDUMMY26012",
+      "registrationId": 69,
+      "doctorName": "dr, Haqqi Afzal",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1190,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1021,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 40740,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 47894,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1190,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1021,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 40740,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 47894,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "rizky",
+      "nurseFullName": "Rizky",
+      "patientName": "Teguh Saputra",
+      "noRm": "RMDUMMY26013",
+      "registrationId": 70,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1200,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1028,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 98266,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 45935,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1200,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1028,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 98266,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 45935,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "fitri",
+      "nurseFullName": "Fitri",
+      "patientName": "Vina Maharani",
+      "noRm": "RMDUMMY26014",
+      "registrationId": 71,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1192,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1023,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 63700,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 45937,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1192,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1023,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 63700,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 45937,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "yudha",
+      "nurseFullName": "Yudha",
+      "patientName": "Yusuf Akbar",
+      "noRm": "RMDUMMY26015",
+      "registrationId": 72,
+      "doctorName": "dr, Haqqi Afzal",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1216,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1019,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 70595,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 80974,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1216,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1019,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 70595,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 80974,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "linda",
+      "nurseFullName": "Linda",
+      "patientName": "Tika Amelia",
+      "noRm": "RMDUMMY26016",
+      "registrationId": 73,
+      "doctorName": "dr. Andooon",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1197,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1026,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 69605,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 90556,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1197,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1026,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 69605,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 90556,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "arif",
+      "nurseFullName": "Arif",
+      "patientName": "Fajar Nugroho",
+      "noRm": "RMDUMMY26017",
+      "registrationId": 74,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1210,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1025,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 72114,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 97538,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1210,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1025,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 72114,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 97538,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "vina",
+      "nurseFullName": "Vina",
+      "patientName": "Dewi Cahyani",
+      "noRm": "RMDUMMY26018",
+      "registrationId": 75,
+      "doctorName": "dr, Haqqi Afzal",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1201,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1009,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 99580,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 101012,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1201,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1009,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 99580,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 101012,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "faris",
+      "nurseFullName": "Faris",
+      "patientName": "Rangga Setiawan",
+      "noRm": "RMDUMMY26019",
+      "registrationId": 76,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1185,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1007,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 67286,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 86779,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1185,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1007,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 67286,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 86779,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "desi",
+      "nurseFullName": "Desi",
+      "patientName": "Anisa Rahma",
+      "noRm": "RMDUMMY26020",
+      "registrationId": 77,
+      "doctorName": "dr. Andooon",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1218,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1022,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 57941,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 121083,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1218,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1022,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 57941,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 121083,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "alif",
+      "nurseFullName": "Alif",
+      "patientName": "Iqbal Ramadhan",
+      "noRm": "RMDUMMY26021",
+      "registrationId": 78,
+      "doctorName": "dr, Haqqi Afzal",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1204,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1016,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 40860,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 118757,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1204,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1016,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 40860,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 118757,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "intan",
+      "nurseFullName": "Intan",
+      "patientName": "Putri Noviana",
+      "noRm": "RMDUMMY26022",
+      "registrationId": 79,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1217,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1010,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 99506,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 121489,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1217,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1010,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 99506,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 121489,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "hafiz",
+      "nurseFullName": "Hafiz",
+      "patientName": "Bayu Firmansyah",
+      "noRm": "RMDUMMY26023",
+      "registrationId": 80,
+      "doctorName": "dr. Andooon",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1218,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1012,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 99002,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 111463,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1218,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1012,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 99002,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 111463,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "dewi",
+      "nurseFullName": "Dewi",
+      "patientName": "Citra Damayanti",
+      "noRm": "RMDUMMY26024",
+      "registrationId": 81,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1206,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1030,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 97200,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 120071,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1206,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1030,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 97200,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 120071,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "ridwan",
+      "nurseFullName": "Ridwan",
+      "patientName": "Ilham Pratama",
+      "noRm": "RMDUMMY26025",
+      "registrationId": 82,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1221,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1031,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 102365,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 53054,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1221,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1031,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 102365,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 53054,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "melati",
+      "nurseFullName": "Melati",
+      "patientName": "Nadia Fitriani",
+      "noRm": "RMDUMMY26026",
+      "registrationId": 83,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1193,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1032,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 73868,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 123053,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1193,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1032,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 73868,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 123053,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "farhan",
+      "nurseFullName": "Farhan",
+      "patientName": "Arif Rahman",
+      "noRm": "RMDUMMY26027",
+      "registrationId": 84,
+      "doctorName": "dr, Haqqi Afzal",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1208,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1040,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 97453,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 124165,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1208,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1040,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 97453,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 124165,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "ayu",
+      "nurseFullName": "Ayu",
+      "patientName": "Sinta Melani",
+      "noRm": "RMDUMMY26028",
+      "registrationId": 85,
+      "doctorName": "dr. Andooon",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1211,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1034,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 94603,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 117010,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1211,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1034,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 94603,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 117010,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "fikri",
+      "nurseFullName": "Fikri",
+      "patientName": "Galih Wicaksono",
+      "noRm": "RMDUMMY26029",
+      "registrationId": 86,
+      "doctorName": "dr. Ridhooo",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1219,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1039,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 103039,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 124121,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1219,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1039,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 103039,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 124121,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    },
+    {
+      "nurseUsername": "zahra",
+      "nurseFullName": "Zahra",
+      "patientName": "Zahra Oktavia",
+      "noRm": "RMDUMMY26030",
+      "registrationId": 87,
+      "doctorName": "dr. Afzal Haqqi",
+      "stages": {
+        "summary": {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1226,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "objective": {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1042,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "update": {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 102366,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        "generate": {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 40471,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      },
+      "stageOrder": [
+        {
+          "key": "summary",
+          "label": "Clinical summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1226,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "objective",
+          "label": "Objective summary",
+          "routeLabel": "/api/chat",
+          "expectedTool": "external_examinations_objective_summary",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "external_examinations_objective_summary"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 1042,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "update",
+          "label": "Update kondisi pasien",
+          "routeLabel": "/api/chat",
+          "expectedTool": "clinical_notes_chat_update",
+          "toolMode": "tool-calling",
+          "toolsUsed": [
+            "clinical_notes_chat_update"
+          ],
+          "ok": true,
+          "status": 200,
+          "latencyMs": 102366,
+          "taskSuccess": true,
+          "toolCallingApplicable": true,
+          "toolMatch": true,
+          "missingTool": false,
+          "wrongTool": false
+        },
+        {
+          "key": "generate",
+          "label": "Generate clinical notes",
+          "routeLabel": "/api/clinical-notes/generate",
+          "expectedTool": "Direct endpoint / N/A",
+          "toolMode": "direct endpoint / N/A",
+          "toolsUsed": [],
+          "ok": true,
+          "status": 201,
+          "latencyMs": 40471,
+          "taskSuccess": true,
+          "toolCallingApplicable": false,
+          "toolMatch": null,
+          "missingTool": false,
+          "wrongTool": false
+        }
+      ]
+    }
+  ],
+  "notes": {
+    "generateClinicalNotes": "Direct endpoint / N/A for tool-calling metrics; included in task success and latency only."
+  }
+}

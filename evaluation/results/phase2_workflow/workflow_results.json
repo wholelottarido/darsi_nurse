@@ -1,0 +1,1929 @@
+{
+  "startedAt": "2026-06-09T08:26:46.646Z",
+  "finishedAt": "2026-06-09T08:30:48.879Z",
+  "baseUrl": "http://127.0.0.1:3002",
+  "totalNurses": 30,
+  "auditSummary": {
+    "interactionCount": 120,
+    "dataSourceCount": 480,
+    "performanceCount": 120
+  },
+  "stageStats": [
+    {
+      "key": "summary",
+      "label": "Clinical summary",
+      "avgLatency": 1205.2,
+      "successRate": 100
+    },
+    {
+      "key": "objective",
+      "label": "Objective summary",
+      "avgLatency": 1016.4666666666667,
+      "successRate": 100
+    },
+    {
+      "key": "update",
+      "label": "Update kondisi pasien",
+      "avgLatency": 67815.16666666667,
+      "successRate": 100
+    },
+    {
+      "key": "generate",
+      "label": "Generate clinical notes",
+      "avgLatency": 84546.46666666666,
+      "successRate": 100
+    }
+  ],
+  "users": [
+    {
+      "nurseUsername": "arga",
+      "nurseFullName": "Arga",
+      "patientName": "Budi Santoso",
+      "noRm": "RMDUMMY26001",
+      "registrationId": 58,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 9700,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiIyOTc3YjY0My04ZTc4LTQyYmYtOGY1MS1kMmZhOTEwODFiZGQiLCJ1c2VybmFtZSI6ImFyZ2EiLCJleHAiOjE3ODEwMzY4MTZ9.pwzQosE7_vtMcj8pLrwGiagm_az0XvMvqVYlz74z3kk",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "2977b643-8e78-42bf-8f51-d2fa91081bdd",
+            "username": "arga",
+            "namaLengkap": "Arga",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1218,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Budi Santoso.\nNRM: RMDUMMY26001\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nSummary\nPasien dengan demam akut selama 2 hari menunjukkan peningkatan klinis dengan penurunan demam, meski masih mengalami kelelahan dan nafsu makan mulai membaik. Vital signs stabil (TD 120/80 mmHg, Nadi 92 bpm, Suhu 38.2°C, RR 20 x/menit) tanpa tanda deteriorasi atau komplikasi.\n\nAssessment\nDemam akut dalam fase pemulihan berdasarkan subyektif terbaru (demam berkurang, lemas persists, nafsu makan improving) dan objektif yang stabil. Diagnosis ICD R50.9 (Fever, unspecified) tetap relevan, konsisten dengan infeksi viral ringan yang sedang membaik tanpa tanda kegawatan atau gejala sistemik lain.\nICD: R50.9 Fever, unspecified\n\nPlan\nTerus monitor suhu dan vital signs secara rutin, pastikan hidrasi dan istirahat cukup, lanjutkan terapi simptomatik bila diperlukan (paracetamol untuk demam jika >38.5°C), edukasi kembali tanda peringatan, dan kontrol ulang jika demam kembali naik, memburuk, atau muncul gejala baru setelah 48 jam.\n\nObat\nparacetamol untuk demam jika >38.5°C\n\nICD\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 988,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Budi Santoso.\nNRM: RMDUMMY26001\n\nObjective\nTD 120/80 mmHg, Nadi 92 bpm, Suhu 38.2 C, RR 20 x/menit.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 65156,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Budi Santoso.\nNRM: RMDUMMY26001\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nDemam akut dalam fase pemulihan berdasarkan subyektif terbaru (demam berkurang, lemas persists, nafsu makan improving) dan objektif yang stabil. Diagnosis ICD R50.9 (Fever, unspecified) tetap relevan, konsisten dengan infeksi viral ringan yang sedang membaik tanpa tanda kegawatan atau gejala sistemik lain.\n\nPlan\nTerus monitor suhu dan vital signs secara rutin, pastikan hidrasi dan istirahat cukup, lanjutkan terapi simptomatik bila diperlukan (paracetamol untuk demam jika >38.5°C), edukasi kembali tanda peringatan, dan kontrol ulang jika demam kembali naik, memburuk, atau muncul gejala baru setelah 48 jam.\n\nObat\nParacetamol 500 mg setiap 6-8 jam untuk demam jika suhu >38.5°C, maksimal 3 gram/hari.\n\nICD\n- R50.9 - Fever, unspecified\n- R50 - Fever of other and unknown origin\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 56734,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "nisa",
+      "nurseFullName": "Nisa",
+      "patientName": "Ayu Lestari",
+      "noRm": "RMDUMMY26002",
+      "registrationId": 59,
+      "doctorName": "dr. Andooon",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 6747,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJjNDZmYzE2NS00YjJmLTQ3YTUtOTZmOS0zNmMxMDJlNjZiODYiLCJ1c2VybmFtZSI6Im5pc2EiLCJleHAiOjE3ODEwMzY4MTN9.hp4tvbNCch2cDWcVv2GnwSVKhfYM7m4aGYXta_RbZbc",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "c46fc165-4b2f-47a5-96f9-36c102e66b86",
+            "username": "nisa",
+            "namaLengkap": "Nisa",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1230,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Ayu Lestari.\nNRM: RMDUMMY26002\n\nSummary\nBatuk pilek sejak 3 hari, tenggorokan terasa gatal. | TD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4 C, faring hiperemis ringan.\n\nAssessment\nInfeksi saluran napas atas akut dengan gejala ringan.\n\nPlan\nEdukasi istirahat, cairan cukup, observasi demam dan sesak, terapi simptomatik sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- J06.9 - Acute upper respiratory infection, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1032,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Ayu Lestari.\nNRM: RMDUMMY26002\n\nObjective\nTD 110/70 mmHg, Nadi 84 bpm, Suhu 37.4 C, faring hiperemis ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 36029,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Ayu Lestari.\nNRM: RMDUMMY26002\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\ndemam berkurang, masih lemas, nafsu makan mulai membaik\n\nAssessment\nInfeksi saluran napas atas akut dengan gejala yang sedang dalam proses pemulihan. Demam mulai menurun, tidak ada tanda bakteri sekunder atau penyakit lain berdasarkan data terkini.\n\nPlan\nTeruskan istirahat dan konsumsi cairan yang cukup. Pantau suhu dan gejala lemas. Edukasi kembali tanda bahaya seperti demam kembali, sesak napas, atau batuk berlekuk. Kunjungi kembali bila tidak ada perbaikan dalam 2-3 hari atau muncul gejala baru.\n\nObat\nParacetamol 500 mg setiap 6-8 jam bila diperlukan untuk demam atau nyeri (maks 3 gram/hari), atau '-' jika tidak diperlukan lagi.\n\nICD\n- J06.9 - Acute upper respiratory infection, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 44312,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "rafi",
+      "nurseFullName": "Rafi",
+      "patientName": "Rizal Maulana",
+      "noRm": "RMDUMMY26003",
+      "registrationId": 60,
+      "doctorName": "dr, Haqqi Afzal",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11626,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiIzODQyNWFhNS03NzI2LTQ4MGUtYmJkMy01ODNmN2NmMzU0YjIiLCJ1c2VybmFtZSI6InJhZmkiLCJleHAiOjE3ODEwMzY4MTh9.URgz-WZvZXwmP0oKetO8qmnum4BqdS9tgvUWWhVmzkE",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "38425aa5-7726-480e-bbd3-583f7cf354b2",
+            "username": "rafi",
+            "namaLengkap": "Rafi",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1180,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Rizal Maulana.\nNRM: RMDUMMY26003\n\nSummary\nNyeri ulu hati, mual, terasa penuh setelah makan. | TD 118/78 mmHg, Nadi 86 bpm, Suhu 36.8 C, abdomen nyeri epigastrium ringan.\n\nAssessment\nGastritis dengan keluhan dispepsia dan nyeri epigastrium ringan.\n\nPlan\nAnjurkan makan porsi kecil, hindari makanan pedas/asam, observasi muntah atau nyeri berat, terapi sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- K29.7 - Gastritis, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 994,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Rizal Maulana.\nNRM: RMDUMMY26003\n\nObjective\nTD 118/78 mmHg, Nadi 86 bpm, Suhu 36.8 C, abdomen nyeri epigastrium ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 27565,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Rizal Maulana.\nNRM: RMDUMMY26003\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik, nyeri epigastrium ringan tetap ada.\n\nAssessment\nGastritis dengan keluhan dispepsia dan nyeri epigastrium ringan yang sedang membaik, demam telah berkurang, tidak ada tanda komplikasi atau gejala peringatan.\n\nPlan\nTeruskan diet porsi kecil, hindari makanan pedas/asam, cukup istirahat, pantau konsumsi makanan dan air, kembali kontrol bila nyeri memburuk atau demam kembali.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- K29.7 - Gastritis, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 74293,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "dinda",
+      "nurseFullName": "Dinda",
+      "patientName": "Maya Permata",
+      "noRm": "RMDUMMY26004",
+      "registrationId": 61,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11628,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI0M2Y0NzI3YS03NGZhLTQ5ZTAtOTllOS0yMDhhOWViNmZlMDciLCJ1c2VybmFtZSI6ImRpbmRhIiwiZXhwIjoxNzgxMDM2ODE4fQ.UvJ-Dhvsaz7fOgz7hozJzAXSO5CHSTndr0LIbF49vzI",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "43f4727a-74fa-49e0-99e9-208a9eb6fe07",
+            "username": "dinda",
+            "namaLengkap": "Dinda",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1191,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Maya Permata.\nNRM: RMDUMMY26004\n\nSummary\nSakit kepala berdenyut, mual, sensitif cahaya. | TD 116/76 mmHg, Nadi 82 bpm, Suhu 36.7 C, neurologis kasar dalam batas normal.\n\nAssessment\nMigrain tanpa tanda defisit neurologis akut pada pemeriksaan awal.\n\nPlan\nIstirahat di ruangan tenang, monitoring nyeri, evaluasi red flag neurologis, terapi analgesik sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- G43 - Migraine\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 992,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Maya Permata.\nNRM: RMDUMMY26004\n\nObjective\nTD 116/76 mmHg, Nadi 82 bpm, Suhu 36.7 C, neurologis kasar dalam batas normal.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 29832,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Maya Permata.\nNRM: RMDUMMY26004\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nMigrain tanpa tanda defisit neurologis akut dengan demam yang sedang menurun, masih ada gejala lemas dan nafsu makan yang mulai membaik.\n\nPlan\nIstirahat di ruangan tenang, monitoring nyeri dan suhu, evaluasi terus-menerus untuk red flag neurologis, terapi analgesik sesuai instruksi dokter, edukasi hidrasi dan nutrisi ringan.\n\nObat\nParasetamol 500 mg setiap 6-8 jam sesuai kebutuhan untuk nyeri dan demam.\n\nICD\n- G43 - Migraine\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 71584,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "bagas",
+      "nurseFullName": "Bagas",
+      "patientName": "Dimas Prakoso",
+      "noRm": "RMDUMMY26005",
+      "registrationId": 62,
+      "doctorName": "dr. Andooon",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11632,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJmODJjYTBlZS1jYmM5LTRlNTAtODBmYy0xZmRjNDBiNTM3MWQiLCJ1c2VybmFtZSI6ImJhZ2FzIiwiZXhwIjoxNzgxMDM2ODE4fQ.IpYXUj93qCxpou9w9wNQUvQoXQZsJaLPg6h0lCUxFGk",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "f82ca0ee-cbc9-4e50-80fc-1fdc40b5371d",
+            "username": "bagas",
+            "namaLengkap": "Bagas",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1187,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Dimas Prakoso.\nNRM: RMDUMMY26005\n\nSummary\nDiare cair 4 kali sejak pagi, perut mulas. | TD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8 C, turgor cukup, abdomen kram ringan.\n\nAssessment\nGastroenteritis akut ringan dengan risiko dehidrasi ringan.\n\nPlan\nPantau frekuensi diare, tanda dehidrasi, anjurkan oralit/cairan cukup, kontrol bila diare berdarah atau lemas.\n\nObat\n-\n\nICD\n- A09 - Other gastroenteritis and colitis of infectious and unspecified origin\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 997,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Dimas Prakoso.\nNRM: RMDUMMY26005\n\nObjective\nTD 112/74 mmHg, Nadi 96 bpm, Suhu 37.8 C, turgor cukup, abdomen kram ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 29051,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Dimas Prakoso.\nNRM: RMDUMMY26005\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nGastroenteritis akut ringan dengan perbaikan klinis (demam menurun, nafsu makan meningkat), tanpa tanda dehydrasi berat. Kondisi sedang dalam fase pemulihan.\n\nPlan\nTerus monitor frekuensi buang air besar, tanda dehydrasi, dan konsumsi oralit/cairan. Edukasi pentingnya hidrasi dan diet lembut. Kontrol jika diare memburang, muncul darah, atau lemas bertambah.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- A09 - Other gastroenteritis and colitis of infectious and unspecified origin\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 86894,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "putri",
+      "nurseFullName": "Putri",
+      "patientName": "Sari Wulandari",
+      "noRm": "RMDUMMY26006",
+      "registrationId": 63,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11630,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiIwZDBkMTlmMy0wMTFjLTQ3Y2MtYmRkZi1kNGYwNzM3ZjI5MTQiLCJ1c2VybmFtZSI6InB1dHJpIiwiZXhwIjoxNzgxMDM2ODE4fQ.HeDtQo2R0Q03JnGGFJh-odwkKdmtE9IlHUPbJBtdwSA",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "0d0d19f3-011c-47cc-bddf-d4f0737f2914",
+            "username": "putri",
+            "namaLengkap": "Putri",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1202,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Sari Wulandari.\nNRM: RMDUMMY26006\n\nSummary\nGatal menyebar di lengan dan punggung sejak kemarin. | TD 110/70 mmHg, Nadi 78 bpm, Suhu 36.6 C, tampak ruam ekskoriasi ringan.\n\nAssessment\nPruritus dengan ruam ringan tanpa tanda reaksi sistemik berat.\n\nPlan\nHindari garukan dan pemicu, edukasi perawatan kulit, observasi bengkak/sesak, terapi sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- L29.9 - Pruritus, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1002,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Sari Wulandari.\nNRM: RMDUMMY26006\n\nObjective\nTD 110/70 mmHg, Nadi 78 bpm, Suhu 36.6 C, tampak ruam ekskoriasi ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 34468,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Sari Wulandari.\nNRM: RMDUMMY26006\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik, gatal dan ruam ekskoriasi ringan masih ada tanpa perubahan signifikan.\n\nAssessment\nPruritus dengan ruam ringan (L29.9) yang sedang dalam fase pemulihan sistemik, mendukung oleh penurunan demam dan peningkatan nafsu makan. Tidak ada tanda infeksi berat atau reaksi alergi sistemik berdasarkan vital sign stabil dan tanpa perubahan pada temuan fisik.\n\nPlan\nTeruskan hindari garukan dan pemicu, edukasi perawatan kulit, pastikan asupan nutrisi dan hidrasi cukup untuk pemulihan, monitor demam dan kondisi umum, kembali kontrol jika demam kembali atau ruam memburuk.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- L29.9 - Pruritus, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 84379,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "ilham",
+      "nurseFullName": "Ilham",
+      "patientName": "Hendra Wijaya",
+      "noRm": "RMDUMMY26007",
+      "registrationId": 64,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 9708,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI2NWNhYmVkYS04MTE4LTQ4MmMtYjNhNi0xMzQ3NGEwNzM0OTUiLCJ1c2VybmFtZSI6ImlsaGFtIiwiZXhwIjoxNzgxMDM2ODE2fQ.0_eQtgnYqrPQAsjmSyWkUZykgdd6WlbpdeyJRQ-0OuE",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "65cabeda-8118-482c-b3a6-13474a073495",
+            "username": "ilham",
+            "namaLengkap": "Ilham",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1195,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Hendra Wijaya.\nNRM: RMDUMMY26007\n\nSummary\nSesak episodik dan batuk malam, riwayat asma. | TD 122/80 mmHg, Nadi 94 bpm, RR 24 x/menit, wheezing ringan bilateral.\n\nAssessment\nEksaserbasi asma ringan dengan wheezing tanpa distress berat.\n\nPlan\nPantau RR dan saturasi bila tersedia, posisikan nyaman, evaluasi respons bronkodilator sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- J45.9 - Asthma, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1003,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Hendra Wijaya.\nNRM: RMDUMMY26007\n\nObjective\nTD 122/80 mmHg, Nadi 94 bpm, RR 24 x/menit, wheezing ringan bilateral.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 75399,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Hendra Wijaya.\nNRM: RMDUMMY26007\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nEksaserbasi asma ringan dengan wheezing tanpa distress berat, sedang dalam fase pemulihan dengan demam menurun dan nafsu makan membaik, tetapi masih ada lemas sebagai gejala pasca-akut.\n\nPlan\nPantau RR dan saturasi bila tersedia, pastikan hidrasi dan istirahat cukup, evaluasi kebutuhan bronkodilator terus sesuai respons klinik, edukasi tanda peringatan asma, dan rencanakan kontrol jika gejala memburuk atau tidak ada peningkatan dalam 24-48 jam.\n\nObat\nBronkodilator sesuai instruksi dokter (misal: salbutamol inhaler PRN), pertimbangkan paracetanol untuk demam residual bila diperlukan dan tidak kontraindikasi.\n\nICD\n- J45.9 - Asthma, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 92178,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "ratih",
+      "nurseFullName": "Ratih",
+      "patientName": "Nina Safitri",
+      "noRm": "RMDUMMY26008",
+      "registrationId": 65,
+      "doctorName": "dr, Haqqi Afzal",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11619,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI1NWZmZjFkZC1mMjY0LTRlZWYtYjZhNS1jM2IwYzZjMmVhOGYiLCJ1c2VybmFtZSI6InJhdGloIiwiZXhwIjoxNzgxMDM2ODE4fQ.NW6qGEDe_OPiMVsRzz7Qk3N7rfzwiT8uA10cxAHY1pA",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "55fff1dd-f264-4eef-b6a5-c3b0c6c2ea8f",
+            "username": "ratih",
+            "namaLengkap": "Ratih",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1208,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Nina Safitri.\nNRM: RMDUMMY26008\n\nSummary\nNyeri saat BAK dan sering BAK sejak 2 hari. | TD 114/72 mmHg, Nadi 88 bpm, Suhu 37.6 C, nyeri suprapubik ringan.\n\nAssessment\nInfeksi saluran kemih bawah dicurigai dari disuria dan frekuensi BAK.\n\nPlan\nAnjurkan cairan cukup, pantau demam/nyeri pinggang, pertimbangkan pemeriksaan urine dan terapi sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- N39.0 - Urinary tract infection, site not specified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1006,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Nina Safitri.\nNRM: RMDUMMY26008\n\nObjective\nTD 114/72 mmHg, Nadi 88 bpm, Suhu 37.6 C, nyeri suprapubik ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 70712,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Nina Safitri.\nNRM: RMDUMMY26008\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik, nyeri suprapubik ringan tetap ada.\n\nAssessment\nInfeksi saluran kemih bawah (N39.0) masih menjadi pertimbangan utama berdasarkan disuria dan frekuensi BAK awal, dengan respons klinis yang baik berupa penurunan demam dan peningkatan nafsu makan. Tidak ada tanda pemburuan atau komplikasi. Kondisi saat ini menunjukkan respons positif terhadap perawatan konservatif.\n\nPlan\nTeruskan konsumsi cairan cukup, pantau perkembangan nyeri BAK dan suhu, edukasi tanda peringatan (demam kembali, nyeri punggung, darah dalam urine), dan pertimbangkan pemeriksaan urine bila tidak ada peningkatan signifikan dalam 24-48 jam atau muncul gejala baru.\n\nObat\n- (Belum cukup data untuk rekomendasi obat spesifik; pertahankan perawatan konservatif sesuai rencana dokter)\n\nICD\n- N39.0 - Urinary tract infection, site not specified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 114750,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "fajar",
+      "nurseFullName": "Fajar",
+      "patientName": "Agus Kurniawan",
+      "noRm": "RMDUMMY26009",
+      "registrationId": 66,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11630,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiIxNWI2ZGU2Mi04M2YwLTRkMmMtYjIzNi1hODZmZmRmMmYzMTgiLCJ1c2VybmFtZSI6ImZhamFyIiwiZXhwIjoxNzgxMDM2ODE4fQ.3T5qVO7JX2kFBMdfGeQRtpo2EGIJ_FDuzkTzLMomNDI",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "15b6de62-83f0-4d2c-b236-a86ffdf2f318",
+            "username": "fajar",
+            "namaLengkap": "Fajar",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1205,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Agus Kurniawan.\nNRM: RMDUMMY26009\n\nSummary\nNyeri pinggang bawah setelah mengangkat barang. | TD 126/82 mmHg, Nadi 80 bpm, Suhu 36.5 C, nyeri tekan lumbal.\n\nAssessment\nNyeri punggung bawah muskuloskeletal tanpa tanda neurologis akut.\n\nPlan\nAnjurkan istirahat relatif, kompres hangat, edukasi postur, evaluasi bila nyeri menjalar atau kelemahan.\n\nObat\n-\n\nICD\n- M54.5 - Low back pain\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1005,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Agus Kurniawan.\nNRM: RMDUMMY26009\n\nObjective\nTD 126/82 mmHg, Nadi 80 bpm, Suhu 36.5 C, nyeri tekan lumbal.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 43990,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Agus Kurniawan.\nNRM: RMDUMMY26009\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\ndemam berkurang, masih lemas, nafsu makan mulai membaik, nyeri pinggang bawah tetap ada tanpa perubahan signifikan\n\nAssessment\nNyeri punggung bawah muskuloskeletal (M54.5) yang sedang dalam proses pemulihan dengan demam yang sedang menurun (R50.9). Tidak ada tanda infeksi berat atau komplikasi neurologis. Kondisi umum menunjukkan respons positif terhadap perawatan konservatif.\n\nPlan\nTeruskan istirahat relatif, kompres hangat pada area lumbal, edukasi ergonomi dan postur saat aktivitas. Pantau suhu dan gejala demam harian. Evaluasi kembali jika demam kembali tinggi, nyeri menjalar ke kaki, atau muncul kelemahan/nekropati. Edukasi pasien mengenai tanda bahaya.\n\nObat\nParacetamol 500 mg setiap 6-8 jam bila diperlukan untuk nyeri atau demam ringan, maksimal 3 gram/hari.\n\nICD\n- M54.5 - Low back pain\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 55023,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "tiara",
+      "nurseFullName": "Tiara",
+      "patientName": "Rina Anggraini",
+      "noRm": "RMDUMMY26010",
+      "registrationId": 67,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11619,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJhYWJlZTNiNC05ZjBjLTRjMmEtOTM5ZS02ZDVkNWYzMDRkZWEiLCJ1c2VybmFtZSI6InRpYXJhIiwiZXhwIjoxNzgxMDM2ODE4fQ.7w_Al8FU56W_JZD6DVprGLcpS30WEGcWenfkj_FqfuQ",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "aabee3b4-9f0c-4c2a-939e-6d5d5f304dea",
+            "username": "tiara",
+            "namaLengkap": "Tiara",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1183,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Rina Anggraini.\nNRM: RMDUMMY26010\n\nSummary\nPusing dan tekanan darah sering tinggi. | TD 150/94 mmHg, Nadi 86 bpm, Suhu 36.7 C, tanpa defisit neurologis.\n\nAssessment\nHipertensi dengan keluhan pusing tanpa tanda krisis hipertensi.\n\nPlan\nPantau tekanan darah berkala, edukasi diet rendah garam, evaluasi kepatuhan obat, follow up dokter.\n\nObat\n-\n\nICD\n- I10 - Essential (primary) hypertension\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 994,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Rina Anggraini.\nNRM: RMDUMMY26010\n\nObjective\nTD 150/94 mmHg, Nadi 86 bpm, Suhu 36.7 C, tanpa defisit neurologis.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 39261,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Rina Anggraini.\nNRM: RMDUMMY26010\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nHipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam yang sebelumnya ada kini menunjukkan tren penurunan (R50.9 mungkin tidak lagi aktif), sehingga tidak ada bukti aktif infeksi atau penyakit sistemik lain saat ini. Kondisi umum pasien dalam proses pemulihan ringan.\n\nPlan\nTerus monitor tekanan darah dan suhu harian, pastikan kepatuhan obat antihipertensi, edukasi hidrasi dan istirahat cukup, evaluasi kembali jika demam kembali atau lemas memburuk. Follow up sesuai jadwal atau lebih awal jika diperlukan.\n\nObat\n- (Belum cukup data untuk rekomendasi obat baru; lanjutkan obat hipertensi sesuai resept sebelumnya jika ada)\n\nICD\n- I10 - Essential (primary) hypertension\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 51104,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "galih",
+      "nurseFullName": "Galih",
+      "patientName": "Fahmi Hidayat",
+      "noRm": "RMDUMMY26011",
+      "registrationId": 68,
+      "doctorName": "dr. Andooon",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 9666,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiIzYjY3MjVjMi1mZjM5LTRkNTYtOTk1YS05MTA5NTUxMWJhMjYiLCJ1c2VybmFtZSI6ImdhbGloIiwiZXhwIjoxNzgxMDM2ODE2fQ._RT0CFCGjbFSWMiFhgGaKKI0wSSwoxnBcn8u6ckRg1U",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "3b6725c2-ff39-4d56-995a-91095511ba26",
+            "username": "galih",
+            "namaLengkap": "Galih",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1225,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Fahmi Hidayat.\nNRM: RMDUMMY26011\n\nSummary\nBadan pegal seluruh tubuh setelah aktivitas berat. | TD 118/76 mmHg, Nadi 84 bpm, Suhu 36.9 C, nyeri otot difus ringan.\n\nAssessment\nMialgia ringan kemungkinan terkait aktivitas fisik.\n\nPlan\nAnjurkan istirahat, hidrasi, peregangan ringan, observasi demam atau kelemahan progresif.\n\nObat\n-\n\nICD\n- M79.1 - Myalgia\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1015,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Fahmi Hidayat.\nNRM: RMDUMMY26011\n\nObjective\nTD 118/76 mmHg, Nadi 84 bpm, Suhu 36.9 C, nyeri otot difus ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 32903,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Fahmi Hidayat.\nNRM: RMDUMMY26011\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nMialgia ringan dengan demam yang sedang dalam proses pemulihan, konsisten dengan respons terhadap istirahat dan hidrasi. Tidak ada indikasi infeksi berat atau komplikasi.\n\nPlan\nTeruskan istirahat adekvat, hidrasi yang cukup, peregangan otot ringan, dan monitor terus subjektif lemas dan nafsu makan. Kembali kontrol jika demam kembali atau lemas memburuk.\n\nObat\nParacetamol 500 mg setiap 6-8 jam jika diperlukan untuk nyeri atau demam residual, maksimal 3 hari.\n\nICD\n- M79.1 - Myalgia\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 33781,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "anisa",
+      "nurseFullName": "Anisa",
+      "patientName": "Lia Kartika",
+      "noRm": "RMDUMMY26012",
+      "registrationId": 69,
+      "doctorName": "dr, Haqqi Afzal",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12600,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJmMTQ2YzNjZC1lZDRmLTQ2ODgtYWFmNS04OWQ2ZmNjMzMwYTUiLCJ1c2VybmFtZSI6ImFuaXNhIiwiZXhwIjoxNzgxMDM2ODE5fQ.OLHYMGj9sujlszt4a9qy80yElb1qZAhUubaz8vHH3EA",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "f146c3cd-ed4f-4688-aaf5-89d6fcc330a5",
+            "username": "anisa",
+            "namaLengkap": "Anisa",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1190,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Lia Kartika.\nNRM: RMDUMMY26012\n\nSummary\nHidung tersumbat, bersin, pilek encer. | TD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8 C, mukosa hidung hiperemis.\n\nAssessment\nNasofaringitis akut ringan.\n\nPlan\nEdukasi cairan cukup, istirahat, kebersihan tangan, terapi simptomatik sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- J00 - Acute nasopharyngitis [common cold]\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1021,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Lia Kartika.\nNRM: RMDUMMY26012\n\nObjective\nTD 108/70 mmHg, Nadi 78 bpm, Suhu 36.8 C, mukosa hidung hiperemis.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 40740,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Lia Kartika.\nNRM: RMDUMMY26012\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nNasofaringitis akut ringan dengan trend pemulihan: demam menurun, nafsu makan meningkat, tanpa tanda bakteri sekundar atau komplikasi. Kondisi stabil dan responsif terhadap perawatan suportif.\n\nPlan\nTeruskan edukasi hidrasi cukup, istirahat, dan nutrisi seimbang. Pantau gejala respiratori dan demam. Jika tidak ada penurunan lebih dalam 24–48 jam atau muncul tanda berat, pertimbangkan evaluasi ulang. Edukasi tanda bahaya: sesak napas, demam tinggi >39°C, atau muntah berulang.\n\nObat\nParacetamol 500 mg setiap 6–8 jam jika demam kembali >38,5°C (maks 3 gram/hari), atau '-' bila tidak diperlukan saat ini.\n\nICD\n- J00 - Acute nasopharyngitis [common cold]\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 47894,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "rizky",
+      "nurseFullName": "Rizky",
+      "patientName": "Teguh Saputra",
+      "noRm": "RMDUMMY26013",
+      "registrationId": 70,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11673,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJmN2ZlNWJmYi00ZTUyLTRjMWYtOTgzMC0xZWU1ZTdmOGI1MmYiLCJ1c2VybmFtZSI6InJpemt5IiwiZXhwIjoxNzgxMDM2ODE4fQ.7_TiSTXsk5yWNnxUMo8T_SUNJLYJuYEJaNRaxjD40Yg",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "f7fe5bfb-4e52-4c1f-9830-1ee5e7f8b52f",
+            "username": "rizky",
+            "namaLengkap": "Rizky",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1200,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Teguh Saputra.\nNRM: RMDUMMY26013\n\nSummary\nSering haus dan mudah lelah, riwayat gula darah tinggi. | TD 124/80 mmHg, Nadi 82 bpm, GDS meningkat berdasarkan riwayat pasien.\n\nAssessment\nDiabetes melitus tipe 2 tanpa komplikasi akut yang tampak pada pemeriksaan awal.\n\nPlan\nPantau gula darah, edukasi diet, aktivitas, dan kepatuhan obat, kontrol lanjutan sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- E11.9 - Non-insulin-dependent diabetes mellitus ,  Without complications\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1028,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Teguh Saputra.\nNRM: RMDUMMY26013\n\nObjective\nTD 124/80 mmHg, Nadi 82 bpm, GDS meningkat berdasarkan riwayat pasien.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 98266,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Teguh Saputra.\nNRM: RMDUMMY26013\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nDiabetes melitus tipe 2 tanpa komplikasi akut yang tampak pada pemeriksaan awal, dengan gejala demam yang sedang dalam fase pemulihan (demam berkurang) dan tidak ada tanda komplikasi akut saat ini. Kelelahan yang berlanjut mungkin terkait proses pemulihan atau fluktuasi glukosa yang belum stabil.\n\nPlan\nPantau gula darah secara rutin, pastikan asupan nutrisi cukup seiring pemulihan nafsu makan, edukasi pentingnya hidrasi dan istirahat cukup, serta teruskan kepatuhan obat diabetes. Kontrol lanjutan sesuai instruksi dokter untuk mengevaluasi stabilitas metabolik dan pastikan tidak ada infeksi residual.\n\nObat\nE11.9: lanjutkan terapi antidiabetik sesuai regimen dokter dan monitor glukosa; jangan memulai obat baru tanpa verifikasi regimen yang sedang berjalan. R50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- E11.9 - Non-insulin-dependent diabetes mellitus ,  Without complications\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 45935,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "fitri",
+      "nurseFullName": "Fitri",
+      "patientName": "Vina Maharani",
+      "noRm": "RMDUMMY26014",
+      "registrationId": 71,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11675,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJkNGIzMjBmYy1jOGZlLTQyNjctOWJjNC1kMDRlNTZiOGQ4ZTEiLCJ1c2VybmFtZSI6ImZpdHJpIiwiZXhwIjoxNzgxMDM2ODE4fQ.VQl_ot92Q-dsxvC3MdwxvI5GEsTWk-6KjqmNT-TNFmM",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "d4b320fc-c8fe-4267-9bc4-d04e56b8d8e1",
+            "username": "fitri",
+            "namaLengkap": "Fitri",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1192,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Vina Maharani.\nNRM: RMDUMMY26014\n\nSummary\nPerut kembung dan cepat kenyang, mual ringan. | TD 112/72 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen datar, nyeri epigastrium minimal.\n\nAssessment\nDispepsia tanpa tanda abdomen akut.\n\nPlan\nEdukasi pola makan teratur, hindari pemicu, observasi muntah berulang atau nyeri memberat.\n\nObat\n-\n\nICD\n- K30 - Dyspepsia\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1023,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Vina Maharani.\nNRM: RMDUMMY26014\n\nObjective\nTD 112/72 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen datar, nyeri epigastrium minimal.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 63700,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Vina Maharani.\nNRM: RMDUMMY26014\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\ndemam berkurang, masih lemas, nafsu makan mulai membaik\n\nAssessment\nDispepsia tanpa tanda abdomen akut, dengan demam yang sedang menurun dan gejala sistemik yang membaik. Tidak ada indikasi infeksi berat atau komplikasi gastrointestinal akut. Kondisi saat ini konsisten dengan dispepsia yang sedang dalam fase pemulihan.\n\nPlan\nTeruskan edukasi pola makan teratur, hindari makanan berlemak, pedas, dan bersoda. Pantau nafsu makan dan keluhan lemas. Ajarkan tanda bahaya: muntah berulang, nyeri perut memburuk, demam kembali, atau feses berdarah. Kembali kontrol dalam 2–3 hari jika tidak ada progres atau jika memburuk.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- K30 - Dyspepsia\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 45937,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "yudha",
+      "nurseFullName": "Yudha",
+      "patientName": "Yusuf Akbar",
+      "noRm": "RMDUMMY26015",
+      "registrationId": 72,
+      "doctorName": "dr, Haqqi Afzal",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11675,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI2NDVlMzJlYS0yMThiLTQ1MWQtOWE0YS1lOTIwNWI2NDJmZWEiLCJ1c2VybmFtZSI6Inl1ZGhhIiwiZXhwIjoxNzgxMDM2ODE4fQ.9Hu1Z4YpYnVY05F3iGgUBtvyKLpLh82ISto9aOl_D58",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "645e32ea-218b-451d-9a4a-e9205b642fea",
+            "username": "yudha",
+            "namaLengkap": "Yudha",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1216,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Yusuf Akbar.\nNRM: RMDUMMY26015\n\nSummary\nSakit kepala tegang setelah kurang tidur. | TD 120/78 mmHg, Nadi 76 bpm, Suhu 36.5 C, pemeriksaan neurologis normal.\n\nAssessment\nNyeri kepala ringan tanpa tanda neurologis akut.\n\nPlan\nAnjurkan istirahat, hidrasi, monitoring nyeri, evaluasi bila muncul muntah proyektil atau defisit neurologis.\n\nObat\n-\n\nICD\n- R51 - Headache\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1019,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Yusuf Akbar.\nNRM: RMDUMMY26015\n\nObjective\nTD 120/78 mmHg, Nadi 76 bpm, Suhu 36.5 C, pemeriksaan neurologis normal.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 70595,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Yusuf Akbar.\nNRM: RMDUMMY26015\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nNyeri kepala ringan tanpa tanda neurologis akut, demam sedang dalam proses penurunan, kondisi umum mulai membaik dengan masih ada kelelahan.\n\nPlan\nTeruskan monitoring suhu dan symptomatologi, pastikan hidrasi dan istirahat cukup, edukasi kembali tanda bahaya ( muntah proyektil, kejang, defisit neurologis), evaluasi ulang bila demam kembali atau lemas memburuk.\n\nObat\nParacetamol 500 mg setiap 6-8 jam bila diperlukan untuk nyeri kepala atau demam residual, maksimal 3 gram/hari.\n\nICD\n- R51 - Headache\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 80974,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "linda",
+      "nurseFullName": "Linda",
+      "patientName": "Tika Amelia",
+      "noRm": "RMDUMMY26016",
+      "registrationId": 73,
+      "doctorName": "dr. Andooon",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11677,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI1N2I0MDNjYS1hNTRiLTRiODAtYTUzZC1lYTQyYTlkYTAwYjYiLCJ1c2VybmFtZSI6ImxpbmRhIiwiZXhwIjoxNzgxMDM2ODE4fQ.X11LDus4ll9IyVSSplz_HavBgiPds6gPQ_CBtyJEgWc",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "57b403ca-a54b-4b80-a53d-ea42a9da00b6",
+            "username": "linda",
+            "namaLengkap": "Linda",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1197,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Tika Amelia.\nNRM: RMDUMMY26016\n\nSummary\nDemam disertai menggigil sejak semalam. | TD 112/70 mmHg, Nadi 98 bpm, Suhu 38.5 C, RR 21 x/menit.\n\nAssessment\nDemam akut dengan menggigil, perlu observasi sumber infeksi.\n\nPlan\nPantau suhu dan tanda vital, cairan cukup, evaluasi sumber infeksi, terapi simptomatik sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- R50.9 - Fever, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1026,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Tika Amelia.\nNRM: RMDUMMY26016\n\nObjective\nTD 112/70 mmHg, Nadi 98 bpm, Suhu 38.5 C, RR 21 x/menit.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 69605,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Tika Amelia.\nNRM: RMDUMMY26016\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nDemam akut dengan menggigil yang kini menunjukkan respons positif terhadap penurunan suhu, tanpa bukti infeksi berat atau komplikasi. Kondisi umum membaik dengan peningkatan nafsu makan, namun masih memerlukan observasi untuk pemulihan penuh.\n\nPlan\nPantau suhu dan tanda vital secara berkadar, pastikan asupan cairan dan nutrisi cukup, dorong istirahat, evaluasi kembali jika demam kembali atau muncul gejala baru, edukasi tanda bahaya.\n\nObat\nParacetamol 500 mg setiap 6-8 jam jika demam kembali >38.5°C, maksimal 3 gram/hari.\n\nICD\n- R50.9 - Fever, unspecified\n- R50 - Fever of other and unknown origin\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 90556,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "arif",
+      "nurseFullName": "Arif",
+      "patientName": "Fajar Nugroho",
+      "noRm": "RMDUMMY26017",
+      "registrationId": 74,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11678,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJkZjRlZmI0Yi0yZjhmLTRiMGQtYmQxMi0zMjI2NmI2MjNjMTUiLCJ1c2VybmFtZSI6ImFyaWYiLCJleHAiOjE3ODEwMzY4MTh9.m7T5o7S-XtaL6YZnx4oJ3QssXOivqJlnr0aPZymV6H0",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "df4efb4b-2f8f-4b0d-bd12-32266b623c15",
+            "username": "arif",
+            "namaLengkap": "Arif",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1210,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Fajar Nugroho.\nNRM: RMDUMMY26017\n\nSummary\nBatuk, pilek, nyeri tenggorokan ringan. | TD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3 C, faring hiperemis.\n\nAssessment\nISPA akut ringan.\n\nPlan\nEdukasi istirahat, cairan cukup, masker, observasi sesak atau demam tinggi.\n\nObat\n-\n\nICD\n- J06.9 - Acute upper respiratory infection, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1025,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Fajar Nugroho.\nNRM: RMDUMMY26017\n\nObjective\nTD 118/76 mmHg, Nadi 82 bpm, Suhu 37.3 C, faring hiperemis.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 72114,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Fajar Nugroho.\nNRM: RMDUMMY26017\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nISPA akut ringan dengan trend pemulihan: demam menurun, nafsu makan meningkat, tetapi masih ada kelelahan. Tidak ada tanda bakteri sekunder atau komplikasi. Kondisi saat ini sesuai dengan fase pulih infeksi viral saluran atas.\n\nPlan\nTeruskan edukasi istirahat cukup, konsumsi cairan dan nutrisi seimbang. Gunakan masker jika beraktivitas di luar rumah. Pantau suhu dan gejala napas. Kembali jika demam kembali >38°C, sesak napas, atau tidak ada peningkatan dalam 48–72 jam.\n\nObat\nParacetamol 500 mg setiap 6–8 jam jika diperlukan untuk nyeri atau demam (maks 3 g/hari). Tidak perlu antibiotik.\n\nICD\n- J06.9 - Acute upper respiratory infection, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 97538,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "vina",
+      "nurseFullName": "Vina",
+      "patientName": "Dewi Cahyani",
+      "noRm": "RMDUMMY26018",
+      "registrationId": 75,
+      "doctorName": "dr, Haqqi Afzal",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12601,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJiMzA3YWQwMy05YTU0LTRhOWUtODZlMC01Zjg4ZWM5OTE0OTYiLCJ1c2VybmFtZSI6InZpbmEiLCJleHAiOjE3ODEwMzY4MTl9.PA83EOSmqGMwLny4SVvldN7cky8p9kZgRFg6EB5dVHo",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "b307ad03-9a54-4a9e-86e0-5f88ec991496",
+            "username": "vina",
+            "namaLengkap": "Vina",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1201,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Dewi Cahyani.\nNRM: RMDUMMY26018\n\nSummary\nNyeri ulu hati setelah makan pedas, mual. | TD 110/72 mmHg, Nadi 84 bpm, Suhu 36.7 C, nyeri epigastrium.\n\nAssessment\nGastritis dipicu makanan dengan nyeri epigastrium.\n\nPlan\nHindari makanan pedas/asam, makan teratur, observasi muntah darah atau nyeri berat.\n\nObat\n-\n\nICD\n- K29.7 - Gastritis, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1009,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Dewi Cahyani.\nNRM: RMDUMMY26018\n\nObjective\nTD 110/72 mmHg, Nadi 84 bpm, Suhu 36.7 C, nyeri epigastrium.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 99580,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Dewi Cahyani.\nNRM: RMDUMMY26018\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nGastritis unspecified (K29.7) dengan demam yang sedang membaik (R50.9). Gejala subjektif menunjukkan respons baik terhadap konservasi, tanpa tanda parah atau komplikasi akut.\n\nPlan\nTeruskan diet lunak, hindari makanan pedas/asam, pastikan asupan cairan dan nutrisi cukup. Pantau terus demam, nyeri, dan nafsu makan. Kembali kontrol bila demam kembali, nyeri memburuk, atau muntah darah muncul.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- K29.7 - Gastritis, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 101012,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "faris",
+      "nurseFullName": "Faris",
+      "patientName": "Rangga Setiawan",
+      "noRm": "RMDUMMY26019",
+      "registrationId": 76,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 11691,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiIwZTMyNDgxOS04NWI0LTQ4YTItYjYwMi1lMjNlZTZlNmVmODciLCJ1c2VybmFtZSI6ImZhcmlzIiwiZXhwIjoxNzgxMDM2ODE4fQ.cCu0YSOuNHow35a-81TswFlKbe5INg5Qvw8aK9CM_lA",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "0e324819-85b4-48a2-b602-e23ee6e6ef87",
+            "username": "faris",
+            "namaLengkap": "Faris",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1185,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Rangga Setiawan.\nNRM: RMDUMMY26019\n\nSummary\nSakit kepala berdenyut sebelah, mual. | TD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6 C, tanda neurologis fokal tidak tampak.\n\nAssessment\nMigrain tanpa red flag neurologis.\n\nPlan\nIstirahat, kurangi stimulus cahaya, monitoring nyeri, terapi sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- G43 - Migraine\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1007,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Rangga Setiawan.\nNRM: RMDUMMY26019\n\nObjective\nTD 122/80 mmHg, Nadi 80 bpm, Suhu 36.6 C, tanda neurologis fokal tidak tampak.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 67286,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Rangga Setiawan.\nNRM: RMDUMMY26019\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nMigrain tanpa red flag neurologis dengan demam yang sedang dalam fase pemuluhan. Gejala awal sakit kepala berdenyut sebelah dan mual telah membaik, demam menurun, dan tidak ada tanda komplikasi atau infeksi berat.\n\nPlan\nIstirahat cukup, hidrasi, monitor terus perkembangan demam dan nyeri kepala, edukasi pencegah trigger migrain, kembali kontrol jika demam kembali atau neurologi memburuk.\n\nObat\nParacetamol 500 mg setiap 6-8 jam bila diperlukan untuk demam atau nyeri kepala (maks 3 g/hari), atau sesuai anjukan dokter.\n\nICD\n- G43 - Migraine\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 86779,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "desi",
+      "nurseFullName": "Desi",
+      "patientName": "Anisa Rahma",
+      "noRm": "RMDUMMY26020",
+      "registrationId": 77,
+      "doctorName": "dr. Andooon",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12602,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJlYmUwNDliYi1hMmVjLTQwZjktYjg1Mi04ZTFkNzAzNWZiZWYiLCJ1c2VybmFtZSI6ImRlc2kiLCJleHAiOjE3ODEwMzY4MTl9.GVJ0-FLoPc3AMN2OZQBd6rHEmaKpZrZ2zj3wE7QI-kc",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "ebe049bb-a2ec-40f9-b852-8e1d7035fbef",
+            "username": "desi",
+            "namaLengkap": "Desi",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1218,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Anisa Rahma.\nNRM: RMDUMMY26020\n\nSummary\nDiare dan mual sejak pagi, belum muntah. | TD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5 C, abdomen bising usus meningkat.\n\nAssessment\nGastroenteritis akut ringan.\n\nPlan\nPantau cairan masuk/keluar, oralit, edukasi tanda bahaya dehidrasi.\n\nObat\n-\n\nICD\n- A09 - Other gastroenteritis and colitis of infectious and unspecified origin\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1022,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Anisa Rahma.\nNRM: RMDUMMY26020\n\nObjective\nTD 110/70 mmHg, Nadi 92 bpm, Suhu 37.5 C, abdomen bising usus meningkat.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 57941,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Anisa Rahma.\nNRM: RMDUMMY26020\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nGastroenteritis akut ringan dengan trend pemulihan. Demam mulai menurun, nafsu makan meningkat, tanpa muntah atau tanda dehydrasi. Kondisi stabil dan responsif terhadap perawatan konservatif.\n\nPlan\nTeruskan oralit dan monitoring cairan. Edukasi tanda bahaya dehydrani. Evaluasi ulang dalam 24 jam jika tidak ada penurunan lemas atau kembali demam.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- A09 - Other gastroenteritis and colitis of infectious and unspecified origin\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 121083,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "alif",
+      "nurseFullName": "Alif",
+      "patientName": "Iqbal Ramadhan",
+      "noRm": "RMDUMMY26021",
+      "registrationId": 78,
+      "doctorName": "dr, Haqqi Afzal",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12604,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI0MzBiYjRkMS1hODVhLTQ4NmItODhkMi1mMDI5MTI2NjFlNGUiLCJ1c2VybmFtZSI6ImFsaWYiLCJleHAiOjE3ODEwMzY4MTl9.04jxMjaS255Qtgirz4o4PODUeN2g-epDKbIgjYXu_rQ",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "430bb4d1-a85a-486b-88d2-f02912661e4e",
+            "username": "alif",
+            "namaLengkap": "Alif",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1204,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Iqbal Ramadhan.\nNRM: RMDUMMY26021\n\nSummary\nGatal pada kulit setelah memakai sabun baru. | TD 116/74 mmHg, Nadi 78 bpm, Suhu 36.6 C, ruam ringan pada lengan.\n\nAssessment\nPruritus kemungkinan reaksi iritan ringan.\n\nPlan\nHentikan pemicu, perawatan kulit, observasi tanda alergi berat.\n\nObat\n-\n\nICD\n- L29.9 - Pruritus, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1016,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Iqbal Ramadhan.\nNRM: RMDUMMY26021\n\nObjective\nTD 116/74 mmHg, Nadi 78 bpm, Suhu 36.6 C, ruam ringan pada lengan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 40860,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Iqbal Ramadhan.\nNRM: RMDUMMY26021\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik, ruam ringan pada lengan tanpa perubahan signifikan.\n\nAssessment\nPruritus kemungkinan reaksi iritan ringan (L29.9) dengan demam yang sedang dalam proses pemulihan (R50.9). Tidak ada tanda infeksi sistemik atau reaksi alergi berat berdasarkan vital sign stabil dan tidak ada gejala baru yang mengarah pada anafilaksis atau komplikasi.\n\nPlan\nTeruskan pemantauan kondisi kulit dan sistemik. Edukasi pasien untuk menghindari pemicu sabun yang diduga menyebabkan iritasi. Gunakan pelembap bila diperlukan. Jika demam kembali atau ruam menyebar/menambah, segera evaluasi ulang. Libatkan dokter jika muncul tanda infeksi atau reaksi alergi berat.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- L29.9 - Pruritus, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 118757,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "intan",
+      "nurseFullName": "Intan",
+      "patientName": "Putri Noviana",
+      "noRm": "RMDUMMY26022",
+      "registrationId": 79,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12672,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI3ZTlmNTQyNi1jNjA1LTRmZTgtYjU4ZS1hZmU2OTdmNDQxMzEiLCJ1c2VybmFtZSI6ImludGFuIiwiZXhwIjoxNzgxMDM2ODE5fQ.it2PQL-YMa1sBM7HYxUhs9pQXU1WiasJFv9l5YIP6nk",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "7e9f5426-c605-4fe8-b58e-afe697f44131",
+            "username": "intan",
+            "namaLengkap": "Intan",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1217,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Putri Noviana.\nNRM: RMDUMMY26022\n\nSummary\nSesak ringan saat malam dan batuk kering. | TD 112/72 mmHg, Nadi 90 bpm, RR 23 x/menit, wheezing ringan.\n\nAssessment\nAsma ringan dengan wheezing.\n\nPlan\nPantau napas, posisikan nyaman, evaluasi bronkodilator sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- J45.9 - Asthma, unspecified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1010,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Putri Noviana.\nNRM: RMDUMMY26022\n\nObjective\nTD 112/72 mmHg, Nadi 90 bpm, RR 23 x/menit, wheezing ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 99506,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Putri Noviana.\nNRM: RMDUMMY26022\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nAsma ringan dengan wheezing (J45.9) tetap menjadi diagnosis utama. Demam yang sebelumnya ada kini menunjukkan penurunan, sehingga tidak lagi menjadi fokus klinis aktif. Tidak ada tanda infeksi berat atau komplikasi baru.\n\nPlan\nPantau napas dan kondisi umum, pastikan hidrasi dan istirahat cukup. Evaluasi respons terhadap terapi bronkodilator jika diberikan. Edukasi tentang tanda peringatan asma. Kunjungi kembali jika muncul sesak berat, wheezing memburuk, atau demam kembali tinggi.\n\nObat\n- (Tidak ada rekomendasi obat baru; asumsikan pasien masih menggunakan inhaler sesuai rencana dokter sebelumnya. Jika belum ada resep aktif, tidak disarankan memulai obat baru tanpa evaluasi langsung.)\n\nICD\n- J45.9 - Asthma, unspecified\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 121489,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "hafiz",
+      "nurseFullName": "Hafiz",
+      "patientName": "Bayu Firmansyah",
+      "noRm": "RMDUMMY26023",
+      "registrationId": 80,
+      "doctorName": "dr. Andooon",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12628,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJkZTRkMTNlOC1mZjgwLTQzM2ItYjhiNi03NzYxMGUxM2ZmZWUiLCJ1c2VybmFtZSI6ImhhZml6IiwiZXhwIjoxNzgxMDM2ODE5fQ.BQcQ-CJ5z7MEdzpqLuns4nfY973bn1-WxMze1Fn-1wM",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "de4d13e8-ff80-433b-b8b6-77610e13ffee",
+            "username": "hafiz",
+            "namaLengkap": "Hafiz",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1218,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Bayu Firmansyah.\nNRM: RMDUMMY26023\n\nSummary\nNyeri BAK dan urine terasa keruh. | TD 118/76 mmHg, Nadi 88 bpm, Suhu 37.7 C, nyeri suprapubik.\n\nAssessment\nISK dicurigai dengan disuria dan urine keruh.\n\nPlan\nAnjurkan cairan, pertimbangkan urinalisis, pantau demam/nyeri pinggang.\n\nObat\n-\n\nICD\n- N39.0 - Urinary tract infection, site not specified\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1012,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Bayu Firmansyah.\nNRM: RMDUMMY26023\n\nObjective\nTD 118/76 mmHg, Nadi 88 bpm, Suhu 37.7 C, nyeri suprapubik.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 99002,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Bayu Firmansyah.\nNRM: RMDUMMY26023\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik, nyeri suprapubik masih ada.\n\nAssessment\nISK dicurigai dengan disuria dan urine keruh, dengan respons klinis parsial: demam menurun dan nafsu makan membaik, tetapi nyeri suprapubik masih ada dan pasien masih lemas, menunjukkan penyelesaian belum maksimal.\n\nPlan\nTeruskan konsumsi cairan cukup, lakukan urinalisis untuk konfirmasi diagnosis, pantau nyeri suprapubik dan tingkat lemas, pertimbangkan antibiotik jika hasil urinalisis mendukung ISK dan tidak ada kontraindikasi.\n\nObat\nR50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- N39.0 - Urinary tract infection, site not specified\n- R50.9 - Fever, unspecified\n\nTriage\nMODERATE",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 111463,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "dewi",
+      "nurseFullName": "Dewi",
+      "patientName": "Citra Damayanti",
+      "noRm": "RMDUMMY26024",
+      "registrationId": 81,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12633,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJkMTU5NWU1NS0wOTdiLTQ0MTctYWRjMC01YjVmYzQ0NjU0MDYiLCJ1c2VybmFtZSI6ImRld2kiLCJleHAiOjE3ODEwMzY4MTl9.OjLHnZEQMiwAQ-6Ikbm32yFyFuwf12RF7xLHtwFOf2I",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "d1595e55-097b-4417-adc0-5b5fc4465406",
+            "username": "dewi",
+            "namaLengkap": "Dewi",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1206,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Citra Damayanti.\nNRM: RMDUMMY26024\n\nSummary\nNyeri punggung bawah setelah duduk lama. | TD 114/74 mmHg, Nadi 76 bpm, Suhu 36.5 C, nyeri tekan lumbal ringan.\n\nAssessment\nLow back pain muskuloskeletal ringan.\n\nPlan\nEdukasi postur, mobilisasi bertahap, kompres hangat, evaluasi bila nyeri menjalar.\n\nObat\n-\n\nICD\n- M54.5 - Low back pain\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1030,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Citra Damayanti.\nNRM: RMDUMMY26024\n\nObjective\nTD 114/74 mmHg, Nadi 76 bpm, Suhu 36.5 C, nyeri tekan lumbal ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 97200,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Citra Damayanti.\nNRM: RMDUMMY26024\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik, nyeri punggung bawah tetap ada tanpa perubahan signifikan.\n\nAssessment\nLow back pain muskuloskeletal ringan dengan demam yang sedang dalam proses pemulihan. Tidak ada indikasi infeksi sistemik berat atau penyakit dasar berdasarkan data subjektif dan objektif terkini.\n\nPlan\nTeruskan edukasi postur dan ergonomi duduk. Mobilisasi ringan dan stretching punggung bawah dapat ditingkatkan sesuai toleransi. Kompres hangat tetap disarankan untuk nyeri. Pantau suhu dan gejala sistemik setiap 24 jam. Evaluasi ulang bila demam kembali, nafsu makan menurun drastis, atau nyeri menjalar ke anggota bawah.\n\nObat\nParacetamol 500 mg setiap 6-8 jam bila diperlukan untuk nyeri atau jika suhu naik >37.5°C (jika belum terkonsumsi).\n\nICD\n- M54.5 - Low back pain\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 120071,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "ridwan",
+      "nurseFullName": "Ridwan",
+      "patientName": "Ilham Pratama",
+      "noRm": "RMDUMMY26025",
+      "registrationId": 82,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12634,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI5YmU5Y2Q5ZS0wMTE4LTRlMjUtODljMC04ZmM0ZjI3YzlmMGUiLCJ1c2VybmFtZSI6InJpZHdhbiIsImV4cCI6MTc4MTAzNjgxOX0.E_cr9H3td0ms0NnkiNQWgH-mtDpTSax6xDrVnhjPlaY",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "9be9cd9e-0118-4e25-89c0-8fc4f27c9f0e",
+            "username": "ridwan",
+            "namaLengkap": "Ridwan",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1221,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Ilham Pratama.\nNRM: RMDUMMY26025\n\nSummary\nPusing, leher terasa berat, riwayat hipertensi. | TD 154/96 mmHg, Nadi 84 bpm, Suhu 36.7 C, kesadaran baik.\n\nAssessment\nHipertensi dengan keluhan pusing tanpa tanda kegawatan.\n\nPlan\nPantau tekanan darah, edukasi rendah garam, evaluasi regimen obat dan follow up dokter.\n\nObat\n-\n\nICD\n- I10 - Essential (primary) hypertension\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1031,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Ilham Pratama.\nNRM: RMDUMMY26025\n\nObjective\nTD 154/96 mmHg, Nadi 84 bpm, Suhu 36.7 C, kesadaran baik.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 102365,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Ilham Pratama.\nNRM: RMDUMMY26025\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nHipertensi esensial (I10) tetap menjadi diagnosis utama dengan kontrol tekanan darah belum optimal. Demam sebelumnya menunjukkan peningkatan yang baik, sehingga tidak lagi aktif sebagai masalah klinis utama. Tidak ada tanda infeksi berat atau komplikasi akut saat ini.\n\nPlan\nTerus monitor tekanan darah dan gejala hipertensi. Edukasi patuh konsumsi obat hipertensi, diet rendah garam, dan cukup istirahat. Evaluasi ulang dalam 3-5 hari atau lebih awal jika gejala berat kembali. Tidak perlu antibiotik atau antipiretik karena demam sudah membaik.\n\nObat\n- (Lanjutkan obat hipertensi sesuai reseptor sebelumnya, bila belum diketahui: amlodipine 5 mg sekali sehari atau sesuai anjukan dokter)\n\nICD\n- I10 - Essential (primary) hypertension\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 53054,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "melati",
+      "nurseFullName": "Melati",
+      "patientName": "Nadia Fitriani",
+      "noRm": "RMDUMMY26026",
+      "registrationId": 83,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12674,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI2NTE4YWNjNy1mNzE5LTQwZTQtYTE1OS0xNzgwMWU4ZDgzODgiLCJ1c2VybmFtZSI6Im1lbGF0aSIsImV4cCI6MTc4MTAzNjgxOX0.KLkrJ6ehtaE_uYEb6sNMhSOHpctHzy3XNAr8fK2Assc",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "6518acc7-f719-40e4-a159-17801e8d8388",
+            "username": "melati",
+            "namaLengkap": "Melati",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1193,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Nadia Fitriani.\nNRM: RMDUMMY26026\n\nSummary\nPegal otot dan badan terasa nyeri setelah aktivitas. | TD 110/70 mmHg, Nadi 82 bpm, Suhu 36.8 C, nyeri otot ekstremitas ringan.\n\nAssessment\nMialgia ringan setelah aktivitas.\n\nPlan\nIstirahat, hidrasi, kompres hangat, evaluasi bila nyeri memburuk atau disertai demam.\n\nObat\n-\n\nICD\n- M79.1 - Myalgia\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1032,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Nadia Fitriani.\nNRM: RMDUMMY26026\n\nObjective\nTD 110/70 mmHg, Nadi 82 bpm, Suhu 36.8 C, nyeri otot ekstremitas ringan.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 73868,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Nadia Fitriani.\nNRM: RMDUMMY26026\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik, nyeri otot ekstremitas ringan.\n\nAssessment\nMialgia ringan setelah aktivitas dengan demam yang sedang menurun, menunjukkan respons baik terhadap perawatan konservatif. Tidak ada tanda infeksi berat atau komplikasi.\n\nPlan\nIstirahat, hidrasi cukup, kompres hangat pada area nyeri, monitor suhu dan gejala secara rutin. Kembali jika demam kembali tinggi, nyeri memburuk, atau muncul tanda infeksi lain.\n\nObat\nParacetamol 500 mg setiap 6-8 jam bila diperlukan untuk nyeri atau demam, maksimal 3 gram/hari.\n\nICD\n- M79.1 - Myalgia\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 123053,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "farhan",
+      "nurseFullName": "Farhan",
+      "patientName": "Arif Rahman",
+      "noRm": "RMDUMMY26027",
+      "registrationId": 84,
+      "doctorName": "dr, Haqqi Afzal",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12637,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI3YWVmZDQ0NS0zMTgyLTQwNTktODViZi0wYWFkMzAwMmYzOGYiLCJ1c2VybmFtZSI6ImZhcmhhbiIsImV4cCI6MTc4MTAzNjgxOX0.FdOJcCjjnbjPQYs-rhU2CGLRf3NbWNud7d8K0L4o264",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "7aefd445-3182-4059-85bf-0aad3002f38f",
+            "username": "farhan",
+            "namaLengkap": "Farhan",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1208,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Arif Rahman.\nNRM: RMDUMMY26027\n\nSummary\nPilek, bersin, hidung tersumbat sejak kemarin. | TD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9 C, sekret hidung jernih.\n\nAssessment\nCommon cold dengan gejala ringan.\n\nPlan\nEdukasi istirahat, cairan cukup, kebersihan tangan, terapi simptomatik sesuai instruksi dokter.\n\nObat\n-\n\nICD\n- J00 - Acute nasopharyngitis [common cold]\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1040,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Arif Rahman.\nNRM: RMDUMMY26027\n\nObjective\nTD 118/76 mmHg, Nadi 80 bpm, Suhu 36.9 C, sekret hidung jernih.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 97453,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Arif Rahman.\nNRM: RMDUMMY26027\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nCommon cold (J00) dengan perbaikan klinis: demam menurun, nafsu makan meningkat, tanpa tanda komplikasi atau infeksi sekunder.\n\nPlan\nTeruskan istirahat, konsumsi cairan cukup, monitor suhu dan gejala sehari-hari. Edukasi tanda bahaya yang perlu dikembalikan ke fasilitas kesehatan jika demam kembali atau muncul sesak napas.\n\nObat\nParacetamol 500 mg setiap 6-8 jam jika diperlukan untuk demam atau nyeri (maks 3 gram/hari), bila masih diperlukan berdasarkan nyeri atau tidak nyenyak.\n\nICD\n- J00 - Acute nasopharyngitis [common cold]\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 124165,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "ayu",
+      "nurseFullName": "Ayu",
+      "patientName": "Sinta Melani",
+      "noRm": "RMDUMMY26028",
+      "registrationId": 85,
+      "doctorName": "dr. Andooon",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12676,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI4MzI1N2ZkNy0xNTdiLTQ2MzctOWViNC0zMTJmMzEzYzkyMTMiLCJ1c2VybmFtZSI6ImF5dSIsImV4cCI6MTc4MTAzNjgxOX0.nFh7L5cQL7qGEsJUk_M5pd4ot5U7a5CtN5uXzNvTcF8",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "83257fd7-157b-4637-9eb4-312f313c9213",
+            "username": "ayu",
+            "namaLengkap": "Ayu",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1211,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Sinta Melani.\nNRM: RMDUMMY26028\n\nSummary\nMudah lelah dan sering haus, kontrol gula darah. | TD 120/78 mmHg, Nadi 82 bpm, Suhu 36.6 C, tanpa keluhan akut berat.\n\nAssessment\nDM tipe 2 tanpa komplikasi akut pada kunjungan ini.\n\nPlan\nMonitoring gula darah, edukasi diet dan kepatuhan obat, follow up teratur.\n\nObat\n-\n\nICD\n- E11.9 - Non-insulin-dependent diabetes mellitus ,  Without complications\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1034,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Sinta Melani.\nNRM: RMDUMMY26028\n\nObjective\nTD 120/78 mmHg, Nadi 82 bpm, Suhu 36.6 C, tanpa keluhan akut berat.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 94603,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Sinta Melani.\nNRM: RMDUMMY26028\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\ndemam berkurang, masih lemas, nafsu makan mulai membaik\n\nAssessment\nDM tipe 2 tanpa komplikasi akut dengan demang yang sedang membaik (fever resolving), tidak ada tanda infeksi aktif atau hipoglikemia.\n\nPlan\nTeruskan monitoring gula darah dan hidrasi, edukasi pola makan yang seimbang, evaluasi kembali jika lemas tidak membaik dalam 24-48 jam, follow up sesuai rutin.\n\nObat\nE11.9: lanjutkan terapi antidiabetik sesuai regimen dokter dan monitor glukosa; jangan memulai obat baru tanpa verifikasi regimen yang sedang berjalan. R50.9: parasetamol untuk demam/nyeri dan hidrasi adekuat; evaluasi penyebab demam tetap diperlukan. Verifikasi alergi, fungsi ginjal, risiko perdarahan/GI, kehamilan, dan regimen obat yang sudah berjalan sebelum pemberian.\n\nICD\n- E11.9 - Non-insulin-dependent diabetes mellitus ,  Without complications\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 117010,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "fikri",
+      "nurseFullName": "Fikri",
+      "patientName": "Galih Wicaksono",
+      "noRm": "RMDUMMY26029",
+      "registrationId": 86,
+      "doctorName": "dr. Ridhooo",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12639,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiJjY2U0ZDAyZi0xNTc2LTRlNDktYTcxYy1mM2E3ZjQzMWRlOWYiLCJ1c2VybmFtZSI6ImZpa3JpIiwiZXhwIjoxNzgxMDM2ODE5fQ.akd8iAPECexqd2LB1E-raMK4gxnGMWc1uAKfwAyWCAE",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "cce4d02f-1576-4e49-a71c-f3a7f431de9f",
+            "username": "fikri",
+            "namaLengkap": "Fikri",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1219,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Galih Wicaksono.\nNRM: RMDUMMY26029\n\nSummary\nPerut terasa begah, mual, sendawa berulang. | TD 116/74 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen tanpa tanda akut.\n\nAssessment\nDispepsia fungsional ringan.\n\nPlan\nAtur pola makan, hindari pemicu, observasi nyeri berat atau muntah berulang.\n\nObat\n-\n\nICD\n- K30 - Dyspepsia\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1039,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Galih Wicaksono.\nNRM: RMDUMMY26029\n\nObjective\nTD 116/74 mmHg, Nadi 80 bpm, Suhu 36.6 C, abdomen tanpa tanda akut.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 103039,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Galih Wicaksono.\nNRM: RMDUMMY26029\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\nDemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nAssessment\nDispepsia fungsional ringan dengan demam yang sedang dalam proses pemuluhan. Gejala sistemik seperti demam dan lemas menunjukkan respons terhadap proses inflamatori atau infeksi ringan yang sedang membaik, tanpa tanda komplikasi atau ketidakstabilan hemodinamik.\n\nPlan\nTeruskan atur pola makan, hindari pemicu dispepsia, pastikan asupan nutrisi dan hidrasi cukup sesuai dengan nafsu makan yang membaik. Pantau suhu dan gejala sistemik secara berkala. Jika demam kembali atau lemas memburuk, pertimbangkan evaluasi ulang.\n\nObat\nParacetamol 500 mg setiap 6-8 jam jika diperlukan untuk demam atau nyeri (maks 3g/hari). Gunakan hanya jika demam kembali atau tidak nyaman.\n\nICD\n- K30 - Dyspepsia\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 124121,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    },
+    {
+      "nurseUsername": "zahra",
+      "nurseFullName": "Zahra",
+      "patientName": "Zahra Oktavia",
+      "noRm": "RMDUMMY26030",
+      "registrationId": 87,
+      "doctorName": "dr. Afzal Haqqi",
+      "login": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 12677,
+        "sessionCookie": "eyJwZXJhd2F0SWQiOiI4ZDgwMDFhOC01ODM1LTRhZTYtOTQwMS1hNDY0YmViMzI1Y2YiLCJ1c2VybmFtZSI6InphaHJhIiwiZXhwIjoxNzgxMDM2ODE5fQ.Jrt1Pmezzsr4ARjs3Rb9auMpaeIwxd97F1ye4Nq8UHM",
+        "body": {
+          "message": "Login berhasil.",
+          "role": "perawat",
+          "redirectTo": "/dashboard",
+          "perawat": {
+            "id": "8d8001a8-5835-4ae6-9401-a464beb325cf",
+            "username": "zahra",
+            "namaLengkap": "Zahra",
+            "status": "On Duty"
+          }
+        }
+      },
+      "summary": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1226,
+        "toolsUsed": [
+          "clinical_summary"
+        ],
+        "message": "Ringkasan kondisi pasien untuk Zahra Oktavia.\nNRM: RMDUMMY26030\n\nSummary\nSakit kepala ringan sejak siang, tidak muntah. | TD 112/70 mmHg, Nadi 78 bpm, Suhu 36.5 C, neurologis dalam batas normal.\n\nAssessment\nSakit kepala ringan tanpa tanda bahaya.\n\nPlan\nIstirahat, hidrasi, monitoring keluhan, evaluasi bila memburuk atau muncul gejala neurologis.\n\nObat\n-\n\nICD\n- R51 - Headache\n\nTriage\nEXAMINED",
+        "error": null
+      },
+      "objective": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1042,
+        "toolsUsed": [
+          "external_examinations_objective_summary"
+        ],
+        "message": "Ringkasan objective pasien untuk Zahra Oktavia.\nNRM: RMDUMMY26030\n\nObjective\nTD 112/70 mmHg, Nadi 78 bpm, Suhu 36.5 C, neurologis dalam batas normal.\n\nTriage\nEXAMINED\n\nSumber Data\nexternal_examinations.soap_objective",
+        "error": null
+      },
+      "update": {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 102366,
+        "toolsUsed": [
+          "clinical_notes_chat_update"
+        ],
+        "message": "Update subjective dari triage chat berhasil disimpan ke clinical notes untuk Zahra Oktavia.\nNRM: RMDUMMY26030\n\nUpdate Kondisi Terbaru\ndemam berkurang, masih lemas, nafsu makan mulai membaik.\n\nKondisi Pasien\ndemam berkurang, masih lemas, nafsu makan mulai membaik\n\nAssessment\nSakit kepala ringan tanpa tanda bahaya, dengan demam yang sedang dalam proses penurunan dan gejala sistemik ringan (lemas, nafsu makan meningkat). Tidak ada indikasi infeksi berat atau komplikasi.\n\nPlan\nIstirahat cukup, hidrasi yang cukup, monitoring terus demam dan keluhan lemas, edukasi tanda bahaya (demam tinggi kembali, muntah, kejang, kelemahan ekstrem), evaluasi bila tidak ada peningkatan signifikan dalam 24 jam atau kondisi memburuk.\n\nObat\nParacetamol 500 mg setiap 6-8 jam bila diperlukan untuk demam atau nyeri kepala, maksimal 3 gram/hari\n\nICD\n- R51 - Headache\n- R50.9 - Fever, unspecified\n\nTriage\nLOW",
+        "error": null
+      },
+      "generate": {
+        "ok": true,
+        "status": 201,
+        "latencyMs": 40471,
+        "toolsUsed": [],
+        "message": null,
+        "error": null
+      }
+    }
+  ]
+}

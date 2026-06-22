@@ -1,0 +1,9 @@
+{
+  "totalCases": 30,
+  "completeReferences": 30,
+  "partialReferences": 0,
+  "missingRequiredData": 0,
+  "usableForNlpEvaluation": 30,
+  "notUsableForNlpEvaluation": 0,
+  "missingFieldCounts": {}
+}

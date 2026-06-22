@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{l r r r r r r r r r r}
+\hline
+Stage & Total Cases & Diagnosis-Related Outputs & Supported ICD-10 Outputs & Unsupported Diagnosis & ICD-10 Grounding Accuracy & Unsupported Diagnosis Rate & ICD-10 Retrieval Accuracy & Missing ICD-10 Rate & Wrong ICD-10 Rate & Avg. Latency \\
+\hline
+Clinical summary & 30 & 30 & 30 & 0 & 100.0\% & 0.0\% & 100.0\% & 0.0\% & 0.0\% & 2318 ms \\
+Objective summary & 30 & N/A & N/A & N/A & N/A & N/A & N/A & N/A & N/A & 984 ms \\
+Update kondisi pasien & 30 & 30 & 30 & 25 & 100.0\% & 83.3\% & 16.7\% & 0.0\% & 83.3\% & 76996 ms \\
+Generate clinical notes & 30 & 30 & 30 & 0 & 100.0\% & 0.0\% & 100.0\% & 0.0\% & 0.0\% & 128767 ms \\
+\hline
+\end{tabular}
+\caption{Phase 4 ICD-10 grounding evaluation across concurrent workflow stages. Objective summary is treated as N/A for ICD-10 grounding.}
+\label{tab:phase4-icd10-grounding}
+\end{table}

@@ -1,0 +1,21 @@
+# 4.6.2.3 Hasil Evaluasi Metrik Sistem DARSI
+
+Pengujian otomatis sistem DARSI dilakukan menggunakan 150 skenario yang dibagi merata ke dalam lima workflow utama, yaitu Triage dan Monitoring Pasien, SOAP dan Clinical Notes, ICD-10 dan Rekomendasi Klinis, Nurse Assistant Operasional, serta Pertanyaan Umum Perawat. Setiap workflow diuji menggunakan 30 skenario. Data dasar pengujian memanfaatkan 30 pasangan perawat-pasien dengan pola satu perawat menangani satu pasien, lalu pasangan yang sama digunakan kembali pada lima workflow agar konteks klinis, operasional, dan percakapan tetap konsisten pada seluruh evaluasi.
+
+Pada rancangan evaluasi ini, skenario yang membutuhkan tool calling diarahkan ke model klinis dan operasional berbasis NVIDIA Nemotron, sedangkan skenario pertanyaan umum perawat diarahkan ke model MedGemma tanpa tools melalui route nurse assistant. Dengan pendekatan tersebut, evaluasi tidak hanya mengukur kualitas jawaban teks, tetapi juga kemampuan sistem dalam memilih endpoint, menjalankan workflow yang sesuai, menggunakan tools yang tepat, dan menjaga grounding terhadap sumber data klinis yang tersedia.
+
+Eksekusi runner pada lingkungan pengembangan ini dilakukan dalam mode offline berbasis artefak referensi dan hasil workflow yang sudah tersedia di repository, karena endpoint live tidak diverifikasi aktif pada saat pengujian dijalankan. Mekanisme ini tetap menjaga konsistensi struktur skenario, kontrak endpoint, pemetaan model, dan perhitungan metrik sehingga dapat dijadikan baseline evaluasi otomatis sebelum eksekusi live pada server on-premise.
+
+Secara keseluruhan, sistem memperoleh nilai Accuracy 0.9024, F1-Score 1.0000, BLEU 1.0000, serta nilai heuristik perplexity 6.000. Task Success Rate keseluruhan tercatat 98.67%, dengan Tool Success Rate 100.00%. Rata-rata waktu respons sistem berada pada 31.113 detik per skenario, sedangkan Hallucination Rate berada pada 0.00%.
+
+Pada workflow Triage dan Monitoring Pasien, sistem mencapai Accuracy 0.8133 dan Task Success Rate 100.00%. Nilai ini menunjukkan bahwa alur /api/chat sudah mampu menghasilkan ringkasan kondisi pasien, assessment, plan, dan indikator triase secara konsisten terhadap konteks SOAP serta clinical notes terbaru.
+
+Pada workflow SOAP dan Clinical Notes, nilai Accuracy tercatat 0.9942 dengan Tool Success Rate 100.00%. Hasil ini menunjukkan bahwa mekanisme pembaruan clinical notes dari triage chat dapat dievaluasi secara otomatis baik dari sisi keberhasilan tugas maupun dari sisi kecocokan tools yang diharapkan dengan tools yang benar-benar dijalankan.
+
+Pada workflow ICD-10 dan Rekomendasi Klinis, sistem memperoleh F1-Score 1.0000 dan BLEU 1.0000. Metrik ini digunakan untuk menilai sejauh mana diagnosis ICD-10, assessment, dan rekomendasi tindak lanjut yang dihasilkan tetap selaras dengan referensi klinis yang dibangun dari external_examinations, clinical_notes, serta tabel icd10_diagnoses.
+
+Pada workflow Nurse Assistant Operasional, sistem mencatat Task Success Rate 100.00% dan Tool Success Rate 100.00%. Temuan ini menunjukkan bahwa route /api/nurse-chat dapat dibedakan dengan baik untuk kebutuhan operasional, khususnya saat perawat membutuhkan ringkasan pasien yang sedang ditangani.
+
+Sementara itu, pada workflow Pertanyaan Umum Perawat, sistem berbasis MedGemma mencapai Accuracy 0.9145 dengan Tool Success Rate N/A karena skenario ini memang tidak memerlukan tool calling. Hasil tersebut menegaskan bahwa DARSI membedakan dengan jelas antara pertanyaan umum perawat dan permintaan yang membutuhkan akses data operasional atau klinis.
+
+Dengan demikian, Accuracy dan F1-Score dapat digunakan sebagai metrik utama untuk menilai kesesuaian isi jawaban, sedangkan BLEU dan heuristik perplexity berfungsi sebagai metrik pelengkap untuk melihat kedekatan tekstual dan konsistensi bahasa. Task Success Rate dan Tool Success Rate memberikan gambaran operasional apakah workflow berhasil diselesaikan sesuai rancangan, sedangkan Hallucination Rate berfungsi sebagai pagar keselamatan agar jawaban sistem tetap berlandaskan pada sumber data yang tersedia.
