@@ -34,19 +34,150 @@ DARSI Nurse adalah aplikasi Next.js untuk workflow perawat: login/register peraw
   - Ollama lokal/remote, atau
   - endpoint OpenAI-compatible
 
-## Quick Start
+## Langkah Instalasi di VM Baru Setelah `git pull`
+
+Jika repository sudah berhasil Anda `pull` ke VM baru, urutan yang direkomendasikan adalah sebagai berikut.
+
+### 1. Masuk ke folder proyek
 
 ```bash
-git clone <PRIVATE_REPOSITORY_URL>
-cd darsi-nurse
+cd <LOKASI_PROYEK>/darsi-nurse
+```
 
+### 2. Pasang dependency sistem yang dibutuhkan
+
+```bash
+sudo apt update
+sudo apt install -y git curl build-essential python3 make g++ postgresql-client rsync
+```
+
+Jika VM baru juga akan menjadi reverse proxy publik:
+
+```bash
+sudo apt install -y nginx
+```
+
+Jika model dijalankan lokal di VM yang sama, instal Ollama juga.
+
+### 3. Instal dan aktifkan Node.js sesuai versi proyek
+
+```bash
+source ~/.nvm/nvm.sh
 nvm install
 nvm use
 
+node --version
+npm --version
+```
+
+Target minimum proyek ini adalah `Node.js 20.9.0`.
+
+### 4. Install dependency proyek
+
+```bash
 npm ci
+```
+
+### 5. Siapkan file environment
+
+```bash
 cp .env.example .env
 nano .env
+chmod 600 .env
+```
 
+Minimal isi dengan benar:
+
+- `HOSPITAL_CS_DATABASE_URL`
+- `DATABASE_URL` jika koneksi legacy masih dipakai
+- `AUTH_SECRET`
+- `LOG_ADMIN_USERNAME` dan `LOG_ADMIN_PASSWORD` bila panel log admin dipakai
+- `OLLAMA_HOST` atau `LLM_*` sesuai server model Anda
+- `DARSI_PORTAL_URL` dan `NURSE_APP_HOSTS` bila domain production berubah
+
+### 6. Verifikasi koneksi database
+
+```bash
+psql "<HOSPITAL_CS_DATABASE_URL>" -c "SELECT NOW();"
+```
+
+Jika legacy database masih dipakai:
+
+```bash
+psql "<DATABASE_URL>" -c "SELECT NOW();"
+```
+
+### 7. Verifikasi koneksi model AI
+
+Jika pakai Ollama:
+
+```bash
+curl http://127.0.0.1:11434/api/tags
+```
+
+Jika pakai OpenAI-compatible server:
+
+```bash
+curl http://<MODEL_SERVER_HOST>:<PORT>/v1/models
+```
+
+### 8. Jalankan pengecekan proyek
+
+```bash
+npm run lint
+npm run build
+```
+
+Catatan: saat dokumentasi ini dibuat pada Jumat, 17 Juli 2026, `npm run build` berhasil tetapi `npm run lint` masih gagal karena issue kode yang sudah ada di repo.
+
+### 9. Sesuaikan konfigurasi PM2 untuk path VM baru
+
+Sebelum start PM2, review file berikut karena masih berisi path VM lama:
+
+- `ecosystem.config.js`
+- `pm2-run.sh`
+
+Bagian yang biasanya perlu diganti:
+
+- `cwd`
+- `script`
+- `error_file`
+- `out_file`
+- `APP_DIR`
+
+### 10. Jalankan aplikasi dengan PM2
+
+```bash
+mkdir -p logs
+pm2 start ecosystem.config.js
+pm2 status
+pm2 logs darsi-nurse
+```
+
+### 11. Aktifkan PM2 agar tetap jalan setelah reboot
+
+```bash
+pm2 save
+pm2 startup
+```
+
+### 12. Jika memakai Nginx, arahkan domain ke backend
+
+Pada deployment lama yang aktif saat ini, backend berjalan di `10.9.23.205:6767` dan dipublish ke `https://darsi.nrs.hcm-lab.id/`.
+
+Di VM baru, sesuaikan `proxy_pass` ke port backend yang Anda pakai. Jika mengikuti PM2 saat ini, backend ada di `127.0.0.1:6767`.
+
+### 13. Verifikasi akhir
+
+```bash
+curl -I http://127.0.0.1:6767
+pm2 status
+sudo nginx -t
+```
+
+Jika ingin menjalankan lokal untuk development saja, gunakan:
+
+```bash
 npm run dev
 ```
 
