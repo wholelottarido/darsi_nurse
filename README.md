@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DARSI Nurse
 
-## Getting Started
+DARSI Nurse adalah aplikasi Next.js untuk workflow perawat: login/register perawat, dashboard pasien, triage IGD, asisten perawat berbasis AI, chat perawat, ringkasan klinis, dan audit log interaksi agent.
 
-First, run the development server:
+## Teknologi Utama
+
+- Next.js 16.2.3
+- React 19.2.4
+- TypeScript 5
+- PostgreSQL via `pg`
+- VoltAgent
+- Ollama atau OpenAI-compatible API
+- PM2
+- Nginx
+- Tailwind CSS 4
+
+## Arsitektur Singkat
+
+- Frontend dan API berjalan dalam satu aplikasi Next.js App Router.
+- Database utama aplikasi saat ini adalah `hospital_cs` melalui `HOSPITAL_CS_DATABASE_URL`.
+- Masih ada koneksi legacy `DATABASE_URL` untuk fitur/data lama dan script debug.
+- Layer AI dibagi menjadi:
+  - `clinical` untuk triage/clinical notes
+  - `operational` untuk stok obat dan daftar pasien
+  - `general` untuk panduan umum perawat
+- PM2 dipakai untuk proses production, Nginx opsional sebagai reverse proxy.
+
+## Persyaratan Singkat
+
+- Node.js minimal `20.9.0`
+- npm modern yang mengikuti Node.js 20
+- PostgreSQL yang dapat diakses aplikasi
+- Server model AI:
+  - Ollama lokal/remote, atau
+  - endpoint OpenAI-compatible
+
+## Quick Start
 
 ```bash
+git clone <PRIVATE_REPOSITORY_URL>
+cd darsi-nurse
+
+nvm install
+nvm use
+
+npm ci
+cp .env.example .env
+nano .env
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Development default berjalan di `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Singkat
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm ci
+npm run lint
+npm run build
+npm run start
+```
 
-## Learn More
+Catatan: saat ini ada perbedaan port antara `npm run start` (`3019`) dan konfigurasi PM2 (`6767`). Lihat dokumentasi port sebelum deploy.
 
-To learn more about Next.js, take a look at the following resources:
+## Dokumentasi Lengkap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Teknologi proyek](docs/PROJECT_TECHNOLOGY.md)
+- [Prasyarat VM baru](docs/PREREQUISITES.md)
+- [Environment variables](docs/ENVIRONMENT_VARIABLES.md)
+- [Setup database](docs/DATABASE_SETUP.md)
+- [Setup model AI](docs/AI_MODEL_SETUP.md)
+- [Instalasi development](docs/DEVELOPMENT_INSTALLATION.md)
+- [Instalasi production](docs/PRODUCTION_INSTALLATION.md)
+- [Setup PM2](docs/PM2_SETUP.md)
+- [Setup Nginx](docs/NGINX_SETUP.md)
+- [Port dan jaringan](docs/NETWORK_AND_PORTS.md)
+- [Checklist verifikasi](docs/VERIFICATION.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Hal yang Perlu Diperhatikan Saat Pindah VM
 
-## Deploy on Vercel
+- `ecosystem.config.js`, `pm2-run.sh`, dan `scripts/dev/*` masih berisi path absolut `/home/ridho/volt/darsi-nurse`.
+- Beberapa file lama masih berisi IP/host lama seperti `10.9.23.205` dan `darsi.nrs.hcm-lab.id`.
+- `next.config.ts` memakai `allowedDevOrigins` hardcoded, bukan env.
+- `docs/setup/SETUP_DATABASE.md` lama berisi contoh credential aktual lama dan tidak boleh dijadikan acuan deploy baru.
+- Beberapa script debug/database bersifat destruktif atau memakai kredensial hardcoded; jangan dijalankan di production tanpa review.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Troubleshooting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mulai dari:
+
+- [Troubleshooting umum](docs/TROUBLESHOOTING.md)
+- [Verifikasi instalasi](docs/VERIFICATION.md)
+- [Port dan jaringan](docs/NETWORK_AND_PORTS.md)

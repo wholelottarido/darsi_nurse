@@ -1,4 +1,4 @@
-import { query } from './db';
+import { query } from '@/lib/db/legacy-db';
 
 export async function createPatient(data: any) {
   const { 

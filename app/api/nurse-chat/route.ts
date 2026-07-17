@@ -296,6 +296,7 @@ export async function POST(request: NextRequest) {
       history,
     });
   } catch (error) {
+    console.error("Failed to process /api/nurse-chat request:", error);
     const totalLatencyMs = Date.now() - startedAt;
     const interactionLog = await persistInteractionLog({
       routeName: "/api/nurse-chat",

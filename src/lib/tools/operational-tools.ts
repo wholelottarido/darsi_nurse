@@ -52,7 +52,7 @@ async function requirePerawat() {
   return perawat;
 }
 
-async function getAssignedPatients(limit = 20) {
+export async function getAssignedPatients(limit = 20) {
   const perawat = await requirePerawat();
   const rows = (await getHospitalPatientsByPerawatUsername(perawat.username, limit)) as AssignedPatientRow[];
 
@@ -70,7 +70,7 @@ async function getAssignedPatients(limit = 20) {
   }));
 }
 
-async function getAssignedPatientSummary(patientQuery: string) {
+export async function getAssignedPatientSummary(patientQuery: string) {
   const perawat = await requirePerawat();
   const normalizedQuery = patientQuery.trim().toLowerCase();
   if (!normalizedQuery) {
@@ -105,7 +105,7 @@ async function getAssignedPatientSummary(patientQuery: string) {
   };
 }
 
-async function checkMedicineAvailability(keyword: string) {
+export async function checkMedicineAvailability(keyword: string) {
   const normalized = keyword.trim();
   if (!normalized) {
     throw new Error("drugName is required");
