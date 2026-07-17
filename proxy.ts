@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { ADMIN_LOG_SESSION_COOKIE } from "./src/lib/auth/admin-log-auth";
 import {
   DARSI_PORTAL_URL,
   NURSE_SESSION_COOKIE,
@@ -16,8 +17,10 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const session = request.cookies.get(NURSE_SESSION_COOKIE)?.value;
-  if (session) {
+  const nurseSession = request.cookies.get(NURSE_SESSION_COOKIE)?.value;
+  const logAdminSession = request.cookies.get(ADMIN_LOG_SESSION_COOKIE)?.value;
+
+  if (nurseSession || logAdminSession) {
     return NextResponse.next();
   }
 

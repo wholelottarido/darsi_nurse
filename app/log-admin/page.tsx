@@ -4,6 +4,9 @@ import { getCurrentLogAdmin } from "@/lib/auth/admin-log-auth";
 import { listAgentInteractionLogs } from "@/lib/logging/agent-interaction-logs";
 import { hospitalQuery } from "@/lib/db/hospital-db";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type RegisteredNurseOption = {
   id: number;
   username: string;
