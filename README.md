@@ -23,7 +23,7 @@ DARSI Nurse adalah aplikasi Next.js untuk workflow perawat: login/register peraw
   - `clinical` untuk triage/clinical notes
   - `operational` untuk stok obat dan daftar pasien
   - `general` untuk panduan umum perawat
-- PM2 dipakai untuk proses production, Nginx opsional sebagai reverse proxy.
+- PM2 dipakai untuk proses production, dan deployment yang sedang aktif saat ini berjalan di VM lama pada `10.9.23.205:6767` serta diakses publik melalui `https://darsi.nrs.hcm-lab.id/`. Nginx dipakai sebagai reverse proxy publik.
 
 ## Persyaratan Singkat
 
@@ -51,6 +51,16 @@ npm run dev
 ```
 
 Development default berjalan di `http://localhost:3000`.
+
+## Deployment Saat Ini
+
+Deployment production yang saat ini aktif berada di VM lama dengan detail berikut:
+
+- Backend Next.js aktif di `10.9.23.205:6767`
+- URL publik: `https://darsi.nrs.hcm-lab.id/`
+- Process manager: `PM2`
+
+Dokumentasi di repo ini disusun agar deployment yang sama bisa dipasang ulang di VM baru tanpa menebak konfigurasi lama.
 
 ## Production Singkat
 
@@ -81,7 +91,7 @@ Catatan: saat ini ada perbedaan port antara `npm run start` (`3019`) dan konfigu
 ## Hal yang Perlu Diperhatikan Saat Pindah VM
 
 - `ecosystem.config.js`, `pm2-run.sh`, dan `scripts/dev/*` masih berisi path absolut `/home/ridho/volt/darsi-nurse`.
-- Beberapa file lama masih berisi IP/host lama seperti `10.9.23.205` dan `darsi.nrs.hcm-lab.id`.
+- Beberapa file lama masih berisi IP/host deployment saat ini, yaitu `10.9.23.205` dan `darsi.nrs.hcm-lab.id`. Nilai ini valid untuk VM lama yang sedang aktif, tetapi harus direview saat pindah ke VM baru.
 - `next.config.ts` memakai `allowedDevOrigins` hardcoded, bukan env.
 - `docs/setup/SETUP_DATABASE.md` lama berisi contoh credential aktual lama dan tidak boleh dijadikan acuan deploy baru.
 - Beberapa script debug/database bersifat destruktif atau memakai kredensial hardcoded; jangan dijalankan di production tanpa review.

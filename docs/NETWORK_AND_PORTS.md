@@ -25,6 +25,14 @@
 | `next.config.ts` | tidak menentukan port |
 | `.env` saat ini | tidak ada `PORT`, jadi PM2/env/script yang menentukan |
 
+## Status Produksi Saat Ini
+
+Per Jumat, 17 Juli 2026:
+
+- backend production aktif di `10.9.23.205:6767`
+- akses publik aktif di `https://darsi.nrs.hcm-lab.id/`
+- jalur runtime yang dipakai adalah PM2 + port `6767`
+
 ## Implikasi
 
 - port production belum konsisten di seluruh repo
@@ -34,8 +42,8 @@
 
 ## IP/Hostname Hardcoded yang Ditemukan
 
-- `10.9.23.205`
-- `darsi.nrs.hcm-lab.id`
+- `10.9.23.205` (IP VM lama yang saat ini masih aktif)
+- `darsi.nrs.hcm-lab.id` (domain publik yang saat ini masih aktif)
 - `darsi.ph.hcm-lab.id`
 - path absolut `/home/ridho/volt/darsi-nurse`
 

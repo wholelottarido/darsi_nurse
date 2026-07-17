@@ -2,6 +2,8 @@
 
 ## Status Repo
 
+Per Jumat, 17 Juli 2026, aplikasi diketahui dapat diakses publik melalui `https://darsi.nrs.hcm-lab.id/` dengan backend aktif pada `10.9.23.205:6767`. Jadi pada VM lama, Nginx efektifnya mem-publish backend PM2 port `6767` ke domain publik.
+
 Repo ini tidak menyertakan file konfigurasi Nginx aktif. Konfigurasi di bawah adalah template deploy berdasarkan pola runtime repo saat ini.
 
 ## Port Backend
@@ -11,7 +13,7 @@ Pilih salah satu:
 - `3019` jika backend dijalankan dengan `npm run start`
 - `6767` jika backend dijalankan dengan `ecosystem.config.js`
 
-Contoh di bawah memakai `6767` karena itu yang dipakai PM2 saat ini.
+Contoh di bawah memakai `6767` karena itu yang dipakai PM2 dan merupakan port backend deployment aktif saat ini.
 
 ## Contoh Konfigurasi
 

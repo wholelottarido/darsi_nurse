@@ -7,6 +7,16 @@ File yang relevan:
 - [ecosystem.config.js](/home/ridho/volt/darsi-nurse/ecosystem.config.js:1)
 - [pm2-run.sh](/home/ridho/volt/darsi-nurse/pm2-run.sh:1)
 
+## Deployment Aktif Saat Ini
+
+Per Jumat, 17 Juli 2026, layanan yang sedang online berjalan dengan karakteristik berikut:
+
+- host backend: `10.9.23.205`
+- port backend: `6767`
+- URL publik: `https://darsi.nrs.hcm-lab.id/`
+- process manager: `PM2`
+- nama proses: `darsi-nurse`
+
 ## Nilai Penting
 
 | Item | Nilai aktual |
@@ -63,7 +73,7 @@ Script ini:
 - start ulang process
 - menyimpan state PM2
 
-Namun script juga masih menampilkan URL lama `http://10.9.23.205:6767`, jadi output tersebut harus dianggap contoh lama dan bukan sumber kebenaran.
+Script ini menampilkan `http://10.9.23.205:6767`, dan berdasarkan informasi operasional terbaru itu memang sesuai dengan deployment aktif saat ini di VM lama. Untuk migrasi ke VM baru, nilai tersebut tetap harus diganti ke host/IP baru.
 
 ## Folder Log
 

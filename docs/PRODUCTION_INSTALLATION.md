@@ -36,6 +36,16 @@ next start -p 3019
 
 Jadi production manual default ada di `http://127.0.0.1:3019`.
 
+## Deployment Production yang Sedang Aktif
+
+Per Jumat, 17 Juli 2026, deployment yang sedang aktif berjalan sebagai berikut:
+
+- backend aktif di `10.9.23.205:6767`
+- domain publik aktif di `https://darsi.nrs.hcm-lab.id/`
+- process manager yang dipakai: `PM2`
+
+Ini berarti jalur production yang benar-benar dipakai saat ini adalah konfigurasi PM2 pada port `6767`, bukan `npm run start` di port `3019`.
+
 ## Menjalankan Aplikasi Sesuai Konfigurasi PM2
 
 `ecosystem.config.js` tidak memakai `npm run start`, tetapi menjalankan binary Next langsung:
@@ -90,4 +100,4 @@ curl -I http://127.0.0.1:3019
 curl -I http://127.0.0.1:6767
 ```
 
-Gunakan hanya port yang benar-benar aktif pada mode deploy Anda.
+Gunakan hanya port yang benar-benar aktif pada mode deploy Anda. Untuk kondisi saat ini di VM lama, port aktif production adalah `6767` dan dipublikasikan lewat `https://darsi.nrs.hcm-lab.id/`.
